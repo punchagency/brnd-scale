@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 const Navbar: FC = () => {
   return (
-    <nav className="navbar navbar-dark fixed-top bg-body-tertiary bg-dark">
+    <nav className="navbar navbar-dark position-relative fixed-top bg-body-tertiary bg-dark">
       <div className="container-fluid">
         <a className="navbar-brand text-white" href="#">
           BRNDScale

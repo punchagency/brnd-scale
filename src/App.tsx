@@ -5,8 +5,10 @@ import { auth } from "./config/firebase";
 import routes from "./config/routes";
 import Center from "./components/utils/Center";
 import AuthChecker from "./components/auth/AuthChecker";
-import Layout from "./containers/Layout";
-import Navbar from "./Navbar/Navbar";
+import Layout from "./containers/Layouts/Layout";
+import Navbar from "./components/Navbar/Navbar";
+import AuthLayout from "./containers/Layouts/AuthLayout";
+import Login from "./screens/Login";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -30,7 +32,7 @@ function App() {
     );
 
   return (
-    <div className="container-fluid ">
+    <div>
       <Navbar/>
       {/* <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
@@ -52,6 +54,8 @@ function App() {
         </Routes>
       </BrowserRouter> */}
       {/* <Layout/> */}
+      {/* <AuthLayout /> */}
+      <Login />
     </div>
   );
 }
