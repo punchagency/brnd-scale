@@ -13,7 +13,7 @@ const AuthLayout = ({ children, setUserType, userType }: AuthLayoutProps) => {
     setUserType && setUserType(value)
   }
   return (
-    <div className="container-lg d-flex flex-row align-items-center justify-content-between">
+    <div className="container-lg d-flex flex-row align-items-center justify-content-between mt-5">
       <div className="d-none d-md-block col-6 col-lg-7">
         <p className="fw-light mb-4">Welcome , Get Affliated with</p>
         <p className="h1 mb-4">BRNDScale</p>
