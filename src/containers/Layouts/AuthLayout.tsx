@@ -1,10 +1,17 @@
 import React from "react";
+import { userType } from "../../types";
+
 
 interface AuthLayoutProps {
   children?: React.ReactNode;
+  userType?: userType;
+  setUserType?: (value: userType) => void;
 }
 
-const AuthLayout = ({ children }: AuthLayoutProps) => {
+const AuthLayout = ({ children, setUserType, userType }: AuthLayoutProps) => {
+  const onClick = (value: userType) => {
+    setUserType && setUserType(value)
+  }
   return (
     <div className="container-lg d-flex flex-row align-items-center justify-content-between">
       <div className="d-none d-md-block col-6 col-lg-7">
@@ -18,16 +25,16 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
           <p className="fw-light mt-auto mb-auto">Choose your role</p>
 
           <div className="d-flex w-75">
-            <button type="button" className="btn btn-primary me-3 w-50 p-2">
+            <button type="button" onClick={() => onClick('Publisher')} className={`btn btn-${userType?.includes('Publisher') ? 'primary': 'secondary'} me-3 w-50 p-2`}>
               Publisher
             </button>
-            <button type="button" className="btn btn-secondary w-50 p-2">
+            <button type="button" onClick={() => onClick('Brand/Seller')} className={`btn btn-${userType?.includes('Seller') ? 'primary': 'secondary'} w-50 p-2`}>
               Brand/Seller
             </button>
           </div>
         </div>
       </div>
-      <div className="border">{children}</div>
+      <div>{children}</div>
     </div>
   );
 };

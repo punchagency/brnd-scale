@@ -1,0 +1,1 @@
+export type userType = 'Publisher' | 'Brand/Seller';
