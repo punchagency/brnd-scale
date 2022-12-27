@@ -6,6 +6,7 @@ import routes from "./config/routes";
 import Center from "./components/utils/Center";
 import AuthChecker from "./components/auth/AuthChecker";
 import Layout from "./containers/Layout";
+import Navbar from "./Navbar/Navbar";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <div className="container-fluid ">
+      <Navbar/>
       {/* <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           {routes.map((route, index) => (
@@ -49,7 +51,7 @@ function App() {
           ))}
         </Routes>
       </BrowserRouter> */}
-      <Layout/>
+      {/* <Layout/> */}
     </div>
   );
 }
