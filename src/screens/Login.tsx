@@ -49,7 +49,7 @@ const Login: FC = ({}: Props) => {
               href="forgot-password"
               className="text-black-50 text-decoration-none"
             >
-              Forgot Details
+              Forgot Details?
             </a>
           </div>
           <div className="w-100 d-flex justify-content-center">
@@ -58,7 +58,7 @@ const Login: FC = ({}: Props) => {
             </button>
           </div>
         </form>
-        <div className="w-100 d-flex align-items-center justify-content-evenly mt-3">
+        <div className="w-100 d-flex align-items-center justify-content-evenly mt-5">
           <p className="mt-auto mb-auto">Or sign in with</p>
           <a href="#"><img className="w-100 h-100" src={AmazonLogo} alt="amazon signup" /></a>
         </div>
