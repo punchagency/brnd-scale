@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Avatar from "./Avatar";
-import Search from "./Search";
+import Search from "../svgs/Search";
 
 const Navbar = ({ loggedIn }: any) => {
   return (
@@ -11,8 +11,8 @@ const Navbar = ({ loggedIn }: any) => {
         </a>
         <div className="d-flex flex-row">
           {loggedIn ? (
-            <div className="navbar-nav pt-2 me-5 mb-2 mb-lg-0 d-flex flex-row">
-              <div className="input-group flex-nowrap">
+            <div className="navbar-nav me-5 mb-2 mb-lg-0 d-flex flex-row">
+              <div className="input-group flex-nowrap my-auto">
                 <input
                   type="text"
                   className="form-control"
@@ -27,7 +27,7 @@ const Navbar = ({ loggedIn }: any) => {
                   <Search />
                 </span>
               </div>
-              <div className="mt-2 ms-5">
+              <div className="my-auto ms-5 ">
                 <Avatar />
               </div>
             </div>

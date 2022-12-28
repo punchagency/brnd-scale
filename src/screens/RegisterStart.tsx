@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AuthLayout from "../containers/Layouts/AuthLayout";
 import { userType } from "../types";
-import MyIcon from "./MyIcon";
+import MyIcon from "../components/svgs/MyIcon";
 
 
 function RegisterStart() {
