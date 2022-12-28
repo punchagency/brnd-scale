@@ -34,7 +34,7 @@ function App() {
     );
   const loggedIn: boolean = true;
   return (
-    <div>
+    <div className="">
       <Navbar loggedIn={loggedIn} />
       {/* <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
@@ -57,7 +57,9 @@ function App() {
       </BrowserRouter> */}
       {/* <Layout/> */}
       {/* <AuthLayout /> */}
+      <div className="container-fluid">
       {loggedIn ? <Layout /> : <RegisterStart />}
+      </div>
     </div>
   );
 }
