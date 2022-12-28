@@ -32,7 +32,7 @@ function App() {
         <CircularProgress />
       </Center>
     );
-  const loggedIn: boolean = true;
+  const loggedIn: boolean = false;
   return (
     <div className="">
       <Navbar loggedIn={loggedIn} />

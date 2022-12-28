@@ -34,7 +34,7 @@ const AuthLayout = ({ children, setUserType, userType }: AuthLayoutProps) => {
           </div>
         </div>
       </div>
-      <div className="border col-12 col-lg-4">{children}</div>
+      <div className="col-12 col-lg-4">{children}</div>
     </div>
   );
 };
