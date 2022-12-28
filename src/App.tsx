@@ -9,7 +9,8 @@ import Layout from "./containers/Layouts/Layout";
 import Navbar from "./components/Navbar/Navbar";
 import AuthLayout from "./containers/Layouts/AuthLayout";
 import Login from "./screens/Login";
-import VerifyAccount from "./screens/VerifyAccount";
+import Register from "./screens/Register";
+import RegisterStart from "./screens/RegisterStart";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -31,10 +32,10 @@ function App() {
         <CircularProgress />
       </Center>
     );
-
+  const loggedIn: boolean = false;
   return (
-    <div>
-      <Navbar/>
+    <div className="">
+      <Navbar loggedIn={loggedIn} />
       {/* <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           {routes.map((route, index) => (
@@ -56,7 +57,9 @@ function App() {
       </BrowserRouter> */}
       {/* <Layout/> */}
       {/* <AuthLayout /> */}
-      <VerifyAccount />
+      <div className="container-fluid">
+      {loggedIn ? <Layout /> : <RegisterStart />}
+      </div>
     </div>
   );
 }

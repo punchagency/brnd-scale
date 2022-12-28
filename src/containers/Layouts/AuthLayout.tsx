@@ -55,7 +55,7 @@ const AuthLayout = ({
           </div>
         )}
       </div>
-      <div className="me-auto ms-auto">{children}</div>
+      <div className="col-12 col-lg-4">{children}</div>
     </div>
   );
 };
