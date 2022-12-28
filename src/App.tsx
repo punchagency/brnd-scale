@@ -9,6 +9,7 @@ import Layout from "./containers/Layouts/Layout";
 import Navbar from "./components/Navbar/Navbar";
 import AuthLayout from "./containers/Layouts/AuthLayout";
 import Login from "./screens/Login";
+import VerifyAccount from "./screens/VerifyAccount";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -55,7 +56,7 @@ function App() {
       </BrowserRouter> */}
       {/* <Layout/> */}
       {/* <AuthLayout /> */}
-      <Login />
+      <VerifyAccount />
     </div>
   );
 }
