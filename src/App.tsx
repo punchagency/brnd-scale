@@ -32,7 +32,7 @@ function App() {
         <CircularProgress />
       </Center>
     );
-  const loggedIn: boolean = false;
+  const loggedIn: boolean = true;
   return (
     <div className="">
       <Navbar loggedIn={loggedIn} />
@@ -58,7 +58,7 @@ function App() {
       {/* <Layout/> */}
       {/* <AuthLayout /> */}
       <div className="container-fluid">
-      {loggedIn ? <Layout /> : <RegisterStart />}
+      {loggedIn ? <Layout /> : <Register />}
       </div>
     </div>
   );
