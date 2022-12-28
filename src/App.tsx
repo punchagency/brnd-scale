@@ -11,6 +11,7 @@ import AuthLayout from "./containers/Layouts/AuthLayout";
 import Login from "./screens/Login";
 import Register from "./screens/Register";
 import RegisterStart from "./screens/RegisterStart";
+import VerifyAccount from "./screens/VerifyAccount";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -58,7 +59,7 @@ function App() {
       {/* <Layout/> */}
       {/* <AuthLayout /> */}
       <div className="container-fluid">
-      {loggedIn ? <Layout /> : <RegisterStart />}
+      {loggedIn ? <Layout /> : <VerifyAccount />}
       </div>
     </div>
   );
