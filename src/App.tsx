@@ -59,7 +59,26 @@ function App() {
       {/* <Layout/> */}
       {/* <AuthLayout /> */}
       <div className="container-fluid">
-      {loggedIn ? <Layout /> : <VerifyAccount />}
+        {/* {loggedIn ? <Layout /> : <VerifyAccount />} */}
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
+          <Routes>
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  route.protected ? (
+                    <AuthChecker>
+                      <route.component />
+                    </AuthChecker>
+                  ) : (
+                    <route.component />
+                  )
+                }
+              />
+            ))}
+          </Routes>
+        </BrowserRouter>
       </div>
     </div>
   );
