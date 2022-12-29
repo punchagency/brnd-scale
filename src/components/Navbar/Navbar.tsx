@@ -4,7 +4,7 @@ import Search from "../svgs/Search";
 
 const Navbar = ({ loggedIn }: any) => {
   return (
-    <nav className="navbar navbar-dark position-relative fixed-top bg-body-tertiary bg-dark">
+    <nav className="navbar navbar-dark position-relative fixed-top bg-body-tertiary bg-dark vh-10">
       <div className="container-fluid">
         <a className="navbar-brand text-white" href="#">
           BRNDScale
@@ -52,7 +52,7 @@ const Navbar = ({ loggedIn }: any) => {
             </>
           )}
           <button
-            className="navbar-toggler"
+            className="navbar-toggler border-0"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"

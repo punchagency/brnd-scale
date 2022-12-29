@@ -42,14 +42,14 @@ function RegisterStart() {
             </button>
           </div>
           <div className="d-flex justify-content-between mt-3 mb-4">
-            <a href="/signup" className="text-black text-decoration-none">
-              <strong>Go to Login page</strong>
+            <a href="/signup" className="text-black-50 text-decoration-none">
+              Go to Login page
             </a>
             <a
               href="forgot-password"
-              className="text-black text-decoration-none"
+              className="text-black-50 text-decoration-none"
             >
-              <strong>Forgot Details?</strong>
+              Forgot Details?
             </a>
           </div>
         </form>
