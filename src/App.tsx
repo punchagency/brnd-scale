@@ -35,7 +35,7 @@ function App() {
     );
   const loggedIn: boolean = true;
   return (
-    <div className="">
+    <div className="vh-100">
       <Navbar loggedIn={loggedIn} />
       {/* <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
@@ -58,8 +58,10 @@ function App() {
       </BrowserRouter> */}
       {/* <Layout/> */}
       {/* <AuthLayout /> */}
-      <div className="container-fluid">
-      {loggedIn ? <Layout /> : <Register />}
+      <div
+        className="container-fluid vh-90" style={{flexGrow: 2, height: '91.3%'}}
+      >
+        {loggedIn ? <Layout /> : <Register />}
       </div>
     </div>
   );
