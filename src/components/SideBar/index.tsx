@@ -3,24 +3,21 @@ import NavItemIcon from "../svgs/NavItemIcon";
 
 function SideBar() {
   return (
-    <div className="d-flex flex-column bg-dark mt-5" style={{height: '90%'}}>
+    <div className="d-flex flex-column bg-dark mt-5" style={{height: '90%', minHeight: '82vh'}}>
       <ul className="nav flex-column flex-grow-1">
         <li className="nav-item d-flex align-items-center ms-2">
           <span className="pb-1">
             <NavItemIcon />
           </span>
-          <div
-            className="nav-link active text-white d-flex ps-2"
-            aria-current="page"
-          >
+            <a className="nav-link active text-white ps-2" href="/">
             Dashboard
-          </div>
+            </a>
         </li>
         <li className="nav-item d-flex align-items-center ms-2">
           <span className="pb-1">
             <NavItemIcon />
           </span>
-          <a className="nav-link text-white ps-2" href="#">
+          <a className="nav-link text-white ps-2" href="/brands">
             Brands
           </a>
         </li>

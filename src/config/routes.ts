@@ -1,3 +1,4 @@
+import BrandsManage from "../screens/BrandsManage";
 import Dashboard from "../screens/Dashboard";
 import Home from "../screens/Home";
 import Login from "../screens/Login";
@@ -34,6 +35,12 @@ const routes: RouteType[] = [
     path: "/verify-account",
     component: VerifyAccount,
     name: "Verify Account Screen",
+    protected: false,
+  },
+  {
+    path: "brands",
+    component: BrandsManage,
+    name: "Brands Manage",
     protected: false,
   }
 ];
