@@ -34,17 +34,6 @@ const AuthPage: FC = ({}: Props) => {
             <input type="text" className="form-control" id="city" />
           </div>
           <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">
-              Date of Birth
-            </label>
-            <input
-              type="date"
-              className="form-control"
-              id="exampleInputPassword1"
-              placeholder=""
-            />
-          </div>
-          <div className="mb-3">
             <label htmlFor="email" className="form-label">
               Email
             </label>
@@ -67,14 +56,14 @@ const AuthPage: FC = ({}: Props) => {
             </button>
           </div>
           <div className="d-flex justify-content-between mt-3 mb-4">
-            <a href="/signup" className="text-black text-decoration-none">
-              <strong>Go to Login page</strong>
+            <a href="/signup" className="text-black-50 text-decoration-none">
+              Go to Login page
             </a>
             <a
               href="forgot-password"
-              className="text-black text-decoration-none"
+              className="text-black-50 text-decoration-none"
             >
-              <strong>Forgot Details?</strong>
+              Forgot Details?
             </a>
           </div>
         </form>
