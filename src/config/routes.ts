@@ -1,3 +1,4 @@
+import Dashboard from "../screens/Dashboard";
 import Home from "../screens/Home";
 import Login from "../screens/Login";
 import RegisterStart from "../screens/RegisterStart";
@@ -13,9 +14,9 @@ interface RouteType {
 const routes: RouteType[] = [
   {
     path: "",
-    component: Home,
-    name: "Home Screen",
-    protected: true,
+    component: Dashboard,
+    name: "Dashboard",
+    protected: false,
   },
   {
     path: "/login",
