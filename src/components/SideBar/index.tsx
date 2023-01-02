@@ -3,7 +3,7 @@ import NavItemIcon from "../svgs/NavItemIcon";
 
 function SideBar() {
   return (
-    <div className="d-flex flex-column bg-dark mt-5" style={{height: '90%'}}>
+    <div className="d-flex flex-column bg-primary mt-5" style={{height: '90%'}}>
       <ul className="nav flex-column flex-grow-1">
         <li className="nav-item d-flex align-items-center ms-2">
           <span className="pb-1">
