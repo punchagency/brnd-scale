@@ -12,7 +12,7 @@ interface CardProps {
 
 const Card = ({ title, value, date, main, reduce, extra }: CardProps) => {
   return (
-    <div className="p-3 rounded col-md-5 col-lg-3  border" style={{maxWidth: '380px'}}>
+    <div className="p-3 ms-auto me-auto rounded col col-md-5 col-lg-3  border" style={{maxWidth: '380px', minWidth: '320px'}}>
       <div className="w-100 d-flex justify-content-between">
         <p className="fw-light">{title}</p>
 
