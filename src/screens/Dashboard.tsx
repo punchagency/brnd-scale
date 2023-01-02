@@ -52,7 +52,7 @@ const Dashboard: FC = () => {
           />
         </div>
       </div>
-      <div className="w-100 d-flex p-2 pt-4">
+      <div className="w-100 d-flex  pt-4 justify-between">
         <div className="col-6 border">
           <ListContainer title="List of Top Publishers">
             <table className="table table-borderless">
@@ -86,8 +86,8 @@ const Dashboard: FC = () => {
           <BarChart />
         </div>
       </div>
-      <div className="w-100 d-flex p-2 pt-4">
-        <div className="col-6 border">
+      <div className="w-100 d-flex pt-4">
+        <div className="col-6 border mw-50">
           <ListContainer title="List of Top Brands">
             <table className="table table-borderless">
               <thead>
