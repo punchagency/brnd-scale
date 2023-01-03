@@ -76,8 +76,6 @@ const Card = ({ title, value, date, main, reduce, extra }: CardProps) => {
                   setClickedAmount(0);
                 }
               }}
-              onBlur={() => setShowCalendar(false)}
-              onFocus={() => setShowCalendar(false)}
             >
               <img src={CalenderChecker} className='w-50'/>
               <DropdownIcon />
