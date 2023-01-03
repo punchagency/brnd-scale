@@ -12,17 +12,17 @@ const Navbar = ({ loggedIn }: any) => {
         <div className="d-flex flex-row">
           {loggedIn ? (
             <div className="navbar-nav me-5 mb-2 mb-lg-0 d-flex flex-row">
-              <div className="input-group flex-nowrap my-auto">
+              <div className="flex-nowrap d-flex align-items-center my-auto">
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-pill text-white border border-dark"
                   placeholder=""
                   aria-label=""
-                  aria-describedby="addon-wrapping"
+                  style={{backgroundColor: "#323436"}}
                 />
                 <span
-                  className="input-group-text bg-primary border border-primary"
-                  id="addon-wrapping"
+                  className=""
+                  style={{marginLeft: "-14%"}}
                 >
                   <Search />
                 </span>

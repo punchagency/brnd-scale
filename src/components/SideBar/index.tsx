@@ -3,8 +3,28 @@ import NavItemIcon from "../svgs/NavItemIcon";
 
 function SideBar() {
   return (
-    <div className="d-flex flex-column bg-dark mt-5" style={{height: '90%', minHeight: '82vh'}}>
-      <ul className="nav flex-column flex-grow-1">
+    <div
+      className="d-flex flex-column bg-primary mt-5 justify-content-between" 
+      style={{ height: "80%" }}
+    >
+      <ul className="text-white">
+        <li className="mb-3">Dashboard</li>
+        <li className="mb-3">
+          Manage
+          <ul>
+            <li>Publishers</li>
+            <li>Brands</li>
+            <li>Offers</li>
+          </ul>
+        </li>
+        <li>
+          Analyze
+          <ul>
+            <li>Reportings</li>
+          </ul>
+        </li>
+      </ul>
+      {/* <ul className="nav flex-column flex-grow-1">
         <li className="nav-item d-flex align-items-center ms-2">
           <span className="pb-1">
             <NavItemIcon />
@@ -13,13 +33,23 @@ function SideBar() {
             Dashboard
             </a>
         </li>
-        <li className="nav-item d-flex align-items-center ms-2">
+        <li className="nav-item d-flex ms-2">
           <span className="pb-1">
             <NavItemIcon />
           </span>
-          <a className="nav-link text-white ps-2" href="/brands">
-            Brands
+          <a className="nav-link text-white ps-2" href="#">
+            Manage
           </a>
+          <ul className="nav flex-column">
+            <li className="nav-item d-flex align-items-center ms-2">
+              <span className="pb-1">
+                <NavItemIcon />
+              </span>
+              <a className="nav-link text-white ps-2" href="#">
+                Brands
+              </a>
+            </li>
+          </ul>
         </li>
         <li className="nav-item d-flex align-items-center ms-2">
           <span className="pb-1">
@@ -45,9 +75,9 @@ function SideBar() {
             Products
           </a>
         </li>
-      </ul>
-      
-      <ul className="nav flex-column mt-5 mb-3">
+      </ul> */}
+
+      {/* <ul className="nav flex-column mt-5 mb-3">
         <li className="nav-item d-flex align-items-center ms-2">
           <span className="pb-1">
             <NavItemIcon />
@@ -56,6 +86,10 @@ function SideBar() {
             Settings
           </a>
         </li>
+      </ul> */}
+
+      <ul className="text-white">
+        <li>Log Out</li>
       </ul>
     </div>
   );

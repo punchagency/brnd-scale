@@ -1,12 +1,12 @@
 import React from "react";
 
-function Search() {
+function Search({color}:any) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
-      fill="#FFF"
+      fill={color || '#FFF'}
       className="bi bi-search"
       viewBox="0 0 16 16"
     >

@@ -58,7 +58,7 @@ function App() {
       </BrowserRouter> */}
       {/* <Layout/> */}
       {/* <AuthLayout /> */}
-      <div className="container-fluid" style={{flexGrow: 2, height: '94.5%'}}>
+      <div className="container-fluid vh-90" style={{flexGrow: 2, height: '91.3%'}}> 
         {/* {loggedIn ? <Layout /> : <VerifyAccount />} */}
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
@@ -72,7 +72,9 @@ function App() {
                       <route.component />
                     </AuthChecker>
                   ) : (
+                    // <Layout>
                     <route.component />
+                    // </Layout>
                   )
                 }
               />
