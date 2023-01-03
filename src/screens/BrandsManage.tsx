@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ListIcon from "../components/svgs/ListIcon";
+import Layout from "../containers/Layouts/Layout";
 import Table from "../components/Table";
 
 const headers = [
@@ -45,7 +46,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 3,
@@ -59,7 +61,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 4,
@@ -73,7 +76,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 5,
@@ -87,7 +91,8 @@ const data = [
     growth: "0%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 6,
@@ -101,7 +106,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 7,
@@ -115,7 +121,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 8,
@@ -129,7 +136,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 9,
@@ -143,7 +151,8 @@ const data = [
     growth: "0%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 10,
@@ -157,7 +166,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 11,
@@ -171,7 +181,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 12,
@@ -185,7 +196,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 13,
@@ -199,7 +211,8 @@ const data = [
     growth: "0%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 14,
@@ -213,7 +226,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 15,
@@ -227,7 +241,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 16,
@@ -241,7 +256,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 17,
@@ -255,7 +271,8 @@ const data = [
     growth: "0%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 18,
@@ -269,7 +286,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 19,
@@ -283,7 +301,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 20,
@@ -297,7 +316,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 21,
@@ -311,7 +331,8 @@ const data = [
     growth: "0%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 22,
@@ -325,7 +346,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 23,
@@ -339,7 +361,8 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
   {
     id: 24,
@@ -353,63 +376,76 @@ const data = [
     growth: "12%",
     commissions: "5%",
     conversions: "12",
-    totalProducts: "12",permissions: <button className="btn btn-danger btn-sm">action</button>,
+    totalProducts: "12",
+    permissions: <button className="btn btn-danger btn-sm">action</button>,
   },
 ];
 
 const displayLabels = [
-    // "id",
-    "brandName",
-    "campaingName",
-    "tag",
-    "country",
-    "category",
-    "store",
-    "status",
-    "growth",
-    "commissions",
-    "conversions",
-    "totalProducts",
-    "permissions",
-]
+  // "id",
+  "brandName",
+  "campaingName",
+  "tag",
+  "country",
+  "category",
+  "store",
+  "status",
+  "growth",
+  "commissions",
+  "conversions",
+  "totalProducts",
+  "permissions",
+];
 
 function BrandsManage() {
-  const [tableData, setTableData] = useState(data)
-  const deleteRow = (id:number)=>{
-    setTableData(prev=>{return prev.filter(row=>row.id != id)})
-  }
+  const [tableData, setTableData] = useState(data);
+  const deleteRow = (id: number) => {
+    setTableData((prev) => {
+      return prev.filter((row) => row.id != id);
+    });
+  };
 
-  const addRow = (row:any)=>{
-    setTableData(prev=>{return [...prev, {id: prev.length,...row}]})
+  const addRow = (row: any) => {
+    setTableData((prev) => {
+      return [...prev, { id: prev.length, ...row }];
+    });
+  };
 
-  }
-  
-  const editData = (data:any)=>{
+  const editData = (data: any) => {
     // setTableData(prev=>{return prev.map()})
-
-  }
+  };
   return (
-    <div className="row pt-3 ps-2 pe-5">
-      <div className="col-12 mt-3 d-flex justify-content-between">
-        <h4>See your partners</h4>
-        <button className="btn btn-primary btn-sm">Connect</button>
-      </div>
-      <div className="col-12 mt-4 d-flex">
-        <button className="btn btn-primary btn-lg w-25 me-2">Brands</button>
-      </div>
-      <div className="col-12 mt-4">
-        <div className="card d-flex p-2">
-          <div className="row">
-            <span className="col d-inline d-flex align-items-center ">
-              <ListIcon /> <span className="fs-5 ms-2">List of brands</span>
-            </span>
+    <Layout>
+      <div className="row pt-3 ps-2 pe-5">
+        <div className="col-12 mt-3 d-flex justify-content-between">
+          <h4>See your partners</h4>
+          <button className="btn btn-primary btn-sm">Connect</button>
+        </div>
+        <div className="col-12 mt-4 d-flex">
+          <button className="btn btn-primary btn-lg w-25 me-2">Brands</button>
+        </div>
+        <div className="col-12 mt-4">
+          <div className="card d-flex p-2">
+            <div className="row">
+              <span className="col d-inline d-flex align-items-center ">
+                <ListIcon /> <span className="fs-5 ms-2">List of brands</span>
+              </span>
+            </div>
           </div>
         </div>
+        <div className="col-12">
+          <Table
+            tableData={tableData}
+            displayLabels={displayLabels}
+            headers={headers}
+            tableWidth={"110%"}
+            deleteRow={deleteRow}
+            editData={editData}
+            addRow={addRow}
+          />
+        </div>
       </div>
-      <div className="col-12">
-        <Table tableData={tableData} displayLabels={displayLabels} headers={headers} tableWidth={"110%"} deleteRow={deleteRow} editData={editData} addRow={addRow} />
-      </div>
-    </div>
+    </Layout>
   );
 }
 

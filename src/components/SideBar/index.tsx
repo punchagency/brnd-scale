@@ -29,12 +29,9 @@ function SideBar() {
           <span className="pb-1">
             <NavItemIcon />
           </span>
-          <div
-            className="nav-link active text-white d-flex ps-2"
-            aria-current="page"
-          >
+            <a className="nav-link active text-white ps-2" href="/">
             Dashboard
-          </div>
+            </a>
         </li>
         <li className="nav-item d-flex ms-2">
           <span className="pb-1">

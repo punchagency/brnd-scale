@@ -35,7 +35,7 @@ function App() {
     );
   const loggedIn: boolean = true;
   return (
-    <div className="vh-100">
+    <div className="vh-100 overflow-hidden">
       <Navbar loggedIn={loggedIn} />
       {/* <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
@@ -58,7 +58,7 @@ function App() {
       </BrowserRouter> */}
       {/* <Layout/> */}
       {/* <AuthLayout /> */}
-      <div className="container-fluid vh-90" style={{flexGrow: 2, height: '91.3%'}}>
+      <div className="container-fluid vh-90" style={{flexGrow: 2, height: '91.3%'}}> 
         {/* {loggedIn ? <Layout /> : <VerifyAccount />} */}
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
@@ -72,9 +72,9 @@ function App() {
                       <route.component />
                     </AuthChecker>
                   ) : (
-                    <Layout>
+                    // <Layout>
                     <route.component />
-                    </Layout>
+                    // </Layout>
                   )
                 }
               />

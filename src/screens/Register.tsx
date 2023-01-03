@@ -56,8 +56,8 @@ const AuthPage: FC = ({}: Props) => {
             </button>
           </div>
           <div className="d-flex justify-content-between mt-3 mb-4">
-            <a href="/signup" className="text-black-50 text-decoration-none">
-              Go to Login page
+            <a href="/login" className="text-black-50 text-decoration-none">
+              <strong>Go to Login page</strong>
             </a>
             <a
               href="forgot-password"
