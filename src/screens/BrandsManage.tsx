@@ -399,6 +399,28 @@ const displayLabels = [
 
 function BrandsManage() {
   const [tableData, setTableData] = useState(data);
+
+  const filterData = (searchString: string) => {
+    return tableData
+      .filter((item:any) => {
+        return (
+          item.brandName.toLowerCase().includes(searchString.toLowerCase()) ||
+          item.campaingName
+            .toLowerCase()
+            .includes(searchString.toLowerCase()) ||
+          item.tag.toLowerCase().includes(searchString.toLowerCase()) ||
+          item.country.toLowerCase().includes(searchString.toLowerCase()) ||
+          item.category.toLowerCase().includes(searchString.toLowerCase()) ||
+          item.store.toLowerCase().includes(searchString.toLowerCase()) ||
+          item.status.toLowerCase().includes(searchString.toLowerCase()) ||
+          item.commissions.toLowerCase().includes(searchString.toLowerCase()) ||
+          item.conversions.toLowerCase().includes(searchString.toLowerCase()) ||
+          item.totalProducts.toLowerCase().includes(searchString.toLowerCase())
+        );
+      })
+      ;
+  };
+
   const deleteRow = (id: number) => {
     setTableData((prev) => {
       return prev.filter((row) => row.id != id);
@@ -442,6 +464,7 @@ function BrandsManage() {
             deleteRow={deleteRow}
             editData={editData}
             addRow={addRow}
+            filterData={filterData}
           />
         </div>
       </div>

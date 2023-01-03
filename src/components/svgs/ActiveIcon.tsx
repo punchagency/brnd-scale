@@ -1,6 +1,6 @@
 import React from "react";
 
-function ActiveIcon() {
+function ActiveIcon({color}:any) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9,7 +9,7 @@ function ActiveIcon() {
       fill="none"
       viewBox="0 0 11 11"
     >
-      <circle cx="5.5" cy="5.5" r="5.5" fill="#65DD2C"></circle>
+      <circle cx="5.5" cy="5.5" r="5.5" fill={color ? color : "#65DD2C"}></circle>
     </svg>
   );
 }

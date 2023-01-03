@@ -10,7 +10,7 @@ import PlusIcon from "../svgs/PlusIcon";
 import Search from "../svgs/Search";
 
 //displayLabels is an array of keys used to access tableData object values
-function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, tableWidth, hideCheckbox, hideToolbar, hideFooter}:any) {
+function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, tableWidth, hideCheckbox, hideToolbar, hideFooter, filterData}:any) {
   const [numOfRows, setNumOfRows] = useState(10);
   const [numOfPages, setNumOfPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
@@ -41,33 +41,12 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
   };
 
   const handleDelete = ()=>{
-    filterData().filter()
+    // filterData().filter()
   }
 
-  const filterData = () => {
-    return tableData
-      .filter((item:any) => {
-        return (
-          item.brandName.toLowerCase().includes(searchString.toLowerCase()) ||
-          item.campaingName
-            .toLowerCase()
-            .includes(searchString.toLowerCase()) ||
-          item.tag.toLowerCase().includes(searchString.toLowerCase()) ||
-          item.country.toLowerCase().includes(searchString.toLowerCase()) ||
-          item.category.toLowerCase().includes(searchString.toLowerCase()) ||
-          item.store.toLowerCase().includes(searchString.toLowerCase()) ||
-          item.status.toLowerCase().includes(searchString.toLowerCase()) ||
-          item.commissions.toLowerCase().includes(searchString.toLowerCase()) ||
-          item.conversions.toLowerCase().includes(searchString.toLowerCase()) ||
-          item.totalProducts.toLowerCase().includes(searchString.toLowerCase())
-        );
-      })
-      ;
-  };
-
-  const displayData = () => {
+  const displayData = () => {console.log(typeof filterData)
     //determine the rows to display
-    let data = filterData().slice((currentPage - 1) * numOfRows, currentPage * numOfRows);
+    let data = typeof filterData  == 'function' ? filterData(searchString).slice((currentPage - 1) * numOfRows, currentPage * numOfRows) : tableData;
     // setNumOfPages(data.length);
     return data.map((row:any, index:number) => {
       return (
@@ -105,7 +84,7 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
 
   const showButtons = () => {
     let buttons = [];
-    let total = filterData() // TODO: refactor this
+    let total = filterData(searchString) // TODO: refactor this
     let pages = (total.length / numOfRows) 
     console.log(total.length, pages)
     // setNumOfPages(pages);
@@ -265,7 +244,7 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
       <div className={`col-12 mt-3 ${hideFooter ? 'd-none' : undefined}`}>
         <div className="card d-flex px-2 justify-content-between">
           <div className="row d-flex align-content-center">
-            <p className="col-3 mt-3">Showing {(currentPage - 1) * numOfRows + 1} to {filterData().length < numOfRows ? filterData().length : currentPage * numOfRows} of {filterData().length/*Todo: refactor*/} entries</p>
+            <p className="col-3 mt-3">Showing {(currentPage - 1) * numOfRows + 1} to {filterData(searchString).length < numOfRows ? filterData(searchString).length : currentPage * numOfRows} of {filterData(searchString).length/*Todo: refactor*/} entries</p>
             <div className="col-2 ms-auto d-flex align-items-center">
               <div
                 className="me-1 ms-auto"
