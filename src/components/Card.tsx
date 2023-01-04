@@ -4,6 +4,7 @@ import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar, DayRange } from "react-modern-calendar-datepicker";
 import CalenderChecker from "../assets/images/CalendarCheck.svg"
 import DropdownIcon from "./svgs/DropdownIcon";
+import CalendarWrapper from "./Calendar";
 
 interface CardProps {
   title: string;
@@ -14,45 +15,9 @@ interface CardProps {
   extra: string;
 }
 
-function useOutsideAlerter(ref: any, callbackFunc: () => void) {
-  useEffect(() => {
-    /**
-     * Alert if clicked on outside of element
-     */
-    function handleClickOutside(event: any) {
-      if (ref.current && !ref.current.contains(event.target)) {
-        callbackFunc && callbackFunc();
-      }
-    }
-    // Bind the event listener
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      // Unbind the event listener on clean up
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [ref]);
-}
-
 const Card = ({ title, value, date, main, reduce, extra }: CardProps) => {
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-  const [selectedDayRange, setSelectedDayRange] = useState<DayRange>({
-    from: null,
-    to: null,
-  });
   const [componentDate, setComponentDate] = useState('')
-  const [clickedAmount, setClickedAmount] = useState(0);
-  const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef, () => {
-    setShowCalendar(false);
 
-  });
-  const [showCalendar, setShowCalendar] = useState<Boolean>(false);
-  useEffect(() => {
-    if(selectedDayRange.from !== null && selectedDayRange.to !== null) {
-      const dateText = `From ${selectedDayRange.from?.day} ${months[(selectedDayRange.from?.month? selectedDayRange.from?.month - 1 : 0)]} - ${selectedDayRange.to?.day} ${months[(selectedDayRange.to?.month? selectedDayRange.to?.month - 1 : 0)]}`
-      setComponentDate(dateText)
-    }
-  }, [selectedDayRange])
   return (
     <div
       className="p-3 mt-2 rounded col col-md-5 col-lg-3  border"
@@ -63,37 +28,7 @@ const Card = ({ title, value, date, main, reduce, extra }: CardProps) => {
 
         <div className="d-flex">
           <span className="fw-light me-3" style={{fontSize: "12px", lineHeight: "30px"}}>{componentDate || date}</span>
-          <div className="position-relative">
-            <div
-              className="btn border p-0 pb-1"
-              style={{width: '40px'}}
-              onClick={() => {
-                if (clickedAmount === 0 ) {
-                  setShowCalendar(true);
-                  setClickedAmount(1);
-                } else if (clickedAmount === 1) {
-                  setShowCalendar(false);
-                  setClickedAmount(0);
-                }
-              }}
-            >
-              <img src={CalenderChecker} className='w-50'/>
-              <DropdownIcon />
-            </div>
-            {showCalendar && (
-              <div
-                ref={wrapperRef}
-                className="position-absolute"
-                style={{ right: "0" }}
-              >
-                <Calendar
-                  value={selectedDayRange}
-                  onChange={(e: DayRange) => setSelectedDayRange(e)}
-                  shouldHighlightWeekends
-                />
-              </div>
-            )}
-          </div>
+          <CalendarWrapper setComponentDate={setComponentDate}/>
         </div>
       </div>
       <div className="w-100 d-flex">
