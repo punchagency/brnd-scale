@@ -19,3 +19,7 @@ th{
 td{
   font-size: 12px;
 }
+
+td button{
+  width: 100%;
+}

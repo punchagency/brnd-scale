@@ -71,7 +71,7 @@ const data = [
     revenue: "12",
     sales: "23",
     paid: "500$",
-    permissions: <button className="btn btn-success btn-sm">Allowed</button>,
+    permissions: <button className="btn btn-success btn-sm" style={{width: '100%'}}>Allowed</button>,
   },
   {
     id: 4,
@@ -346,19 +346,21 @@ const data = [
     permissions: <button className="btn btn-danger btn-sm">Not Allowed</button>,
   },
   {
-    id: 20,
-    brandName: "John Jones",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
+    id: 19,
+    publisherName: "Peter Pan Doe",
+    productName: "Donna Slider",
+    brands: "JBL Xtreme",
+    commissions: "$255.89",
+    startDate: "2023-01-01",
+    status: "Amazon",
+    product: "10",
     growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-success btn-sm">Allowed</button>,
+    clicks: "12",
+    orders: "14",
+    revenue: "12",
+    sales: "23",
+    paid: "500$",
+    permissions: <button className="btn btn-danger btn-sm">Not Allowed</button>,
   },
   {
     id: 21,
@@ -451,7 +453,7 @@ const displayLabels = [
 function PublisherManage() {
   const [tableData, setTableData] = useState(data);
 
-  const filterData = (searchString:string) => {console.log('sdfghgfd', searchString, tableData);
+  const filterData = (searchString:any) => {
   if(!searchString) return tableData
     return tableData
       .filter((item:any) => {

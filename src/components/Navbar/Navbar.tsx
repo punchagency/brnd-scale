@@ -18,12 +18,9 @@ const Navbar = ({ loggedIn }: any) => {
                   className="form-control rounded-pill text-white border border-dark"
                   placeholder=""
                   aria-label=""
-                  style={{backgroundColor: "#323436"}}
+                  style={{ backgroundColor: "#323436" }}
                 />
-                <span
-                  className=""
-                  style={{marginLeft: "-14%"}}
-                >
+                <span className="" style={{ marginLeft: "-14%" }}>
                   <Search />
                 </span>
               </div>
@@ -51,17 +48,19 @@ const Navbar = ({ loggedIn }: any) => {
               </ul>
             </>
           )}
-          <button
-            className="navbar-toggler border-0"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+          <div>
+            <button
+              className="navbar-toggler border-0"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+          </div>
         </div>
       </div>
     </nav>
