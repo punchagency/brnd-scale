@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import NavItemIcon from "../svgs/NavItemIcon";
 
 function SideBar() {
@@ -8,12 +9,12 @@ function SideBar() {
       style={{ height: "80%" }}
     >
       <ul className="text-white">
-        <li className="mb-3">Dashboard</li>
+        <li className="mb-3"><Link to="/" className="nav-link">Dashboard</Link></li>
         <li className="mb-3">
           Manage
           <ul>
-            <li>Publishers</li>
-            <li>Brands</li>
+            <li><Link to="/manage-publishers" className="nav-link">Publishers</Link></li>
+            <li><Link to="/manage-brand" className="nav-link">Brands</Link></li>
             <li>Offers</li>
           </ul>
         </li>
