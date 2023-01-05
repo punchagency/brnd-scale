@@ -1,12 +1,180 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import Card from "../components/Card";
 import BarChart from "../components/Charts/BarChart";
 import LineChart from "../components/Charts/LineChart";
 import ListContainer from "../components/ListContainer";
 import DashboardNotification from "../components/Notification/DashboardNotification";
+import Table from "../components/Table";
 import Layout from "../containers/Layouts/Layout";
+import BrandsImage from "../assets/images/images.svg"
+
+const headers = [
+  "Top Publishers",
+  "Clicks",
+  "Conversions",
+  "Products",
+  "Orders",
+];
+
+const brandsHeaders = [
+  "Images",
+  "Brands",
+  "Product Name",
+  "See Details",
+  "Conversions",
+  "Clicks",
+  "Orders"
+];
+
+const data = [
+  {
+    id: 1,
+    topPublishers: "Donna Slider",
+    clicks: "12",
+    conversions: "12",
+    products: "12",
+    orders: "12",
+  },
+  {
+    id: 2,
+    topPublishers: "Donna Slider",
+    clicks: "12",
+    conversions: "12",
+    products: "12",
+    orders: "19",
+  },
+  {
+    id: 3,
+    topPublishers: "Donna Slider",
+    clicks: "12",
+    conversions: "12",
+    products: "12",
+    orders: "12",
+  },
+  {
+    id: 4,
+    topPublishers: "Donna Slider",
+    clicks: "12",
+    conversions: "12",
+    products: "12",
+    orders: "12",
+  },
+ 
+];
+
+const brandsData = [
+  {
+    id: 1,
+    images: <img src={BrandsImage} alt="" />,
+    brands: "Donna Slider",
+    productNames: "Donna Slider",
+    seeDetails: <a href="#" className="btn btn-outline-dark" style={{fontSize: '12px'}}>View product</a>,
+    conversions: "12",
+    clicks: "12",
+    orders: "12",
+  },
+  {
+    id: 2,
+    images: <img src={BrandsImage} alt="" />,
+    brands: "Donna Slider",
+    productNames: "Donna Slider",
+    seeDetails: <a href="#" className="btn btn-outline-dark" style={{fontSize: '12px'}}>View product</a>,
+    conversions: "12",
+    clicks: "12",
+    orders: "12",
+  },
+  {
+    id: 3,
+    images: <img src={BrandsImage} alt="" />,
+    brands: "Donna Slider",
+    productNames: "Donna Slider",
+    seeDetails: <a href="#" className="btn btn-outline-dark" style={{fontSize: '12px'}}>View product</a>,
+    conversions: "12",
+    clicks: "12",
+    orders: "12",
+  },
+  {
+    id: 4,
+    images: <img src={BrandsImage} alt="" />,
+    brands: "Donna Slider",
+    productNames: "Donna Slider",
+    seeDetails: <a href="#" className="btn btn-outline-dark" style={{fontSize: '12px'}}>View product</a>,
+    conversions: "12",
+    clicks: "12",
+    orders: "12",
+  },
+ 
+];
+
+const displayLabels = [
+  // "id",
+  "topPublishers",
+  "clicks",
+  "conversions",
+  "products",
+  "orders",
+];
+
+const brandsDisplayLabels = [
+  // "id",
+  "images",
+  "brands",
+  "productNames",
+  "seeDetails",
+  "conversions",
+  "clicks",
+  "orders",
+];
 
 const Dashboard: FC = () => {
+  const [tableData, setTableData] = useState(data);
+  const [brandsTableData, setBrandsTableData] = useState(brandsData)
+  const deleteRow = (id: number) => {
+    setTableData((prev) => {
+      return prev.filter((row) => row.id != id);
+    });
+  };
+
+  const addRow = (row: any) => {
+    setTableData((prev) => {
+      return [...prev, { id: prev.length, ...row }];
+    });
+  };
+
+  const editData = (data: any) => {
+    // setTableData(prev=>{return prev.map()})
+  };
+  const filterData = (searchString: string) => {
+    return tableData
+      .filter((item:any) => {
+        return (
+          item.topPublishers.toLowerCase().includes(searchString.toLowerCase()) ||
+          item.clicks
+            .toLowerCase()
+            .includes(searchString.toLowerCase()) ||
+          item.conversions.toLowerCase().includes(searchString.toLowerCase()) ||
+          item.products.toLowerCase().includes(searchString.toLowerCase()) ||
+          item.orders.toLowerCase().includes(searchString.toLowerCase())
+        );
+      })
+      ;
+  };
+
+  const brandsFilterData = (searchString: string) => {
+    return brandsTableData
+      .filter((item:any) => {
+        return (
+          item.brands.toLowerCase().includes(searchString.toLowerCase()) ||
+          item.clicks
+            .toLowerCase()
+            .includes(searchString.toLowerCase()) ||
+          item.conversions.toLowerCase().includes(searchString.toLowerCase()) ||
+          item.productNames.toLowerCase().includes(searchString.toLowerCase()) ||
+          item.orders.toLowerCase().includes(searchString.toLowerCase())
+        );
+      })
+      ;
+  };
   return (
     <Layout>
       <div className="position-relative">
@@ -55,32 +223,21 @@ const Dashboard: FC = () => {
       <div className="w-100 d-flex  pt-4 justify-between">
         <div className="col-6 border">
           <ListContainer title="List of Top Publishers">
-            <table className="table table-borderless">
-              <thead>
-                <tr>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="">
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <td>Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-            </table>
+          <Table
+            tableData={tableData}
+            displayLabels={displayLabels}
+            headers={headers}
+            tableWidth={"100%"}
+            deleteRow={deleteRow}
+            editData={editData}
+            addRow={addRow}
+            filterData={filterData}
+            hideCheckbox={true}
+            hideFooter={true}
+            hideToolbar={true}
+            />
           </ListContainer>
+          
         </div>
         <div className="col-6 border">
           <BarChart />
@@ -89,31 +246,19 @@ const Dashboard: FC = () => {
       <div className="w-100 d-flex pt-4">
         <div className="col-6 border mw-50">
           <ListContainer title="List of Top Brands">
-            <table className="table table-borderless">
-              <thead>
-                <tr>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="">
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <td>Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-            </table>
+          <Table
+            tableData={brandsTableData}
+            displayLabels={brandsDisplayLabels}
+            headers={brandsHeaders}
+            tableWidth={"100%"}
+            deleteRow={deleteRow}
+            editData={editData}
+            addRow={addRow}
+            filterData={brandsFilterData}
+            hideCheckbox={true}
+            hideFooter={true}
+            hideToolbar={true}
+            />
           </ListContainer>
         </div>
         <div className="col-6 border">
