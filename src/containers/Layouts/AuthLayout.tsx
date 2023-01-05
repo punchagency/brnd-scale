@@ -26,7 +26,22 @@ const AuthLayout = ({
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
           vulputate libero et velit interdum, ac aliquet odio mattis.
         </p>
-        {message ? (
+        {userType === "Agency" ? (
+          <div className="d-flex align-items-center">
+            <div className="d-flex justify-content-between">
+              <span className="rounded me-3" style={{width: "88px", height: "15px", background: "#0064F6"}}></span>
+              <span className="rounded me-3" style={{width: "88px", height: "15px", background: "#0064F6"}}></span>
+              <span className="rounded" style={{width: "88px", height: "15px", background: "#0064F6"}}></span>
+            </div>
+            <button
+              type="button"
+              onClick={() => onClick("Publisher")}
+              className={`btn btn-dark me-3 p-2 ps-3 pe-3 ms-5`}
+            >
+              Brand & publishers
+            </button>
+          </div>
+        ) : message ? (
           <p className="fw-light">{message}</p>
         ) : (
           <div className="d-flex w-100 justify-content-between">

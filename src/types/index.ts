@@ -1,1 +1,1 @@
-export type userType = 'Publisher' | 'Brand/Seller';
+export type userType = 'Publisher' | 'Brand/Seller' | 'Agency';

@@ -7,7 +7,7 @@ import AmazonLogo from '../assets/images/amazon.png';
 interface Props {}
 
 const Login: FC = ({}: Props) => {
-  const [userType, setUserType] = useState<userType>("Publisher");
+  const [userType, setUserType] = useState<userType>("Agency");
   // getting and setting URL params
   // const [searchParams, setSearchParams] = useSearchParams();
 
