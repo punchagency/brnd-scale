@@ -15,13 +15,13 @@ function SideBar() {
           <ul>
             <li><Link to="/manage-publishers" className="nav-link">Publishers</Link></li>
             <li><Link to="/manage-brand" className="nav-link">Brands</Link></li>
-            <li>Offers</li>
+            <li><Link to="/offers" className="nav-link">Offers</Link></li>
           </ul>
         </li>
         <li>
           Analyze
           <ul>
-            <li>Reportings</li>
+            <li><Link to="/product-reports" className="nav-link">Reporting</Link></li>
           </ul>
         </li>
       </ul>
@@ -90,7 +90,7 @@ function SideBar() {
       </ul> */}
 
       <ul className="text-white">
-        <li>Log Out</li>
+      <Link to="/login" className="nav-link">Log Out</Link>
       </ul>
     </div>
   );

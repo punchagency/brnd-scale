@@ -23,3 +23,8 @@ td{
 td button{
   width: 100%;
 }
+
+.productCardWrapper{
+  width: 11.6%;
+  min-width: 11.6%;
+}
