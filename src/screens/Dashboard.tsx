@@ -185,7 +185,7 @@ const Dashboard: FC = () => {
         <DashboardNotification brands={2} publishers={2} conversions={2} />
       </div>
       <div className="w-100">
-        <div className="w-100 d-flex justify-content-between flex-wrap">
+        <div className="w-100 d-flex justify-content-between flex-wrap" style={{gap: '20px'}}>
           <Card
             title="Total Sales"
             extra="27K"
@@ -206,7 +206,7 @@ const Dashboard: FC = () => {
             title="Total Revenue"
             extra="27K"
             reduce={true}
-            value="576"
+            value="$259.99"
             main={true}
             date="From 10 - 20 Nov"
           />{" "}
@@ -214,14 +214,14 @@ const Dashboard: FC = () => {
             title="Conversion rate"
             extra="27K"
             reduce={true}
-            value="576"
+            value="53.2%"
             main={true}
             date="From 10 - 20 Nov"
           />
         </div>
       </div>
-      <div className="w-100 d-flex  pt-4 justify-between">
-        <div className="col-6 border">
+      <div className="w-100 d-flex  pt-4 justify-content-between" style={{gap: '20px'}}>
+        <div className="col w-50">
           <ListContainer title="List of Top Publishers">
           <Table
             tableData={tableData}
@@ -239,12 +239,12 @@ const Dashboard: FC = () => {
           </ListContainer>
           
         </div>
-        <div className="col-6 border">
+        <div className="col w-50 border rounded">
           <BarChart />
         </div>
       </div>
-      <div className="w-100 d-flex pt-4">
-        <div className="col-6 border mw-50">
+      <div className="w-100 d-flex pt-4 justify-content-between" style={{gap: '20px'}}>
+        <div className="col w-50" >
           <ListContainer title="List of Top Brands">
           <Table
             tableData={brandsTableData}
@@ -261,7 +261,7 @@ const Dashboard: FC = () => {
             />
           </ListContainer>
         </div>
-        <div className="col-6 border">
+        <div className="col w-50 border rounded ">
           <LineChart />
         </div>
       </div>
