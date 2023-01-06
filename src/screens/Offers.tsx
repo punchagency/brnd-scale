@@ -10,28 +10,34 @@ import handm from "../assets/images/HandM.png";
 import herbalLife from "../assets/images/herbalLife.png";
 
 const headers = [
-    "Image",
-    "Campaign Name",
-    "Brand Name",
-    "Set Commission",
-    "Category",
-    "Countries",
-    "Ending Date",
-    "Visibility",
-    "Platform",
-    "Accounts Manager",
-    "Sales Manager",
-    "Device Type",
-    "Status",
+  "Image",
+  "Campaign Name",
+  "Brand Name",
+  "Set Commission",
+  "Category",
+  "Countries",
+  "Ending Date",
+  "Visibility",
+  "Platform",
+  "Accounts Manager",
+  "Sales Manager",
+  "Device Type",
+  "Status",
 ];
 
 const data = [
   {
     id: 1,
-    image: <div className="d-flex justify-content-center"><img src={jbl} /></div>,
+    image: (
+      <div className="d-flex justify-content-center">
+        <img src={jbl} />
+      </div>
+    ),
     campaignName: "Black Friday Sale",
     brandName: "Xtreme Coutore",
-    setCommission: <button className="btn btn-outline-primary btn-sm">Set Commission</button>,
+    setCommission: (
+      <button className="btn btn-outline-primary btn-sm">Set Commission</button>
+    ),
     category: "Health and Care",
     countries: "United States",
     endingDate: "2022-09-10",
@@ -41,17 +47,23 @@ const data = [
     salesManager: "Donna Slider",
     deviceType: "Donna Slider",
     status: (
-        <div className="d-flex justify-content-center">
-          <ActiveIcon color={"#CB6862"} />
-        </div>
-      ),
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
   },
   {
     id: 2,
-    image: <div className="d-flex justify-content-center"><img src={handm} /></div>,
+    image: (
+      <div className="d-flex justify-content-center">
+        <img src={handm} />
+      </div>
+    ),
     campaignName: "Black Friday Sale",
     brandName: "Xtreme Coutore",
-    setCommission: <button className="btn btn-outline-primary btn-sm">Set Commission</button>,
+    setCommission: (
+      <button className="btn btn-outline-primary btn-sm">Set Commission</button>
+    ),
     category: "Health and Care",
     countries: "United States",
     endingDate: "2022-09-10",
@@ -61,17 +73,23 @@ const data = [
     salesManager: "Donna Slider",
     deviceType: "Donna Slider",
     status: (
-        <div className="d-flex justify-content-center">
-          <ActiveIcon color={"#CB6862"} />
-        </div>
-      ),
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
   },
   {
     id: 3,
-    image: <div className="d-flex justify-content-center"><img src={herbalLife} /></div>,
+    image: (
+      <div className="d-flex justify-content-center">
+        <img src={herbalLife} />
+      </div>
+    ),
     campaignName: "Black Friday Sale",
     brandName: "Xtreme Coutore",
-    setCommission: <button className="btn btn-outline-primary btn-sm">Set Commission</button>,
+    setCommission: (
+      <button className="btn btn-outline-primary btn-sm">Set Commission</button>
+    ),
     category: "Health and Care",
     countries: "United States",
     endingDate: "2022-09-10",
@@ -81,17 +99,23 @@ const data = [
     salesManager: "Donna Slider",
     deviceType: "Donna Slider",
     status: (
-        <div className="d-flex justify-content-center">
-          <ActiveIcon color={"#CB6862"} />
-        </div>
-      ),
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
   },
   {
     id: 4,
-    image: <div className="d-flex justify-content-center"><img src={versace} /></div>,
+    image: (
+      <div className="d-flex justify-content-center">
+        <img src={versace} />
+      </div>
+    ),
     campaignName: "Black Friday Sale",
     brandName: "Xtreme Coutore",
-    setCommission: <button className="btn btn-outline-primary btn-sm">Set Commission</button>,
+    setCommission: (
+      <button className="btn btn-outline-primary btn-sm">Set Commission</button>
+    ),
     category: "Health and Care",
     countries: "United States",
     endingDate: "2022-09-10",
@@ -101,17 +125,23 @@ const data = [
     salesManager: "Donna Slider",
     deviceType: "Donna Slider",
     status: (
-        <div className="d-flex justify-content-center">
-          <ActiveIcon color={"#CB6862"} />
-        </div>
-      ),
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
   },
   {
     id: 5,
-    image: <div className="d-flex justify-content-center"><img src={jbl} /></div>,
+    image: (
+      <div className="d-flex justify-content-center">
+        <img src={jbl} />
+      </div>
+    ),
     campaignName: "Black Friday Sale",
     brandName: "Xtreme Coutore",
-    setCommission: <button className="btn btn-outline-primary btn-sm">Set Commission</button>,
+    setCommission: (
+      <button className="btn btn-outline-primary btn-sm">Set Commission</button>
+    ),
     category: "Health and Care",
     countries: "United States",
     endingDate: "2022-09-10",
@@ -121,17 +151,23 @@ const data = [
     salesManager: "Donna Slider",
     deviceType: "Donna Slider",
     status: (
-        <div className="d-flex justify-content-center">
-          <ActiveIcon color={"#CB6862"} />
-        </div>
-      ),
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
   },
   {
     id: 6,
-    image: <div className="d-flex justify-content-center"><img src={handm} /></div>,
+    image: (
+      <div className="d-flex justify-content-center">
+        <img src={handm} />
+      </div>
+    ),
     campaignName: "Black Friday Sale",
     brandName: "Xtreme Coutore",
-    setCommission: <button className="btn btn-outline-primary btn-sm">Set Commission</button>,
+    setCommission: (
+      <button className="btn btn-outline-primary btn-sm">Set Commission</button>
+    ),
     category: "Health and Care",
     countries: "United States",
     endingDate: "2022-09-10",
@@ -141,17 +177,23 @@ const data = [
     salesManager: "Donna Slider",
     deviceType: "Donna Slider",
     status: (
-        <div className="d-flex justify-content-center">
-          <ActiveIcon color={"#CB6862"} />
-        </div>
-      ),
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
   },
   {
     id: 7,
-    image: <div className="d-flex justify-content-center"><img src={herbalLife} /></div>,
+    image: (
+      <div className="d-flex justify-content-center">
+        <img src={herbalLife} />
+      </div>
+    ),
     campaignName: "Black Friday Sale",
     brandName: "Xtreme Coutore",
-    setCommission: <button className="btn btn-outline-primary btn-sm">Set Commission</button>,
+    setCommission: (
+      <button className="btn btn-outline-primary btn-sm">Set Commission</button>
+    ),
     category: "Health and Care",
     countries: "United States",
     endingDate: "2022-09-10",
@@ -161,17 +203,23 @@ const data = [
     salesManager: "Donna Slider",
     deviceType: "Donna Slider",
     status: (
-        <div className="d-flex justify-content-center">
-          <ActiveIcon color={"#CB6862"} />
-        </div>
-      ),
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
   },
   {
     id: 8,
-    image: <div className="d-flex justify-content-center"><img src={versace} /></div>,
+    image: (
+      <div className="d-flex justify-content-center">
+        <img src={versace} />
+      </div>
+    ),
     campaignName: "Black Friday Sale",
     brandName: "Xtreme Coutore",
-    setCommission: <button className="btn btn-outline-primary btn-sm">Set Commission</button>,
+    setCommission: (
+      <button className="btn btn-outline-primary btn-sm">Set Commission</button>
+    ),
     category: "Health and Care",
     countries: "United States",
     endingDate: "2022-09-10",
@@ -181,17 +229,23 @@ const data = [
     salesManager: "Donna Slider",
     deviceType: "Donna Slider",
     status: (
-        <div className="d-flex justify-content-center">
-          <ActiveIcon color={"#CB6862"} />
-        </div>
-      ),
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
   },
   {
     id: 9,
-    image: <div className="d-flex justify-content-center"><img src={jbl} /></div>,
+    image: (
+      <div className="d-flex justify-content-center">
+        <img src={jbl} />
+      </div>
+    ),
     campaignName: "Black Friday Sale",
     brandName: "Xtreme Coutore",
-    setCommission: <button className="btn btn-outline-primary btn-sm">Set Commission</button>,
+    setCommission: (
+      <button className="btn btn-outline-primary btn-sm">Set Commission</button>
+    ),
     category: "Health and Care",
     countries: "United States",
     endingDate: "2022-09-10",
@@ -201,17 +255,23 @@ const data = [
     salesManager: "Donna Slider",
     deviceType: "Donna Slider",
     status: (
-        <div className="d-flex justify-content-center">
-          <ActiveIcon color={"#CB6862"} />
-        </div>
-      ),
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
   },
   {
     id: 10,
-    image: <div className="d-flex justify-content-center"><img src={handm} /></div>,
+    image: (
+      <div className="d-flex justify-content-center">
+        <img src={handm} />
+      </div>
+    ),
     campaignName: "Black Friday Sale",
     brandName: "Xtreme Coutore",
-    setCommission: <button className="btn btn-outline-primary btn-sm">Set Commission</button>,
+    setCommission: (
+      <button className="btn btn-outline-primary btn-sm">Set Commission</button>
+    ),
     category: "Health and Care",
     countries: "United States",
     endingDate: "2022-09-10",
@@ -221,17 +281,23 @@ const data = [
     salesManager: "Donna Slider",
     deviceType: "Donna Slider",
     status: (
-        <div className="d-flex justify-content-center">
-          <ActiveIcon color={"#CB6862"} />
-        </div>
-      ),
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
   },
   {
     id: 11,
-    image: <div className="d-flex justify-content-center"><img src={herbalLife} /></div>,
+    image: (
+      <div className="d-flex justify-content-center">
+        <img src={herbalLife} />
+      </div>
+    ),
     campaignName: "Black Friday Sale",
     brandName: "Xtreme Coutore",
-    setCommission: <button className="btn btn-outline-primary btn-sm">Set Commission</button>,
+    setCommission: (
+      <button className="btn btn-outline-primary btn-sm">Set Commission</button>
+    ),
     category: "Health and Care",
     countries: "United States",
     endingDate: "2022-09-10",
@@ -241,17 +307,23 @@ const data = [
     salesManager: "Donna Slider",
     deviceType: "Donna Slider",
     status: (
-        <div className="d-flex justify-content-center">
-          <ActiveIcon color={"#CB6862"} />
-        </div>
-      ),
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
   },
   {
     id: 12,
-    image: <div className="d-flex justify-content-center"><img src={versace} /></div>,
+    image: (
+      <div className="d-flex justify-content-center">
+        <img src={versace} />
+      </div>
+    ),
     campaignName: "Black Friday Sale",
     brandName: "Xtreme Coutore",
-    setCommission: <button className="btn btn-outline-primary btn-sm">Set Commission</button>,
+    setCommission: (
+      <button className="btn btn-outline-primary btn-sm">Set Commission</button>
+    ),
     category: "Health and Care",
     countries: "United States",
     endingDate: "2022-09-10",
@@ -261,10 +333,10 @@ const data = [
     salesManager: "Donna Slider",
     deviceType: "Donna Slider",
     status: (
-        <div className="d-flex justify-content-center">
-          <ActiveIcon color={"#CB6862"} />
-        </div>
-      ),
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
   },
 ];
 
@@ -287,6 +359,7 @@ const displayLabels = [
 
 function Offers() {
   const [tableData, setTableData] = useState(data);
+  const [userType, setUserType] = useState("Brand");
 
   const filterData = (searchString: any) => {
     if (!searchString) return tableData;
@@ -325,13 +398,20 @@ function Offers() {
     <Layout>
       <div className="row pt-3 ps-2 pe-5">
         <div className="col-12 mt-3 d-flex justify-content-between">
-          <h4>See Your Partners</h4>
-          <button className="btn btn-primary btn-sm">Connect</button>
+          <h4>
+            {userType === "Agency"
+              ? "See Your Partners"
+              : userType === "Brand"
+              ? "See Offers from Agencies and Join"
+              : ""}
+          </h4>
+          {userType === "Agency" && (
+            <button className="btn btn-primary btn-sm">Connect</button>
+          )}
         </div>
         <div className="col-12 mt-4 d-flex">
-          <button className="btn btn-primary btn-lg w-25 me-2">
-            Offers
-          </button>
+          <button className="btn btn-primary btn-lg w-25 me-2">Offers</button>
+          {userType === 'Brand' && <button className="btn btn-primary btn-lg w-25 me-2">Manage products</button>}
         </div>
         <div className="col-12 mt-4">
           <div className="card d-flex p-2">
