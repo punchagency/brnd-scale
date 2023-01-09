@@ -99,7 +99,7 @@ function SideBar() {
   };
   return (
     <div
-      className={`d-flex flex-column bg-${sidebarBackground()} pt-5 justify-content-between ps-4`}
+      className={`d-flex flex-column bg-dark pt-5 justify-content-between ps-4`}
       style={{ height: "100%" }}
     >
       {renderSideBarList()}

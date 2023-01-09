@@ -2,13 +2,15 @@ import React from "react";
 import WarningCircle from "../svgs/WarningCircle";
 interface DashboardNotificationProps {
   conversions: number;
-  brands: number;
+  brands?: number;
   publishers: number;
+  agency?: number;
 }
 const DashboardNotification = ({
   conversions,
   brands,
   publishers,
+  agency
 }: DashboardNotificationProps) => {
   return (
     <div
@@ -22,9 +24,10 @@ const DashboardNotification = ({
         <WarningCircle />
         <p className="ms-5 text-center mt-auto mb-auto fw-light">
           Hi, Lead/Ecom network, You have{" "}
-          <a href="">({conversions}) Conversions,</a>{" "}
-          <a href="">({brands}) Brands,</a>{" "}
-          <a href="">({publishers}) Publishers,</a>{" "}
+          {conversions && <a href="">({conversions}) Conversions,</a>}{" "}
+          {brands && <a href="">({brands}) Brands,</a>}{" "}
+          {agency && <a href="">({agency}) Agency Invites,</a>}{" "}
+          {publishers && <a href="">({publishers}) Publishers,</a>}{" "}
           Pending for approval
         </p>
       </div>
