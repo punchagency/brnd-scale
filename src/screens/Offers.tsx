@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import ListIcon from "../components/svgs/ListIcon";
 import Layout from "../containers/Layouts/Layout";
 import Table from "../components/Table";
+import { selectUser} from "../features/user/userSlice";
+import { useAppSelector } from "../app/hooks";
+
 import ActiveIcon from "../components/svgs/ActiveIcon";
 
 import jbl from "../assets/images/jbl.png";
 import versace from "../assets/images/versace.png";
 import handm from "../assets/images/HandM.png";
 import herbalLife from "../assets/images/herbalLife.png";
+
 
 const headers = [
   "Image",
@@ -359,7 +363,7 @@ const displayLabels = [
 
 function Offers() {
   const [tableData, setTableData] = useState(data);
-  const [userType, setUserType] = useState("Brand");
+  const userType = useAppSelector(selectUser)
 
   const filterData = (searchString: any) => {
     if (!searchString) return tableData;

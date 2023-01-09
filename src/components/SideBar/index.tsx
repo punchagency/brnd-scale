@@ -1,9 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavItemIcon from "../svgs/NavItemIcon";
+import {
+  selectUser,
+  login,
+  logout,
+  selectLoggedIn,
+} from "../../features/user/userSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useNavigate } from "react-router-dom";
 
 function SideBar() {
-  const [userType, setUserType] = React.useState("Agency");
+  const userType = useAppSelector(selectUser);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const renderSideBarList = () => {
     switch (userType) {
       case "Agency":
@@ -16,7 +26,7 @@ function SideBar() {
             </li>
             <li className="mb-3">
               Manage
-              <ul className="mt-3" style={{borderLeft: "1px solid #C2BDBD"}}>
+              <ul className="mt-3" style={{ borderLeft: "1px solid #C2BDBD" }}>
                 <li className="mb-3">
                   <Link to="/manage-publishers" className="nav-link">
                     Publishers
@@ -36,7 +46,7 @@ function SideBar() {
             </li>
             <li className="mb-3">
               Analyze
-              <ul className="mt-3" style={{borderLeft: "1px solid #C2BDBD"}}>
+              <ul className="mt-3" style={{ borderLeft: "1px solid #C2BDBD" }}>
                 <li>
                   <Link to="/product-reports" className="nav-link">
                     Reporting
@@ -67,7 +77,7 @@ function SideBar() {
             </li>
             <li>
               Analyze
-              <ul className="mt-3" style={{borderLeft: "1px solid #C2BDBD"}}>
+              <ul className="mt-3" style={{ borderLeft: "1px solid #C2BDBD" }}>
                 <li>
                   <Link to="/product-reports" className="nav-link">
                     Reporting
@@ -80,13 +90,13 @@ function SideBar() {
     }
   };
   const sidebarBackground = () => {
-    switch(userType) {
-      case 'Agency':
-        return 'primary'
-      case 'Brand':
-        return 'dark'
+    switch (userType) {
+      case "Agency":
+        return "primary";
+      case "Brand":
+        return "dark";
     }
-  }
+  };
   return (
     <div
       className={`d-flex flex-column bg-${sidebarBackground()} pt-5 justify-content-between ps-4`}
@@ -158,9 +168,16 @@ function SideBar() {
       </ul> */}
 
       <ul className="text-white">
-        <Link to="/login" className="nav-link">
+        <a
+          href="#"
+          className="nav-link"
+          onClick={() => {
+            dispatch(logout());
+            navigate("/login");
+          }}
+        >
           Log Out
-        </Link>
+        </a>
       </ul>
     </div>
   );

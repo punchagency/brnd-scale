@@ -1,13 +1,26 @@
-import React, { FC, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import React, { FC, useEffect, useState } from "react";
+import { Navigate, useSearchParams } from "react-router-dom";
 import AuthLayout from "../containers/Layouts/AuthLayout";
 import { userType } from "../types";
 import AmazonLogo from '../assets/images/amazon.png';
+import { selectUser, login, selectLoggedIn } from "../features/user/userSlice";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 
 interface Props {}
 
 const Login: FC = ({}: Props) => {
-  const [userType, setUserType] = useState<userType>("Agency");
+  const userType = useAppSelector(selectUser);
+  const loggedIn = useAppSelector(selectLoggedIn)
+  const dispatch = useAppDispatch();
+
+  const onSubmit = () => {
+    dispatch(login())
+  }
+  useEffect(() => {
+    if(loggedIn) {
+
+    }
+  })
   // getting and setting URL params
   // const [searchParams, setSearchParams] = useSearchParams();
 
@@ -15,10 +28,11 @@ const Login: FC = ({}: Props) => {
   // const action: string = searchParams.get("action") || "login";
 
   return (
-    <AuthLayout setUserType={setUserType} userType={userType}>
+    <AuthLayout userType={userType}>
       <div className="border rounded p-5">
         <p className="h5 mb-4">Login to your {userType} Account</p>
-        <form className="w-100">
+        <form className="w-100" >
+          {loggedIn && <Navigate to="/" replace={true} />}
           <div className="mb-3">
             <label htmlFor="username" className="form-label">
               Username
@@ -53,7 +67,7 @@ const Login: FC = ({}: Props) => {
             </a>
           </div>
           <div className="w-100 d-flex justify-content-center">
-            <button type="submit" className="btn btn-secondary ms-auto me-auto">
+            <button type="submit" className="btn btn-secondary ms-auto me-auto" onClick={onSubmit}>
               Login
             </button>
           </div>

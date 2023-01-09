@@ -6,7 +6,10 @@ import ListContainer from "../components/ListContainer";
 import DashboardNotification from "../components/Notification/DashboardNotification";
 import Table from "../components/Table";
 import Layout from "../containers/Layouts/Layout";
-import BrandsImage from "../assets/images/images.svg"
+import BrandsImage from "../assets/images/images.svg";
+import { selectUser, login, selectLoggedIn } from "../features/user/userSlice";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+
 
 const headers = [
   "Top Publishers",
@@ -129,6 +132,7 @@ const brandsDisplayLabels = [
 const Dashboard: FC = () => {
   const [tableData, setTableData] = useState(data);
   const [brandsTableData, setBrandsTableData] = useState(brandsData)
+  const userType = useAppSelector(selectUser)
   const deleteRow = (id: number) => {
     setTableData((prev) => {
       return prev.filter((row) => row.id != id);
@@ -180,7 +184,7 @@ const Dashboard: FC = () => {
       <div className="position-relative">
         <div className="pt-4">
           <p className="fw-light mb-0">Today stats</p>
-          <p className="h3">Dashboard</p>
+          <p className="h3">{`${userType} `}Dashboard</p>
         </div>
         <DashboardNotification brands={2} publishers={2} conversions={2} />
       </div>

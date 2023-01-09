@@ -1,6 +1,7 @@
 import React from "react";
+import { useAppDispatch } from "../../app/hooks";
 import { userType } from "../../types";
-
+import { setUserType } from "../../features/user/userSlice";
 interface AuthLayoutProps {
   children?: React.ReactNode;
   userType?: userType;
@@ -10,12 +11,12 @@ interface AuthLayoutProps {
 
 const AuthLayout = ({
   children,
-  setUserType,
   userType,
   message,
 }: AuthLayoutProps) => {
+  const dispatch = useAppDispatch()
   const onClick = (value: userType) => {
-    setUserType && setUserType(value);
+    dispatch(setUserType(value))
   };
   return (
     <div className="container-lg d-flex flex-row align-items-center justify-content-between mt-5">
@@ -59,9 +60,9 @@ const AuthLayout = ({
               </button>
               <button
                 type="button"
-                onClick={() => onClick("Brand/Seller")}
+                onClick={() => onClick("Brand")}
                 className={`btn btn-${
-                  userType?.includes("Seller") ? "primary" : "secondary"
+                  userType?.includes("Brand") ? "primary" : "secondary"
                 } w-50 p-2`}
               >
                 Brand/Seller
