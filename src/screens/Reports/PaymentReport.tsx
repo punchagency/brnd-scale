@@ -7,6 +7,7 @@ import CalendarIcon from "../../components/svgs/CalendarIcon";
 import ProductReportCard from "../../components/Reports/ProductReportCard";
 import ReportsMenu from "../../components/Reports/ReportsMenu";
 import Badge from "../../components/Reports/Badge";
+import WarningCircle from "../../components/svgs/WarningCircle";
 
 const headers = [
   "Product Name",
@@ -67,7 +68,7 @@ const data = [
     commissionType: <div>12% <Badge /></div>,
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Paid</button>,
+    status: <button className="btn btn-outline-danger btn-sm">Pending</button>,
   },
   {
     id: 4,
@@ -323,12 +324,15 @@ function PaymentReport() {
             headers={headers}
             hideToolbar={true}
             hideCheckbox={true}
-            tableWidth={"110%"}
+            tableWidth={"115%"}
             deleteRow={deleteRow}
             editData={editData}
             addRow={addRow}
             filterData={filterData}
           />
+        </div>
+        <div className="col-12 mt-4 d-flex justify-content-center">
+            <span className="me-2"><WarningCircle /></span><p>Sales are estimated in USD. Actual sales and Commision may be in different currency</p>
         </div>
       </div>
     </Layout>
