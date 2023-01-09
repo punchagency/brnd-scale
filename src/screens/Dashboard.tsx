@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import Card from "../components/Card";
+import Card from "../components/Card/Card";
 import BarChart from "../components/Charts/BarChart";
 import LineChart from "../components/Charts/LineChart";
 import ListContainer from "../components/ListContainer";
@@ -132,6 +132,7 @@ const brandsDisplayLabels = [
 const Dashboard: FC = () => {
   const [tableData, setTableData] = useState(data);
   const [brandsTableData, setBrandsTableData] = useState(brandsData)
+  const [selectedCard, setSelectedCard] = useState(0)
   const userType = useAppSelector(selectUser)
   const deleteRow = (id: number) => {
     setTableData((prev) => {
@@ -195,32 +196,36 @@ const Dashboard: FC = () => {
             extra="27K"
             reduce={true}
             value="576"
-            main={true}
+            main={selectedCard === 0}
             date="From 10 - 20 Nov"
+            onClick={() => setSelectedCard(0)}
           />
           <Card
             title="Total Orders"
             extra="27K"
             reduce={true}
             value="576"
-            main={true}
+            main={selectedCard === 1}
             date="From 10 - 20 Nov"
+            onClick={() => setSelectedCard(1)}
           />
           <Card
             title="Total Revenue"
             extra="27K"
             reduce={true}
             value="$259.99"
-            main={true}
+            main={selectedCard === 2}
             date="From 10 - 20 Nov"
+            onClick={() => setSelectedCard(2)}
           />{" "}
           <Card
             title="Conversion rate"
             extra="27K"
             reduce={true}
             value="53.2%"
-            main={true}
+            main={selectedCard === 3}
             date="From 10 - 20 Nov"
+            onClick={() => setSelectedCard(3)}
           />
         </div>
       </div>
