@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import ListIcon from "../components/svgs/ListIcon";
 import Layout from "../containers/Layouts/Layout";
 import Table from "../components/Table";
+import { selectUser} from "../features/user/userSlice";
+import { useAppSelector } from "../app/hooks";
+
 import ActiveIcon from "../components/svgs/ActiveIcon";
 
 import jbl from "../assets/images/jbl.png";
@@ -413,7 +416,7 @@ const displayLabels = [
 
 function Offers() {
   const [tableData, setTableData] = useState(data);
-  const [userType, setUserType] = useState("Agency");
+  const userType = useAppSelector(selectUser)
 
   const filterData = (searchString: any) => {
     if (!searchString) return tableData;

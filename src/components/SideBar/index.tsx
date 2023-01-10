@@ -1,9 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavItemIcon from "../svgs/NavItemIcon";
+import {
+  selectUser,
+  login,
+  logout,
+  selectLoggedIn,
+} from "../../features/user/userSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 function SideBar() {
-  const [userType, setUserType] = React.useState("Publisher");
+  const userType = useAppSelector(selectUser);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const renderSideBarList = () => {
     switch (userType) {
       case "Agency":
@@ -122,8 +131,8 @@ function SideBar() {
   };
   return (
     <div
-      className={`d-flex flex-column bg-${sidebarBackground()} pt-5 justify-content-between ps-4`}
-      style={{ height: "100%", backgroundColor: userType === 'Publisher' ? '#147C63' : undefined }}
+      className={`d-flex flex-column bg-dark pt-5 justify-content-between ps-4`}
+      style={{ height: "100%" }}
     >
       {renderSideBarList()}
       {/* <ul className="nav flex-column flex-grow-1">
@@ -191,9 +200,16 @@ function SideBar() {
       </ul> */}
 
       <ul className="text-white">
-        <Link to="/login" className="nav-link">
+        <a
+          href="#"
+          className="nav-link"
+          onClick={() => {
+            dispatch(logout());
+            navigate("/login");
+          }}
+        >
           Log Out
-        </Link>
+        </a>
       </ul>
     </div>
   );

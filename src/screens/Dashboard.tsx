@@ -1,12 +1,15 @@
 import React, { FC, useState } from "react";
-import Card from "../components/Card";
+import Card from "../components/Card/Card";
 import BarChart from "../components/Charts/BarChart";
 import LineChart from "../components/Charts/LineChart";
 import ListContainer from "../components/ListContainer";
 import DashboardNotification from "../components/Notification/DashboardNotification";
 import Table from "../components/Table";
 import Layout from "../containers/Layouts/Layout";
-import BrandsImage from "../assets/images/images.svg"
+import BrandsImage from "../assets/images/images.svg";
+import { selectUser, login, selectLoggedIn } from "../features/user/userSlice";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+
 
 const headers = [
   "Top Publishers",
@@ -129,6 +132,8 @@ const brandsDisplayLabels = [
 const Dashboard: FC = () => {
   const [tableData, setTableData] = useState(data);
   const [brandsTableData, setBrandsTableData] = useState(brandsData)
+  const [selectedCard, setSelectedCard] = useState(0)
+  const userType = useAppSelector(selectUser)
   const deleteRow = (id: number) => {
     setTableData((prev) => {
       return prev.filter((row) => row.id != id);
@@ -180,7 +185,7 @@ const Dashboard: FC = () => {
       <div className="position-relative">
         <div className="pt-4">
           <p className="fw-light mb-0">Today stats</p>
-          <p className="h3">Dashboard</p>
+          <p className="h3">{`${userType} `}Dashboard</p>
         </div>
         <DashboardNotification brands={2} publishers={2} conversions={2} />
       </div>
@@ -191,32 +196,36 @@ const Dashboard: FC = () => {
             extra="27K"
             reduce={true}
             value="576"
-            main={true}
+            main={selectedCard === 0}
             date="From 10 - 20 Nov"
+            onClick={() => setSelectedCard(0)}
           />
           <Card
             title="Total Orders"
             extra="27K"
             reduce={true}
             value="576"
-            main={true}
+            main={selectedCard === 1}
             date="From 10 - 20 Nov"
+            onClick={() => setSelectedCard(1)}
           />
           <Card
             title="Total Revenue"
             extra="27K"
             reduce={true}
             value="$259.99"
-            main={true}
+            main={selectedCard === 2}
             date="From 10 - 20 Nov"
+            onClick={() => setSelectedCard(2)}
           />{" "}
           <Card
             title="Conversion rate"
             extra="27K"
             reduce={true}
             value="53.2%"
-            main={true}
+            main={selectedCard === 3}
             date="From 10 - 20 Nov"
+            onClick={() => setSelectedCard(3)}
           />
         </div>
       </div>
