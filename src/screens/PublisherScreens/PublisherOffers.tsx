@@ -2,22 +2,21 @@ import React, { useState } from "react";
 import ListIcon from "../../components/svgs/ListIcon";
 import Layout from "../../containers/Layouts/Layout";
 import Table from "../../components/Table";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import CalendarIcon from "../../components/svgs/CalendarIcon";
 import ProductReportCard from "../../components/Reports/ProductReportCard";
 import ReportsMenu from "../../components/Reports/ReportsMenu";
 import Badge from "../../components/Reports/Badge";
 import WarningCircle from "../../components/svgs/WarningCircle";
 import PageTitle from "../../components/PageTitle";
+import PublisherOfferCard from "../../components/Cards/PublisherOfferCard";
 
 const headers = [
   "Product Name",
-  "Brands",
-  "Campaign Name",
+  "Brand",
   "Starting Date",
   "Ending Date",
   "Tags",
-  "Due",
   "Commission Made",
   "Commission Type",
   "Total Sales",
@@ -29,12 +28,10 @@ const data = [
   {
     id: 1,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
+    brand: "JBL Xtreme",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -43,17 +40,15 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Paid</button>,
+    status: <button className="btn btn-outline-success btn-sm">Promoted</button>,
   },
   {
     id: 2,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
+    brand: "JBL Xtreme",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -62,17 +57,15 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Paid</button>,
+    status: <button className="btn btn-outline-danger btn-sm">Not Promoted</button>,
   },
   {
     id: 3,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
+    brand: "JBL Xtreme",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -81,17 +74,15 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-danger btn-sm">Pending</button>,
+    status: <button className="btn btn-outline-secondary btn-sm text-dark">In Progress</button>,
   },
   {
     id: 4,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
+    brand: "JBL Xtreme",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -100,17 +91,15 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Paid</button>,
+    status: <button className="btn btn-outline-success btn-sm">Promoted</button>,
   },
   {
     id: 5,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
+    brand: "JBL Xtreme",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -119,17 +108,15 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Paid</button>,
+    status: <button className="btn btn-outline-danger btn-sm">Not Promoted</button>,
   },
   {
     id: 6,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
+    brand: "JBL Xtreme",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -138,17 +125,15 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Paid</button>,
+    status: <button className="btn btn-outline-success btn-sm">Promoted</button>,
   },
   {
     id: 7,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
+    brand: "JBL Xtreme",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -157,17 +142,15 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Paid</button>,
+    status: <button className="btn btn-outline-success btn-sm">Promoted</button>,
   },
   {
     id: 8,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
+    brand: "JBL Xtreme",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -176,17 +159,15 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Paid</button>,
+    status: <button className="btn btn-outline-secondary btn-sm">In Progress</button>,
   },
   {
     id: 9,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
+    brand: "JBL Xtreme",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -195,17 +176,15 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Paid</button>,
+    status: <button className="btn btn-outline-success btn-sm">Promoted</button>,
   },
   {
     id: 10,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
+    brand: "JBL Xtreme",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -214,17 +193,15 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Paid</button>,
+    status: <button className="btn btn-outline-success btn-sm">Promoted</button>,
   },
   {
     id: 11,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
+    brand: "JBL Xtreme",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -233,17 +210,15 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Paid</button>,
+    status: <button className="btn btn-outline-success btn-sm">Promoted</button>,
   },
   {
     id: 12,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
+    brand: "JBL Xtreme",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -252,17 +227,15 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Paid</button>,
+    status: <button className="btn btn-outline-danger btn-sm">Not Promoted</button>,
   },
   {
     id: 13,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
+    brand: "JBL Xtreme",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -271,19 +244,17 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Paid</button>,
+    status: <button className="btn btn-outline-success btn-sm">Promoted</button>,
   },
 ];
 
 const displayLabels = [
   // "id",
   "productName",
-  "brands",
-  "campaignName",
+  "brand",
   "startingDate",
   "endingDate",
   "tags",
-  "due",
   "commissionMade",
   "commissionType",
   "totalSale",
@@ -291,8 +262,9 @@ const displayLabels = [
   "status",
 ];
 
-function PaymentReport() {
+function MyOffers() {
   const [tableData, setTableData] = useState(data);
+  const location = useLocation();
 
   const filterData = (searchString: any) => {
     if (!searchString) return tableData;
@@ -330,11 +302,38 @@ function PaymentReport() {
   return (
     <Layout>
       <div className="row pt-3 ps-2 pe-5">
-        <div className="col-12 mt-3 ">
-          <PageTitle title="Reports" />
+        <div className="col-12 mt-3">
+          <PageTitle title="Welcome to my offers" />
         </div>
         <div className="col-12 mt-4 d-flex">
-          <ReportsMenu />
+          <Link
+            to="/product-reports"
+            className={`btn ${
+              location.pathname == "/publisher/offers"
+                ? "btn-light"
+                : "btn-dark"
+            } btn-lg w-25 me-2`}
+          >
+            Overview
+          </Link>
+          <Link
+            to="/publisher-reports"
+            className={`btn ${
+              location.pathname == "/publisher-reports"
+                ? "btn-light"
+                : "btn-dark"
+            } btn-lg w-25 me-2`}
+          >
+            Active Brands
+          </Link>
+          <Link
+            to="/payment-reports"
+            className={`btn ${
+              location.pathname == "/payment-reports" ? "btn-light" : "btn-dark"
+            } btn-lg w-25 me-2`}
+          >
+            Active Products
+          </Link>
         </div>
         <div className="col-12 mt-4">
           <div className="card d-flex p-2">
@@ -342,47 +341,8 @@ function PaymentReport() {
               <div className="col-6 d-inline d-flex align-items-center ">
                 <ListIcon />{" "}
                 <span className="fs-5 ms-2">
-                  In Depth Overview Of Your Payments
+                  See how your brands and their products are doing
                 </span>
-              </div>
-              <div className="col-2 offset-4 d-inline d-flex align-items-center ">
-                <select className="form-select">
-                  <option>Reports Type</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div className="row mt-3">
-            <div className="col-12">
-              <div className="card">
-                <div className="row d-flex justify-content-center">
-                  {/* <div className="col-12 d-flex" > */}
-                  <div className="col-3">
-                    <ProductReportCard
-                      topLabel={"Impressions"}
-                      topValue={0}
-                      bottomLabel={"Clicks"}
-                      bottomValue={0}
-                    />
-                  </div>
-                  <div className="col-3">
-                    <ProductReportCard
-                      topLabel={"RDA"}
-                      topValue={0}
-                      bottomLabel={"Gross Clicks"}
-                      bottomValue={0}
-                    />
-                  </div>
-                  <div className="col-3">
-                    <ProductReportCard
-                      topLabel={"Revenue"}
-                      topValue={0}
-                      bottomLabel={"Pay Cut"}
-                      bottomValue={0}
-                    />
-                  </div>
-                  {/* </div> */}
-                </div>
               </div>
             </div>
           </div>
@@ -392,27 +352,52 @@ function PaymentReport() {
             tableData={tableData}
             displayLabels={displayLabels}
             headers={headers}
-            hideToolbar={true}
+            // hideToolbar={true}
             hideCheckbox={true}
-            tableWidth={"115%"}
+            tableWidth={"103%"}
             deleteRow={deleteRow}
             editData={editData}
             addRow={addRow}
             filterData={filterData}
+            cards={
+              <div className="col-10 offset-1">
+                <div className="row  d-flex justify-content-center">
+                  <div className="col-3 ps-2">
+                    <PublisherOfferCard
+                      title="Total Sales"
+                      value={1024}
+                      date={"From 20 - 30 Nov"}
+                    />
+                  </div>
+                  <div className="col-3 ps-2">
+                    <PublisherOfferCard
+                      title="Total Commision made"
+                      value={1024}
+                      date={"From 20 - 30 Nov"}
+                    />
+                  </div>
+                  <div className="col-3 ps-2">
+                    <PublisherOfferCard
+                      title="Total Brands"
+                      value={1024}
+                      date={"From 20 - 30 Nov"}
+                    />
+                  </div>
+                  <div className="col-3 ps-2">
+                    <PublisherOfferCard
+                      title="Total Products"
+                      value={1024}
+                      date={"From 20 - 30 Nov"}
+                    />
+                  </div>
+                </div>
+              </div>
+            }
           />
-        </div>
-        <div className="col-12 mt-4 d-flex justify-content-center">
-          <span className="me-2">
-            <WarningCircle />
-          </span>
-          <p>
-            Sales are estimated in USD. Actual sales and Commision may be in
-            different currency
-          </p>
         </div>
       </div>
     </Layout>
   );
 }
 
-export default PaymentReport;
+export default MyOffers;

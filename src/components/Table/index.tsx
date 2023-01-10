@@ -10,7 +10,7 @@ import PlusIcon from "../svgs/PlusIcon";
 import Search from "../svgs/Search";
 
 //displayLabels is an array of keys used to access tableData object values
-function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, tableWidth, hideCheckbox, hideToolbar, hideFooter, filterData}:any) {
+function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, tableWidth, hideCheckbox, hideToolbar, hideFooter, filterData, cards}:any) {
   const [numOfRows, setNumOfRows] = useState(10);
   const [numOfPages, setNumOfPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
@@ -209,6 +209,9 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
             </button>
           </div>
         </div>
+      </div>
+      <div className={`col-12 mt-3 d-flex flex-nowrap ${cards ? undefined : 'd-none'}`}>
+              {cards}
       </div>
       <div className="col-12 mt-4" style={{ overflowX: "auto" }}>
         <table className="table table-bordered border-light" style={{width: tableWidth ? tableWidth : "100%"}}>

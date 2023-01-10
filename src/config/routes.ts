@@ -3,6 +3,7 @@ import Dashboard from "../screens/Dashboard";
 import Home from "../screens/Home";
 import Login from "../screens/Login";
 import Offers from "../screens/Offers";
+import MyOffers from "../screens/PublisherScreens/PublisherOffers";
 import PublisherManage from "../screens/PublisherManage";
 import RegisterStart from "../screens/RegisterStart";
 import PaymentReport from "../screens/Reports/PaymentReport";
@@ -76,6 +77,12 @@ const routes: RouteType[] = [
     path: "/payment-reports",
     component: PaymentReport,
     name: "Payment Reports Screen",
+    protected: false,
+  },
+  {
+    path: "/publisher/offers",
+    component: MyOffers,
+    name: "Publisher offers Screen",
     protected: false,
   },
 ];

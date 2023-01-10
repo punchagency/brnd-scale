@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import NavItemIcon from "../svgs/NavItemIcon";
 
 function SideBar() {
-  const [userType, setUserType] = React.useState("Agency");
+  const [userType, setUserType] = React.useState("Publisher");
   const renderSideBarList = () => {
     switch (userType) {
       case "Agency":
@@ -16,7 +16,7 @@ function SideBar() {
             </li>
             <li className="mb-3">
               Manage
-              <ul className="mt-3" style={{borderLeft: "1px solid #C2BDBD"}}>
+              <ul className="mt-3" style={{ borderLeft: "1px solid #C2BDBD" }}>
                 <li className="mb-3">
                   <Link to="/manage-publishers" className="nav-link">
                     Publishers
@@ -36,7 +36,7 @@ function SideBar() {
             </li>
             <li className="mb-3">
               Analyze
-              <ul className="mt-3" style={{borderLeft: "1px solid #C2BDBD"}}>
+              <ul className="mt-3" style={{ borderLeft: "1px solid #C2BDBD" }}>
                 <li>
                   <Link to="/product-reports" className="nav-link">
                     Reporting
@@ -67,7 +67,38 @@ function SideBar() {
             </li>
             <li>
               Analyze
-              <ul className="mt-3" style={{borderLeft: "1px solid #C2BDBD"}}>
+              <ul className="mt-3" style={{ borderLeft: "1px solid #C2BDBD" }}>
+                <li>
+                  <Link to="/product-reports" className="nav-link">
+                    Reporting
+                  </Link>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        );
+        
+      case "Publisher":
+        return (
+          <ul className="text-white">
+            <li className="mb-3">
+              <Link to="/" className="nav-link">
+                Dashboard
+              </Link>
+            </li>
+            <li className="mb-3">
+              <Link to="/offers" className="nav-link">
+                Offers
+              </Link>
+            </li>
+            <li className="mb-3">
+              <Link to="/publishers" className="nav-link">
+                My Offers
+              </Link>
+            </li>
+            <li>
+              Analyze
+              <ul className="mt-3" style={{ borderLeft: "1px solid #C2BDBD" }}>
                 <li>
                   <Link to="/product-reports" className="nav-link">
                     Reporting
@@ -80,17 +111,19 @@ function SideBar() {
     }
   };
   const sidebarBackground = () => {
-    switch(userType) {
-      case 'Agency':
-        return 'primary'
-      case 'Brand':
-        return 'dark'
+    switch (userType) {
+      case "Agency":
+        return "primary";
+      case "Brand":
+        return "dark";
+      case "Publisher":
+        return "";
     }
-  }
+  };
   return (
     <div
       className={`d-flex flex-column bg-${sidebarBackground()} pt-5 justify-content-between ps-4`}
-      style={{ height: "100%" }}
+      style={{ height: "100%", backgroundColor: userType === 'Publisher' ? '#147C63' : undefined }}
     >
       {renderSideBarList()}
       {/* <ul className="nav flex-column flex-grow-1">
