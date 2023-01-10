@@ -44,9 +44,9 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
     // filterData().filter()
   }
 
-  const displayData = () => {console.log(typeof filterData)
+  const displayData = () => {
     //determine the rows to display
-    let data = typeof filterData  == 'function' ? filterData(searchString).slice((currentPage - 1) * numOfRows, currentPage * numOfRows) : tableData;
+    let data = searchString  != '' ? filterData(searchString).slice((currentPage - 1) * numOfRows, currentPage * numOfRows) : tableData;
     // setNumOfPages(data.length);
     return data.map((row:any, index:number) => {
       return (
@@ -84,7 +84,7 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
 
   const showButtons = () => {
     let buttons = [];
-    let total = filterData(searchString) // TODO: refactor this
+    let total = searchString  != '' ? filterData(searchString).slice((currentPage - 1) * numOfRows, currentPage * numOfRows) : tableData;//filterData(searchString) // TODO: refactor this
     let pages = (total.length / numOfRows) 
     console.log(total.length, pages)
     // setNumOfPages(pages);
@@ -247,7 +247,7 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
       <div className={`col-12 mt-3 ${hideFooter ? 'd-none' : undefined}`}>
         <div className="card d-flex px-2 justify-content-between">
           <div className="row d-flex align-content-center">
-            <p className="col-3 mt-3">Showing {(currentPage - 1) * numOfRows + 1} to {filterData(searchString).length < numOfRows ? filterData(searchString).length : currentPage * numOfRows} of {filterData(searchString).length/*Todo: refactor*/} entries</p>
+            <p className="col-3 mt-3">Showing {(currentPage - 1) * numOfRows + 1} to {displayData().length < numOfRows ? displayData().length : currentPage * numOfRows} of {displayData().length/*Todo: refactor*/} entries</p>
             <div className="col-2 ms-auto d-flex align-items-center">
               <div
                 className="me-1 ms-auto"

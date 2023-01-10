@@ -270,17 +270,13 @@ function MyOffers() {
     if (!searchString) return tableData;
     return tableData.filter((item: any) => {
       return (
-        item.publisherName.toLowerCase().includes(searchString.toLowerCase()) ||
         item.productName.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.brands.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.commissions.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.startDate.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.product.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.growth.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.clicks.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.orders.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.revenue.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.sales.toLowerCase().includes(searchString.toLowerCase())
+        item.brand.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.startingDate.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.endingDate.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.tags.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.commissionMade.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.totalSale.toLowerCase().includes(searchString.toLowerCase()) 
       );
     });
   };

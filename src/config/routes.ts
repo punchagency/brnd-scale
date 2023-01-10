@@ -80,6 +80,12 @@ const routes: RouteType[] = [
     protected: false,
   },
   {
+    path: "/publisher",
+    component: Dashboard,
+    name: "Publisher Dashboard Screen",
+    protected: false,
+  },
+  {
     path: "/publisher/offers",
     component: MyOffers,
     name: "Publisher offers Screen",

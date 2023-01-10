@@ -9,7 +9,7 @@ import Layout from "../containers/Layouts/Layout";
 import BrandsImage from "../assets/images/images.svg";
 import { selectUser, login, selectLoggedIn } from "../features/user/userSlice";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-
+import TestCard from "./TestCard";
 
 const headers = [
   "Top Publishers",
@@ -26,7 +26,7 @@ const brandsHeaders = [
   "See Details",
   "Conversions",
   "Clicks",
-  "Orders"
+  "Orders",
 ];
 
 const data = [
@@ -62,7 +62,6 @@ const data = [
     products: "12",
     orders: "12",
   },
- 
 ];
 
 const brandsData = [
@@ -71,7 +70,11 @@ const brandsData = [
     images: <img src={BrandsImage} alt="" />,
     brands: "Donna Slider",
     productNames: "Donna Slider",
-    seeDetails: <a href="#" className="btn btn-outline-dark" style={{fontSize: '12px'}}>View product</a>,
+    seeDetails: (
+      <a href="#" className="btn btn-outline-dark" style={{ fontSize: "12px" }}>
+        View product
+      </a>
+    ),
     conversions: "12",
     clicks: "12",
     orders: "12",
@@ -81,7 +84,11 @@ const brandsData = [
     images: <img src={BrandsImage} alt="" />,
     brands: "Donna Slider",
     productNames: "Donna Slider",
-    seeDetails: <a href="#" className="btn btn-outline-dark" style={{fontSize: '12px'}}>View product</a>,
+    seeDetails: (
+      <a href="#" className="btn btn-outline-dark" style={{ fontSize: "12px" }}>
+        View product
+      </a>
+    ),
     conversions: "12",
     clicks: "12",
     orders: "12",
@@ -91,7 +98,11 @@ const brandsData = [
     images: <img src={BrandsImage} alt="" />,
     brands: "Donna Slider",
     productNames: "Donna Slider",
-    seeDetails: <a href="#" className="btn btn-outline-dark" style={{fontSize: '12px'}}>View product</a>,
+    seeDetails: (
+      <a href="#" className="btn btn-outline-dark" style={{ fontSize: "12px" }}>
+        View product
+      </a>
+    ),
     conversions: "12",
     clicks: "12",
     orders: "12",
@@ -101,12 +112,15 @@ const brandsData = [
     images: <img src={BrandsImage} alt="" />,
     brands: "Donna Slider",
     productNames: "Donna Slider",
-    seeDetails: <a href="#" className="btn btn-outline-dark" style={{fontSize: '12px'}}>View product</a>,
+    seeDetails: (
+      <a href="#" className="btn btn-outline-dark" style={{ fontSize: "12px" }}>
+        View product
+      </a>
+    ),
     conversions: "12",
     clicks: "12",
     orders: "12",
   },
- 
 ];
 
 const displayLabels = [
@@ -131,9 +145,9 @@ const brandsDisplayLabels = [
 
 const Dashboard: FC = () => {
   const [tableData, setTableData] = useState(data);
-  const [brandsTableData, setBrandsTableData] = useState(brandsData)
-  const [selectedCard, setSelectedCard] = useState(0)
-  const userType = useAppSelector(selectUser)
+  const [brandsTableData, setBrandsTableData] = useState(brandsData);
+  const [selectedCard, setSelectedCard] = useState(0);
+  const userType = useAppSelector(selectUser);
   const deleteRow = (id: number) => {
     setTableData((prev) => {
       return prev.filter((row) => row.id != id);
@@ -150,35 +164,27 @@ const Dashboard: FC = () => {
     // setTableData(prev=>{return prev.map()})
   };
   const filterData = (searchString: string) => {
-    return tableData
-      .filter((item:any) => {
-        return (
-          item.topPublishers.toLowerCase().includes(searchString.toLowerCase()) ||
-          item.clicks
-            .toLowerCase()
-            .includes(searchString.toLowerCase()) ||
-          item.conversions.toLowerCase().includes(searchString.toLowerCase()) ||
-          item.products.toLowerCase().includes(searchString.toLowerCase()) ||
-          item.orders.toLowerCase().includes(searchString.toLowerCase())
-        );
-      })
-      ;
+    return tableData.filter((item: any) => {
+      return (
+        item.topPublishers.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.clicks.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.conversions.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.products.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.orders.toLowerCase().includes(searchString.toLowerCase())
+      );
+    });
   };
 
   const brandsFilterData = (searchString: string) => {
-    return brandsTableData
-      .filter((item:any) => {
-        return (
-          item.brands.toLowerCase().includes(searchString.toLowerCase()) ||
-          item.clicks
-            .toLowerCase()
-            .includes(searchString.toLowerCase()) ||
-          item.conversions.toLowerCase().includes(searchString.toLowerCase()) ||
-          item.productNames.toLowerCase().includes(searchString.toLowerCase()) ||
-          item.orders.toLowerCase().includes(searchString.toLowerCase())
-        );
-      })
-      ;
+    return brandsTableData.filter((item: any) => {
+      return (
+        item.brands.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.clicks.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.conversions.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.productNames.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.orders.toLowerCase().includes(searchString.toLowerCase())
+      );
+    });
   };
   return (
     <Layout>
@@ -187,10 +193,12 @@ const Dashboard: FC = () => {
           <p className="fw-light mb-0">Today stats</p>
           <p className="h3">{`${userType} `}Dashboard</p>
         </div>
-        <DashboardNotification brands={2} publishers={2} conversions={2} />
+        {userType === "Publisher" ? null : (
+          <DashboardNotification brands={2} publishers={2} conversions={2} />
+        )}
       </div>
-      <div className="w-100">
-        <div className="w-100 d-flex justify-content-between flex-wrap" style={{gap: '20px'}}>
+      {/* <div className="w-100">
+        <div className="w-100 d-flex justify-content-between flex-wrap">
           <Card
             title="Total Sales"
             extra="27K"
@@ -228,45 +236,68 @@ const Dashboard: FC = () => {
             onClick={() => setSelectedCard(3)}
           />
         </div>
+      </div> */}
+      <div className="row ">
+        <div className="col-6 col-lg-3 mt-2">
+          <TestCard />
+        </div>
+        <div className="col-6 col-lg-3 ps-2 mt-2">
+          <TestCard />
+        </div>
+        <div className="col-6 col-lg-3 ps-2 mt-2">
+          <TestCard />
+        </div>
+        <div className="col-6 col-lg-3 ps-2 mt-2">
+          <TestCard />
+        </div>
       </div>
-      <div className="w-100 d-flex  pt-4 justify-content-between" style={{gap: '20px'}}>
+      <div
+        className="w-100 d-flex  pt-4 justify-content-between"
+        style={{ gap: "20px" }}
+      >
         <div className="col w-50">
-          <ListContainer title="List of Top Publishers">
-          <Table
-            tableData={tableData}
-            displayLabels={displayLabels}
-            headers={headers}
-            tableWidth={"100%"}
-            deleteRow={deleteRow}
-            editData={editData}
-            addRow={addRow}
-            filterData={filterData}
-            hideCheckbox={true}
-            hideFooter={true}
-            hideToolbar={true}
+          <ListContainer
+            title={
+              userType === "Publisher" ? "My Brands" : "List of Top Publishers"
+            }
+          >
+            <Table
+              tableData={tableData}
+              displayLabels={displayLabels}
+              headers={headers}
+              tableWidth={"100%"}
+              deleteRow={deleteRow}
+              editData={editData}
+              addRow={addRow}
+              filterData={filterData}
+              hideCheckbox={true}
+              hideFooter={true}
+              hideToolbar={true}
             />
           </ListContainer>
-          
         </div>
         <div className="col w-50 border rounded">
           <BarChart />
         </div>
       </div>
-      <div className="w-100 d-flex pt-4 justify-content-between" style={{gap: '20px'}}>
-        <div className="col w-50" >
+      <div
+        className="w-100 d-flex pt-4 justify-content-between"
+        style={{ gap: "20px" }}
+      >
+        <div className="col w-50">
           <ListContainer title="List of Top Brands">
-          <Table
-            tableData={brandsTableData}
-            displayLabels={brandsDisplayLabels}
-            headers={brandsHeaders}
-            tableWidth={"100%"}
-            deleteRow={deleteRow}
-            editData={editData}
-            addRow={addRow}
-            filterData={brandsFilterData}
-            hideCheckbox={true}
-            hideFooter={true}
-            hideToolbar={true}
+            <Table
+              tableData={brandsTableData}
+              displayLabels={brandsDisplayLabels}
+              headers={brandsHeaders}
+              tableWidth={"100%"}
+              deleteRow={deleteRow}
+              editData={editData}
+              addRow={addRow}
+              filterData={brandsFilterData}
+              hideCheckbox={true}
+              hideFooter={true}
+              hideToolbar={true}
             />
           </ListContainer>
         </div>

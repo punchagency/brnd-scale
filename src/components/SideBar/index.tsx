@@ -91,12 +91,12 @@ function SideBar() {
         return (
           <ul className="text-white">
             <li className="mb-3">
-              <Link to="/" className="nav-link">
+              <Link to="/publisher" className="nav-link">
                 Dashboard
               </Link>
             </li>
             <li className="mb-3">
-              <Link to="/offers" className="nav-link">
+              <Link to="/publisher/offers" className="nav-link">
                 Offers
               </Link>
             </li>
