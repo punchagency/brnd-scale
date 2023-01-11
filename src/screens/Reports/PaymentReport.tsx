@@ -5,10 +5,11 @@ import Table from "../../components/Table";
 import { Link } from "react-router-dom";
 import CalendarIcon from "../../components/svgs/CalendarIcon";
 import ProductReportCard from "../../components/Reports/ProductReportCard";
-import ReportsMenu from "../../components/Reports/ReportsMenu";
+import ReportsMenu from "../../components/Common/PageMenu";
 import Badge from "../../components/Reports/Badge";
 import WarningCircle from "../../components/svgs/WarningCircle";
 import PageTitle from "../../components/PageTitle";
+import PageMenu from "../../components/Common/PageMenu";
 
 const headers = [
   "Product Name",
@@ -334,7 +335,7 @@ function PaymentReport() {
           <PageTitle title="Reports" />
         </div>
         <div className="col-12 mt-4 d-flex">
-          <ReportsMenu />
+          <PageMenu links={[{path: '/product-reports', title: 'Product Report'}, {path: '/publisher-reports', title: 'Publisher Report'}, {path: '/payment-reports', title: 'Payments'}]} />
         </div>
         <div className="col-12 mt-4">
           <div className="card d-flex p-2">

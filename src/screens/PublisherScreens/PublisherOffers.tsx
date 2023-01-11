@@ -5,11 +5,12 @@ import Table from "../../components/Table";
 import { Link, useLocation } from "react-router-dom";
 import CalendarIcon from "../../components/svgs/CalendarIcon";
 import ProductReportCard from "../../components/Reports/ProductReportCard";
-import ReportsMenu from "../../components/Reports/ReportsMenu";
+import ReportsMenu from "../../components/Common/PageMenu";
 import Badge from "../../components/Reports/Badge";
 import WarningCircle from "../../components/svgs/WarningCircle";
 import PageTitle from "../../components/PageTitle";
 import PublisherOfferCard from "../../components/Cards/PublisherOfferCard";
+import PageMenu from "../../components/Common/PageMenu";
 
 const headers = [
   "Product Name",
@@ -40,7 +41,9 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Promoted</button>,
+    status: (
+      <button className="btn btn-outline-success btn-sm">Promoted</button>
+    ),
   },
   {
     id: 2,
@@ -57,7 +60,9 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-danger btn-sm">Not Promoted</button>,
+    status: (
+      <button className="btn btn-outline-danger btn-sm">Not Promoted</button>
+    ),
   },
   {
     id: 3,
@@ -74,7 +79,11 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-secondary btn-sm text-dark">In Progress</button>,
+    status: (
+      <button className="btn btn-outline-secondary btn-sm text-dark">
+        In Progress
+      </button>
+    ),
   },
   {
     id: 4,
@@ -91,7 +100,9 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Promoted</button>,
+    status: (
+      <button className="btn btn-outline-success btn-sm">Promoted</button>
+    ),
   },
   {
     id: 5,
@@ -108,7 +119,9 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-danger btn-sm">Not Promoted</button>,
+    status: (
+      <button className="btn btn-outline-danger btn-sm">Not Promoted</button>
+    ),
   },
   {
     id: 6,
@@ -125,7 +138,9 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Promoted</button>,
+    status: (
+      <button className="btn btn-outline-success btn-sm">Promoted</button>
+    ),
   },
   {
     id: 7,
@@ -142,7 +157,9 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Promoted</button>,
+    status: (
+      <button className="btn btn-outline-success btn-sm">Promoted</button>
+    ),
   },
   {
     id: 8,
@@ -159,7 +176,9 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-secondary btn-sm">In Progress</button>,
+    status: (
+      <button className="btn btn-outline-secondary btn-sm">In Progress</button>
+    ),
   },
   {
     id: 9,
@@ -176,7 +195,9 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Promoted</button>,
+    status: (
+      <button className="btn btn-outline-success btn-sm">Promoted</button>
+    ),
   },
   {
     id: 10,
@@ -193,7 +214,9 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Promoted</button>,
+    status: (
+      <button className="btn btn-outline-success btn-sm">Promoted</button>
+    ),
   },
   {
     id: 11,
@@ -210,7 +233,9 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Promoted</button>,
+    status: (
+      <button className="btn btn-outline-success btn-sm">Promoted</button>
+    ),
   },
   {
     id: 12,
@@ -227,7 +252,9 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-danger btn-sm">Not Promoted</button>,
+    status: (
+      <button className="btn btn-outline-danger btn-sm">Not Promoted</button>
+    ),
   },
   {
     id: 13,
@@ -244,7 +271,9 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Promoted</button>,
+    status: (
+      <button className="btn btn-outline-success btn-sm">Promoted</button>
+    ),
   },
 ];
 
@@ -275,8 +304,10 @@ function MyOffers() {
         item.startingDate.toLowerCase().includes(searchString.toLowerCase()) ||
         item.endingDate.toLowerCase().includes(searchString.toLowerCase()) ||
         item.tags.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.commissionMade.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.totalSale.toLowerCase().includes(searchString.toLowerCase()) 
+        item.commissionMade
+          .toLowerCase()
+          .includes(searchString.toLowerCase()) ||
+        item.totalSale.toLowerCase().includes(searchString.toLowerCase())
       );
     });
   };
@@ -299,37 +330,19 @@ function MyOffers() {
     <Layout>
       <div className="row pt-3 ps-2 pe-5">
         <div className="col-12 mt-3">
-          <PageTitle title="Welcome to my offers" />
+          <PageTitle
+            title="Welcome to my offers"
+            subtitle="Track your Current products"
+          />
         </div>
         <div className="col-12 mt-4 d-flex">
-          <Link
-            to="/product-reports"
-            className={`btn ${
-              location.pathname == "/publisher/offers"
-                ? "btn-light"
-                : "btn-dark"
-            } btn-lg w-25 me-2`}
-          >
-            Overview
-          </Link>
-          <Link
-            to="/publisher-reports"
-            className={`btn ${
-              location.pathname == "/publisher-reports"
-                ? "btn-light"
-                : "btn-dark"
-            } btn-lg w-25 me-2`}
-          >
-            Active Brands
-          </Link>
-          <Link
-            to="/payment-reports"
-            className={`btn ${
-              location.pathname == "/payment-reports" ? "btn-light" : "btn-dark"
-            } btn-lg w-25 me-2`}
-          >
-            Active Products
-          </Link>
+          <PageMenu
+            links={[
+              { path: "/publisher/offers", title: "Overview" },
+              { path: "/publisher/active-brands", title: "Active Brands" },
+              { path: "/publisher/active-products", title: "Active Products" },
+            ]}
+          />
         </div>
         <div className="col-12 mt-4">
           <div className="card d-flex p-2">

@@ -6,7 +6,8 @@ import ActiveIcon from "../../components/svgs/ActiveIcon";
 import { Link } from "react-router-dom";
 import CalendarIcon from "../../components/svgs/CalendarIcon";
 import ProductReportCard from "../../components/Reports/ProductReportCard";
-import ReportsMenu from "../../components/Reports/ReportsMenu";
+import ReportsMenu from "../../components/Common/PageMenu";
+import PageMenu from "../../components/Common/PageMenu";
 
 const headers = [
   "Product Name",
@@ -322,7 +323,7 @@ function ProductReports() {
           <button className="btn btn-primary btn-sm">Connect</button>
         </div>
         <div className="col-12 mt-4 d-flex">
-          <ReportsMenu />
+          <PageMenu links={[{path: '/product-reports', title: 'Product Report'}, {path: '/publisher-reports', title: 'Publisher Report'}, {path: '/payment-reports', title: 'Payments'}]} />
         </div>
         <div className="col-12 mt-4">
           <div className="card d-flex p-2">
