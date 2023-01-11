@@ -2,7 +2,7 @@ import BrandsManage from "../screens/BrandsManage";
 import Dashboard from "../screens/Dashboard";
 import Home from "../screens/Home";
 import Login from "../screens/Login";
-import Offers from "../screens/Offers";
+import Offers from "../screens/Offers/Offers";
 import MyOffers from "../screens/PublisherScreens/PublisherOffers";
 import PublisherManage from "../screens/PublisherManage";
 import RegisterStart from "../screens/RegisterStart";
@@ -53,7 +53,7 @@ const routes: RouteType[] = [
     protected: false,
   },
   {
-    path: "/manage-publishers",
+    path: "/publishers",
     component: PublisherManage,
     name: "Manage Publisher Screen",
     protected: false,

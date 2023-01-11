@@ -22,8 +22,8 @@ const Card = ({ title, value, date, main = false, reduce, extra, onClick }: Card
 
   return (
     <div
-      className={`p-3 pb-1 mt-2 rounded col border ${main? "card-active": ""}`}
-      style={{  minWidth: "300px", cursor: "pointer" }}
+      className={`p-3 pb-1 mt-2 g-2 rounded col border ${main? "card-active": ""}`}
+      style={{   cursor: "pointer" }}
       onClick={onClick}
     >
       <div className="w-100 d-flex justify-content-between">

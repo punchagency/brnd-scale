@@ -27,7 +27,7 @@ function SideBar() {
               Manage
               <ul className="mt-3" style={{ borderLeft: "1px solid #C2BDBD" }}>
                 <li className="mb-3">
-                  <Link to="/manage-publishers" className="nav-link">
+                  <Link to="/publishers" className="nav-link">
                     Publishers
                   </Link>
                 </li>
