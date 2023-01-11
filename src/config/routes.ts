@@ -50,7 +50,7 @@ const routes: RouteType[] = [
     protected: false,
   },
   {
-    path: "/manage-publishers",
+    path: "/publishers",
     component: PublisherManage,
     name: "Manage Publisher Screen",
     protected: false,
