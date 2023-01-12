@@ -6,7 +6,6 @@ import ActiveIcon from "../../components/svgs/ActiveIcon";
 import { Link } from "react-router-dom";
 import CalendarIcon from "../../components/svgs/CalendarIcon";
 import ProductReportCard from "../../components/Reports/ProductReportCard";
-import ReportsMenu from "../../components/Reports/ReportsMenu";
 import { useAppSelector } from "../../app/hooks";
 import { selectUser } from "../../features/user/userSlice";
 import TabButton from "../../components/TabButton/TabButton";
@@ -358,7 +357,7 @@ function Reports() {
           <button className="btn btn-primary btn-sm">Connect</button>
         </div>
         <div className="col-12 mt-4 d-flex">
-          <ReportsMenu />
+         
         </div>
         <div className="col-12 mt-4">
           <div className="card d-flex p-2">
