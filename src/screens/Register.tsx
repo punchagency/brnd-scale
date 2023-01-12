@@ -17,7 +17,6 @@ const AuthPage: FC = ({}: Props) => {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
-    <AuthLayout setUserType={setUserType} userType={userType}>
       <div className="border rounded p-5">
         <p className="h5 mb-4">Register your Account</p>
         <form className="w-100">
@@ -68,7 +67,7 @@ const AuthPage: FC = ({}: Props) => {
           </div>
         </form>
       </div>
-    </AuthLayout>
+
   );
 };
 

@@ -1,7 +1,9 @@
 import React from "react";
-import { useAppDispatch } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { userType } from "../../types";
-import { setUserType } from "../../features/user/userSlice";
+import { selectUser, setUserType } from "../../features/user/userSlice";
+import { Outlet } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 interface AuthLayoutProps {
   children?: React.ReactNode;
   userType?: userType;
@@ -9,18 +11,17 @@ interface AuthLayoutProps {
   message?: string;
 }
 
-const AuthLayout = ({
-  children,
-  userType,
-  message,
-}: AuthLayoutProps) => {
-  const dispatch = useAppDispatch()
+const AuthLayout = ({ children, message }: AuthLayoutProps) => {
+  const dispatch = useAppDispatch();
+  const userType = useAppSelector<userType>(selectUser);
+  const location = useLocation();
+  console.log("location", location);
   const onClick = (value: userType) => {
-    dispatch(setUserType(value))
+    dispatch(setUserType(value));
   };
   return (
     <div className="container-lg d-flex flex-row align-items-center justify-content-between mt-5">
-      <div className="d-none d-md-block col-6 col-lg-7">
+      <div className="d-none d-md-block col-6 col-lg-7 pe-2">
         <p className="fw-light mb-4">Welcome , Get Affliated with</p>
         <p className="h1 mb-4">BRNDScale</p>
         <p className="mb-5">
@@ -30,9 +31,18 @@ const AuthLayout = ({
         {userType === "Agency" ? (
           <div className="d-flex align-items-center">
             <div className="d-flex justify-content-between">
-              <span className="rounded me-3" style={{width: "88px", height: "15px", background: "#0064F6"}}></span>
-              <span className="rounded me-3" style={{width: "88px", height: "15px", background: "#0064F6"}}></span>
-              <span className="rounded" style={{width: "88px", height: "15px", background: "#0064F6"}}></span>
+              <span
+                className="rounded me-3"
+                style={{ width: "88px", height: "15px", background: "#0064F6" }}
+              ></span>
+              <span
+                className="rounded me-3"
+                style={{ width: "88px", height: "15px", background: "#0064F6" }}
+              ></span>
+              <span
+                className="rounded"
+                style={{ width: "88px", height: "15px", background: "#0064F6" }}
+              ></span>
             </div>
             <button
               type="button"
@@ -42,8 +52,8 @@ const AuthLayout = ({
               Brand & publishers
             </button>
           </div>
-        ) : message ? (
-          <p className="fw-light">{message}</p>
+        ) : location?.pathname?.includes("auth/verify-account") ? (
+          <p className="fw-light">Verify your Accout to start your program</p>
         ) : (
           <div className="d-flex w-100 justify-content-between">
             <p className="fw-light mt-auto mb-auto">Choose your role</p>
@@ -71,7 +81,9 @@ const AuthLayout = ({
           </div>
         )}
       </div>
-      <div className="col-12 col-lg-4">{children}</div>
+      <div className="col-12 col-md-5 col-lg-5 d-flex justify-content-center">
+        <Outlet />
+      </div>
     </div>
   );
 };

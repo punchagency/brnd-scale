@@ -28,7 +28,7 @@ const Login: FC = ({}: Props) => {
   // const action: string = searchParams.get("action") || "login";
 
   return (
-    <AuthLayout userType={userType}>
+    
       <div className="border rounded p-5">
         <p className="h5 mb-4">Login to your {userType} Account</p>
         <form className="w-100" >
@@ -77,7 +77,7 @@ const Login: FC = ({}: Props) => {
           <a href="#"><img className="w-100 h-100" src={AmazonLogo} alt="amazon signup" /></a>
         </div>
       </div>
-    </AuthLayout>
+
   );
 };
 

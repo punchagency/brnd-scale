@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { auth } from "./config/firebase";
 import routes from "./config/routes";
 import Center from "./components/utils/Center";
@@ -60,9 +60,10 @@ function App() {
       {/* <AuthLayout /> */}
       <div className="container-fluid" style={{ height: 'calc(100% - 50px)'}}> 
         {/* {loggedIn ? <Layout /> : <VerifyAccount />} */}
+
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
-            {routes.map((route, index) => (
+            {/* {routes.map((route, index) => (
               <Route
                 key={index}
                 path={route.path}
@@ -78,7 +79,15 @@ function App() {
                   )
                 }
               />
-            ))}
+            ))} */}
+            <Route path="/auth" element={<AuthLayout />}>
+              <Route index path="login" element={<Login />} />
+              <Route path="signup" element={<Register />} />
+              <Route path="verify-account" element={<VerifyAccount />} />
+              <Route path="" element={<Navigate to="login" />} />
+            </Route>
+
+            
           </Routes>
         </BrowserRouter>
       </div>

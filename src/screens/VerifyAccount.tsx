@@ -5,7 +5,6 @@ import AuthLayout from "../containers/Layouts/AuthLayout";
 const VerifyAccount = () => {
     const [loading, setLoading] = useState(false);
   return (
-    <AuthLayout message={"Verify your Accout to start your program"}>
       <div className="border rounded p-5 text-center">
         <p className="h5 mb-5 mt-5 fw-500">Verify your Account</p>
         <form className="w-100">
@@ -41,7 +40,6 @@ const VerifyAccount = () => {
           </div>
         </form>
       </div>
-    </AuthLayout>
   );
 };
 
