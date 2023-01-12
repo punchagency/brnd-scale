@@ -119,6 +119,12 @@ const routes: RouteType[] = [
     name: "Publisher reports Screen",
     protected: false,
   },
+  {
+    path: "/publisher/brand-details",
+    component: PaymentReport,
+    name: "Payment Reports Screen",
+    protected: false,
+  },
 ];
 
 export default routes;

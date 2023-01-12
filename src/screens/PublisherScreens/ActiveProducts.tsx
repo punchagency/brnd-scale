@@ -540,10 +540,10 @@ function ActiveProducts() {
                             className="d-flex"
                             style={{ maxWidth: "200px", overflow: "hidden" }}
                           >
-                            <span className="input-group-text rounded-0 border-0">
+                            <span className="input-group-text rounded-0 border bg-light" style={{borderRight: "1px solid #CECECE"}}>
                               <CopyIcon />
                             </span>
-                            <span className="input-group-text rounded-0 border-0">
+                            <span className="input-group-text rounded-0 border bg-light">
                               <ShareIcon />
                             </span>
                           </div>
@@ -554,14 +554,14 @@ function ActiveProducts() {
                             className="d-flex justify-content-center"
                             style={{ maxWidth: "200px", overflow: "hidden" }}
                           >
-                            <span className="input-group-text ps-4 text-center" style={{width: "118px", textAlign: 'center'}}>Create</span>
+                            <span className="input-group-text ps-4 text-center bg-light" style={{width: "118px", textAlign: 'center'}}>Create</span>
                           </div>
                         </div>
 
                         <div className="w-100">
                           <div className="card mt-3">
                             <div className="card-content pt-3 ps-3">
-                              <p> Paste the coupon codes provided by brands or Agency</p>
+                              <p><WarningCircle /> Paste the coupon codes provided by brands or Agency</p>
                             </div>
                           </div>
                         </div>
@@ -571,7 +571,7 @@ function ActiveProducts() {
                             className="btn btn-primary"
                             data-bs-dismiss="modal"
                           >
-                            Close
+                            Add
                           </button>
                         </div>
                       </div>

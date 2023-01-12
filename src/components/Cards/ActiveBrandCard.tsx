@@ -1,7 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import ActiveIcon from '../svgs/ActiveIcon';
 
 function ActiveBrandCard({image, earning, commission, title}:any) {
+    const navigate = useNavigate()
+
+    const changePage = () => {navigate('/publisher/brand-details');};
     return (
         <div className='card' style={{height: "317px"}}>
             <div className='card-body'>
@@ -9,7 +13,7 @@ function ActiveBrandCard({image, earning, commission, title}:any) {
                     <div className='col'>
                         <p style={{fontSize: "14px", color: "#605454"}}>{title}</p>
                     </div>
-                    <div className='col border' style={{maxHeight: "115px", overflow: "hidden"}} >
+                    <div className='col border' style={{maxHeight: "115px", overflow: "hidden"}} onClick={changePage} >
                         {image}
                     </div>
                     <div className='col d-flex justify-content-between mt-3' style={{fontSize: "10px", color: "#6C6262"}}>
