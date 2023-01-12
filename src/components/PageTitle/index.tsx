@@ -4,7 +4,7 @@ function PageTitle({ title, subtitle }: any) {
   return (
     <div className="w-100 d-flex justify-content-between">
       <div>
-        <span className="">Track your Current products</span>
+        <span className="">{subtitle ? subtitle : null}</span>
         <h4>{title}</h4>
       </div>
       <div>

@@ -1,17 +1,18 @@
-import React, {useState} from 'react';
-import Table from '../../components/Table';
+import React, { useState } from "react";
+import Table from "../../components/Table";
 
 import ListIcon from "../../components/svgs/ListIcon";
 import Layout from "../../containers/Layouts/Layout";
 import { Link } from "react-router-dom";
 import CalendarIcon from "../../components/svgs/CalendarIcon";
 import ProductReportCard from "../../components/Reports/ProductReportCard";
-import ReportsMenu from '../../components/Reports/ReportsMenu';
-import EditIcon from '../../components/svgs/EditIcon';
-import Badge from '../../components/Reports/Badge';
+import ReportsMenu from "../../components/Common/PageMenu";
+import EditIcon from "../../components/svgs/EditIcon";
+import Badge from "../../components/Reports/Badge";
+import PageMenu from "../../components/Common/PageMenu";
 
 const headers = [
-    "Edit",
+  "Edit",
   "Product Name",
   "Publishers",
   "Start Date",
@@ -28,198 +29,328 @@ const headers = [
 const data = [
   {
     id: 1,
-    edit: <div><EditIcon /></div>,
+    edit: (
+      <div>
+        <EditIcon />
+      </div>
+    ),
     productName: "Amazon Tablet Screen",
     publishers: "World View Ltd.",
     startingDate: "2023-01-01 (12:17:55)",
     lastActive: "2023-01-01 (12:17:55)",
     status: <span className="text-success">Enabled</span>,
     conversions: 12,
-    commission: <div>12% <Badge /></div>,
+    commission: (
+      <div>
+        12% <Badge />
+      </div>
+    ),
     totalOrders: "2566",
     totalPaid: "2566",
     quantity: "14",
-    referUrl: <button className="btn btn-sm btn-outline-primary">Click Here</button>,
+    referUrl: (
+      <button className="btn btn-sm btn-outline-primary">Click Here</button>
+    ),
   },
   {
     id: 2,
-    edit: <div><EditIcon /></div>,
+    edit: (
+      <div>
+        <EditIcon />
+      </div>
+    ),
     productName: "Amazon Tablet Screen",
     publishers: "World View Ltd.",
     startingDate: "2023-01-01 (12:17:55)",
     lastActive: "2023-01-01 (12:17:55)",
     status: <span className="text-success">Enabled</span>,
     conversions: 12,
-    commission: <div>12% <Badge /></div>,
+    commission: (
+      <div>
+        12% <Badge />
+      </div>
+    ),
     totalOrders: "2566",
     totalPaid: "2566",
     quantity: "14",
-    referUrl: <button className="btn btn-sm btn-outline-primary">Click Here</button>,
+    referUrl: (
+      <button className="btn btn-sm btn-outline-primary">Click Here</button>
+    ),
   },
   {
     id: 3,
-    edit: <div><EditIcon /></div>,
+    edit: (
+      <div>
+        <EditIcon />
+      </div>
+    ),
     productName: "Amazon Tablet Screen",
     publishers: "World View Ltd.",
     startingDate: "2023-01-01 (12:17:55)",
     lastActive: "2023-01-01 (12:17:55)",
     status: <span className="text-success">Enabled</span>,
     conversions: 12,
-    commission: <div>12% <Badge /></div>,
+    commission: (
+      <div>
+        12% <Badge />
+      </div>
+    ),
     totalOrders: "2566",
     totalPaid: "2566",
     quantity: "14",
-    referUrl: <button className="btn btn-sm btn-outline-primary">Click Here</button>,
+    referUrl: (
+      <button className="btn btn-sm btn-outline-primary">Click Here</button>
+    ),
   },
   {
     id: 4,
-    edit: <div><EditIcon /></div>,
+    edit: (
+      <div>
+        <EditIcon />
+      </div>
+    ),
     productName: "Amazon Tablet Screen",
     publishers: "World View Ltd.",
     startingDate: "2023-01-01 (12:17:55)",
     lastActive: "2023-01-01 (12:17:55)",
     status: <span className="">Pending</span>,
     conversions: 12,
-    commission: <div>12% <Badge /></div>,
+    commission: (
+      <div>
+        12% <Badge />
+      </div>
+    ),
     totalOrders: "2566",
     totalPaid: "2566",
     quantity: "14",
-    referUrl: <button className="btn btn-sm btn-outline-primary">Click Here</button>,
+    referUrl: (
+      <button className="btn btn-sm btn-outline-primary">Click Here</button>
+    ),
   },
   {
     id: 5,
-    edit: <div><EditIcon /></div>,
+    edit: (
+      <div>
+        <EditIcon />
+      </div>
+    ),
     productName: "Amazon Tablet Screen",
     publishers: "World View Ltd.",
     startingDate: "2023-01-01 (12:17:55)",
     lastActive: "2023-01-01 (12:17:55)",
     status: <span className="">Pending</span>,
     conversions: 12,
-    commission: <div>12% <Badge /></div>,
+    commission: (
+      <div>
+        12% <Badge />
+      </div>
+    ),
     totalOrders: "2566",
     totalPaid: "2566",
     quantity: "14",
-    referUrl: <button className="btn btn-sm btn-outline-primary">Click Here</button>,
+    referUrl: (
+      <button className="btn btn-sm btn-outline-primary">Click Here</button>
+    ),
   },
   {
     id: 6,
-    edit: <div><EditIcon /></div>,
+    edit: (
+      <div>
+        <EditIcon />
+      </div>
+    ),
     productName: "Amazon Tablet Screen",
     publishers: "World View Ltd.",
     startingDate: "2023-01-01 (12:17:55)",
     lastActive: "2023-01-01 (12:17:55)",
     status: <span className="text-success">Enabled</span>,
     conversions: 12,
-    commission: <div>12% <Badge /></div>,
+    commission: (
+      <div>
+        12% <Badge />
+      </div>
+    ),
     totalOrders: "2566",
     totalPaid: "2566",
     quantity: "14",
-    referUrl: <button className="btn btn-sm btn-outline-primary">Click Here</button>,
+    referUrl: (
+      <button className="btn btn-sm btn-outline-primary">Click Here</button>
+    ),
   },
   {
     id: 7,
-    edit: <div><EditIcon /></div>,
+    edit: (
+      <div>
+        <EditIcon />
+      </div>
+    ),
     productName: "Amazon Tablet Screen",
     publishers: "World View Ltd.",
     startingDate: "2023-01-01 (12:17:55)",
     lastActive: "2023-01-01 (12:17:55)",
     status: <span className="text-success">Enabled</span>,
     conversions: 12,
-    commission: <div>12% <Badge /></div>,
+    commission: (
+      <div>
+        12% <Badge />
+      </div>
+    ),
     totalOrders: "2566",
     totalPaid: "2566",
     quantity: "14",
-    referUrl: <button className="btn btn-sm btn-outline-primary">Click Here</button>,
+    referUrl: (
+      <button className="btn btn-sm btn-outline-primary">Click Here</button>
+    ),
   },
   {
     id: 8,
-    edit: <div><EditIcon /></div>,
+    edit: (
+      <div>
+        <EditIcon />
+      </div>
+    ),
     productName: "Amazon Tablet Screen",
     publishers: "World View Ltd.",
     startingDate: "2023-01-01 (12:17:55)",
     lastActive: "2023-01-01 (12:17:55)",
     status: <span className="">Pending</span>,
     conversions: 12,
-    commission: <div>12% <Badge /></div>,
+    commission: (
+      <div>
+        12% <Badge />
+      </div>
+    ),
     totalOrders: "2566",
     totalPaid: "2566",
     quantity: "14",
-    referUrl: <button className="btn btn-sm btn-outline-primary">Click Here</button>,
+    referUrl: (
+      <button className="btn btn-sm btn-outline-primary">Click Here</button>
+    ),
   },
   {
     id: 9,
-    edit: <div><EditIcon /></div>,
+    edit: (
+      <div>
+        <EditIcon />
+      </div>
+    ),
     productName: "Amazon Tablet Screen",
     publishers: "World View Ltd.",
     startingDate: "2023-01-01 (12:17:55)",
     lastActive: "2023-01-01 (12:17:55)",
     status: <span className="">Pending</span>,
     conversions: 12,
-    commission: <div>12% <Badge /></div>,
+    commission: (
+      <div>
+        12% <Badge />
+      </div>
+    ),
     totalOrders: "2566",
     totalPaid: "2566",
     quantity: "14",
-    referUrl: <button className="btn btn-sm btn-outline-primary">Click Here</button>,
+    referUrl: (
+      <button className="btn btn-sm btn-outline-primary">Click Here</button>
+    ),
   },
   {
     id: 10,
-    edit: <div><EditIcon /></div>,
+    edit: (
+      <div>
+        <EditIcon />
+      </div>
+    ),
     productName: "Amazon Tablet Screen",
     publishers: "World View Ltd.",
     startingDate: "2023-01-01 (12:17:55)",
     lastActive: "2023-01-01 (12:17:55)",
     status: <span className="text-success">Enabled</span>,
     conversions: 12,
-    commission: <div>12% <Badge /></div>,
+    commission: (
+      <div>
+        12% <Badge />
+      </div>
+    ),
     totalOrders: "2566",
     totalPaid: "2566",
     quantity: "14",
-    referUrl: <button className="btn btn-sm btn-outline-primary">Click Here</button>,
+    referUrl: (
+      <button className="btn btn-sm btn-outline-primary">Click Here</button>
+    ),
   },
   {
     id: 11,
-    edit: <div><EditIcon /></div>,
+    edit: (
+      <div>
+        <EditIcon />
+      </div>
+    ),
     productName: "Amazon Tablet Screen",
     publishers: "World View Ltd.",
     startingDate: "2023-01-01 (12:17:55)",
     lastActive: "2023-01-01 (12:17:55)",
     status: <span className="">Pending</span>,
     conversions: 12,
-    commission: <div>12% <Badge /></div>,
+    commission: (
+      <div>
+        12% <Badge />
+      </div>
+    ),
     totalOrders: "2566",
     totalPaid: "2566",
     quantity: "14",
-    referUrl: <button className="btn btn-sm btn-outline-primary">Click Here</button>,
+    referUrl: (
+      <button className="btn btn-sm btn-outline-primary">Click Here</button>
+    ),
   },
   {
     id: 12,
-    edit: <div><EditIcon /></div>,
+    edit: (
+      <div>
+        <EditIcon />
+      </div>
+    ),
     productName: "Amazon Tablet Screen",
     publishers: "World View Ltd.",
     startingDate: "2023-01-01 (12:17:55)",
     lastActive: "2023-01-01 (12:17:55)",
     status: <span className="text-success">Enabled</span>,
     conversions: 12,
-    commission: <div>12% <Badge /></div>,
+    commission: (
+      <div>
+        12% <Badge />
+      </div>
+    ),
     totalOrders: "2566",
     totalPaid: "2566",
     quantity: "14",
-    referUrl: <button className="btn btn-sm btn-outline-primary">Click Here</button>,
+    referUrl: (
+      <button className="btn btn-sm btn-outline-primary">Click Here</button>
+    ),
   },
   {
     id: 13,
-    edit: <div><EditIcon /></div>,
+    edit: (
+      <div>
+        <EditIcon />
+      </div>
+    ),
     productName: "Amazon Tablet Screen",
     publishers: "World View Ltd.",
     startingDate: "2023-01-01 (12:17:55)",
     lastActive: "2023-01-01 (12:17:55)",
     status: <span className="">Pending</span>,
     conversions: 12,
-    commission: <div>12% <Badge /></div>,
+    commission: (
+      <div>
+        12% <Badge />
+      </div>
+    ),
     totalOrders: "2566",
     totalPaid: "2566",
     quantity: "14",
-    referUrl: <button className="btn btn-sm btn-outline-primary">Click Here</button>,
+    referUrl: (
+      <button className="btn btn-sm btn-outline-primary">Click Here</button>
+    ),
   },
 ];
 
@@ -240,7 +371,7 @@ const displayLabels = [
 ];
 
 function PublisherReports() {
-    const [tableData, setTableData] = useState(data);
+  const [tableData, setTableData] = useState(data);
 
   const filterData = (searchString: any) => {
     if (!searchString) return tableData;
@@ -261,13 +392,13 @@ function PublisherReports() {
     });
   };
   const deleteRow = (id: number) => {
-    setTableData((prev:any) => {
-      return prev.filter((row:any) => row.id != id);
+    setTableData((prev: any) => {
+      return prev.filter((row: any) => row.id != id);
     });
   };
 
   const addRow = (row: any) => {
-    setTableData((prev:any) => {
+    setTableData((prev: any) => {
       return [...prev, { id: prev.length, ...row }];
     });
   };
@@ -275,15 +406,21 @@ function PublisherReports() {
   const editData = (data: any) => {
     // setTableData(prev=>{return prev.map()})
   };
-    return (
-        <Layout>
+  return (
+    <Layout>
       <div className="row pt-3 ps-2 pe-5">
         <div className="col-12 mt-3 d-flex justify-content-between">
           <h4>Reports</h4>
           <button className="btn btn-primary btn-sm">Connect</button>
         </div>
         <div className="col-12 mt-4 d-flex">
-          <ReportsMenu />
+          <PageMenu
+            links={[
+              { path: "/product-reports", title: "Product Report" },
+              { path: "/publisher-reports", title: "Publisher Report" },
+              { path: "/payment-reports", title: "Payments" },
+            ]}
+          />
         </div>
         <div className="col-12 mt-4">
           <div className="card d-flex p-2">
@@ -316,7 +453,7 @@ function PublisherReports() {
         </div>
       </div>
     </Layout>
-    );
+  );
 }
 
 export default PublisherReports;

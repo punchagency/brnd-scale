@@ -12,7 +12,7 @@ import PageMenu from "../../components/Common/PageMenu";
 const headers = [
   "Product Name",
   "Brands",
-  "Publisher",
+  "Agency",
   "Last Recorded",
   "Prices",
   "Impression",
@@ -32,7 +32,7 @@ const data = [
       <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
     ),
     brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
+    agency: "Xtreme Coutore",
     lastRecorded: "2023-01-01",
     prices: "500$",
     impressions: <span className="text-success">Enabled</span>,
@@ -50,7 +50,7 @@ const data = [
       <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
     ),
     brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
+    agency: "Xtreme Coutore",
     lastRecorded: "2023-01-01",
     prices: "500$",
     impressions: <span className="text-success">Enabled</span>,
@@ -68,7 +68,7 @@ const data = [
       <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
     ),
     brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
+    agency: "Xtreme Coutore",
     lastRecorded: "2023-01-01",
     prices: "500$",
     impressions: <span className="text-success">Enabled</span>,
@@ -86,7 +86,7 @@ const data = [
       <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
     ),
     brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
+    agency: "Xtreme Coutore",
     lastRecorded: "2023-01-01",
     prices: "500$",
     impressions: <span className="text-success">Enabled</span>,
@@ -104,7 +104,7 @@ const data = [
       <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
     ),
     brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
+    agency: "Xtreme Coutore",
     lastRecorded: "2023-01-01",
     prices: "500$",
     impressions: <span className="">Pending</span>,
@@ -122,7 +122,7 @@ const data = [
       <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
     ),
     brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
+    agency: "Xtreme Coutore",
     lastRecorded: "2023-01-01",
     prices: "500$",
     impressions: <span className="">Pending</span>,
@@ -140,7 +140,7 @@ const data = [
       <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
     ),
     brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
+    agency: "Xtreme Coutore",
     lastRecorded: "2023-01-01",
     prices: "500$",
     impressions: <span className="">Pending</span>,
@@ -158,7 +158,7 @@ const data = [
       <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
     ),
     brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
+    agency: "Xtreme Coutore",
     lastRecorded: "2023-01-01",
     prices: "500$",
     impressions: <span className="">Pending</span>,
@@ -176,7 +176,7 @@ const data = [
       <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
     ),
     brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
+    agency: "Xtreme Coutore",
     lastRecorded: "2023-01-01",
     prices: "500$",
     impressions: <span className="text-success">Enabled</span>,
@@ -194,7 +194,7 @@ const data = [
       <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
     ),
     brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
+    agency: "Xtreme Coutore",
     lastRecorded: "2023-01-01",
     prices: "500$",
     impressions: <span className="">Pending</span>,
@@ -212,7 +212,7 @@ const data = [
       <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
     ),
     brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
+    agency: "Xtreme Coutore",
     lastRecorded: "2023-01-01",
     prices: "500$",
     impressions: <span className="text-success">Enabled</span>,
@@ -230,7 +230,7 @@ const data = [
       <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
     ),
     brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
+    agency: "Xtreme Coutore",
     lastRecorded: "2023-01-01",
     prices: "500$",
     impressions: <span className="text-success">Enabled</span>,
@@ -248,7 +248,7 @@ const data = [
       <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
     ),
     brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
+    agency: "Xtreme Coutore",
     lastRecorded: "2023-01-01",
     prices: "500$",
     impressions: <span className="text-success">Enabled</span>,
@@ -266,7 +266,7 @@ const displayLabels = [
   // "id",
   "productName",
   "brands",
-  "publisher",
+  "agency",
   "lastRecorded",
   "prices",
   "impressions",
@@ -279,7 +279,7 @@ const displayLabels = [
   "totalCVR",
 ];
 
-function ProductReports() {
+function PublisherReporting() {
   const [tableData, setTableData] = useState(data);
 
   const filterData = (searchString: any) => {
@@ -323,7 +323,7 @@ function ProductReports() {
           <button className="btn btn-primary btn-sm">Connect</button>
         </div>
         <div className="col-12 mt-4 d-flex">
-          <PageMenu links={[{path: '/product-reports', title: 'Product Report'}, {path: '/publisher-reports', title: 'Publisher Report'}, {path: '/payment-reports', title: 'Payments'}]} />
+          <PageMenu links={[{path: '/publisher/reports', title: 'My Reports'}]} />
         </div>
         <div className="col-12 mt-4">
           <div className="card d-flex p-2">
@@ -398,4 +398,4 @@ function ProductReports() {
   );
 }
 
-export default ProductReports;
+export default PublisherReporting;

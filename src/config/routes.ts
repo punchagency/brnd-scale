@@ -10,6 +10,10 @@ import PaymentReport from "../screens/Reports/PaymentReport";
 import Reports from "../screens/Reports";
 import PublisherReports from "../screens/Reports/PublisherReports";
 import VerifyAccount from "../screens/VerifyAccount";
+import ActiveProducts from "../screens/PublisherScreens/ActiveProducts";
+import ActiveBrands from "../screens/PublisherScreens/ActiveBrands";
+import BrandProducts from "../screens/PublisherScreens/BrandProducts";
+import PublisherReporting from "../screens/PublisherScreens/PublisherReporting";
 
 interface RouteType {
   path: string;
@@ -89,6 +93,36 @@ const routes: RouteType[] = [
     path: "/publisher/offers",
     component: MyOffers,
     name: "Publisher offers Screen",
+    protected: false,
+  },
+  {
+    path: "/publisher/active-products",
+    component: ActiveProducts,
+    name: "Publisher Active Products Screen",
+    protected: false,
+  },
+  {
+    path: "/publisher/active-brands",
+    component: ActiveBrands,
+    name: "Publisher Active Brands Screen",
+    protected: false,
+  },
+  {
+    path: "/publisher/brand-products",
+    component: BrandProducts,
+    name: "Publisher Products Screen",
+    protected: false,
+  },
+  {
+    path: "/publisher/reports",
+    component: PublisherReporting,
+    name: "Publisher reports Screen",
+    protected: false,
+  },
+  {
+    path: "/publisher/brand-details",
+    component: PaymentReport,
+    name: "Payment Reports Screen",
     protected: false,
   },
 ];

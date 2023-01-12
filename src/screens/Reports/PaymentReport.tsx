@@ -5,19 +5,20 @@ import Table from "../../components/Table";
 import { Link } from "react-router-dom";
 import CalendarIcon from "../../components/svgs/CalendarIcon";
 import ProductReportCard from "../../components/Reports/ProductReportCard";
-import ReportsMenu from "../../components/Reports/ReportsMenu";
+import ReportsMenu from "../../components/Common/PageMenu";
 import Badge from "../../components/Reports/Badge";
 import WarningCircle from "../../components/svgs/WarningCircle";
 import PageTitle from "../../components/PageTitle";
+import PageMenu from "../../components/Common/PageMenu";
+import PaymentCard from "../../components/Reports/PaymentCard";
+import { useAppSelector } from "../../app/hooks";
+import { selectUser } from "../../features/user/userSlice";
 
 const headers = [
   "Product Name",
-  "Brands",
-  "Campaign Name",
   "Starting Date",
   "Ending Date",
   "Tags",
-  "Due",
   "Commission Made",
   "Commission Type",
   "Total Sales",
@@ -29,12 +30,9 @@ const data = [
   {
     id: 1,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -48,12 +46,9 @@ const data = [
   {
     id: 2,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -62,17 +57,14 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Paid</button>,
+    status: <button className="btn btn-outline-danger btn-sm">Pending</button>,
   },
   {
     id: 3,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -86,12 +78,9 @@ const data = [
   {
     id: 4,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -105,12 +94,9 @@ const data = [
   {
     id: 5,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -124,12 +110,9 @@ const data = [
   {
     id: 6,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -138,17 +121,14 @@ const data = [
     ),
     totalSale: "1200",
     totalClicks: 5,
-    status: <button className="btn btn-outline-success btn-sm">Paid</button>,
+    status: <button className="btn btn-outline-danger btn-sm">Pending</button>,
   },
   {
     id: 7,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -162,12 +142,9 @@ const data = [
   {
     id: 8,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -181,12 +158,9 @@ const data = [
   {
     id: 9,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -200,12 +174,9 @@ const data = [
   {
     id: 10,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -219,12 +190,9 @@ const data = [
   {
     id: 11,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -238,12 +206,9 @@ const data = [
   {
     id: 12,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -257,12 +222,9 @@ const data = [
   {
     id: 13,
     productName: "Donna Slider",
-    brands: "JBL Xtreme",
-    campaignName: "Xtreme Coutore",
     startingDate: "2023-01-01",
     endingDate: "2023-01-01",
     tags: "B099HP4D5Z",
-    due: "1200",
     commissionMade: "$1200",
     commissionType: (
       <div>
@@ -278,12 +240,9 @@ const data = [
 const displayLabels = [
   // "id",
   "productName",
-  "brands",
-  "campaignName",
   "startingDate",
   "endingDate",
   "tags",
-  "due",
   "commissionMade",
   "commissionType",
   "totalSale",
@@ -293,6 +252,7 @@ const displayLabels = [
 
 function PaymentReport() {
   const [tableData, setTableData] = useState(data);
+  const userType = useAppSelector(selectUser);
 
   const filterData = (searchString: any) => {
     if (!searchString) return tableData;
@@ -327,6 +287,14 @@ function PaymentReport() {
   const editData = (data: any) => {
     // setTableData(prev=>{return prev.map()})
   };
+
+  let links:[] | any = []
+  if(userType === 'Agency'){
+    links = [{path: '/product-reports', title: 'Product Report'}, {path: '/publisher-reports', title: 'Publisher Report'}, {path: '/payment-reports', title: 'Payments'}]
+  }else{
+    links = [{path: '/publisher/brand-details', title: 'Overview'}, {path: '/publisher', title: 'Brand Pullings'}]
+  }
+  
   return (
     <Layout>
       <div className="row pt-3 ps-2 pe-5">
@@ -334,7 +302,8 @@ function PaymentReport() {
           <PageTitle title="Reports" />
         </div>
         <div className="col-12 mt-4 d-flex">
-          <ReportsMenu />
+          
+          <PageMenu links={links} />
         </div>
         <div className="col-12 mt-4">
           <div className="card d-flex p-2">
@@ -358,27 +327,24 @@ function PaymentReport() {
                 <div className="row d-flex justify-content-center">
                   {/* <div className="col-12 d-flex" > */}
                   <div className="col-3">
-                    <ProductReportCard
-                      topLabel={"Impressions"}
-                      topValue={0}
-                      bottomLabel={"Clicks"}
-                      bottomValue={0}
+                    <PaymentCard
+                      top="Pending payments"
+                      value="523"
+                      bottom={"Due from : DD/MM/YY"}
                     />
                   </div>
                   <div className="col-3">
-                    <ProductReportCard
-                      topLabel={"RDA"}
-                      topValue={0}
-                      bottomLabel={"Gross Clicks"}
-                      bottomValue={0}
+                    <PaymentCard
+                      top={"Total payed"}
+                      value={"015"}
+                      bottom={"Brands that have paid : 20"}
                     />
                   </div>
                   <div className="col-3">
-                    <ProductReportCard
-                      topLabel={"Revenue"}
-                      topValue={0}
-                      bottomLabel={"Pay Cut"}
-                      bottomValue={0}
+                    <PaymentCard
+                      top={"Pending"}
+                      value={"005"}
+                      bottom={"Due from : DD/MM/YY"}
                     />
                   </div>
                   {/* </div> */}
