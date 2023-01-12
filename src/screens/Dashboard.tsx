@@ -238,7 +238,7 @@ const Dashboard: FC = () => {
         </div>
       </div> */}
       <div className="row ">
-        <div className="col-6 col-lg-4 mt-2">
+        <div className="col-6 col-lg-4 col-xl-3 mt-2">
           <TestCard title="Total Sales"
             extra="27K"
             reduce={true}
@@ -247,7 +247,7 @@ const Dashboard: FC = () => {
             date="From 10 - 20 Nov"
             onClick={() => setSelectedCard(0)} />
         </div>
-        <div className="col-6 col-lg-4 ps-2 mt-2">
+        <div className="col-6 col-lg-4 col-xl-3 ps-2 mt-2">
           <TestCard title="Total Orders"
             extra="27K"
             reduce={true}
@@ -256,7 +256,7 @@ const Dashboard: FC = () => {
             date="From 10 - 20 Nov"
             onClick={() => setSelectedCard(1)} />
         </div>
-        <div className="col-6 col-lg-4 ps-2 mt-2">
+        <div className="col-6 col-lg-4 col-xl-3 ps-2 mt-2">
           <TestCard title="Total Revenue"
             extra="27K"
             reduce={true}
@@ -265,7 +265,7 @@ const Dashboard: FC = () => {
             date="From 10 - 20 Nov"
             onClick={() => setSelectedCard(2)} />
         </div>
-        <div className="col-6 col-lg-4 ps-2 mt-2">
+        <div className="col-6 col-lg-4 col-xl-3 ps-2 mt-2">
           <TestCard title="Conversion rate"
             extra="27K"
             reduce={true}
