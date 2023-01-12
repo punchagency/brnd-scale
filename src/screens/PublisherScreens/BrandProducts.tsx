@@ -40,362 +40,350 @@ const data = [
         Amazon Fire 7 Kids tablet, 7" display, ages 3-7, with ad-free content kids love
       </Link>
     ),
-    tag: "B099HP4D5Z",
-    brands: "JBL Xtreme",
-    category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    productId: "5516",
+    lastSale: "2022-08-19  (12:17:55)",
+    price: "$255.89",
+    status: <button className="btn btn-outline-primary btn-sm">Promoted</button>,
+    earned: "$255.89",
+    commissions: (
+      <div className="d-block">
+        12% <Badge />
+      </div>
+    ),
+    activeCoupons: "$255.89",
     conversions: 12,
     totalOrders: 2566,
-    coupon: (
-      <button type="button" className="btn btn-light btn-sm">
-        Click to View
-      </button>
-    ),
-    status: <button className="btn btn-primary btn-sm">Copy/Create URL</button>,
+    totalPaid: 2566,
+    quantity: 6,
   },
   {
     id: 2,
-    image: (
-      <div
-        className="d-flex justify-content-center"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+    productName: (
+      <Link
+        to={""}
+        
       >
-        <img src={product} />
+        Amazon Fire 7 Kids tablet, 7" display, ages 3-7, with ad-free content kids love
+      </Link>
+    ),
+    productId: "5516",
+    lastSale: "2022-08-19  (12:17:55)",
+    price: "$255.89",
+    status: <button className="btn btn-outline-primary btn-sm">Promoted</button>,
+    earned: "$255.89",
+    commissions: (
+      <div>
+        12% <Badge />
       </div>
     ),
-    tag: "B099HP4D5Z",
-    brands: "JBL Xtreme",
-    category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    activeCoupons: "$255.89",
     conversions: 12,
     totalOrders: 2566,
-    coupon: (
-      <button type="button" className="btn btn-light btn-sm">
-        Click to View
-      </button>
-    ),
-    status: <button className="btn btn-primary btn-sm">Copy/Create URL</button>,
+    totalPaid: 2566,
+    quantity: 6,
   },
   {
     id: 3,
-    image: (
-      <div
-        className="d-flex justify-content-center"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+    productName: (
+      <Link
+        to={""}
+        
       >
-        <img src={product} />
+        Amazon Fire 7 Kids tablet, 7" display, ages 3-7, with ad-free content kids love
+      </Link>
+    ),
+    productId: "5516",
+    lastSale: "2022-08-19  (12:17:55)",
+    price: "$255.89",
+    status: <button className="btn btn-outline-primary btn-sm">Promoted</button>,
+    earned: "$255.89",
+    commissions: (
+      <div>
+        12% <Badge />
       </div>
     ),
-    tag: "B099HP4D5Z",
-    brands: "JBL Xtreme",
-    category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    activeCoupons: "$255.89",
     conversions: 12,
     totalOrders: 2566,
-    coupon: (
-      <button type="button" className="btn btn-light btn-sm">
-        Click to View
-      </button>
-    ),
-    status: <button className="btn btn-primary btn-sm">Copy/Create URL</button>,
+    totalPaid: 2566,
+    quantity: 6,
   },
   {
     id: 4,
-    image: (
-      <div
-        className="d-flex justify-content-center"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+    productName: (
+      <Link
+        to={""}
+        
       >
-        <img src={product} />
+        Amazon Fire 7 Kids tablet, 7" display, ages 3-7, with ad-free content kids love
+      </Link>
+    ),
+    productId: "5516",
+    lastSale: "2022-08-19  (12:17:55)",
+    price: "$255.89",
+    status: <button className="btn btn-outline-primary btn-sm">Promoted</button>,
+    earned: "$255.89",
+    commissions: (
+      <div>
+        12% <Badge />
       </div>
     ),
-    tag: "B099HP4D5Z",
-    brands: "JBL Xtreme",
-    category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    activeCoupons: "$255.89",
     conversions: 12,
     totalOrders: 2566,
-    coupon: (
-      <button type="button" className="btn btn-light btn-sm">
-        Click to View
-      </button>
-    ),
-    status: <button className="btn btn-primary btn-sm">Copy/Create URL</button>,
+    totalPaid: 2566,
+    quantity: 6,
   },
   {
     id: 5,
-    image: (
-      <div
-        className="d-flex justify-content-center"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+    productName: (
+      <Link
+        to={""}
+        
       >
-        <img src={product} />
+        Amazon Fire 7 Kids tablet, 7" display, ages 3-7, with ad-free content kids love
+      </Link>
+    ),
+    productId: "5516",
+    lastSale: "2022-08-19  (12:17:55)",
+    price: "$255.89",
+    status: <button className="btn btn-outline-primary btn-sm">Promoted</button>,
+    earned: "$255.89",
+    commissions: (
+      <div>
+        12% <Badge />
       </div>
     ),
-    tag: "B099HP4D5Z",
-    brands: "JBL Xtreme",
-    category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    activeCoupons: "$255.89",
     conversions: 12,
     totalOrders: 2566,
-    coupon: (
-      <button type="button" className="btn btn-light btn-sm">
-        Click to View
-      </button>
-    ),
-    status: <button className="btn btn-primary btn-sm">Copy/Create URL</button>,
+    totalPaid: 2566,
+    quantity: 6,
   },
   {
     id: 6,
-    image: (
-      <div
-        className="d-flex justify-content-center"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+    productName: (
+      <Link
+        to={""}
+        
       >
-        <img src={product} />
+        Amazon Fire 7 Kids tablet, 7" display, ages 3-7, with ad-free content kids love
+      </Link>
+    ),
+    productId: "5516",
+    lastSale: "2022-08-19  (12:17:55)",
+    price: "$255.89",
+    status: <button className="btn btn-outline-primary btn-sm">Promoted</button>,
+    earned: "$255.89",
+    commissions: (
+      <div>
+        12% <Badge />
       </div>
     ),
-    tag: "B099HP4D5Z",
-    brands: "JBL Xtreme",
-    category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    activeCoupons: "$255.89",
     conversions: 12,
     totalOrders: 2566,
-    coupon: (
-      <button type="button" className="btn btn-light btn-sm">
-        Click to View
-      </button>
-    ),
-    status: <button className="btn btn-primary btn-sm">Copy/Create URL</button>,
+    totalPaid: 2566,
+    quantity: 6,
   },
   {
     id: 7,
-    image: (
-      <div
-        className="d-flex justify-content-center"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+    productName: (
+      <Link
+        to={""}
+        
       >
-        <img src={product} />
+        Amazon Fire 7 Kids tablet, 7" display, ages 3-7, with ad-free content kids love
+      </Link>
+    ),
+    productId: "5516",
+    lastSale: "2022-08-19  (12:17:55)",
+    price: "$255.89",
+    status: <button className="btn btn-outline-primary btn-sm">Promoted</button>,
+    earned: "$255.89",
+    commissions: (
+      <div>
+        12% <Badge />
       </div>
     ),
-    tag: "B099HP4D5Z",
-    brands: "JBL Xtreme",
-    category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    activeCoupons: "$255.89",
     conversions: 12,
     totalOrders: 2566,
-    coupon: (
-      <button type="button" className="btn btn-light btn-sm">
-        Click to View
-      </button>
-    ),
-    status: <button className="btn btn-primary btn-sm">Copy/Create URL</button>,
+    totalPaid: 2566,
+    quantity: 6,
   },
   {
     id: 8,
-    image: (
-      <div
-        className="d-flex justify-content-center"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+    productName: (
+      <Link
+        to={""}
+        
       >
-        <img src={product} />
+        Amazon Fire 7 Kids tablet, 7" display, ages 3-7, with ad-free content kids love
+      </Link>
+    ),
+    productId: "5516",
+    lastSale: "2022-08-19  (12:17:55)",
+    price: "$255.89",
+    status: <button className="btn btn-outline-primary btn-sm">Promoted</button>,
+    earned: "$255.89",
+    commissions: (
+      <div>
+        12% <Badge />
       </div>
     ),
-    tag: "B099HP4D5Z",
-    brands: "JBL Xtreme",
-    category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    activeCoupons: "$255.89",
     conversions: 12,
     totalOrders: 2566,
-    coupon: (
-      <button type="button" className="btn btn-light btn-sm">
-        Click to View
-      </button>
-    ),
-    status: <button className="btn btn-primary btn-sm">Copy/Create URL</button>,
+    totalPaid: 2566,
+    quantity: 6,
   },
   {
     id: 9,
-    image: (
-      <div
-        className="d-flex justify-content-center"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+    productName: (
+      <Link
+        to={""}
+        
       >
-        <img src={product} />
+        Amazon Fire 7 Kids tablet, 7" display, ages 3-7, with ad-free content kids love
+      </Link>
+    ),
+    productId: "5516",
+    lastSale: "2022-08-19  (12:17:55)",
+    price: "$255.89",
+    status: <button className="btn btn-outline-primary btn-sm">Promoted</button>,
+    earned: "$255.89",
+    commissions: (
+      <div>
+        12% <Badge />
       </div>
     ),
-    tag: "B099HP4D5Z",
-    brands: "JBL Xtreme",
-    category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    activeCoupons: "$255.89",
     conversions: 12,
     totalOrders: 2566,
-    coupon: (
-      <button type="button" className="btn btn-light btn-sm">
-        Click to View
-      </button>
-    ),
-    status: <button className="btn btn-primary btn-sm">Copy/Create URL</button>,
+    totalPaid: 2566,
+    quantity: 6,
   },
   {
     id: 10,
-    image: (
-      <div
-        className="d-flex justify-content-center"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+    productName: (
+      <Link
+        to={""}
+        
       >
-        <img src={product} />
+        Amazon Fire 7 Kids tablet, 7" display, ages 3-7, with ad-free content kids love
+      </Link>
+    ),
+    productId: "5516",
+    lastSale: "2022-08-19  (12:17:55)",
+    price: "$255.89",
+    status: <button className="btn btn-outline-primary btn-sm">Promoted</button>,
+    earned: "$255.89",
+    commissions: (
+      <div>
+        12% <Badge />
       </div>
     ),
-    tag: "B099HP4D5Z",
-    brands: "JBL Xtreme",
-    category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    activeCoupons: "$255.89",
     conversions: 12,
     totalOrders: 2566,
-    coupon: (
-      <button type="button" className="btn btn-light btn-sm">
-        Click to View
-      </button>
-    ),
-    status: <button className="btn btn-primary btn-sm">Copy/Create URL</button>,
+    totalPaid: 2566,
+    quantity: 6,
   },
   {
     id: 11,
-    image: (
-      <div
-        className="d-flex justify-content-center"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+    productName: (
+      <Link
+        to={""}
+        
       >
-        <img src={product} />
+        Amazon Fire 7 Kids tablet, 7" display, ages 3-7, with ad-free content kids love
+      </Link>
+    ),
+    productId: "5516",
+    lastSale: "2022-08-19  (12:17:55)",
+    price: "$255.89",
+    status: <button className="btn btn-outline-primary btn-sm">Promoted</button>,
+    earned: "$255.89",
+    commissions: (
+      <div>
+        12% <Badge />
       </div>
     ),
-    tag: "B099HP4D5Z",
-    brands: "JBL Xtreme",
-    category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    activeCoupons: "$255.89",
     conversions: 12,
     totalOrders: 2566,
-    coupon: (
-      <button type="button" className="btn btn-light btn-sm">
-        Click to View
-      </button>
-    ),
-    status: <button className="btn btn-primary btn-sm">Copy/Create URL</button>,
+    totalPaid: 2566,
+    quantity: 6,
   },
   {
     id: 12,
-    image: (
-      <div
-        className="d-flex justify-content-center"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+    productName: (
+      <Link
+        to={""}
+        
       >
-        <img src={product} />
+        Amazon Fire 7 Kids tablet, 7" display, ages 3-7, with ad-free content kids love
+      </Link>
+    ),
+    productId: "5516",
+    lastSale: "2022-08-19  (12:17:55)",
+    price: "$255.89",
+    status: <button className="btn btn-outline-primary btn-sm">Promoted</button>,
+    earned: "$255.89",
+    commissions: (
+      <div>
+        12% <Badge />
       </div>
     ),
-    tag: "B099HP4D5Z",
-    brands: "JBL Xtreme",
-    category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    activeCoupons: "$255.89",
     conversions: 12,
     totalOrders: 2566,
-    coupon: (
-      <button type="button" className="btn btn-light btn-sm">
-        Click to View
-      </button>
-    ),
-    status: <button className="btn btn-primary btn-sm">Copy/Create URL</button>,
+    totalPaid: 2566,
+    quantity: 6,
   },
   {
     id: 13,
-    image: (
-      <div
-        className="d-flex justify-content-center"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+    productName: (
+      <Link
+        to={""}
+        
       >
-        <img src={product} alt="product image" />
+        Amazon Fire 7 Kids tablet, 7" display, ages 3-7, with ad-free content kids love
+      </Link>
+    ),
+    productId: "5516",
+    lastSale: "2022-08-19  (12:17:55)",
+    price: "$255.89",
+    status: <button className="btn btn-outline-primary btn-sm">Promoted</button>,
+    earned: "$255.89",
+    commissions: (
+      <div>
+        12% <Badge />
       </div>
     ),
-    tag: "B099HP4D5Z",
-    brands: "JBL Xtreme",
-    category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    activeCoupons: "$255.89",
     conversions: 12,
     totalOrders: 2566,
-    coupon: (
-      <button type="button" className="btn btn-light btn-sm">
-        Click to View
-      </button>
-    ),
-    status: <button className="btn btn-primary btn-sm">Copy/Create URL</button>,
+    totalPaid: 2566,
+    quantity: 6,
   },
 ];
 
 const displayLabels = [
   // "id",
-  "image",
-  "tag",
-  "brands",
-  "category",
-  "asinId",
-  "totalClicks",
-  "totalSale",
-  "commissionEarned",
+  "productName",
+  "productId",
+  "lastSale",
+  "price",
+  "status",
+  "earned",
+  "commissions",
+  "activeCoupons",
   "conversions",
   "totalOrders",
-  "coupon",
-  "status",
+  "totalPaid",
+  "quantity",
 ];
 
 function BrandProducts() {
@@ -464,7 +452,7 @@ function BrandProducts() {
             tableData={tableData}
             displayLabels={displayLabels}
             headers={headers}
-            tableWidth={"115%"}
+            tableWidth={"150%"}
             deleteRow={deleteRow}
             editData={editData}
             addRow={addRow}

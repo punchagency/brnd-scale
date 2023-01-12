@@ -13,6 +13,7 @@ import VerifyAccount from "../screens/VerifyAccount";
 import ActiveProducts from "../screens/PublisherScreens/ActiveProducts";
 import ActiveBrands from "../screens/PublisherScreens/ActiveBrands";
 import BrandProducts from "../screens/PublisherScreens/BrandProducts";
+import PublisherReporting from "../screens/PublisherScreens/PublisherReporting";
 
 interface RouteType {
   path: string;
@@ -109,7 +110,13 @@ const routes: RouteType[] = [
   {
     path: "/publisher/brand-products",
     component: BrandProducts,
-    name: "Brand Products Screen",
+    name: "Publisher Products Screen",
+    protected: false,
+  },
+  {
+    path: "/publisher/reports",
+    component: PublisherReporting,
+    name: "Publisher reports Screen",
     protected: false,
   },
 ];

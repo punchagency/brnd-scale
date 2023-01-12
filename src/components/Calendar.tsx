@@ -67,7 +67,7 @@ const CalendarWrapper = ({ setComponentDate }: CalendarProps) => {
     <div className="position-relative">
       <div
         className="btn border p-0 pb-1"
-        style={{ width: "40px" }}
+        style={{ width: "35px" }}
         onClick={() => {
           if (clickedAmount === 0) {
             setShowCalendar(true);

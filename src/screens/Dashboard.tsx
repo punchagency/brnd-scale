@@ -9,7 +9,7 @@ import Layout from "../containers/Layouts/Layout";
 import BrandsImage from "../assets/images/images.svg";
 import { selectUser, login, selectLoggedIn } from "../features/user/userSlice";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import TestCard from "./TestCard";
+import TestCard from "../components/Card/TestCard";
 
 const headers = [
   "Top Publishers",
@@ -238,17 +238,41 @@ const Dashboard: FC = () => {
         </div>
       </div> */}
       <div className="row ">
-        <div className="col-6 col-lg-3 mt-2">
-          <TestCard />
+        <div className="col-6 col-lg-4 mt-2">
+          <TestCard title="Total Sales"
+            extra="27K"
+            reduce={true}
+            value="576"
+            main={selectedCard === 0}
+            date="From 10 - 20 Nov"
+            onClick={() => setSelectedCard(0)} />
         </div>
-        <div className="col-6 col-lg-3 ps-2 mt-2">
-          <TestCard />
+        <div className="col-6 col-lg-4 ps-2 mt-2">
+          <TestCard title="Total Orders"
+            extra="27K"
+            reduce={true}
+            value="576"
+            main={selectedCard === 1}
+            date="From 10 - 20 Nov"
+            onClick={() => setSelectedCard(1)} />
         </div>
-        <div className="col-6 col-lg-3 ps-2 mt-2">
-          <TestCard />
+        <div className="col-6 col-lg-4 ps-2 mt-2">
+          <TestCard title="Total Revenue"
+            extra="27K"
+            reduce={true}
+            value="$259.99"
+            main={selectedCard === 2}
+            date="From 10 - 20 Nov"
+            onClick={() => setSelectedCard(2)} />
         </div>
-        <div className="col-6 col-lg-3 ps-2 mt-2">
-          <TestCard />
+        <div className="col-6 col-lg-4 ps-2 mt-2">
+          <TestCard title="Conversion rate"
+            extra="27K"
+            reduce={true}
+            value="53.2%"
+            main={selectedCard === 3}
+            date="From 10 - 20 Nov"
+            onClick={() => setSelectedCard(3)} />
         </div>
       </div>
       <div
