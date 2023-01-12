@@ -106,12 +106,6 @@ function Offers() {
                   <h1 className="modal-title fs-5 ms-3" id="exampleModalLabel">
                     BRNDScale
                   </h1>
-                  {/* <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button> */}
                   <span
                     className="border border-light bg-dark text-light px-3 rounded me-5"
                     style={{}}

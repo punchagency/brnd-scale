@@ -7,7 +7,7 @@ import MyOffers from "../screens/PublisherScreens/PublisherOffers";
 import PublisherManage from "../screens/PublisherManage";
 import RegisterStart from "../screens/RegisterStart";
 import PaymentReport from "../screens/Reports/PaymentReport";
-import ProductReports from "../screens/Reports/ProductReports";
+import Reports from "../screens/Reports";
 import PublisherReports from "../screens/Reports/PublisherReports";
 import VerifyAccount from "../screens/VerifyAccount";
 
@@ -62,8 +62,8 @@ const routes: RouteType[] = [
     protected: false,
   },
   {
-    path: "/product-reports",
-    component: ProductReports,
+    path: "/reports",
+    component: Reports,
     name: "Product Reports Screen",
     protected: false,
   },
