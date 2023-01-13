@@ -47,7 +47,7 @@ function SideBar() {
               Analyze
               <ul className="mt-3" style={{ borderLeft: "1px solid #C2BDBD" }}>
                 <li>
-                  <Link to="/product-reports" className="nav-link">
+                  <Link to="/reports" className="nav-link">
                     Reporting
                   </Link>
                 </li>
@@ -78,7 +78,7 @@ function SideBar() {
               Analyze
               <ul className="mt-3" style={{ borderLeft: "1px solid #C2BDBD" }}>
                 <li>
-                  <Link to="/product-reports" className="nav-link">
+                  <Link to="/reports" className="nav-link">
                     Reporting
                   </Link>
                 </li>
@@ -205,7 +205,7 @@ function SideBar() {
           className="nav-link"
           onClick={() => {
             dispatch(logout());
-            navigate("/login");
+            navigate("/auth/login");
           }}
         >
           Log Out

@@ -46,7 +46,6 @@ function PublisherManage() {
   };
 
   return (
-    <Layout>
       <div className="row pt-3 ps-2 pe-5">
         <div className="col-12 mt-3 d-flex justify-content-between">
           <h4>{getTitle()}</h4>
@@ -84,7 +83,6 @@ function PublisherManage() {
         </div>
         <div className="col-12">{getTableBody()}</div>
       </div>
-    </Layout>
   );
 }
 

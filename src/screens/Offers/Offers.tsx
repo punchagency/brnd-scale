@@ -55,7 +55,6 @@ function Offers() {
   };
 
   return (
-    <Layout>
       <div className="row pt-3 ps-2 pe-5">
         <div className="col-12 mt-3 d-flex justify-content-between">
           <h4>{getTitle()}</h4>
@@ -106,12 +105,6 @@ function Offers() {
                   <h1 className="modal-title fs-5 ms-3" id="exampleModalLabel">
                     BRNDScale
                   </h1>
-                  {/* <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button> */}
                   <span
                     className="border border-light bg-dark text-light px-3 rounded me-5"
                     style={{}}
@@ -210,7 +203,7 @@ function Offers() {
           {getTableBody()}
         </div>
       </div>
-    </Layout>
+
   );
 }
 

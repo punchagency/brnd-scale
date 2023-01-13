@@ -84,7 +84,7 @@ const CalendarWrapper = ({ setComponentDate }: CalendarProps) => {
         <div
           ref={wrapperRef}
           className="position-absolute"
-          style={{ right: "0" }}
+          style={{ right: "-70px" }}
         >
           <Calendar
             value={selectedDayRange}
