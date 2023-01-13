@@ -546,115 +546,114 @@ function ActiveProducts() {
     // setTableData(prev=>{return prev.map()})
   };
   return (
-      <div className="row pt-3 ps-2 pe-5">
-        <div className="col-12 mt-3">
-          <PageTitle
-            title="Welcome to my offers"
-            subtitle="Track your Current products"
-          />
-        </div>
-        <div className="col-12 mt-4 d-flex">
-          <PageMenu
-            links={[
-              { path: "/publisher/offers", title: "Overview" },
-              { path: "/publisher/active-brands", title: "Active Brands" },
-              { path: "/publisher/active-products", title: "Active Products" },
-            ]}
-          />
-        </div>
-        <div className="col-12 mt-4">
-          <div className="card d-flex p-2">
-            <div className="row">
-              <div className="col-6 d-inline d-flex align-items-center ">
-                <ListIcon />{" "}
-                <span className="fs-5 ms-2">
-                  List of All the (active products)
-                </span>
-              </div>
+    <div className="row pt-3 ps-2 pe-5">
+      <div className="col-12 mt-3">
+        <PageTitle
+          title="Welcome to my offers"
+          subtitle="Track your Current products"
+        />
+      </div>
+      <div className="col-12 mt-4 d-flex">
+        <PageMenu
+          links={[
+            { path: "/publisher/offers", title: "Overview" },
+            { path: "/publisher/active-brands", title: "Active Brands" },
+            { path: "/publisher/active-products", title: "Active Products" },
+          ]}
+        />
+      </div>
+      <div className="col-12 mt-4">
+        <div className="card d-flex p-2">
+          <div className="row">
+            <div className="col-6 d-inline d-flex align-items-center ">
+              <ListIcon />{" "}
+              <span className="fs-5 ms-2">
+                List of All the (active products)
+              </span>
             </div>
           </div>
         </div>
-        <div className="col-12">
-          {/* Modal  */}
-          <div
-            className="modal fade"
-            id="exampleModal"
-            tabIndex={-1}
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog modal-lg">
-              <div className="modal-content">
-                <div className="modal-header bg-dark text-white">
-                  <h1 className="modal-title fs-5 ms-3" id="exampleModalLabel">
-                    BRNDScale
-                  </h1>
-                  {/* <span
+      </div>
+      <div className="col-12">
+        {/* Modal  */}
+        <div
+          className="modal fade"
+          id="exampleModal"
+          tabIndex={-1}
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog modal-lg">
+            <div className="modal-content">
+              <div className="modal-header bg-dark text-white">
+                <h1 className="modal-title fs-5 ms-3" id="exampleModalLabel">
+                  BRNDScale
+                </h1>
+                {/* <span
                     className="border border-light bg-dark text-light px-3 rounded me-5"
                     style={{}}
                   >
                     Product Details
                   </span> */}
-                </div>
-                <div className="modal-body">
-                  <div className="container-fluid">
-                    <div className="row">
-                      <div className="col-10 offset-1">
-                        <div className="input-group mt-4">
-                          <input
-                            type="text"
-                            className="form-control"
-                            aria-label="Dollar amount (with dot and two decimal places)"
-                          />
-                          <div
-                            className="d-flex"
-                            style={{ maxWidth: "200px", overflow: "hidden" }}
+              </div>
+              <div className="modal-body">
+                <div className="container-fluid">
+                  <div className="row">
+                    <div className="col-10 offset-1">
+                      <div className="input-group mt-4">
+                        <input
+                          type="text"
+                          className="form-control"
+                          aria-label="Dollar amount (with dot and two decimal places)"
+                        />
+                        <div
+                          className="d-flex"
+                          style={{ maxWidth: "200px", overflow: "hidden" }}
+                        >
+                          <span
+                            className="input-group-text rounded-0 border bg-light"
+                            style={{ borderRight: "1px solid #CECECE" }}
                           >
-                            <span
-                              className="input-group-text rounded-0 border bg-light"
-                              style={{ borderRight: "1px solid #CECECE" }}
-                            >
-                              <CopyIcon />
-                            </span>
-                            <span className="input-group-text rounded-0 border bg-light">
-                              <ShareIcon />
-                            </span>
-                          </div>
+                            <CopyIcon />
+                          </span>
+                          <span className="input-group-text rounded-0 border bg-light">
+                            <ShareIcon />
+                          </span>
                         </div>
-                        <div className="input-group mt-4">
-                          <input type="text" className="form-control px-5" />
-                          <div
-                            className="d-flex justify-content-center"
-                            style={{ maxWidth: "200px", overflow: "hidden" }}
+                      </div>
+                      <div className="input-group mt-4">
+                        <input type="text" className="form-control px-5" />
+                        <div
+                          className="d-flex justify-content-center"
+                          style={{ maxWidth: "200px", overflow: "hidden" }}
+                        >
+                          <span
+                            className="input-group-text ps-4 text-center bg-light"
+                            style={{ width: "118px", textAlign: "center" }}
                           >
-                            <span
-                              className="input-group-text ps-4 text-center bg-light"
-                              style={{ width: "118px", textAlign: "center" }}
-                            >
-                              Create
-                            </span>
-                          </div>
+                            Create
+                          </span>
                         </div>
+                      </div>
 
-                        <div className="w-100">
-                          <div className="card mt-3">
-                            <div className="card-content pt-3 ps-3">
-                              <p>
-                                <WarningCircle /> Paste the coupon codes
-                                provided by brands or Agency
-                              </p>
-                            </div>
+                      <div className="w-100">
+                        <div className="card mt-3">
+                          <div className="card-content pt-3 ps-3">
+                            <p>
+                              <WarningCircle /> Paste the coupon codes
+                              provided by brands or Agency
+                            </p>
                           </div>
                         </div>
+                      </div>
 
-                        <div className="d-flex mt-4 justify-content-end">
-                          <button
-                            className="btn btn-primary"
-                            data-bs-dismiss="modal"
-                          >
-                            Add
-                          </button>
-                        </div>
+                      <div className="d-flex mt-4 justify-content-end">
+                        <button
+                          className="btn btn-primary"
+                          data-bs-dismiss="modal"
+                        >
+                          Add
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -662,75 +661,80 @@ function ActiveProducts() {
               </div>
             </div>
           </div>
-          <div
-            className="modal fade"
-            id="couponModal"
-            tabIndex={-1}
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog modal-md">
-              <div className="modal-content">
-                <div className="modal-header bg-dark text-white">
-                  <h1 className="modal-title fs-5 ms-3" id="exampleModalLabel">
-                    BRNDScale
-                  </h1>
-                </div>
-                <div className="modal-body">
-                  <div className="container-fluid">
-                    <div className="row">
-                      <div className="col-12 d-flex flex-column align-items-center">
-                        <h2 className="text-center">Active</h2>
-                        <div className="d-flex w-75 border rounded px-3 pt-3 justify-content-between align-items-center">
-                          <p className="">Currently Active</p>
-                          <p className="border rounded p-2">10% Off</p>
-                        </div>
-                        <div className="d-flex w-75 border rounded px-3 pt-3 mt-3 justify-content-between align-items-center">
-                          <p className="">Coupon Code</p>
-                          <p className="border rounded p-2">48445CD21</p>
-                        </div>
-                      </div>
-                      <div className="col-12">
-                        
-
-                        <div className="w-100">
-                          <div className="card mt-3">
-                            <div className="card-content pt-3 ps-3">
-                              <p className="text-center p-0">
-                                <WarningCircle />
-                                Paste the coupon codes provided by brands or Agency
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="d-flex mt-4 justify-content-end">
-                          <button
-                            className="btn btn-primary"
-                            data-bs-dismiss="modal"
-                          >
-                            Add
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <Table
-            tableData={tableData}
-            displayLabels={displayLabels}
-            headers={headers}
-            tableWidth={"115%"}
-            deleteRow={deleteRow}
-            editData={editData}
-            addRow={addRow}
-            filterData={filterData}
-          />
         </div>
+        <div
+          className="modal fade"
+          id="couponModal"
+          tabIndex={-1}
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog modal-md">
+            <div className="modal-content">
+              <div className="modal-header bg-dark text-white">
+                <h1 className="modal-title fs-5 ms-3" id="exampleModalLabel">
+                  BRNDScale
+                </h1>
+              </div>
+              <div className="modal-body">
+                <div className="container-fluid">
+                  <div className="row">
+                    <div className="col-12 d-flex flex-column align-items-center">
+                      <h2 className="text-center">Active</h2>
+                      <div className="d-flex w-75 border rounded px-3 py-1 justify-content-between  align-items-center mt-2">
+                        <span className="">Currently Active</span>
+                        <span className="border rounded p-1">10% Off</span>
+                      </div>
+                      <div className="d-flex w-75 border rounded px-3 py-1 mt-3 justify-content-between align-items-center">
+                        <span className="">Coupon Code</span>
+                        <span className="border rounded p-1">48445CD21</span>
+                      </div>
+                    </div>
+                    <div className="col-12 d-flex flex-column align-items-center mt-4">
+                      <h2 className="text-center mt-4">Add Coupon</h2>
+                      <div className="mb-3 w-75 mt-2">
+                        <label className="form-label">Paste Coupon Code</label>
+                        <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="Click to Add" />
+                      </div>
+                      <div className="w-75">
+                          <div className="rounded border d-flex justify-content-center py-1" style={{backgroundColor: "rgba(0, 100, 246, 0.36)"}}>
+                            <span className="text-center text-white p-0" style={{fontSize: "11px"}}>
+                              <WarningCircle />
+                               Paste the coupon codes provided by brands or Agency
+                            </span>
+                          </div>
+                      </div>
+                    </div>
+                    <div className="col-12">
+                      
+
+                      <div className="d-flex mt-4 justify-content-center">
+                        <button
+                          className="btn btn-primary"
+                          data-bs-dismiss="modal"
+                        >
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Table
+          tableData={tableData}
+          displayLabels={displayLabels}
+          headers={headers}
+          tableWidth={"115%"}
+          deleteRow={deleteRow}
+          editData={editData}
+          addRow={addRow}
+          filterData={filterData}
+        />
       </div>
+    </div>
   );
 }
 
