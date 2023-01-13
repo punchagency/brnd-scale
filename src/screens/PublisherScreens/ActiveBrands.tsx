@@ -17,6 +17,10 @@ import herbalLife from "../../assets/images/herbalLife-big.png";
 import handM from "../../assets/images/HandM-big.png";
 import versace from "../../assets/images/versace-big.png";
 import ActiveBrandCard from "../../components/Cards/ActiveBrandCard";
+import BackArrow from "../../components/svgs/BackArrow";
+import ForwardArrow from "../../components/svgs/ForwardArrow";
+import BrandFeaturesCard from "../../components/Cards/BrandFeaturesCard";
+import Modal from "./BrandDetails/Modal";
 
 const data = [
   {
@@ -115,6 +119,9 @@ function ActiveBrands() {
               </div>
             ))}
           </div>
+        </div>
+        <div className="col-12">
+          <Modal />
         </div>
       </div>
     </Layout>
