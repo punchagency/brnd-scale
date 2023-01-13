@@ -49,7 +49,12 @@ const data = [
     conversions: 12,
     totalOrders: 2566,
     coupon: (
-      <button type="button" className="btn btn-light btn-sm">
+      <button
+        type="button"
+        className="btn btn-light btn-sm"
+        data-bs-toggle="modal"
+        data-bs-target="#couponModal"
+      >
         Click to View
       </button>
     ),
@@ -80,7 +85,12 @@ const data = [
     conversions: 12,
     totalOrders: 2566,
     coupon: (
-      <button type="button" className="btn btn-light btn-sm">
+      <button
+        type="button"
+        className="btn btn-light btn-sm"
+        data-bs-toggle="modal"
+        data-bs-target="#couponModal"
+      >
         Click to View
       </button>
     ),
@@ -111,7 +121,12 @@ const data = [
     conversions: 12,
     totalOrders: 2566,
     coupon: (
-      <button type="button" className="btn btn-light btn-sm">
+      <button
+        type="button"
+        className="btn btn-light btn-sm"
+        data-bs-toggle="modal"
+        data-bs-target="#couponModal"
+      >
         Click to View
       </button>
     ),
@@ -142,7 +157,12 @@ const data = [
     conversions: 12,
     totalOrders: 2566,
     coupon: (
-      <button type="button" className="btn btn-light btn-sm">
+      <button
+        type="button"
+        className="btn btn-light btn-sm"
+        data-bs-toggle="modal"
+        data-bs-target="#couponModal"
+      >
         Click to View
       </button>
     ),
@@ -173,7 +193,12 @@ const data = [
     conversions: 12,
     totalOrders: 2566,
     coupon: (
-      <button type="button" className="btn btn-light btn-sm">
+      <button
+        type="button"
+        className="btn btn-light btn-sm"
+        data-bs-toggle="modal"
+        data-bs-target="#couponModal"
+      >
         Click to View
       </button>
     ),
@@ -204,7 +229,12 @@ const data = [
     conversions: 12,
     totalOrders: 2566,
     coupon: (
-      <button type="button" className="btn btn-light btn-sm">
+      <button
+        type="button"
+        className="btn btn-light btn-sm"
+        data-bs-toggle="modal"
+        data-bs-target="#couponModal"
+      >
         Click to View
       </button>
     ),
@@ -227,7 +257,12 @@ const data = [
     conversions: 12,
     totalOrders: 2566,
     coupon: (
-      <button type="button" className="btn btn-light btn-sm">
+      <button
+        type="button"
+        className="btn btn-light btn-sm"
+        data-bs-toggle="modal"
+        data-bs-target="#couponModal"
+      >
         Click to View
       </button>
     ),
@@ -258,7 +293,12 @@ const data = [
     conversions: 12,
     totalOrders: 2566,
     coupon: (
-      <button type="button" className="btn btn-light btn-sm">
+      <button
+        type="button"
+        className="btn btn-light btn-sm"
+        data-bs-toggle="modal"
+        data-bs-target="#couponModal"
+      >
         Click to View
       </button>
     ),
@@ -289,7 +329,12 @@ const data = [
     conversions: 12,
     totalOrders: 2566,
     coupon: (
-      <button type="button" className="btn btn-light btn-sm">
+      <button
+        type="button"
+        className="btn btn-light btn-sm"
+        data-bs-toggle="modal"
+        data-bs-target="#couponModal"
+      >
         Click to View
       </button>
     ),
@@ -320,7 +365,12 @@ const data = [
     conversions: 12,
     totalOrders: 2566,
     coupon: (
-      <button type="button" className="btn btn-light btn-sm">
+      <button
+        type="button"
+        className="btn btn-light btn-sm"
+        data-bs-toggle="modal"
+        data-bs-target="#couponModal"
+      >
         Click to View
       </button>
     ),
@@ -355,12 +405,20 @@ const data = [
         type="button"
         className="btn btn-light btn-sm"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#couponModal"
       >
         Click to View
       </button>
     ),
-    status: <button className="btn btn-primary btn-sm">Copy/Create URL</button>,
+    status: (
+      <button
+        className="btn btn-primary btn-sm"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Copy/Create URL
+      </button>
+    ),
   },
   {
     id: 12,
@@ -383,12 +441,20 @@ const data = [
         type="button"
         className="btn btn-light btn-sm"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#couponModal"
       >
         Click to View
       </button>
     ),
-    status: <button className="btn btn-primary btn-sm">Copy/Create URL</button>,
+    status: (
+      <button
+        className="btn btn-primary btn-sm"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Copy/Create URL
+      </button>
+    ),
   },
   {
     id: 13,
@@ -407,7 +473,12 @@ const data = [
     conversions: 12,
     totalOrders: 2566,
     coupon: (
-      <button type="button" className="btn btn-light btn-sm">
+      <button
+        type="button"
+        className="btn btn-light btn-sm"
+        data-bs-toggle="modal"
+        data-bs-target="#couponModal"
+      >
         Click to View
       </button>
     ),
@@ -540,7 +611,10 @@ function ActiveProducts() {
                             className="d-flex"
                             style={{ maxWidth: "200px", overflow: "hidden" }}
                           >
-                            <span className="input-group-text rounded-0 border bg-light" style={{borderRight: "1px solid #CECECE"}}>
+                            <span
+                              className="input-group-text rounded-0 border bg-light"
+                              style={{ borderRight: "1px solid #CECECE" }}
+                            >
                               <CopyIcon />
                             </span>
                             <span className="input-group-text rounded-0 border bg-light">
@@ -554,14 +628,79 @@ function ActiveProducts() {
                             className="d-flex justify-content-center"
                             style={{ maxWidth: "200px", overflow: "hidden" }}
                           >
-                            <span className="input-group-text ps-4 text-center bg-light" style={{width: "118px", textAlign: 'center'}}>Create</span>
+                            <span
+                              className="input-group-text ps-4 text-center bg-light"
+                              style={{ width: "118px", textAlign: "center" }}
+                            >
+                              Create
+                            </span>
                           </div>
                         </div>
 
                         <div className="w-100">
                           <div className="card mt-3">
                             <div className="card-content pt-3 ps-3">
-                              <p><WarningCircle /> Paste the coupon codes provided by brands or Agency</p>
+                              <p>
+                                <WarningCircle /> Paste the coupon codes
+                                provided by brands or Agency
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="d-flex mt-4 justify-content-end">
+                          <button
+                            className="btn btn-primary"
+                            data-bs-dismiss="modal"
+                          >
+                            Add
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="modal fade"
+            id="couponModal"
+            tabIndex={-1}
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog modal-md">
+              <div className="modal-content">
+                <div className="modal-header bg-dark text-white">
+                  <h1 className="modal-title fs-5 ms-3" id="exampleModalLabel">
+                    BRNDScale
+                  </h1>
+                </div>
+                <div className="modal-body">
+                  <div className="container-fluid">
+                    <div className="row">
+                      <div className="col-12 d-flex flex-column align-items-center">
+                        <h2 className="text-center">Active</h2>
+                        <div className="d-flex w-75 border rounded px-3 pt-3 justify-content-between align-items-center">
+                          <p className="">Currently Active</p>
+                          <p className="border rounded p-2">10% Off</p>
+                        </div>
+                        <div className="d-flex w-75 border rounded px-3 pt-3 mt-3 justify-content-between align-items-center">
+                          <p className="">Coupon Code</p>
+                          <p className="border rounded p-2">48445CD21</p>
+                        </div>
+                      </div>
+                      <div className="col-12">
+                        
+
+                        <div className="w-100">
+                          <div className="card mt-3">
+                            <div className="card-content pt-3 ps-3">
+                              <p className="text-center p-0">
+                                <WarningCircle />
+                                Paste the coupon codes provided by brands or Agency
+                              </p>
                             </div>
                           </div>
                         </div>
