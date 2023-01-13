@@ -17,6 +17,13 @@ import Offers from "./screens/Offers/Offers";
 import PublisherReports from "./screens/Reports/PublisherReports";
 import PublisherManage from "./screens/PublisherManage";
 import Reports from "./screens/Reports";
+import MyOffers from "./screens/PublisherScreens/PublisherOffers";
+import ActiveProducts from "./screens/PublisherScreens/ActiveProducts";
+import ActiveBrands from "./screens/PublisherScreens/ActiveBrands";
+import BrandProducts from "./screens/PublisherScreens/BrandProducts";
+import PublisherReporting from "./screens/PublisherScreens/PublisherReporting";
+import PaymentReport from "./screens/Reports/PaymentReport";
+import BrandsManage from "./screens/BrandsManage";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -94,7 +101,23 @@ function App() {
             <Route path='/' element={<Layout />}>
               <Route index element={<Dashboard />} />
               <Route path="offers" element={<Offers />} />
-              <Route path="publishers" element={<PublisherManage />} />
+              <Route path="/publisher" element={<Dashboard />} />
+
+              <Route path="/manage-brand" element={<BrandsManage />} />
+              <Route path="/publishers" element={<PublisherManage />} />
+              <Route path="/offers" element={<Offers />} />
+              <Route path="/reports" element={<Reports />} />
+              <Route path="/product-reports" element={<Reports />} />
+              <Route path="/publisher-reports" element={<PublisherReports />} />
+              <Route path="/payment-reports" element={<PaymentReport />} />
+              
+
+              <Route path="/publisher/offers" element={<MyOffers />} />
+              <Route path="/publisher/active-products" element={<ActiveProducts />} />
+              <Route path="/publisher/active-brands" element={<ActiveBrands />} />
+              <Route path="/publisher/brand-products" element={<BrandProducts />} />
+              <Route path="/publisher/reports" element={<PublisherReporting />} />
+              <Route path="/publisher/brand-details" element={<PaymentReport />} />
               <Route path="reports" element={<Reports />} />
               <Route path="*" element={<Navigate to="" />} />
             </Route>

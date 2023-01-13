@@ -546,7 +546,6 @@ function ActiveProducts() {
     // setTableData(prev=>{return prev.map()})
   };
   return (
-    <Layout>
       <div className="row pt-3 ps-2 pe-5">
         <div className="col-12 mt-3">
           <PageTitle
@@ -732,7 +731,6 @@ function ActiveProducts() {
           />
         </div>
       </div>
-    </Layout>
   );
 }
 

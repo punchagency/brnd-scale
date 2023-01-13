@@ -407,7 +407,6 @@ function PublisherReports() {
     // setTableData(prev=>{return prev.map()})
   };
   return (
-    <Layout>
       <div className="row pt-3 ps-2 pe-5">
         <div className="col-12 mt-3 d-flex justify-content-between">
           <h4>Reports</h4>
@@ -452,7 +451,6 @@ function PublisherReports() {
           />
         </div>
       </div>
-    </Layout>
   );
 }
 

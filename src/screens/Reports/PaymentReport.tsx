@@ -296,7 +296,6 @@ function PaymentReport() {
   }
   
   return (
-    <Layout>
       <div className="row pt-3 ps-2 pe-5">
         <div className="col-12 mt-3 ">
           <PageTitle title="Reports" />
@@ -377,7 +376,6 @@ function PaymentReport() {
           </p>
         </div>
       </div>
-    </Layout>
   );
 }
 

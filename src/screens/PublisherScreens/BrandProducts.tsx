@@ -422,7 +422,6 @@ function BrandProducts() {
     // setTableData(prev=>{return prev.map()})
   };
   return (
-    <Layout>
       <div className="row pt-3 ps-2 pe-5">
         <div className="col-12 mt-3">
           <PageTitle title="Dive in depth into Brands and Their Products" />
@@ -460,7 +459,6 @@ function BrandProducts() {
           />
         </div>
       </div>
-    </Layout>
   );
 }
 
