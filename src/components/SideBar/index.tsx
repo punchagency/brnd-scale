@@ -205,7 +205,7 @@ function SideBar() {
           className="nav-link"
           onClick={() => {
             dispatch(logout());
-            navigate("/login");
+            navigate("/auth/login");
           }}
         >
           Log Out

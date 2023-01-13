@@ -12,6 +12,11 @@ import Login from "./screens/Login";
 import Register from "./screens/Register";
 import RegisterStart from "./screens/RegisterStart";
 import VerifyAccount from "./screens/VerifyAccount";
+import Dashboard from "./screens/Dashboard";
+import Offers from "./screens/Offers/Offers";
+import PublisherReports from "./screens/Reports/PublisherReports";
+import PublisherManage from "./screens/PublisherManage";
+import Reports from "./screens/Reports";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -85,6 +90,13 @@ function App() {
               <Route path="signup" element={<Register />} />
               <Route path="verify-account" element={<VerifyAccount />} />
               <Route path="" element={<Navigate to="login" />} />
+            </Route>
+            <Route path='/' element={<Layout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="offers" element={<Offers />} />
+              <Route path="publishers" element={<PublisherManage />} />
+              <Route path="reports" element={<Reports />} />
+              <Route path="*" element={<Navigate to="" />} />
             </Route>
 
             

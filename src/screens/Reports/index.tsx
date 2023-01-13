@@ -1,323 +1,21 @@
 import React, { useState } from "react";
 import ListIcon from "../../components/svgs/ListIcon";
-import Layout from "../../containers/Layouts/Layout";
-import Table from "../../components/Table";
-import ActiveIcon from "../../components/svgs/ActiveIcon";
-import { Link } from "react-router-dom";
 import CalendarIcon from "../../components/svgs/CalendarIcon";
 import ProductReportCard from "../../components/Reports/ProductReportCard";
 import { useAppSelector } from "../../app/hooks";
 import { selectUser } from "../../features/user/userSlice";
 import TabButton from "../../components/TabButton/TabButton";
-
-const headers = [
-  "Product Name",
-  "Brands",
-  "Publisher",
-  "Last Recorded",
-  "Prices",
-  "Impression",
-  "Profits",
-  "Clicks",
-  "Unl. Clicks",
-  "Invalid Click",
-  "Conversions",
-  "Orders",
-  "Total CVR",
-];
-
-const data = [
-  {
-    id: 1,
-    productName: (
-      <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
-    ),
-    brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
-    lastRecorded: "2023-01-01",
-    prices: "500$",
-    impressions: <span className="text-success">Enabled</span>,
-    profits: "500$",
-    clicks: "12",
-    unlClicks: "14",
-    invClicks: "14",
-    commissions: "12%",
-    orders: "23",
-    totalCVR: 12,
-  },
-  {
-    id: 2,
-    productName: (
-      <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
-    ),
-    brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
-    lastRecorded: "2023-01-01",
-    prices: "500$",
-    impressions: <span className="text-success">Enabled</span>,
-    profits: "500$",
-    clicks: "12",
-    unlClicks: "14",
-    invClicks: "14",
-    commissions: "12%",
-    orders: "23",
-    totalCVR: 12,
-  },
-  {
-    id: 3,
-    productName: (
-      <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
-    ),
-    brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
-    lastRecorded: "2023-01-01",
-    prices: "500$",
-    impressions: <span className="text-success">Enabled</span>,
-    profits: "500$",
-    clicks: "12",
-    unlClicks: "14",
-    invClicks: "14",
-    commissions: "12%",
-    orders: "23",
-    totalCVR: 12,
-  },
-  {
-    id: 4,
-    productName: (
-      <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
-    ),
-    brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
-    lastRecorded: "2023-01-01",
-    prices: "500$",
-    impressions: <span className="text-success">Enabled</span>,
-    profits: "500$",
-    clicks: "12",
-    unlClicks: "14",
-    invClicks: "14",
-    commissions: "12%",
-    orders: "23",
-    totalCVR: 12,
-  },
-  {
-    id: 5,
-    productName: (
-      <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
-    ),
-    brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
-    lastRecorded: "2023-01-01",
-    prices: "500$",
-    impressions: <span className="">Pending</span>,
-    profits: "500$",
-    clicks: "12",
-    unlClicks: "14",
-    invClicks: "14",
-    commissions: "12%",
-    orders: "23",
-    totalCVR: 12,
-  },
-  {
-    id: 6,
-    productName: (
-      <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
-    ),
-    brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
-    lastRecorded: "2023-01-01",
-    prices: "500$",
-    impressions: <span className="">Pending</span>,
-    profits: "500$",
-    clicks: "12",
-    unlClicks: "14",
-    invClicks: "14",
-    commissions: "12%",
-    orders: "23",
-    totalCVR: 12,
-  },
-  {
-    id: 7,
-    productName: (
-      <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
-    ),
-    brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
-    lastRecorded: "2023-01-01",
-    prices: "500$",
-    impressions: <span className="">Pending</span>,
-    profits: "500$",
-    clicks: "12",
-    unlClicks: "14",
-    invClicks: "14",
-    commissions: "12%",
-    orders: "23",
-    totalCVR: 12,
-  },
-  {
-    id: 8,
-    productName: (
-      <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
-    ),
-    brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
-    lastRecorded: "2023-01-01",
-    prices: "500$",
-    impressions: <span className="">Pending</span>,
-    profits: "500$",
-    clicks: "12",
-    unlClicks: "14",
-    invClicks: "14",
-    commissions: "12%",
-    orders: "23",
-    totalCVR: 12,
-  },
-  {
-    id: 9,
-    productName: (
-      <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
-    ),
-    brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
-    lastRecorded: "2023-01-01",
-    prices: "500$",
-    impressions: <span className="text-success">Enabled</span>,
-    profits: "500$",
-    clicks: "12",
-    unlClicks: "14",
-    invClicks: "14",
-    commissions: "12%",
-    orders: "23",
-    totalCVR: 12,
-  },
-  {
-    id: 10,
-    productName: (
-      <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
-    ),
-    brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
-    lastRecorded: "2023-01-01",
-    prices: "500$",
-    impressions: <span className="">Pending</span>,
-    profits: "500$",
-    clicks: "12",
-    unlClicks: "14",
-    invClicks: "14",
-    commissions: "12%",
-    orders: "23",
-    totalCVR: 12,
-  },
-  {
-    id: 11,
-    productName: (
-      <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
-    ),
-    brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
-    lastRecorded: "2023-01-01",
-    prices: "500$",
-    impressions: <span className="text-success">Enabled</span>,
-    profits: "500$",
-    clicks: "12",
-    unlClicks: "14",
-    invClicks: "14",
-    commissions: "12%",
-    orders: "23",
-    totalCVR: 12,
-  },
-  {
-    id: 12,
-    productName: (
-      <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
-    ),
-    brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
-    lastRecorded: "2023-01-01",
-    prices: "500$",
-    impressions: <span className="text-success">Enabled</span>,
-    profits: "500$",
-    clicks: "12",
-    unlClicks: "14",
-    invClicks: "14",
-    commissions: "12%",
-    orders: "23",
-    totalCVR: 12,
-  },
-  {
-    id: 13,
-    productName: (
-      <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
-    ),
-    brands: "Donna Slider",
-    publisher: "Xtreme Coutore",
-    lastRecorded: "2023-01-01",
-    prices: "500$",
-    impressions: <span className="text-success">Enabled</span>,
-    profits: "500$",
-    clicks: "12",
-    unlClicks: "14",
-    invClicks: "14",
-    commissions: "12%",
-    orders: "23",
-    totalCVR: 12,
-  },
-];
-
-const displayLabels = [
-  // "id",
-  "productName",
-  "brands",
-  "publisher",
-  "lastRecorded",
-  "prices",
-  "impressions",
-  "profits",
-  "clicks",
-  "unlClicks",
-  "invClicks",
-  "commissions",
-  "orders",
-  "totalCVR",
-];
+import ReportSummary from "./ReportSummary";
+import BrandFullReportTable from "./BrandFullReportTable";
+import BrandPaymentsTable from "./BrandPaymentsTable";
+import WarningCircle from "../../components/svgs/WarningCircle";
+import CalendarWrapper from "../../components/Calendar";
+import ArrowsClockwise from "../../assets/images/ArrowsClockwise.svg";
+import Gift from "../../assets/images/gift.svg";
 
 function Reports() {
-  const [tableData, setTableData] = useState(data);
   const [tabIndex, setTabIndex] = useState<0 | 1 | 2>(0);
   const userType = useAppSelector(selectUser);
-
-  const filterData = (searchString: any) => {
-    if (!searchString) return tableData;
-    return tableData.filter((item: any) => {
-      return (
-        item.publisherName.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.productName.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.brands.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.commissions.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.startDate.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.product.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.growth.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.clicks.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.orders.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.revenue.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.sales.toLowerCase().includes(searchString.toLowerCase())
-      );
-    });
-  };
-  const deleteRow = (id: number) => {
-    setTableData((prev) => {
-      return prev.filter((row) => row.id != id);
-    });
-  };
-
-  const addRow = (row: any) => {
-    setTableData((prev) => {
-      return [...prev, { id: prev.length, ...row }];
-    });
-  };
-
-  const editData = (data: any) => {
-    // setTableData(prev=>{return prev.map()})
-  };
 
   const getTabList = () => {
     switch (userType) {
@@ -331,14 +29,14 @@ function Reports() {
               }}
               selected={tabIndex === 0}
             />
-             <TabButton
+            <TabButton
               text="Publisher Report"
               onClick={() => {
                 setTabIndex(1);
               }}
               selected={tabIndex === 1}
             />
-             <TabButton
+            <TabButton
               text="Payments"
               onClick={() => {
                 setTabIndex(2);
@@ -347,129 +45,157 @@ function Reports() {
             />
           </>
         );
+      case "Brand":
+        return (
+          <>
+            <TabButton
+              text="Full Report"
+              onClick={() => {
+                setTabIndex(0);
+              }}
+              selected={tabIndex === 0}
+            />
+            <TabButton
+              text="Payments"
+              onClick={() => {
+                setTabIndex(1);
+              }}
+              selected={tabIndex === 1}
+            />
+          </>
+        );
+    }
+  };
+
+  const getTitle = () => {
+    switch (userType) {
+      case "Agency":
+        if (tabIndex === 0) {
+          return "Reports";
+        }
+        break;
+      case "Brand":
+        if (tabIndex === 0) {
+          return "Reportings";
+        } else if (tabIndex === 1) {
+          return "Join Deals from Affiliate Brands";
+        }
+        break;
+      default:
+        return "Title";
+    }
+  };
+
+  const getTableHeader = () => {
+    switch (userType) {
+      case "Brand":
+        if (tabIndex === 0) {
+          return <>
+            <div className="col-6 d-inline d-flex align-items-center ">
+              <ListIcon /> <span className="fs-5 ms-2">See the reports</span>
+              <div className="p-2 ms-4 px-auto">
+                <CalendarWrapper setComponentDate={() => {}} />
+              </div>
+              <div className="btn border rounded ms-2">
+                Run report <img src={ArrowsClockwise} alt="" className="ms-3" />
+              </div>
+            </div>
+            <div className="col-2 offset-4 d-inline d-flex align-items-center ">
+              <select className="form-select">
+                <option>Reports Type</option>
+              </select>
+            </div>
+          </>;
+        } else if(tabIndex === 1) {
+            return <>
+            <div className="col-6 d-inline d-flex align-items-center ">
+              <ListIcon /> <span className="fs-5 ms-2">In-depth Overview of your Payments</span>
+            </div>
+            <div className="col-4 offset-2 d-inline d-flex align-items-center ">
+                <img src={Gift} alt="" className="me-3"/>
+                <span style={{fontSize: "14px"}}>Get Commission Rewards by Referring to your links</span>
+            </div>
+          </>;
+        }
+        break;
+      default:
+        return <div>18398934</div>;
+    }
+  };
+
+  const getTableBody = () => {
+    switch (userType) {
+      case "Brand":
+        if (tabIndex === 0) {
+          return <BrandFullReportTable />;
+        } else if (tabIndex === 1) {
+          return <BrandPaymentsTable />;
+        }
+        break;
+      default:
+        return <div></div>;
+    }
+  };
+
+  const getButtomReport = () => {
+    switch (userType) {
+      case "Agency":
+        if (tabIndex === 2) {
+          return <ButtomReport />;
+        }
+        break;
+      case "Brand":
+        if (tabIndex === 1) {
+          return <ButtomReport />;
+        }
+        break;
+      default:
+        <div></div>;
     }
   };
   return (
-    <Layout>
-      <div className="row pt-3 ps-2 pe-5">
-        <div className="col-12 mt-3 d-flex justify-content-between">
-          <h4>Reports</h4>
+    <div className="row pt-3 ps-2 pe-5">
+      <div className="col-12 mt-3 d-flex justify-content-between">
+        <h4>{getTitle()}</h4>
+        {userType === "Agency" && (
           <button className="btn btn-primary btn-sm">Connect</button>
+        )}
+      </div>
+      <div className="col-12 mt-4 d-flex">{getTabList()}</div>
+      <div className="col-12 mt-4">
+        <div className="card d-flex p-2">
+          <div className="row">
+            {getTableHeader()}
+          </div>
         </div>
-        <div className="col-12 mt-4 d-flex">
-         
-        </div>
-        <div className="col-12 mt-4">
-          <div className="card d-flex p-2">
-            <div className="row">
-              <div className="col-6 d-inline d-flex align-items-center ">
-                <ListIcon /> <span className="fs-5 ms-2">See the reports</span>
-                <div className="card p-2 ms-4 px-auto">
-                  <CalendarIcon />
-                </div>
-              </div>
-              <div className="col-2 offset-4 d-inline d-flex align-items-center ">
-                <select className="form-select">
-                  <option>Reports Type</option>
-                </select>
+        <div className="row mt-3">
+          <div className="col-12">
+            <div className="card">
+              <div className="row d-flex justify-content-center">
+                <ReportSummary tabIndex={tabIndex} />
               </div>
             </div>
           </div>
-          <div className="row mt-3">
-            <div className="col-12">
-              <div className="card">
-                <div className="row d-flex">
-                  <div className="col-2 w-5 ms-2 mt-2" style={{ width: "11%" }}>
-                    <h5 className="d-inline">Summary</h5>
-                  </div>
-                  <div className="col-10 d-flex" style={{ width: "88%" }}>
-                    <div className="productCardWrapper">
-                      <ProductReportCard
-                        topLabel={"Impressions"}
-                        topValue={0}
-                        bottomLabel={"Clicks"}
-                        bottomValue={0}
-                      />
-                    </div>
-                    <div className="ms-2 productCardWrapper">
-                      <ProductReportCard
-                        topLabel={"RDA"}
-                        topValue={0}
-                        bottomLabel={"Gross Clicks"}
-                        bottomValue={0}
-                      />
-                    </div>
-                    <div className="ms-2 productCardWrapper">
-                      <ProductReportCard
-                        topLabel={"Revenue"}
-                        topValue={0}
-                        bottomLabel={"Pay Cut"}
-                        bottomValue={0}
-                      />
-                    </div>
-                    <div className="ms-2 productCardWrapper">
-                      <ProductReportCard
-                        topLabel={"Total CV"}
-                        topValue={0}
-                        bottomLabel={"Profit"}
-                        bottomValue={0}
-                      />
-                    </div>
-                    <div className="ms-2 productCardWrapper">
-                      <ProductReportCard
-                        topLabel={"VTCV"}
-                        topValue={0}
-                        bottomLabel={"Margin"}
-                        bottomValue={0}
-                      />
-                    </div>
-                    <div className="ms-2 productCardWrapper">
-                      <ProductReportCard
-                        topLabel={"CTR"}
-                        topValue={0}
-                        bottomLabel={"Avg. Sale Value"}
-                        bottomValue={0}
-                      />
-                    </div>
-                    <div className="ms-2 productCardWrapper">
-                      <ProductReportCard
-                        topLabel={"Gross Sales"}
-                        topValue={0}
-                        bottomLabel={"CVR"}
-                        bottomValue={0}
-                      />
-                    </div>
-                    <div className="ms-2 productCardWrapper">
-                      <ProductReportCard
-                        topLabel={"CPC"}
-                        topValue={0}
-                        bottomLabel={"CPM"}
-                        bottomValue={0}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-12">
-          <Table
-            tableData={tableData}
-            displayLabels={displayLabels}
-            headers={headers}
-            hideToolbar={true}
-            hideCheckbox={true}
-            tableWidth={"100%"}
-            deleteRow={deleteRow}
-            editData={editData}
-            addRow={addRow}
-            filterData={filterData}
-          />
         </div>
       </div>
-    </Layout>
+      <div className="col-12">{getTableBody()}</div>
+      {getButtomReport()}
+    </div>
   );
 }
 
 export default Reports;
+
+const ButtomReport = () => {
+  return (
+    <div className="col-12 mt-4 d-flex justify-content-center">
+      <span className="me-2">
+        <WarningCircle />
+      </span>
+      <p>
+        Sales are estimated in USD. Actual sales and Commision may be in
+        different currency
+      </p>
+    </div>
+  );
+};

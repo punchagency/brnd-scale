@@ -187,7 +187,7 @@ const Dashboard: FC = () => {
     });
   };
   return (
-    <Layout>
+    <>
       <div className="position-relative">
         <div className="pt-4">
           <p className="fw-light mb-0">Today stats</p>
@@ -329,7 +329,7 @@ const Dashboard: FC = () => {
           <LineChart />
         </div>
       </div>
-    </Layout>
+      </>
   );
 };
 

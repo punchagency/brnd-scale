@@ -15,7 +15,6 @@ const AuthLayout = ({ children, message }: AuthLayoutProps) => {
   const dispatch = useAppDispatch();
   const userType = useAppSelector<userType>(selectUser);
   const location = useLocation();
-  console.log("location", location);
   const onClick = (value: userType) => {
     dispatch(setUserType(value));
   };
