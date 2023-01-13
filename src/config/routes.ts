@@ -14,6 +14,7 @@ import ActiveProducts from "../screens/PublisherScreens/ActiveProducts";
 import ActiveBrands from "../screens/PublisherScreens/ActiveBrands";
 import BrandProducts from "../screens/PublisherScreens/BrandProducts";
 import PublisherReporting from "../screens/PublisherScreens/PublisherReporting";
+import JoinBrand from "../screens/PublisherScreens/JoinBrand";
 
 interface RouteType {
   path: string;
@@ -129,6 +130,12 @@ const routes: RouteType[] = [
     path: "/publisher/brand-details",
     component: PaymentReport,
     name: "Payment Reports Screen",
+    protected: false,
+  },
+  {
+    path: "/publisher/join-brand",
+    component: JoinBrand,
+    name: "Publisher Join Screen",
     protected: false,
   },
 ];
