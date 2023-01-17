@@ -10,6 +10,8 @@ import BrandsImage from "../assets/images/images.svg";
 import { selectUser, login, selectLoggedIn } from "../features/user/userSlice";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import TestCard from "../components/Card/TestCard";
+import PopupsContainer from "../components/Popups/PopupsContainer";
+import ReferLink from "../components/Popups/ReferLink";
 
 const headers = [
   "Top Publishers",
@@ -237,6 +239,7 @@ const Dashboard: FC = () => {
           />
         </div>
       </div> */}
+      <ReferLink />
       <div className="row ">
         <div className="col-6 col-lg-4 col-xxl-3 mt-2">
           <TestCard title="Total Sales"
