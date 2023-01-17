@@ -187,7 +187,7 @@ const Navbar = ({ loggedIn }: any) => {
           )}
           {location.pathname.includes("auth") ? null : (
             <>
-              <form className="d-flex align-items-center my-auto ms-lg-auto">
+              {/* <form className="d-flex align-items-center my-auto ms-lg-auto">
                 <input
                   type="text"
                   className="form-control rounded-pill text-white border border-dark"
@@ -206,10 +206,10 @@ const Navbar = ({ loggedIn }: any) => {
               </form>
               <div className="my-auto ms-lg-5 mt-3">
                 <Avatar />
-              </div>
+              </div> */}
             </>
           )}
-          <div className="bg-dark ms-5 d-block">
+          <div className="bg-dark ms-5 ms-auto d-block">
             <button
               className="navbar-toggler d-none d-lg-block"
               type="button"
