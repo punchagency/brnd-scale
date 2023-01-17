@@ -1,15 +1,5 @@
 import React, { useState } from "react";
-import ActiveIcon from "../../components/svgs/ActiveIcon";
-import jbl from "../../assets/images/jbl.png";
-import versace from "../../assets/images/versace.png";
-import handm from "../../assets/images/HandM.png";
-import herbalLife from "../../assets/images/herbalLife.png";
-import BrandsImage from "../../assets/images/images.svg";
-import MarketBtn from "../../assets/images/market-btn.svg";
-import LinkSimpleBreak from "../../assets/images/LinkSimpleBreak.svg";
 import LinkIcon from "../../assets/images/Link.svg";
-import keyboard from "../../assets/images/keyboard.png";
-import ratings from "../../assets/images/ratings.png";
 import Table from "../../components/Table";
 
 const headers = [
@@ -200,7 +190,7 @@ function BrandPaymentsTable() {
   };
   const deleteRow = (id: number) => {
     setTableData((prev) => {
-      return prev.filter((row) => row.id != id);
+      return prev.filter((row) => row.id !== id);
     });
   };
 
@@ -216,8 +206,6 @@ function BrandPaymentsTable() {
   
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [componentDate, setComponentDate] = useState("");
-  const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
   return (
     <Table

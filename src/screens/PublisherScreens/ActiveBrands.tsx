@@ -1,15 +1,6 @@
 import React, { useState } from "react";
-import ListIcon from "../../components/svgs/ListIcon";
-import Layout from "../../containers/Layouts/Layout";
-import Table from "../../components/Table";
 import { Link, useLocation } from "react-router-dom";
-import CalendarIcon from "../../components/svgs/CalendarIcon";
-import ProductReportCard from "../../components/Reports/ProductReportCard";
-import ReportsMenu from "../../components/Common/PageMenu";
-import Badge from "../../components/Reports/Badge";
-import WarningCircle from "../../components/svgs/WarningCircle";
 import PageTitle from "../../components/PageTitle";
-import PublisherOfferCard from "../../components/Cards/PublisherOfferCard";
 import PageMenu from "../../components/Common/PageMenu";
 
 import jbl from "../../assets/images/jbl-big.png";
@@ -17,56 +8,53 @@ import herbalLife from "../../assets/images/herbalLife-big.png";
 import handM from "../../assets/images/HandM-big.png";
 import versace from "../../assets/images/versace-big.png";
 import ActiveBrandCard from "../../components/Cards/ActiveBrandCard";
-import BackArrow from "../../components/svgs/BackArrow";
-import ForwardArrow from "../../components/svgs/ForwardArrow";
-import BrandFeaturesCard from "../../components/Cards/BrandFeaturesCard";
 import Modal from "./BrandDetails/Modal";
 
 const data = [
   {
-    image: <img src={jbl} className="img img-fluid" />,
+    image: <img src={jbl} alt="" className="img img-fluid" />,
     title: "JBL XTREME",
     commission: "$256",
     earning: "$30",
   },
   {
-    image: <img src={herbalLife} className="img img-fluid" />,
+    image: <img src={herbalLife} alt="" className="img img-fluid"  />,
     title: "Herbal Life",
     commission: "$256",
     earning: "$30",
   },
   {
-    image: <img src={versace} className="img img-fluid" />,
+    image: <img src={versace}  className="img img-fluid" alt="" />,
     title: "Versace",
     commission: "$256",
     earning: "$30",
   },
   {
-    image: <img src={handM} className="img img-fluid" />,
+    image: <img src={handM} className="img img-fluid" alt="" />,
     title: "H and M",
     commission: "$256",
     earning: "$30",
   },
   {
-    image: <img src={versace} className="img img-fluid" />,
+    image: <img src={versace} className="img img-fluid" alt="" />,
     title: "Versace",
     commission: "$256",
     earning: "$30",
   },
   {
-    image: <img src={herbalLife} className="img img-fluid" />,
+    image: <img src={herbalLife} className="img img-fluid" alt="" />,
     title: "Herbal Life",
     commission: "$256",
     earning: "$30",
   },
   {
-    image: <img src={handM} className="img img-fluid" />,
+    image: <img src={handM} className="img img-fluid" alt="" />,
     title: "H and M",
     commission: "$256",
     earning: "$30",
   },
   {
-    image: <img src={jbl} className="img img-fluid" />,
+    image: <img src={jbl} className="img img-fluid" alt="" />,
     title: "JBL XTREME",
     commission: "$256",
     earning: "$30",

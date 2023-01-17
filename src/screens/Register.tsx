@@ -1,15 +1,11 @@
 import React, { FC, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import AuthLayout from "../containers/Layouts/AuthLayout";
-import { userType } from "../types";
-import AmazonLogo from "../assets/images/amazon.png";
 import { useAppSelector } from "../app/hooks";
 import { selectUser } from "../features/user/userSlice";
 import MyIcon from "../components/svgs/MyIcon";
 
-interface Props {}
+// interface Props {}
 
-const AuthPage: FC = ({}: Props) => {
+const AuthPage: FC = () => {
   const userType = useAppSelector(selectUser);
   const [tabIndex, setTabIndex] = useState(0);
   const changeTabIndex = (e: React.MouseEvent) => {
@@ -194,7 +190,7 @@ const AuthPage: FC = ({}: Props) => {
     }
   };
 
-  const [showLogin, setShowLogin] = useState(true);
+  // const [showLogin, setShowLogin] = useState(true);
 
   return (
     <div className="border rounded p-5">

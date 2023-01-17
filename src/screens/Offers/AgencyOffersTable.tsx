@@ -5,8 +5,6 @@ import versace from "../../assets/images/versace.png";
 import handm from "../../assets/images/HandM.png";
 import herbalLife from "../../assets/images/herbalLife.png";
 
-import keyboard from "../../assets/images/keyboard.png";
-import ratings from "../../assets/images/ratings.png";
 import Table from "../../components/Table";
 
 const headers = [
@@ -34,7 +32,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={jbl} />
+        <img src={jbl} alt="" />
       </div>
     ),
     campaignName: "Black Friday Sale",
@@ -64,7 +62,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={handm} />
+        <img src={handm} alt="" />
       </div>
     ),
     campaignName: "Black Friday Sale",
@@ -94,7 +92,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={herbalLife} />
+        <img src={herbalLife} alt="" />
       </div>
     ),
     campaignName: "Black Friday Sale",
@@ -124,7 +122,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={versace} />
+        <img src={versace} alt="" />
       </div>
     ),
     campaignName: "Black Friday Sale",
@@ -154,7 +152,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={jbl} />
+        <img src={jbl} alt="" />
       </div>
     ),
     campaignName: "Black Friday Sale",
@@ -184,7 +182,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={handm} />
+        <img src={handm} alt="" />
       </div>
     ),
     campaignName: "Black Friday Sale",
@@ -214,7 +212,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={herbalLife} />
+        <img src={herbalLife} alt="" />
       </div>
     ),
     campaignName: "Black Friday Sale",
@@ -244,7 +242,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={versace} />
+        <img src={versace} alt="" />
       </div>
     ),
     campaignName: "Black Friday Sale",
@@ -274,7 +272,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={jbl} />
+        <img src={jbl} alt="" />
       </div>
     ),
     campaignName: "Black Friday Sale",
@@ -304,7 +302,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={handm} />
+        <img src={handm} alt="" />
       </div>
     ),
     campaignName: "Black Friday Sale",
@@ -334,7 +332,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={herbalLife} />
+        <img src={herbalLife} alt="" />
       </div>
     ),
     campaignName: "Black Friday Sale",
@@ -364,7 +362,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={versace} />
+        <img src={versace} alt="" />
       </div>
     ),
     campaignName: "Black Friday Sale",
@@ -427,7 +425,7 @@ function AgencyOffersTable() {
   };
   const deleteRow = (id: number) => {
     setTableData((prev) => {
-      return prev.filter((row) => row.id != id);
+      return prev.filter((row) => row.id !== id);
     });
   };
 
@@ -442,8 +440,6 @@ function AgencyOffersTable() {
   };
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [componentDate, setComponentDate] = useState("");
-  const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
   return (
     <Table

@@ -1,20 +1,12 @@
 import React, { useState } from "react";
 import ListIcon from "../../components/svgs/ListIcon";
-import Layout from "../../containers/Layouts/Layout";
 import Table from "../../components/Table";
-import { Link, useLocation } from "react-router-dom";
-import CalendarIcon from "../../components/svgs/CalendarIcon";
-import ProductReportCard from "../../components/Reports/ProductReportCard";
-import ReportsMenu from "../../components/Common/PageMenu";
-import Badge from "../../components/Reports/Badge";
+import { Link } from "react-router-dom";
 import WarningCircle from "../../components/svgs/WarningCircle";
 import PageTitle from "../../components/PageTitle";
-import PublisherOfferCard from "../../components/Cards/PublisherOfferCard";
 import PageMenu from "../../components/Common/PageMenu";
 
 import product from "../../assets/images/product.png";
-import ShareIcon from "../../components/svgs/ShareIcon";
-import CopyIcon from "../../components/svgs/CopyIcon";
 import TablePageDropdown from "../../components/Table/TablePageDropdown";
 import CalendarWrapper from "../../components/Calendar";
 import Search from "../../components/svgs/Search";
@@ -39,7 +31,7 @@ const data = [
     id: 1,
     image: (
       <div className="d-flex justify-content-center">
-        <img src={product} />
+        <img src={product} alt="" />
       </div>
     ),
     productName: (
@@ -82,7 +74,7 @@ const data = [
     id: 2,
     image: (
       <div className="d-flex justify-content-center">
-        <img src={product} />
+        <img src={product} alt="" />
       </div>
     ),
     productName: (
@@ -125,7 +117,7 @@ const data = [
     id: 3,
     image: (
       <div className="d-flex justify-content-center">
-        <img src={product} />
+        <img src={product} alt="" />
       </div>
     ),
     productName: (
@@ -168,7 +160,7 @@ const data = [
     id: 4,
     image: (
       <div className="d-flex justify-content-center">
-        <img src={product} />
+        <img src={product} alt="" />
       </div>
     ),
     productName: (
@@ -211,7 +203,7 @@ const data = [
     id: 5,
     image: (
       <div className="d-flex justify-content-center">
-        <img src={product} />
+        <img src={product} alt="" />
       </div>
     ),
     productName: (
@@ -254,7 +246,7 @@ const data = [
     id: 6,
     image: (
       <div className="d-flex justify-content-center">
-        <img src={product} />
+        <img src={product} alt="" />
       </div>
     ),
     productName: (
@@ -297,7 +289,7 @@ const data = [
     id: 7,
     image: (
       <div className="d-flex justify-content-center">
-        <img src={product} />
+        <img src={product} alt="" />
       </div>
     ),
     productName: (
@@ -340,7 +332,7 @@ const data = [
     id: 8,
     image: (
       <div className="d-flex justify-content-center">
-        <img src={product} />
+        <img src={product} alt="" />
       </div>
     ),
     productName: (
@@ -383,7 +375,7 @@ const data = [
     id: 9,
     image: (
       <div className="d-flex justify-content-center">
-        <img src={product} />
+        <img src={product} alt="" />
       </div>
     ),
     productName: (
@@ -426,7 +418,7 @@ const data = [
     id: 10,
     image: (
       <div className="d-flex justify-content-center">
-        <img src={product} />
+        <img src={product} alt="" />
       </div>
     ),
     productName: (
@@ -469,7 +461,7 @@ const data = [
     id: 11,
     image: (
       <div className="d-flex justify-content-center">
-        <img src={product} />
+        <img src={product} alt="" />
       </div>
     ),
     productName: (
@@ -512,7 +504,7 @@ const data = [
     id: 12,
     image: (
       <div className="d-flex justify-content-center">
-        <img src={product} />
+        <img src={product} alt="" />
       </div>
     ),
     productName: (
@@ -555,7 +547,7 @@ const data = [
     id: 13,
     image: (
       <div className="d-flex justify-content-center">
-        <img src={product} />
+        <img src={product} alt="" />
       </div>
     ),
     productName: (
@@ -613,7 +605,6 @@ const displayLabels = [
 
 function JoinOffer() {
   const [tableData, setTableData] = useState(data);
-  const location = useLocation();
 
   const filterData = (searchString: any) => {
     if (!searchString) return tableData;
@@ -633,7 +624,7 @@ function JoinOffer() {
   };
   const deleteRow = (id: number) => {
     setTableData((prev: any) => {
-      return prev.filter((row: any) => row.id != id);
+      return prev.filter((row: any) => row.id !== id);
     });
   };
 

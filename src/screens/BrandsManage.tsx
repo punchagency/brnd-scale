@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ListIcon from "../components/svgs/ListIcon";
-import Layout from "../containers/Layouts/Layout";
 import Table from "../components/Table";
 
 const headers = [
@@ -423,7 +422,7 @@ function BrandsManage() {
 
   const deleteRow = (id: number) => {
     setTableData((prev) => {
-      return prev.filter((row) => row.id != id);
+      return prev.filter((row) => row.id !== id);
     });
   };
 
@@ -438,8 +437,6 @@ function BrandsManage() {
   };
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [componentDate, setComponentDate] = useState("");
-  const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
   return (
       <div className="row pt-3 ps-2 pe-5">

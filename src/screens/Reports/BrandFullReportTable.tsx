@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Table from "../../components/Table";
-import LinkSimpleBreak from "../../assets/images/LinkSimpleBreak.svg";
-import LinkIcon from "../../assets/images/Link.svg";
 
 const headers = [
   "Product",
@@ -18,31 +16,31 @@ const headers = [
   "Total CVR",
 ];
 
-interface ViewButtonProps {
-  href?: string;
-}
+// interface ViewButtonProps {
+//   href?: string;
+// }
 
-const ViewButton = ({ href = "" }: ViewButtonProps) => {
-  return (
-    <a
-      className="btn btn-primary p-1 text-center pb-2"
-      style={{
-        height: "22px",
-        width: "48px",
-        fontSize: "12px",
-        lineHeight: "16px",
-      }}
-      href={href}
-    >
-      View
-    </a>
-  );
-};
+// const ViewButton = ({ href = "" }: ViewButtonProps) => {
+//   return (
+//     <a
+//       className="btn btn-primary p-1 text-center pb-2"
+//       style={{
+//         height: "22px",
+//         width: "48px",
+//         fontSize: "12px",
+//         lineHeight: "16px",
+//       }}
+//       href={href}
+//     >
+//       View
+//     </a>
+//   );
+// };
 
 const data = [
   {
     id: 1,
-    productName: <a href="#">Winter worlds men wear (2022) this is samp</a>,
+    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -57,7 +55,7 @@ const data = [
   },
   {
     id: 2,
-    productName: <a href="#">Winter worlds men wear (2022) this is samp</a>,
+    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -72,7 +70,7 @@ const data = [
   },
   {
     id: 3,
-    productName: <a href="#">Winter worlds men wear (2022) this is samp</a>,
+    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -87,7 +85,7 @@ const data = [
   },
   {
     id: 4,
-    productName: <a href="#">Winter worlds men wear (2022) this is samp</a>,
+    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -102,7 +100,7 @@ const data = [
   },
   {
     id: 5,
-    productName: <a href="#">Winter worlds men wear (2022) this is samp</a>,
+    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -117,7 +115,7 @@ const data = [
   },
   {
     id: 6,
-    productName: <a href="#">Winter worlds men wear (2022) this is samp</a>,
+    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -132,7 +130,7 @@ const data = [
   },
   {
     id: 7,
-    productName: <a href="#">Winter worlds men wear (2022) this is samp</a>,
+    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -147,7 +145,7 @@ const data = [
   },
   {
     id: 8,
-    productName: <a href="#">Winter worlds men wear (2022) this is samp</a>,
+    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -162,7 +160,7 @@ const data = [
   },
   {
     id: 9,
-    productName: <a href="#">Winter worlds men wear (2022) this is samp</a>,
+    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -177,7 +175,7 @@ const data = [
   },
   {
     id: 10,
-    productName: <a href="#">Winter worlds men wear (2022) this is samp</a>,
+    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -192,7 +190,7 @@ const data = [
   },
   {
     id: 11,
-    productName: <a href="#">Winter worlds men wear (2022) this is samp</a>,
+    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -207,7 +205,7 @@ const data = [
   },
   {
     id: 12,
-    productName: <a href="#">Winter worlds men wear (2022) this is samp</a>,
+    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -255,7 +253,7 @@ function BrandFullReportTable() {
   };
   const deleteRow = (id: number) => {
     setTableData((prev) => {
-      return prev.filter((row) => row.id != id);
+      return prev.filter((row) => row.id !== id);
     });
   };
 
@@ -270,8 +268,6 @@ function BrandFullReportTable() {
   };
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [componentDate, setComponentDate] = useState("");
-  const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
   return (
     <Table

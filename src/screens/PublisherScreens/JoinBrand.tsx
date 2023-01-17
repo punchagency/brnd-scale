@@ -1,26 +1,13 @@
 import React, { useState } from "react";
 import ListIcon from "../../components/svgs/ListIcon";
-import Layout from "../../containers/Layouts/Layout";
 import Table from "../../components/Table";
-import { Link, useLocation } from "react-router-dom";
-import CalendarIcon from "../../components/svgs/CalendarIcon";
-import ProductReportCard from "../../components/Reports/ProductReportCard";
-import ReportsMenu from "../../components/Common/PageMenu";
-import Badge from "../../components/Reports/Badge";
-import WarningCircle from "../../components/svgs/WarningCircle";
 import PageTitle from "../../components/PageTitle";
-import PublisherOfferCard from "../../components/Cards/PublisherOfferCard";
 import PageMenu from "../../components/Common/PageMenu";
-
-import product from "../../assets/images/product.png";
-import ShareIcon from "../../components/svgs/ShareIcon";
-import CopyIcon from "../../components/svgs/CopyIcon";
 
 import jbl from "../../assets/images/jbl.png";
 import versace from "../../assets/images/versace.png";
 import handm from "../../assets/images/HandM.png";
 import herbalLife from "../../assets/images/herbalLife.png";
-import ActiveIcon from "../../components/svgs/ActiveIcon";
 import TableFilter from "../../components/Table/TableFilter";
 import Search from "../../components/svgs/Search";
 import CalendarWrapper from "../../components/Calendar";
@@ -48,7 +35,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={jbl} />
+        <img src={jbl} alt="" />
       </div>
     ),
 
@@ -78,7 +65,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={handm} />
+        <img src={handm} alt="" />
       </div>
     ),
 
@@ -108,7 +95,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={herbalLife} />
+        <img src={herbalLife} alt="" />
       </div>
     ),
 
@@ -138,7 +125,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={versace} />
+        <img src={versace} alt="" />
       </div>
     ),
 
@@ -168,7 +155,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={jbl} />
+        <img src={jbl} alt="" />
       </div>
     ),
 
@@ -198,7 +185,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={handm} />
+        <img src={handm} alt="" />
       </div>
     ),
 
@@ -228,7 +215,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={herbalLife} />
+        <img src={herbalLife} alt="" />
       </div>
     ),
 
@@ -258,7 +245,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={versace} />
+        <img src={versace} alt="" />
       </div>
     ),
 
@@ -288,7 +275,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={jbl} />
+        <img src={jbl} alt="" />
       </div>
     ),
 
@@ -318,7 +305,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={handm} />
+        <img src={handm} alt="" />
       </div>
     ),
 
@@ -348,7 +335,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={herbalLife} />
+        <img src={herbalLife} alt="" />
       </div>
     ),
 
@@ -378,7 +365,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={versace} />
+        <img src={versace} alt="" />
       </div>
     ),
 
@@ -418,7 +405,6 @@ const displayLabels = [
 
 function JoinBrand() {
   const [tableData, setTableData] = useState(data);
-  const location = useLocation();
 
   const filterData = (searchString: any) => {
     if (!searchString) return tableData;
@@ -438,7 +424,7 @@ function JoinBrand() {
   };
   const deleteRow = (id: number) => {
     setTableData((prev: any) => {
-      return prev.filter((row: any) => row.id != id);
+      return prev.filter((row: any) => row.id !== id);
     });
   };
 

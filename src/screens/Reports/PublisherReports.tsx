@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import Table from "../../components/Table";
 
 import ListIcon from "../../components/svgs/ListIcon";
-import Layout from "../../containers/Layouts/Layout";
-import { Link } from "react-router-dom";
 import CalendarIcon from "../../components/svgs/CalendarIcon";
-import ProductReportCard from "../../components/Reports/ProductReportCard";
-import ReportsMenu from "../../components/Common/PageMenu";
 import EditIcon from "../../components/svgs/EditIcon";
 import Badge from "../../components/Reports/Badge";
 import PageMenu from "../../components/Common/PageMenu";
@@ -393,7 +389,7 @@ function PublisherReports() {
   };
   const deleteRow = (id: number) => {
     setTableData((prev: any) => {
-      return prev.filter((row: any) => row.id != id);
+      return prev.filter((row: any) => row.id !== id);
     });
   };
 
@@ -408,8 +404,6 @@ function PublisherReports() {
   };
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [componentDate, setComponentDate] = useState("");
-  const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
   return (
       <div className="row pt-3 ps-2 pe-5">

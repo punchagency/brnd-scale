@@ -1,18 +1,10 @@
 import React, { useState } from "react";
 import ListIcon from "../../components/svgs/ListIcon";
-import Layout from "../../containers/Layouts/Layout";
 import Table from "../../components/Table";
 import { Link, useLocation } from "react-router-dom";
-import CalendarIcon from "../../components/svgs/CalendarIcon";
-import ProductReportCard from "../../components/Reports/ProductReportCard";
-import ReportsMenu from "../../components/Common/PageMenu";
 import Badge from "../../components/Reports/Badge";
-import WarningCircle from "../../components/svgs/WarningCircle";
 import PageTitle from "../../components/PageTitle";
-import PublisherOfferCard from "../../components/Cards/PublisherOfferCard";
 import PageMenu from "../../components/Common/PageMenu";
-
-import product from "../../assets/images/product.png";
 
 const headers = [
   "Product Name",
@@ -388,7 +380,6 @@ const displayLabels = [
 
 function BrandProducts() {
   const [tableData, setTableData] = useState(data);
-  const location = useLocation();
 
   const filterData = (searchString: any) => {
     if (!searchString) return tableData;
@@ -408,7 +399,7 @@ function BrandProducts() {
   };
   const deleteRow = (id: number) => {
     setTableData((prev: any) => {
-      return prev.filter((row: any) => row.id != id);
+      return prev.filter((row: any) => row.id !== id);
     });
   };
 
@@ -423,8 +414,6 @@ function BrandProducts() {
   };
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [componentDate, setComponentDate] = useState("");
-  const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
   return (
       <div className="row pt-3 ps-2 pe-5">

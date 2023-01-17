@@ -1,24 +1,13 @@
 import React, { useState } from "react";
 import ListIcon from "../../components/svgs/ListIcon";
-import Layout from "../../containers/Layouts/Layout";
 import Table from "../../components/Table";
-import { Link, useLocation } from "react-router-dom";
-import CalendarIcon from "../../components/svgs/CalendarIcon";
-import ProductReportCard from "../../components/Reports/ProductReportCard";
-import ReportsMenu from "../../components/Common/PageMenu";
 import Badge from "../../components/Reports/Badge";
-import WarningCircle from "../../components/svgs/WarningCircle";
 import PageTitle from "../../components/PageTitle";
 import PublisherOfferCard from "../../components/Cards/PublisherOfferCard";
 import PageMenu from "../../components/Common/PageMenu";
 import TablePageDropdown from "../../components/Table/TablePageDropdown";
 import CalendarWrapper from "../../components/Calendar";
-import DeleteIcon from "../../components/svgs/DeleteIcon";
-import PlusIcon from "../../components/svgs/PlusIcon";
-import PencilIcon from "../../components/svgs/PencilIcon";
-import ActiveIcon from "../../components/svgs/ActiveIcon";
 import Search from "../../components/svgs/Search";
-import Funnel from "../../components/svgs/Funnel";
 import TableFilter from "../../components/Table/TableFilter";
 
 const headers = [
@@ -302,7 +291,7 @@ const displayLabels = [
 
 function MyOffers() {
   const [tableData, setTableData] = useState(data);
-  const location = useLocation();
+  // const location = useLocation();
 
   const filterData = (searchString: any) => {
     if (!searchString) return tableData;
@@ -322,7 +311,7 @@ function MyOffers() {
   };
   const deleteRow = (id: number) => {
     setTableData((prev: any) => {
-      return prev.filter((row: any) => row.id != id);
+      return prev.filter((row: any) => row.id !== id);
     });
   };
 

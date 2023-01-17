@@ -62,6 +62,7 @@ function App() {
             <Route path="/auth" element={<AuthLayout />}>
               <Route index path="login" element={<Login />} />
               <Route path="signup" element={<Register />} />
+              <Route path="complete-signup" element={<RegisterStart />} />
               <Route path="verify-account" element={<VerifyAccount />} />
               <Route path="" element={<Navigate to="login" />} />
             </Route>

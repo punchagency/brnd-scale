@@ -152,7 +152,7 @@ function Offers() {
                                 </div>
                               </div>
                               <div className="col-6">
-                                <img src={keyboard} />
+                                <img src={keyboard} alt="" />
                                 <div className="mb-4">
                                   <h5 className="mb-2">Amazon short Link</h5>
                                   <p>
@@ -161,7 +161,7 @@ function Offers() {
                                 </div>
                                 <div className="mb-4">
                                   <h5 className="mb-2">Ratings</h5>
-                                  <img src={ratings} />
+                                  <img src={ratings} alt="" />
                                 </div>
                                 <div className="mb-4">
                                   <h5 className="mb-2">Tag/Link</h5>

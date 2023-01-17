@@ -47,7 +47,7 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
 
   const displayData = () => {
     //determine the rows to display
-    let data = searchString  != '' ? filterData(searchString).slice((currentPage - 1) * numOfRows, currentPage * numOfRows) : tableData;
+    let data = searchString  !== '' ? filterData(searchString).slice((currentPage - 1) * numOfRows, currentPage * numOfRows) : tableData.slice((currentPage - 1) * numOfRows, currentPage * numOfRows);
     // setNumOfPages(data.length);
     return data.map((row:any, index:number) => {
       return (
@@ -195,18 +195,6 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
               {
                 headers.map((header:string)=><th className="py-3">{header}</th>)
               }
-              {/* <th>Brand Name</th>
-              <th>Campaing Name</th>
-              <th>Tag</th>
-              <th>Country</th>
-              <th>Category</th>
-              <th>Store</th>
-              <th>Status</th>
-              <th>Growth</th>
-              <th>Commissions</th>
-              <th>Conversions</th>
-              <th>Total Products</th>
-              <th>Action</th> */}
             </tr>
           </thead>
           <tbody>{displayData()}</tbody>

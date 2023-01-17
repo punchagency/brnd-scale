@@ -1,16 +1,13 @@
 import React, { FC, useState } from "react";
-import Card from "../components/Card/Card";
 import BarChart from "../components/Charts/BarChart";
 import LineChart from "../components/Charts/LineChart";
 import ListContainer from "../components/ListContainer";
 import DashboardNotification from "../components/Notification/DashboardNotification";
 import Table from "../components/Table";
-import Layout from "../containers/Layouts/Layout";
 import BrandsImage from "../assets/images/images.svg";
 import { selectUser, login, selectLoggedIn } from "../features/user/userSlice";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import TestCard from "../components/Card/TestCard";
-import PopupsContainer from "../components/Popups/PopupsContainer";
 import ReferLink from "../components/Popups/ReferLink";
 
 const headers = [
