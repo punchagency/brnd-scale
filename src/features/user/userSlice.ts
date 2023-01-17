@@ -8,7 +8,7 @@ export interface userState {
   }
   
   const initialState: userState = {
-    userType: 'Publisher',
+    userType: 'Agency',
     loggedIn: false
   };
 
