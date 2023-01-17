@@ -236,7 +236,7 @@ const Dashboard: FC = () => {
           />
         </div>
       </div> */}
-      <ReferLink />
+  
       <div className="row ">
         <div className="col-12 col-md-6 col-lg-4 col-xxl-3 mt-2">
           <TestCard title="Total Sales"
