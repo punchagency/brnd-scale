@@ -50,58 +50,22 @@ function App() {
     );
   const loggedIn: boolean = true;
   return (
-    <div className="vh-100 overflow-hidden">
-      <Navbar loggedIn={loggedIn} />
-      {/* <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <Routes>
-          {routes.map((route, index) => (
-            <Route
-              key={index}
-              path={route.path}
-              element={
-                route.protected ? (
-                  <AuthChecker>
-                    <route.component />
-                  </AuthChecker>
-                ) : (
-                  <route.component />
-                )
-              }
-            />
-          ))}
-        </Routes>
-      </BrowserRouter> */}
-      {/* <Layout/> */}
-      {/* <AuthLayout /> */}
-      <div className="container-fluid" style={{ height: 'calc(100% - 50px)'}}> 
-        {/* {loggedIn ? <Layout /> : <VerifyAccount />} */}
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <div className="vh-100 overflow-hidden">
+        <Navbar loggedIn={loggedIn} />
 
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <div
+          className="container-fluid"
+          style={{ height: "calc(100% - 50px)" }}
+        >
           <Routes>
-            {/* {routes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                element={
-                  route.protected ? (
-                    <AuthChecker>
-                      <route.component />
-                    </AuthChecker>
-                  ) : (
-                    // <Layout>
-                    <route.component />
-                    // </Layout>
-                  )
-                }
-              />
-            ))} */}
             <Route path="/auth" element={<AuthLayout />}>
               <Route index path="login" element={<Login />} />
               <Route path="signup" element={<Register />} />
               <Route path="verify-account" element={<VerifyAccount />} />
               <Route path="" element={<Navigate to="login" />} />
             </Route>
-            <Route path='/' element={<Layout />}>
+            <Route path="/" element={<Layout />}>
               <Route index element={<Dashboard />} />
               <Route path="offers" element={<Offers />} />
               <Route path="publisher" element={<Dashboard />} />
@@ -112,25 +76,37 @@ function App() {
               <Route path="product-reports" element={<ProductReports />} />
               <Route path="publisher-reports" element={<PublisherReports />} />
               <Route path="payment-reports" element={<PaymentReport />} />
-              
 
               <Route path="publisher/offers" element={<MyOffers />} />
-              <Route path="publisher/active-products" element={<ActiveProducts />} />
-              <Route path="publisher/active-brands" element={<ActiveBrands />} />
-              <Route path="publisher/brand-products" element={<BrandProducts />} />
-              <Route path="publisher/reports" element={<PublisherReporting />} />
-              <Route path="publisher/brand-details" element={<PaymentReport />} />
+              <Route
+                path="publisher/active-products"
+                element={<ActiveProducts />}
+              />
+              <Route
+                path="publisher/active-brands"
+                element={<ActiveBrands />}
+              />
+              <Route
+                path="publisher/brand-products"
+                element={<BrandProducts />}
+              />
+              <Route
+                path="publisher/reports"
+                element={<PublisherReporting />}
+              />
+              <Route
+                path="publisher/brand-details"
+                element={<PaymentReport />}
+              />
               <Route path="publisher/join-brand" element={<JoinBrand />} />
               <Route path="publisher/join-offer" element={<JoinOffer />} />
               <Route path="reports" element={<Reports />} />
               <Route path="*" element={<Navigate to="" />} />
             </Route>
-
-            
           </Routes>
-        </BrowserRouter>
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
