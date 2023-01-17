@@ -64,20 +64,6 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
           {
             displayLabels.map((label:string) => {return <td>{row[label]}</td>})
           }
-          {/* <td>{row.brandName}</td>
-          <td>{row.campaingName}</td>
-          <td>{row.tag}</td>
-          <td>{row.country}</td>
-          <td>{row.category}</td>
-          <td>{row.store}</td>
-          <td>{row.status}</td>
-          <td>{row.growth}</td>
-          <td>{row.commissions}</td>
-          <td>{row.conversions}</td>
-          <td>{row.totalProducts}</td>
-          <td>
-            <button className="btn btn-danger btn-sm">action</button>
-          </td> */}
         </tr>
       );
     });
@@ -108,6 +94,10 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
     }
     return buttons;
   };
+
+  const dataLength = ()=>{
+    return searchString != '' ? filterData(searchString).slice((currentPage - 1) * numOfRows, currentPage * numOfRows) : tableData
+  }
   const [componentDate, setComponentDate] = useState("");
   return (
     <>
@@ -203,7 +193,7 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
       <div className={`col-12 mt-3 ${hideFooter ? 'd-none' : undefined}`}>
         <div className="card d-flex px-2 justify-content-between">
           <div className="row d-flex align-content-center">
-            <p className="col-3 mt-3">Showing {(currentPage - 1) * numOfRows + 1} to {displayData().length < numOfRows ? displayData().length : currentPage * numOfRows} of {displayData().length/*Todo: refactor*/} entries</p>
+            <p className="col-3 mt-3">Showing {(currentPage - 1) * numOfRows + 1} to {dataLength().length < numOfRows ? dataLength().length : currentPage * numOfRows} of {dataLength().length/*Todo: refactor*/} entries</p>
             <div className="col-2 ms-auto d-flex align-items-center">
               <div
                 className="me-1 ms-auto"
