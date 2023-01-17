@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import CalendarWrapper from "../Calendar";
 import ActiveIcon from "../svgs/ActiveIcon";
 import CalendarIcon from "../svgs/CalendarIcon";
 import CaretLeft from "../svgs/CaretLeft";
@@ -10,10 +11,10 @@ import PlusIcon from "../svgs/PlusIcon";
 import Search from "../svgs/Search";
 
 //displayLabels is an array of keys used to access tableData object values
-function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, tableWidth, hideCheckbox, hideToolbar, hideFooter, filterData, cards}:any) {
-  const [numOfRows, setNumOfRows] = useState(10);
-  const [numOfPages, setNumOfPages] = useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
+function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, tableWidth, hideCheckbox, hideToolbar, hideFooter, filterData, cards, toolbar, numOfPages, setNumOfPages, numOfRows, setNumOfRows, currentPage, setCurrentPage}:any) {
+  // const [numOfRows, setNumOfRows] = useState(10);
+  // const [numOfPages, setNumOfPages] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
   const [firstButton, setFirstButton] = useState(0);
   // let add = () => {};
   // let edit = () => {};
@@ -107,9 +108,10 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
     }
     return buttons;
   };
+  const [componentDate, setComponentDate] = useState("");
   return (
     <>
-      <div className={`col-12 mt-3 d-flex flex-nowrap ${hideToolbar ? 'd-none' : undefined}`}>
+      {toolbar ? toolbar : <div className={`col-12 mt-3 d-flex flex-nowrap ${hideToolbar ? 'd-none' : undefined}`}>
         <div className="col-6 d-flex ">
           <div className="col-6 d-flex align-items-center">
             <select
@@ -130,7 +132,8 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
           <div className="col-5 d-flex align-items-center">
             <div className="col-12 d-flex align-items-center">
               <div className="card p-2 px-auto">
-                <CalendarIcon />
+                {/* <CalendarIcon /> */}
+                <CalendarWrapper setComponentDate={setComponentDate} />
               </div>
               <div className="ms-2">
                 <DeleteIcon />
@@ -209,7 +212,7 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
             </button>
           </div>
         </div>
-      </div>
+      </div>}
       <div className={`col-12 mt-3 d-flex flex-nowrap ${cards ? undefined : 'd-none'}`}>
               {cards}
       </div>

@@ -135,69 +135,6 @@ function SideBar() {
       style={{ height: "100%" }}
     >
       {renderSideBarList()}
-      {/* <ul className="nav flex-column flex-grow-1">
-        <li className="nav-item d-flex align-items-center ms-2">
-          <span className="pb-1">
-            <NavItemIcon />
-          </span>
-            <a className="nav-link active text-white ps-2" href="/">
-            Dashboard
-            </a>
-        </li>
-        <li className="nav-item d-flex ms-2">
-          <span className="pb-1">
-            <NavItemIcon />
-          </span>
-          <a className="nav-link text-white ps-2" href="#">
-            Manage
-          </a>
-          <ul className="nav flex-column">
-            <li className="nav-item d-flex align-items-center ms-2">
-              <span className="pb-1">
-                <NavItemIcon />
-              </span>
-              <a className="nav-link text-white ps-2" href="#">
-                Brands
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li className="nav-item d-flex align-items-center ms-2">
-          <span className="pb-1">
-            <NavItemIcon />
-          </span>
-          <a className="nav-link text-white ps-2" href="#">
-            Products
-          </a>
-        </li>
-        <li className="nav-item d-flex align-items-center ms-2">
-          <span className="pb-1">
-            <NavItemIcon />
-          </span>
-          <a className="nav-link text-white ps-2" href="#">
-            Orders
-          </a>
-        </li>
-        <li className="nav-item d-flex align-items-center ms-2">
-          <span className="pb-1">
-            <NavItemIcon />
-          </span>
-          <a className="nav-link text-white ps-2" href="#">
-            Products
-          </a>
-        </li>
-      </ul> */}
-
-      {/* <ul className="nav flex-column mt-5 mb-3">
-        <li className="nav-item d-flex align-items-center ms-2">
-          <span className="pb-1">
-            <NavItemIcon />
-          </span>
-          <a className="nav-link text-white ps-2" href="#">
-            Settings
-          </a>
-        </li>
-      </ul> */}
 
       <ul className="text-white">
         <a

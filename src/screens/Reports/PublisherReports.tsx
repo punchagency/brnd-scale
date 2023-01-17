@@ -448,6 +448,7 @@ function PublisherReports() {
             editData={editData}
             addRow={addRow}
             filterData={filterData}
+            // toolbar={}
           />
         </div>
       </div>

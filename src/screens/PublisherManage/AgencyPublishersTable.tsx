@@ -8,6 +8,12 @@ import herbalLife from "../../assets/images/herbalLife.png";
 import keyboard from "../../assets/images/keyboard.png";
 import ratings from "../../assets/images/ratings.png";
 import Table from "../../components/Table";
+import Funnel from "../../components/svgs/Funnel";
+import Search from "../../components/svgs/Search";
+import PencilIcon from "../../components/svgs/PencilIcon";
+import PlusIcon from "../../components/svgs/PlusIcon";
+import DeleteIcon from "../../components/svgs/DeleteIcon";
+import CalendarWrapper from "../../components/Calendar";
 
 const headers = [
     "Publisher Name",
@@ -495,7 +501,12 @@ function AgencyPublishersTable() {
     const editData = (data: any) => {
       // setTableData(prev=>{return prev.map()})
     };
-  
+
+    const [numOfRows, setNumOfRows] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [componentDate, setComponentDate] = useState("");
+  const [searchString, setSearchString] = useState("");
+  const [numOfPages, setNumOfPages] = useState(1);
   return (
     <Table
       tableData={tableData}
@@ -506,6 +517,109 @@ function AgencyPublishersTable() {
       editData={editData}
       addRow={addRow}
       filterData={filterData}
+      toolbar={<div className={`col-12 mt-3 d-flex flex-nowrap`}>
+      <div className="col-6 d-flex ">
+        <div className="col-6 d-flex align-items-center">
+          <select
+            className="form-select"
+            value={numOfRows}
+            onChange={(e) => {
+              setNumOfRows(Number(e.target.value));
+              setCurrentPage(1);
+            }}
+            style={{ width: "29%" }}
+          >
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+            <option value={30}>30</option>
+          </select>
+          <span className="ms-3">entries in the page</span>
+        </div>
+        <div className="col-5 d-flex align-items-center">
+          <div className="col-12 d-flex align-items-center">
+            <div className="card p-2 px-auto border-0">
+              {/* <CalendarIcon /> */}
+              <CalendarWrapper setComponentDate={setComponentDate} />
+            </div>
+            <div className="ms-2">
+              <DeleteIcon />
+            </div>
+            <div className="ms-2">
+              <button
+                className="btn btn-light btn-sm d-flex text-white"
+                style={{ backgroundColor: "#828282" }}
+              >
+                Add{" "}
+                <span className="ms-1">
+                  <PlusIcon />
+                </span>
+              </button>
+            </div>
+            <div className="ms-2">
+              <button
+                className="btn btn-light btn-sm d-flex text-white"
+                style={{ backgroundColor: "#828282" }}
+              >
+                Edit
+                <span className="ms-1">
+                  <PencilIcon />
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="col-6 d-flex align-items-center">
+        <div className="">
+          <button
+            className="btn btn-light btn-sm d-flex text-white"
+            style={{ backgroundColor: "#828282" }}
+          >
+            Active
+            <span className="ms-1">
+              <ActiveIcon />
+            </span>
+          </button>
+        </div>
+        <div className="col-5">
+          <div className="input-group flex-nowrap my-auto">
+            <input
+              type="text"
+              className="form-control"
+              placeholder=""
+              value={searchString}
+              onChange={(e) => {setSearchString(e.target.value); setCurrentPage(1)}}
+              aria-label=""
+              aria-describedby="addon-wrapping"
+            />
+            <span
+              className="input-group-text bg-white border"
+              id="addon-wrapping"
+            >
+              <Search color={"#00000"} />
+            </span>
+          </div>
+        </div>
+        <div className="col-3 ms-3">
+          <select className="form-select w-90">
+            <option value="" selected>
+              Export
+            </option>
+            <option value="">20</option>
+            <option value="">30</option>
+          </select>
+        </div>
+        <div className="col-3 ms-3">
+          <button type="button" className="btn btn-white">
+            Filter
+            <span className="ms-1">
+              <Funnel />
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>}
+    numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
     />
   );
 }

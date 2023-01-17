@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar, DayRange } from "react-modern-calendar-datepicker";
 import CalenderChecker from "../assets/images/CalendarCheck.svg";
+import CalendarIcon from "./svgs/CalendarIcon";
 
 interface CalendarProps {
   setComponentDate: (value: string) => void;
@@ -78,7 +79,8 @@ const CalendarWrapper = ({ setComponentDate }: CalendarProps) => {
           }
         }}
       >
-        <img src={CalenderChecker} className="w-50" />
+        <CalendarIcon />
+        {/* <img src={CalenderChecker} className="w-50" /> */}
       </div>
       {showCalendar && (
         <div

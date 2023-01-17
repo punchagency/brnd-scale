@@ -15,6 +15,10 @@ import PageMenu from "../../components/Common/PageMenu";
 import product from "../../assets/images/product.png";
 import ShareIcon from "../../components/svgs/ShareIcon";
 import CopyIcon from "../../components/svgs/CopyIcon";
+import TableFilter from "../../components/Table/TableFilter";
+import Search from "../../components/svgs/Search";
+import CalendarWrapper from "../../components/Calendar";
+import TablePageDropdown from "../../components/Table/TablePageDropdown";
 
 const headers = [
   "Images",
@@ -545,6 +549,12 @@ function ActiveProducts() {
   const editData = (data: any) => {
     // setTableData(prev=>{return prev.map()})
   };
+
+  const [numOfRows, setNumOfRows] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [componentDate, setComponentDate] = useState("");
+  const [searchString, setSearchString] = useState("");
+  const [numOfPages, setNumOfPages] = useState(1);
   return (
     <div className="row pt-3 ps-2 pe-5">
       <div className="col-12 mt-3">
@@ -732,6 +742,69 @@ function ActiveProducts() {
           editData={editData}
           addRow={addRow}
           filterData={filterData}
+          toolbar={
+            <div
+              className={`col-12 mt-3 d-flex flex-nowrap+`}
+            >
+              <div className="col-6 d-flex ">
+                <div className="col-6 d-flex align-items-center">
+                  <TablePageDropdown numOfRows={numOfRows} setNumOfRows={setNumOfRows} setCurrentPage={setCurrentPage} />
+                </div>
+                <div className="col-6 d-flex align-items-center">
+                  <div className="col-12 d-flex align-items-center">
+                    <div className="card border-0">
+                      {/* <CalendarIcon /> */}
+                      <CalendarWrapper setComponentDate={setComponentDate} />
+                    </div>
+                    <select className="ms-1 rounded px-2 py-1" style={{borderColor: "#ced4da"}}>
+                      <option value="">Month</option>
+                    </select>
+                    <select className="ms-1 rounded px-2 py-1" style={{borderColor: "#ced4da"}}>
+                      <option value="">Category</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div className="col-6 d-flex align-items-center justify-content-end">
+                <div className="col-5">
+                  <div className="input-group flex-nowrap my-auto">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder=""
+                      value={searchString}
+                      onChange={(e) => {
+                        setSearchString(e.target.value);
+                        setCurrentPage(1);
+                      }}
+                      aria-label=""
+                      aria-describedby="addon-wrapping"
+                    />
+                    <span
+                      className="input-group-text bg-white border"
+                      id="addon-wrapping"
+                    >
+                      <Search color={"#00000"} />
+                    </span>
+                  </div>
+                </div>
+                <div className="col-3 ms-3">
+                  <select className="form-select w-90">
+                    <option value="" selected>
+                      Export
+                    </option>
+                    <option value="">20</option>
+                    <option value="">30</option>
+                  </select>
+                </div>
+                <div className="col-2 ms-3 ">
+                  <TableFilter />
+                </div>
+              </div>
+            </div>
+          }
+          numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
+    
         />
       </div>
     </div>
