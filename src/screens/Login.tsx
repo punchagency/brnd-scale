@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { Navigate, useSearchParams } from "react-router-dom";
+import { Link, Navigate, useSearchParams } from "react-router-dom";
 import AuthLayout from "../containers/Layouts/AuthLayout";
 import { userType } from "../types";
 import AmazonLogo from '../assets/images/amazon.png';
@@ -56,15 +56,15 @@ const Login: FC = ({}: Props) => {
             </label>
           </div>
           <div className="d-flex justify-content-between mt-3 mb-4">
-            <a href="/auth/signup" className="text-black-50 text-decoration-none">
+            <Link to={"/auth/signup"} className="text-black-50 text-decoration-none">
               Sign up here
-            </a>
-            <a
-              href="forgot-password"
+            </Link>
+            <Link
+              to={"forgot-password"}
               className="text-black-50 text-decoration-none"
             >
               Forgot Details?
-            </a>
+            </Link>
           </div>
           <div className="w-100 d-flex justify-content-center">
             <button type="submit" className="btn btn-secondary ms-auto me-auto" onClick={onSubmit}>
