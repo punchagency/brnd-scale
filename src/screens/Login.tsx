@@ -56,7 +56,7 @@ const Login: FC = ({}: Props) => {
             </label>
           </div>
           <div className="d-flex justify-content-between mt-3 mb-4">
-            <a href="/signup" className="text-black-50 text-decoration-none">
+            <a href="/auth/signup" className="text-black-50 text-decoration-none">
               Sign up here
             </a>
             <a
