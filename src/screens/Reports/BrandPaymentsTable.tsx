@@ -213,6 +213,12 @@ function BrandPaymentsTable() {
   const editData = (data: any) => {
     // setTableData(prev=>{return prev.map()})
   };
+  
+  const [numOfRows, setNumOfRows] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [componentDate, setComponentDate] = useState("");
+  const [searchString, setSearchString] = useState("");
+  const [numOfPages, setNumOfPages] = useState(1);
   return (
     <Table
       tableData={tableData}
@@ -223,6 +229,7 @@ function BrandPaymentsTable() {
       editData={editData}
       addRow={addRow}
       filterData={filterData}
+      numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
     />
   );
 }

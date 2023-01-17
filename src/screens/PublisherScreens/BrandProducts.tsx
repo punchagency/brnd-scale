@@ -421,6 +421,11 @@ function BrandProducts() {
   const editData = (data: any) => {
     // setTableData(prev=>{return prev.map()})
   };
+  const [numOfRows, setNumOfRows] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [componentDate, setComponentDate] = useState("");
+  const [searchString, setSearchString] = useState("");
+  const [numOfPages, setNumOfPages] = useState(1);
   return (
       <div className="row pt-3 ps-2 pe-5">
         <div className="col-12 mt-3">
@@ -456,6 +461,7 @@ function BrandProducts() {
             editData={editData}
             addRow={addRow}
             filterData={filterData}
+            numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
           />
         </div>
       </div>

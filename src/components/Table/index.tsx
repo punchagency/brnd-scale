@@ -111,8 +111,8 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
   const [componentDate, setComponentDate] = useState("");
   return (
     <>
-      {toolbar ? toolbar : <div className={`col-12 mt-3 d-flex flex-nowrap ${hideToolbar ? 'd-none' : undefined}`}>
-        <div className="col-6 d-flex ">
+      {toolbar ? toolbar : <div className={`col-12 mt-3 d-flex flex-wrap flex-md-nowrap ${hideToolbar ? 'd-none' : undefined}`}>
+        <div className="col-12 col-md-6 d-flex ">
           <div className="col-6 d-flex align-items-center">
             <select
               className="form-select"
@@ -131,50 +131,15 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
           </div>
           <div className="col-5 d-flex align-items-center">
             <div className="col-12 d-flex align-items-center">
-              <div className="card p-2 px-auto">
+              <div className="card p-2 px-auto border-0">
                 {/* <CalendarIcon /> */}
                 <CalendarWrapper setComponentDate={setComponentDate} />
-              </div>
-              <div className="ms-2">
-                <DeleteIcon />
-              </div>
-              <div className="ms-2">
-                <button
-                  className="btn btn-light btn-sm d-flex text-white"
-                  style={{ backgroundColor: "#828282" }}
-                >
-                  Add{" "}
-                  <span className="ms-1">
-                    <PlusIcon />
-                  </span>
-                </button>
-              </div>
-              <div className="ms-2">
-                <button
-                  className="btn btn-light btn-sm d-flex text-white"
-                  style={{ backgroundColor: "#828282" }}
-                >
-                  Edit
-                  <span className="ms-1">
-                    <PencilIcon />
-                  </span>
-                </button>
               </div>
             </div>
           </div>
         </div>
-        <div className="col-6 d-flex align-items-center">
-          <div className="">
-            <button
-              className="btn btn-light btn-sm d-flex text-white"
-              style={{ backgroundColor: "#828282" }}
-            >
-              Active
-              <span className="ms-1">
-                <ActiveIcon />
-              </span>
-            </button>
-          </div>
+        <div className="col-12 col-md-6 d-flex align-items-center">
+          
           <div className="col-5">
             <div className="input-group flex-nowrap my-auto">
               <input
