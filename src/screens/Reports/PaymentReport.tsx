@@ -287,7 +287,7 @@ function PaymentReport() {
   if(userType === 'Agency'){
     links = [{path: '/product-reports', title: 'Product Report'}, {path: '/publisher-reports', title: 'Publisher Report'}, {path: '/payment-reports', title: 'Payments'}]
   }else{
-    links = [{path: '/publisher/brand-details', title: 'Overview'}, {path: '/publisher', title: 'Brand Pullings'}]
+    links = [{path: '/publisher/brand-details', title: 'Overview'}, {path: '/publisher/brand-products', title: 'Brand Pullings'}]
   }
   
   const [numOfRows, setNumOfRows] = useState(10);
