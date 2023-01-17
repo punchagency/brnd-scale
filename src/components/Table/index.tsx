@@ -193,8 +193,8 @@ function Table({tableData, displayLabels, headers, editData, deleteRow, addRow, 
       <div className={`col-12 mt-3 ${hideFooter ? 'd-none' : undefined}`}>
         <div className="card d-flex px-2 justify-content-between">
           <div className="row d-flex align-content-center">
-            <p className="col-3 mt-3">Showing {(currentPage - 1) * numOfRows + 1} to {dataLength().length < numOfRows ? dataLength().length : currentPage * numOfRows} of {dataLength().length/*Todo: refactor*/} entries</p>
-            <div className="col-2 ms-auto d-flex align-items-center">
+            <p className="col-6 col-md-3 mt-3">Showing {(currentPage - 1) * numOfRows + 1} to {dataLength().length < numOfRows ? dataLength().length : currentPage * numOfRows} of {dataLength().length/*Todo: refactor*/} entries</p>
+            <div className="col-4 col-md-2 ms-auto d-flex align-items-center">
               <div
                 className="me-1 ms-auto"
                 onClick={() => {

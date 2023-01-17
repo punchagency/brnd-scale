@@ -185,6 +185,10 @@ const Dashboard: FC = () => {
       );
     });
   };
+  
+  const [numOfRows, setNumOfRows] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [numOfPages, setNumOfPages] = useState(1);
   return (
     <>
       <div className="position-relative">
@@ -196,47 +200,6 @@ const Dashboard: FC = () => {
           <DashboardNotification brands={2} publishers={2} conversions={2} />
         )}
       </div>
-      {/* <div className="w-100">
-        <div className="w-100 d-flex justify-content-between flex-wrap">
-          <Card
-            title="Total Sales"
-            extra="27K"
-            reduce={true}
-            value="576"
-            main={selectedCard === 0}
-            date="From 10 - 20 Nov"
-            onClick={() => setSelectedCard(0)}
-          />
-          <Card
-            title="Total Orders"
-            extra="27K"
-            reduce={true}
-            value="576"
-            main={selectedCard === 1}
-            date="From 10 - 20 Nov"
-            onClick={() => setSelectedCard(1)}
-          />
-          <Card
-            title="Total Revenue"
-            extra="27K"
-            reduce={true}
-            value="$259.99"
-            main={selectedCard === 2}
-            date="From 10 - 20 Nov"
-            onClick={() => setSelectedCard(2)}
-          />{" "}
-          <Card
-            title="Conversion rate"
-            extra="27K"
-            reduce={true}
-            value="53.2%"
-            main={selectedCard === 3}
-            date="From 10 - 20 Nov"
-            onClick={() => setSelectedCard(3)}
-          />
-        </div>
-      </div> */}
-  
       <div className="row ">
         <div className="col-12 col-md-6 col-lg-4 col-xxl-3 mt-2">
           <TestCard title="Total Sales"
@@ -297,6 +260,7 @@ const Dashboard: FC = () => {
               hideCheckbox={true}
               hideFooter={true}
               hideToolbar={true}
+              numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
             />
           </ListContainer>
         </div>
@@ -322,6 +286,7 @@ const Dashboard: FC = () => {
               hideCheckbox={true}
               hideFooter={true}
               hideToolbar={true}
+              numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
             />
           </ListContainer>
         </div>
