@@ -12,49 +12,49 @@ import Modal from "./BrandDetails/Modal";
 
 const data = [
   {
-    image: <img src={jbl} alt="" className="img img-fluid" />,
+    image: <Link to={"/publisher/brand-details"} className="" ><img src={jbl} alt="" className="img img-fluid" /></Link>,
     title: "JBL XTREME",
     commission: "$256",
     earning: "$30",
   },
   {
-    image: <img src={herbalLife} alt="" className="img img-fluid"  />,
+    image: <Link to={"/publisher/brand-details"} className="" ><img src={herbalLife} alt="" className="img img-fluid"  /></Link>,
     title: "Herbal Life",
     commission: "$256",
     earning: "$30",
   },
   {
-    image: <img src={versace}  className="img img-fluid" alt="" />,
+    image: <Link to={"/publisher/brand-details"} className="" ><img src={versace}  className="img img-fluid" alt="" /></Link>,
     title: "Versace",
     commission: "$256",
     earning: "$30",
   },
   {
-    image: <img src={handM} className="img img-fluid" alt="" />,
+    image: <Link to={"/publisher/brand-details"} className="" ><img src={handM} className="img img-fluid" alt="" /></Link>,
     title: "H and M",
     commission: "$256",
     earning: "$30",
   },
   {
-    image: <img src={versace} className="img img-fluid" alt="" />,
+    image: <Link to={"/publisher/brand-details"} className="" ><img src={versace} className="img img-fluid" alt="" /></Link>,
     title: "Versace",
     commission: "$256",
     earning: "$30",
   },
   {
-    image: <img src={herbalLife} className="img img-fluid" alt="" />,
+    image: <Link to={"/publisher/brand-details"} className="" ><img src={herbalLife} className="img img-fluid" alt="" /></Link>,
     title: "Herbal Life",
     commission: "$256",
     earning: "$30",
   },
   {
-    image: <img src={handM} className="img img-fluid" alt="" />,
+    image: <Link to={"/publisher/brand-details"} className="" ><img src={handM} className="img img-fluid" alt="" /></Link>,
     title: "H and M",
     commission: "$256",
     earning: "$30",
   },
   {
-    image: <img src={jbl} className="img img-fluid" alt="" />,
+    image: <Link to={"/publisher/brand-details"} className="" ><img src={jbl} className="img img-fluid" alt="" /></Link>,
     title: "JBL XTREME",
     commission: "$256",
     earning: "$30",
@@ -81,18 +81,7 @@ function ActiveBrands() {
             ]}
           />
         </div>
-        {/* <div className="col-12 mt-4">
-          <div className="card d-flex p-2">
-            <div className="row">
-              <div className="col-6 d-inline d-flex align-items-center ">
-                <ListIcon />{" "}
-                <span className="fs-5 ms-2">
-                  List of All the (active products)
-                </span>
-              </div>
-            </div>
-          </div>
-        </div> */}
+        
         <div className="col-12">
           <div className="row mt-5">
             {data.map((brand) => (
