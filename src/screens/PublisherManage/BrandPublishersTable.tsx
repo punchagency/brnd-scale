@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Table from "../../components/Table";
-import LinkSimpleBreak from "../../assets/images/LinkSimpleBreak.svg";
 import LinkIcon from "../../assets/images/Link.svg";
 import ReferLink from "../../components/Popups/ReferLink";
 

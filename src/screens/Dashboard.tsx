@@ -9,6 +9,7 @@ import { selectUser, login, selectLoggedIn } from "../features/user/userSlice";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import TestCard from "../components/Card/TestCard";
 import ReferLink from "../components/Popups/ReferLink";
+import ProductDetail from "../components/Popups/ProductDetail";
 
 const headers = [
   "Top Publishers",
@@ -70,9 +71,17 @@ const brandsData = [
     brands: "Donna Slider",
     productNames: "Donna Slider",
     seeDetails: (
-      <a href="#" className="btn btn-outline-dark" style={{ fontSize: "12px" }}>
-        View product
-      </a>
+      <div>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target={`#productDetails`}
+          className="btn btn-outline-dark"
+          style={{ fontSize: "12px" }}
+        >
+          View product
+        </button>
+        <ProductDetail id="productDetails" />
+      </div>
     ),
     conversions: "12",
     clicks: "12",
@@ -84,9 +93,17 @@ const brandsData = [
     brands: "Donna Slider",
     productNames: "Donna Slider",
     seeDetails: (
-      <a href="#" className="btn btn-outline-dark" style={{ fontSize: "12px" }}>
-        View product
-      </a>
+      <div>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target={`#productDetails`}
+          className="btn btn-outline-dark"
+          style={{ fontSize: "12px" }}
+        >
+          View product
+        </button>
+        <ProductDetail id="productDetails" />
+      </div>
     ),
     conversions: "12",
     clicks: "12",
@@ -98,9 +115,17 @@ const brandsData = [
     brands: "Donna Slider",
     productNames: "Donna Slider",
     seeDetails: (
-      <a href="#" className="btn btn-outline-dark" style={{ fontSize: "12px" }}>
-        View product
-      </a>
+      <div>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target={`#productDetails`}
+          className="btn btn-outline-dark"
+          style={{ fontSize: "12px" }}
+        >
+          View product
+        </button>
+        <ProductDetail id="productDetails" />
+      </div>
     ),
     conversions: "12",
     clicks: "12",
@@ -112,9 +137,17 @@ const brandsData = [
     brands: "Donna Slider",
     productNames: "Donna Slider",
     seeDetails: (
-      <a href="#" className="btn btn-outline-dark" style={{ fontSize: "12px" }}>
-        View product
-      </a>
+      <div>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target={`#productDetails`}
+          className="btn btn-outline-dark"
+          style={{ fontSize: "12px" }}
+        >
+          View product
+        </button>
+        <ProductDetail id="productDetails" />
+      </div>
     ),
     conversions: "12",
     clicks: "12",
@@ -185,7 +218,7 @@ const Dashboard: FC = () => {
       );
     });
   };
-  
+
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
@@ -202,40 +235,48 @@ const Dashboard: FC = () => {
       </div>
       <div className="row ">
         <div className="col-12 col-md-6 col-lg-4 col-xxl-3 mt-2">
-          <TestCard title="Total Sales"
+          <TestCard
+            title="Total Sales"
             extra="27K"
             reduce={true}
             value="576"
             main={selectedCard === 0}
             date="From 10 - 20 Nov"
-            onClick={() => setSelectedCard(0)} />
+            onClick={() => setSelectedCard(0)}
+          />
         </div>
         <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
-          <TestCard title="Total Orders"
+          <TestCard
+            title="Total Orders"
             extra="27K"
             reduce={true}
             value="576"
             main={selectedCard === 1}
             date="From 10 - 20 Nov"
-            onClick={() => setSelectedCard(1)} />
+            onClick={() => setSelectedCard(1)}
+          />
         </div>
         <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
-          <TestCard title="Total Revenue"
+          <TestCard
+            title="Total Revenue"
             extra="27K"
             reduce={true}
             value="$259.99"
             main={selectedCard === 2}
             date="From 10 - 20 Nov"
-            onClick={() => setSelectedCard(2)} />
+            onClick={() => setSelectedCard(2)}
+          />
         </div>
         <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
-          <TestCard title="Conversion rate"
+          <TestCard
+            title="Conversion rate"
             extra="27K"
             reduce={true}
             value="53.2%"
             main={selectedCard === 3}
             date="From 10 - 20 Nov"
-            onClick={() => setSelectedCard(3)} />
+            onClick={() => setSelectedCard(3)}
+          />
         </div>
       </div>
       <div
@@ -260,7 +301,12 @@ const Dashboard: FC = () => {
               hideCheckbox={true}
               hideFooter={true}
               hideToolbar={true}
-              numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
+              numOfPages={numOfPages}
+              setNumOfPages={setNumOfPages}
+              numOfRows={numOfRows}
+              setNumOfRows={setNumOfRows}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
             />
           </ListContainer>
         </div>
@@ -286,7 +332,12 @@ const Dashboard: FC = () => {
               hideCheckbox={true}
               hideFooter={true}
               hideToolbar={true}
-              numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
+              numOfPages={numOfPages}
+              setNumOfPages={setNumOfPages}
+              numOfRows={numOfRows}
+              setNumOfRows={setNumOfRows}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
             />
           </ListContainer>
         </div>
@@ -294,7 +345,7 @@ const Dashboard: FC = () => {
           <LineChart />
         </div>
       </div>
-      </>
+    </>
   );
 };
 

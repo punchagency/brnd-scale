@@ -1,12 +1,5 @@
 import React, { useState } from "react";
 import ActiveIcon from "../../components/svgs/ActiveIcon";
-import jbl from "../../assets/images/jbl.png";
-import versace from "../../assets/images/versace.png";
-import handm from "../../assets/images/HandM.png";
-import herbalLife from "../../assets/images/herbalLife.png";
-
-import keyboard from "../../assets/images/keyboard.png";
-import ratings from "../../assets/images/ratings.png";
 import Table from "../../components/Table";
 import Funnel from "../../components/svgs/Funnel";
 import Search from "../../components/svgs/Search";
@@ -87,7 +80,7 @@ function AgencyPublishersRequest() {
   };
   const deleteRow = (id: number) => {
     setTableData((prev) => {
-      return prev.filter((row) => row.id != id);
+      return prev.filter((row) => row.id !== id);
     });
   };
 

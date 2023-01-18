@@ -8,7 +8,7 @@ interface PopupsContainerProps {
 
 function PopupsContainer({ modalName, children, id }: PopupsContainerProps) {
   return (
-    <div>
+    <div className="col-12">
       <div
         className="modal fade"
         id={id}
@@ -16,7 +16,7 @@ function PopupsContainer({ modalName, children, id }: PopupsContainerProps) {
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
+        <div className="modal-dialog modal-xl">
           <div className="modal-content">
             <div
               className="modal-header bg-dark d-flex flex-row"
@@ -31,7 +31,7 @@ function PopupsContainer({ modalName, children, id }: PopupsContainerProps) {
               </h1>
               <span>{modalName}</span>
             </div>
-            <div className="modal-body bg-light">{children}</div>
+            <div className="modal-body bg-light modal-xl">{children}</div>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ProductDetail from "../../components/Popups/ProductDetail";
 import Table from "../../components/Table";
 
 const headers = [
@@ -40,7 +41,19 @@ const headers = [
 const data = [
   {
     id: 1,
-    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
+    productName: (
+      <div>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target={`#productDetails`}
+          className="btn text-decoration-underline text-primary"
+          style={{ fontSize: "12px" }}
+        >
+          Winter worlds men wear (2022) this is samp
+        </button>
+        <ProductDetail id="productDetails" />
+      </div>
+    ),
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -55,7 +68,19 @@ const data = [
   },
   {
     id: 2,
-    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
+    productName: (
+      <div>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target={`#productDetails`}
+          className="btn text-decoration-underline text-primary"
+          style={{ fontSize: "12px" }}
+        >
+          Winter worlds men wear (2022) this is samp
+        </button>
+        <ProductDetail id="productDetails" />
+      </div>
+    ),
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -70,7 +95,19 @@ const data = [
   },
   {
     id: 3,
-    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
+    productName: (
+      <div>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target={`#productDetails`}
+          className="btn text-decoration-underline text-primary"
+          style={{ fontSize: "12px" }}
+        >
+          Winter worlds men wear (2022) this is samp
+        </button>
+        <ProductDetail id="productDetails" />
+      </div>
+    ),
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -85,7 +122,19 @@ const data = [
   },
   {
     id: 4,
-    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
+    productName: (
+      <div>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target={`#productDetails`}
+          className="btn text-decoration-underline text-primary"
+          style={{ fontSize: "12px" }}
+        >
+          Winter worlds men wear (2022) this is samp
+        </button>
+        <ProductDetail id="productDetails" />
+      </div>
+    ),
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -100,7 +149,19 @@ const data = [
   },
   {
     id: 5,
-    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
+    productName: (
+      <div>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target={`#productDetails`}
+          className="btn text-decoration-underline text-primary"
+          style={{ fontSize: "12px" }}
+        >
+          Winter worlds men wear (2022) this is samp
+        </button>
+        <ProductDetail id="productDetails" />
+      </div>
+    ),
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -115,7 +176,19 @@ const data = [
   },
   {
     id: 6,
-    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
+    productName: (
+      <div>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target={`#productDetails`}
+          className="btn text-decoration-underline text-primary"
+          style={{ fontSize: "12px" }}
+        >
+          Winter worlds men wear (2022) this is samp
+        </button>
+        <ProductDetail id="productDetails" />
+      </div>
+    ),
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -130,7 +203,19 @@ const data = [
   },
   {
     id: 7,
-    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
+    productName: (
+      <div>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target={`#productDetails`}
+          className="btn text-decoration-underline text-primary"
+          style={{ fontSize: "12px" }}
+        >
+          Winter worlds men wear (2022) this is samp
+        </button>
+        <ProductDetail id="productDetails" />
+      </div>
+    ),
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -145,7 +230,19 @@ const data = [
   },
   {
     id: 8,
-    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
+    productName: (
+      <div>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target={`#productDetails`}
+          className="btn text-decoration-underline text-primary"
+          style={{ fontSize: "12px" }}
+        >
+          Winter worlds men wear (2022) this is samp
+        </button>
+        <ProductDetail id="productDetails" />
+      </div>
+    ),
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -160,7 +257,19 @@ const data = [
   },
   {
     id: 9,
-    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
+    productName: (
+      <div>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target={`#productDetails`}
+          className="btn text-decoration-underline text-primary"
+          style={{ fontSize: "12px" }}
+        >
+          Winter worlds men wear (2022) this is samp
+        </button>
+        <ProductDetail id="productDetails" />
+      </div>
+    ),
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -175,7 +284,19 @@ const data = [
   },
   {
     id: 10,
-    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
+    productName: (
+      <div>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target={`#productDetails`}
+          className="btn text-decoration-underline text-primary"
+          style={{ fontSize: "12px" }}
+        >
+          Winter worlds men wear (2022) this is samp
+        </button>
+        <ProductDetail id="productDetails" />
+      </div>
+    ),
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -190,7 +311,19 @@ const data = [
   },
   {
     id: 11,
-    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
+    productName: (
+      <div>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target={`#productDetails`}
+          className="btn text-decoration-underline text-primary"
+          style={{ fontSize: "12px" }}
+        >
+          Winter worlds men wear (2022) this is samp
+        </button>
+        <ProductDetail id="productDetails" />
+      </div>
+    ),
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -205,7 +338,19 @@ const data = [
   },
   {
     id: 12,
-    productName: <a href="/">Winter worlds men wear (2022) this is samp</a>,
+    productName: (
+      <div>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target={`#productDetails`}
+          className="btn text-decoration-underline text-primary"
+          style={{ fontSize: "12px" }}
+        >
+          Winter worlds men wear (2022) this is samp
+        </button>
+        <ProductDetail id="productDetails" />
+      </div>
+    ),
     publisherName: "Donna Slider",
     lastRecorded: "2022-08-19 (12:17:55)",
     prices: "$255.89",
@@ -279,7 +424,12 @@ function BrandFullReportTable() {
       editData={editData}
       addRow={addRow}
       filterData={filterData}
-      numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
+      numOfPages={numOfPages}
+      setNumOfPages={setNumOfPages}
+      numOfRows={numOfRows}
+      setNumOfRows={setNumOfRows}
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
     />
   );
 }
