@@ -145,43 +145,11 @@ function AgencyPublishersRequest() {
                 <div className="ms-2">
                   <DeleteIcon />
                 </div>
-                <div className="ms-2">
-                  <button
-                    className="btn btn-light btn-sm d-flex text-white"
-                    style={{ backgroundColor: "#828282" }}
-                  >
-                    Add{" "}
-                    <span className="ms-1">
-                      <PlusIcon />
-                    </span>
-                  </button>
-                </div>
-                <div className="ms-2">
-                  <button
-                    className="btn btn-light btn-sm d-flex text-white"
-                    style={{ backgroundColor: "#828282" }}
-                  >
-                    Edit
-                    <span className="ms-1">
-                      <PencilIcon />
-                    </span>
-                  </button>
-                </div>
               </div>
             </div>
           </div>
           <div className="col-6 d-flex align-items-center">
-            <div className="">
-              <button
-                className="btn btn-light btn-sm d-flex text-white"
-                style={{ backgroundColor: "#828282" }}
-              >
-                Active
-                <span className="ms-1">
-                  <ActiveIcon />
-                </span>
-              </button>
-            </div>
+            
             <div className="col-5">
               <div className="input-group flex-nowrap my-auto">
                 <input
