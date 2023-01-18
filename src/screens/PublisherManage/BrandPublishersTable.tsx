@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Table from "../../components/Table";
 import LinkSimpleBreak from "../../assets/images/LinkSimpleBreak.svg";
 import LinkIcon from "../../assets/images/Link.svg";
+import ReferLink from "../../components/Popups/ReferLink";
 
 const headers = [
   "Product Name",
@@ -18,23 +19,28 @@ const headers = [
 ];
 
 interface ViewButtonProps {
-    href?: string;
+  href?: string;
 }
 
-const ViewButton = ({href=""}: ViewButtonProps) => {
+const ViewButton = ({ href = "" }: ViewButtonProps) => {
   return (
-    <a
-      className="btn btn-primary p-1 text-center pb-2"
-      style={{
-        height: "22px",
-        width: "48px",
-        fontSize: "12px",
-        lineHeight: "16px",
-      }}
-      href={href}
-    >
-      View
-    </a>
+    <>
+      <button
+        type="button"
+        className="btn btn-primary p-1 text-center pb-2"
+        data-bs-toggle="modal"
+        data-bs-target={`#referLink`}
+        style={{
+          height: "22px",
+          width: "48px",
+          fontSize: "12px",
+          lineHeight: "16px",
+        }}
+      >
+        View
+      </button>
+      <ReferLink id="referLink" />
+    </>
   );
 };
 
@@ -67,9 +73,7 @@ const data = [
 
     payouts: "$2566",
     sales: "5",
-    referUrl: (
-      <ViewButton/>
-    ),
+    referUrl: <ViewButton />,
   },
   {
     id: 2,
@@ -99,7 +103,7 @@ const data = [
 
     payouts: "$2566",
     sales: "5",
-    referUrl:  <ViewButton/>
+    referUrl: <ViewButton />,
   },
   {
     id: 3,
@@ -129,7 +133,7 @@ const data = [
 
     payouts: "$2566",
     sales: "5",
-    referUrl:  <ViewButton/>,
+    referUrl: <ViewButton />,
   },
   {
     id: 4,
@@ -159,7 +163,7 @@ const data = [
 
     payouts: "$2566",
     sales: "5",
-    referUrl: <ViewButton/>,
+    referUrl: <ViewButton />,
   },
   {
     id: 5,
@@ -189,7 +193,7 @@ const data = [
 
     payouts: "$2566",
     sales: "5",
-    referUrl:  <ViewButton/>,
+    referUrl: <ViewButton />,
   },
   {
     id: 6,
@@ -219,7 +223,7 @@ const data = [
 
     payouts: "$2566",
     sales: "5",
-    referUrl:  <ViewButton/>,
+    referUrl: <ViewButton />,
   },
   {
     id: 7,
@@ -249,10 +253,10 @@ const data = [
 
     payouts: "$2566",
     sales: "5",
-    referUrl:  <ViewButton/>,
+    referUrl: <ViewButton />,
   },
   {
-    id: 8, 
+    id: 8,
     productName: "Amazon Tablet Screen",
     publisherName: "Worldeview.Ltd",
     startingDate: "2022-08-19 (12:17:55)",
@@ -279,7 +283,7 @@ const data = [
 
     payouts: "$2566",
     sales: "5",
-    referUrl:  <ViewButton/>,
+    referUrl: <ViewButton />,
   },
   {
     id: 9,
@@ -309,7 +313,7 @@ const data = [
 
     payouts: "$2566",
     sales: "5",
-    referUrl:  <ViewButton/>,
+    referUrl: <ViewButton />,
   },
   {
     id: 10,
@@ -339,7 +343,7 @@ const data = [
 
     payouts: "$2566",
     sales: "5",
-    referUrl:  <ViewButton/>,
+    referUrl: <ViewButton />,
   },
   {
     productName: "Amazon Tablet Screen",
@@ -368,7 +372,7 @@ const data = [
 
     payouts: "$2566",
     sales: "5",
-    referUrl:  <ViewButton/>,
+    referUrl: <ViewButton />,
   },
   {
     id: 12,
@@ -398,7 +402,7 @@ const data = [
 
     payouts: "$2566",
     sales: "5",
-    referUrl:  <ViewButton/>,
+    referUrl: <ViewButton />,
   },
 ];
 
@@ -464,7 +468,12 @@ function BrandPublishersTable() {
       editData={editData}
       addRow={addRow}
       filterData={filterData}
-      numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
+      numOfPages={numOfPages}
+      setNumOfPages={setNumOfPages}
+      numOfRows={numOfRows}
+      setNumOfRows={setNumOfRows}
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
     />
   );
 }

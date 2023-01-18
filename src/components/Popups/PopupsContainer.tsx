@@ -3,23 +3,15 @@ import React from "react";
 interface PopupsContainerProps {
   modalName: string;
   children: React.ReactNode;
+  id: string;
 }
 
-function PopupsContainer({ modalName, children }: PopupsContainerProps) {
+function PopupsContainer({ modalName, children, id }: PopupsContainerProps) {
   return (
     <div>
-      <button
-        type="button"
-        className="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        Launch demo modal
-      </button>
-
       <div
         className="modal fade"
-        id="exampleModal"
+        id={id}
         tabIndex={-1}
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"

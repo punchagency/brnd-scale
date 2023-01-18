@@ -2,14 +2,18 @@ import React, { FC } from "react";
 import Avatar from "./Avatar";
 import Search from "../svgs/Search";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { logout, selectUser } from "../../features/user/userSlice";
+import { logout, selectUser, setUserType } from "../../features/user/userSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { userType } from "../../types";
 
 const Navbar = ({ loggedIn }: any) => {
   const userType = useAppSelector(selectUser);
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const onClick = (value: userType) => {
+    dispatch(setUserType(value));
+  };
 
   const renderSideBarList = (userType: string) => {
     switch (userType) {
@@ -171,6 +175,16 @@ const Navbar = ({ loggedIn }: any) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           {location.pathname.includes("auth") ? (
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li className="nav-item me-5">
+                <button
+                  className="nav-link text-white bg-dark border-0"
+                  aria-current="page"
+                  onClick={() => onClick("Agency")}
+                  type="button"
+                >
+                  Agency
+                </button>
+              </li>
               <li className="nav-item me-5">
                 <a className="nav-link text-white" aria-current="page" href="#">
                   About us

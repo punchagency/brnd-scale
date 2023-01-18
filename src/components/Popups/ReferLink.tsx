@@ -10,7 +10,7 @@ const dummyData = [
   "https://www.amazon.com/s?k=amazom&adgrpid=85279052327&gclid=Cj0KC",
 ];
 
-function ReferLink() {
+function ReferLink({id}: {id:string}) {
   const [links, setLinks] = useState(dummyData);
   const [newLink, setNewLink] = useState("")
   const deleteLink = (linkIndex: number) => {
@@ -23,7 +23,7 @@ function ReferLink() {
     setLinks(newLinks);
   }
   return (
-    <PopupsContainer modalName="(Refer link) edit panel">
+    <PopupsContainer modalName="(Refer link) edit panel" id={id}>
       <div style={{}}>
         <h1 style={{ fontSize: "1.4rem" }} className="mt-5">
           Current Links
@@ -90,7 +90,7 @@ const RLink = ({ link, onDelete }: RLinkProps) => {
       <a className="w-75" style={{ overflowX: "hidden" }}>
         {link}
       </a>
-      <button className="border-0 bg-none rounded" onClick={onDelete}>
+      <button className="border-0 bg-none rounded" onClick={onDelete} style={{width: '40px'}}>
         <img src={DeleteButton} alt="" />
       </button>
     </div>
