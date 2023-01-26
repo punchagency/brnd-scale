@@ -4,16 +4,21 @@ import { selectUser } from "../features/user/userSlice";
 import MyIcon from "../components/svgs/MyIcon";
 import { Link } from "react-router-dom";
 import PlusIcon from "../assets/images/Plus.svg";
+import InputCode from "../components/VerifyInput";
 
 // interface Props {}
 
 const AuthPage: FC = () => {
+  const [loading, setLoading] = useState(false);
   const userType = useAppSelector(selectUser);
   const [tabIndex, setTabIndex] = useState(0);
-  const changeTabIndex = (e: React.MouseEvent) => {
+  const changeTabIndex = (e: React.MouseEvent, op = "add") => {
     e.preventDefault();
 
-    setTabIndex(tabIndex === 1 ? 0 : 1);
+    // setTabIndex(tabIndex === 1 ? 0 : 1);
+    op === "sub"
+      ? setTabIndex((prev) => --prev)
+      : setTabIndex((prev) => (prev >= 2 ? 0 : ++prev));
   };
   // getting and setting URL params
   // const [searchParams, setSearchParams] = useSearchParams();
@@ -156,19 +161,64 @@ const AuthPage: FC = () => {
               <div className="w-100 d-flex justify-content-center">
                 <button
                   className="btn btn-dark bg-dark ms-auto me-auto"
-                  onClick={changeTabIndex}
+                  onClick={(e) => changeTabIndex(e, "sub")}
                   type="button"
                 >
                   Go back
                 </button>
                 <button
-                  type="submit"
+                  // type="submit"
+                  onClick={changeTabIndex}
                   className="btn btn-dark bg-dark ms-auto me-auto"
                 >
                   Register
                 </button>
               </div>
             </>
+          );
+        } else if (tabIndex == 2) {
+          return (
+            <div className="border rounded p-5 text-center">
+              <p className="h5 mb-5 mt-5 fw-500">Verify your Account</p>
+              <form className="w-100">
+                <div className="mb-3">
+                  <label htmlFor="code" className="form-label h5 mb-3">
+                    Enter the code we sent to you
+                  </label>
+                  <InputCode
+                    length={5}
+                    label="Code Label"
+                    loading={loading}
+                    onComplete={(code) => {
+                      setLoading(true);
+                      setTimeout(() => setLoading(false), 10000);
+                    }}
+                  />
+                </div>
+                <div className="d-flex justify-content-between mt-3 mb-4">
+                  <a
+                    href="/login"
+                    className="text-black-50 text-decoration-none"
+                  >
+                    Go to Login page
+                  </a>
+                  <a
+                    href="forgot-password"
+                    className="text-black-50 text-decoration-none"
+                  >
+                    Forgot Details?
+                  </a>
+                </div>
+                <div className="w-100 d-flex justify-content-center mb-5">
+                  <button
+                    onClick={changeTabIndex}
+                    className="btn btn-primary ms-auto me-auto"
+                  >
+                    Register
+                  </button>
+                </div>
+              </form>
+            </div>
           );
         }
 
@@ -263,19 +313,64 @@ const AuthPage: FC = () => {
               <div className="w-100 d-flex justify-content-center">
                 <button
                   className="btn btn-dark bg-dark ms-auto me-auto"
-                  onClick={changeTabIndex}
+                  onClick={(e) => changeTabIndex(e, "sub")}
                   type="button"
                 >
                   Go back
                 </button>
                 <button
-                  type="submit"
+                  onClick={changeTabIndex}
+                  // type="submit"
                   className="btn btn-dark bg-dark ms-auto me-auto"
                 >
                   Register
                 </button>
               </div>
             </>
+          );
+        } else if (tabIndex == 2) {
+          return (
+            <div className="border rounded p-5 text-center">
+              <p className="h5 mb-5 mt-5 fw-500">Verify your Account</p>
+              <form className="w-100">
+                <div className="mb-3">
+                  <label htmlFor="code" className="form-label h5 mb-3">
+                    Enter the code we sent to you
+                  </label>
+                  <InputCode
+                    length={5}
+                    label="Code Label"
+                    loading={loading}
+                    onComplete={(code) => {
+                      setLoading(true);
+                      setTimeout(() => setLoading(false), 10000);
+                    }}
+                  />
+                </div>
+                <div className="d-flex justify-content-between mt-3 mb-4">
+                  <a
+                    href="/login"
+                    className="text-black-50 text-decoration-none"
+                  >
+                    Go to Login page
+                  </a>
+                  <a
+                    href="forgot-password"
+                    className="text-black-50 text-decoration-none"
+                  >
+                    Forgot Details?
+                  </a>
+                </div>
+                <div className="w-100 d-flex justify-content-center mb-5">
+                  <button
+                    onClick={changeTabIndex}
+                    className="btn btn-primary ms-auto me-auto"
+                  >
+                    Register
+                  </button>
+                </div>
+              </form>
+            </div>
           );
         }
         return (

@@ -69,7 +69,6 @@ function App() {
             <Route path="/" element={<Layout />}>
               <Route index element={<Dashboard />} />
               <Route path="offers" element={<Offers />} />
-              <Route path="publisher" element={<Dashboard />} />
 
               <Route path="manage-brand" element={<BrandsManage />} />
               <Route path="publishers" element={<PublisherManage />} />
@@ -77,7 +76,10 @@ function App() {
               <Route path="product-reports" element={<ProductReports />} />
               <Route path="publisher-reports" element={<PublisherReports />} />
               <Route path="payment-reports" element={<PaymentReport />} />
+              <Route path="reports" element={<Reports />} />
 
+              {/* Publisher links */}
+              <Route path="publisher" element={<Dashboard />} />
               <Route path="publisher/offers" element={<MyOffers />} />
               <Route
                 path="publisher/active-products"
@@ -101,7 +103,6 @@ function App() {
               />
               <Route path="publisher/join-brand" element={<JoinBrand />} />
               <Route path="publisher/join-offer" element={<JoinOffer />} />
-              <Route path="reports" element={<Reports />} />
               <Route path="*" element={<Navigate to="" />} />
             </Route>
           </Routes>
