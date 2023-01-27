@@ -4,6 +4,7 @@ import MarketBtn from "../../assets/images/market-btn.svg"
 import LinkSimpleBreak from "../../assets/images/LinkSimpleBreak.svg"
 import LinkIcon from "../../assets/images/Link.svg"
 import Table from "../../components/Table";
+import TableFooter from "../../components/Table/TableFooter";
 
 const headers = [
   "Images",
@@ -566,6 +567,14 @@ function BrandOffersTable() {
       addRow={addRow}
       filterData={filterData}
       numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
+      footer={
+        <TableFooter
+          totalData={tableData.length}
+          rowsPerPage={numOfRows}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      }
     />
   );
 }

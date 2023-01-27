@@ -423,8 +423,8 @@ function BrandProducts() {
         <div className="col-12 mt-4 d-flex">
           <PageMenu
             links={[
-              { path: "/publisher/brand-products", title: "Overview" },
-              { path: "/publisher/active-brands", title: "Brand Products" },
+              { path: "/publisher/brand-details", title: "Overview" },
+              { path: "/publisher/brand-products", title: "Brand Products" },
             ]}
           />
         </div>

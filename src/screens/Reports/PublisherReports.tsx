@@ -6,6 +6,15 @@ import CalendarIcon from "../../components/svgs/CalendarIcon";
 import EditIcon from "../../components/svgs/EditIcon";
 import Badge from "../../components/Reports/Badge";
 import PageMenu from "../../components/Common/PageMenu";
+import TableToolbar from "../../components/Table/TableToolbar";
+import TableDropdown from "../../components/Table/TableDropdown";
+import CalendarWrapper from "../../components/Calendar";
+import Button from "../../components/Table/Button";
+import DeleteIcon from "../../components/svgs/DeleteIcon";
+import SearchInput from "../../components/Table/SearchInput";
+import Dropdown from "../../components/Table/Dropdown";
+import Funnel from "../../components/svgs/Funnel";
+import TableFooter from "../../components/Table/TableFooter";
 
 const headers = [
   "Edit",
@@ -387,23 +396,27 @@ function PublisherReports() {
       );
     });
   };
-  const deleteRow = (id: number) => {
-    setTableData((prev: any) => {
-      return prev.filter((row: any) => row.id !== id);
-    });
+  
+  const handleCheck = (id: any, value: boolean) => {
+    setTableData((prev) =>
+      prev.map((row) => {
+        return row.id === id ? { ...row, checked: value } : { ...row };
+      })
+    );
   };
 
-  const addRow = (row: any) => {
-    setTableData((prev: any) => {
-      return [...prev, { id: prev.length, ...row }];
-    });
+  const checkAll = (value: boolean) => {
+    setTableData((prev) =>
+      prev.map((row) => {
+        return { ...row, checked: value };
+      })
+    );
   };
 
-  const editData = (data: any) => {
-    // setTableData(prev=>{return prev.map()})
-  };
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
+  const [componentDate, setComponentDate] = useState("");
+  const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
   return (
       <div className="row pt-3 ps-2 pe-5">
@@ -424,15 +437,15 @@ function PublisherReports() {
           <div className="card d-flex p-2">
             <div className="row">
               <div className="col-6 d-inline d-flex align-items-center ">
-                <ListIcon /> <span className="fs-5 ms-2">See the reports</span>
-                <div className="card p-2 ms-4 px-auto">
+                <ListIcon /> <span className="fs-5 ms-2">List of top Publishers</span>
+                {/* <div className="card p-2 ms-4 px-auto">
                   <CalendarIcon />
-                </div>
+                </div> */}
               </div>
               <div className="col-2 offset-4 d-inline d-flex align-items-center ">
-                <select className="form-select">
+                {/* <select className="form-select">
                   <option>Reports Type</option>
-                </select>
+                </select> */}
               </div>
             </div>
           </div>
@@ -440,16 +453,83 @@ function PublisherReports() {
         <div className="col-12">
           <Table
             tableData={tableData}
-            displayLabels={displayLabels}
-            headers={headers}
             tableWidth={"120%"}
-            deleteRow={deleteRow}
-            editData={editData}
-            addRow={addRow}
-            filterData={filterData}
-            
-            numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
-            // toolbar={}
+            displayLabels={displayLabels}
+            handleCheck={handleCheck}
+            checkAll={checkAll}
+            headers={headers}
+            numOfRows={numOfRows}
+            numOfPages={numOfPages}
+            currentPage={currentPage}
+            toolbar={
+              <TableToolbar>
+                <div className="col-12 col-md-6  d-flex ">
+                  <TableDropdown
+                    value={numOfRows}
+                    setValue={setNumOfRows}
+                    width={"29%"}
+                    data={[
+                      { title: 10, value: 10 },
+                      { title: 20, value: 20 },
+                    ]}
+                  />
+                  <div className="col-5 d-flex align-items-center">
+                    <div className="col-12 d-flex align-items-center">
+                      <div className="card p-2 px-auto border-0">
+                        <CalendarWrapper setComponentDate={setComponentDate} />
+                      </div>
+                      <div className="ms-2">
+                        <Button
+                          bootstrapClass="btn btn-sm"
+                          content={<DeleteIcon />}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-md-6 d-flex align-items-center justify-content-end">
+                  <div className="col-5">
+                    <SearchInput
+                      value={searchString}
+                      onChangeFunc={(value: string) => {
+                        setSearchString(value);
+                        setCurrentPage(1);
+                      }}
+                    />
+                  </div>
+                  <div className="col-3 ms-3">
+                    <Dropdown
+                      width="90%"
+                      data={[
+                        { title: "Export", value: "" },
+                        { title: 10, value: 10 },
+                      ]}
+                      value=""
+                      setValue={() => {}}
+                    />
+                  </div>
+                  <Button
+                    bootstrapClass="btn btn-white "
+                    content={
+                      <>
+                        Filter
+                        <span className="ms-1">
+                          <Funnel />
+                        </span>
+                      </>
+                    }
+                  />
+                </div>
+              </TableToolbar>
+            }
+            footer={
+              <TableFooter
+                totalData={tableData.length}
+                rowsPerPage={numOfRows}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
+            }
           />
         </div>
       </div>

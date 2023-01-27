@@ -9,6 +9,7 @@ import TablePageDropdown from "../../components/Table/TablePageDropdown";
 import CalendarWrapper from "../../components/Calendar";
 import Search from "../../components/svgs/Search";
 import TableFilter from "../../components/Table/TableFilter";
+import TableFooter from "../../components/Table/TableFooter";
 
 const headers = [
   "Product Name",
@@ -424,6 +425,14 @@ function MyOffers() {
                 </div>
               </div>
             </div>
+          }
+          footer={
+            <TableFooter
+              totalData={tableData.length}
+              rowsPerPage={numOfRows}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
           }
           numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
           cards={

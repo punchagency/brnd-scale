@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import CalendarIcon from "../../components/svgs/CalendarIcon";
 import ProductReportCard from "../../components/Reports/ProductReportCard";
 import PageMenu from "../../components/Common/PageMenu";
+import TableFooter from "../../components/Table/TableFooter";
 
 const headers = [
   "Product Name",
@@ -391,6 +392,14 @@ function PublisherReporting() {
             addRow={addRow}
             filterData={filterData}
             numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
+            footer={
+              <TableFooter
+                totalData={tableData.length}
+                rowsPerPage={numOfRows}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
+            }
           />
         </div>
       </div>

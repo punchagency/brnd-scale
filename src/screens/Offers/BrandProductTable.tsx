@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LinkSimpleBreak from "../../assets/images/LinkSimpleBreak.svg";
 import Table from "../../components/Table";
+import TableFooter from "../../components/Table/TableFooter";
 
 const headers = [
   "Product Name",
@@ -539,6 +540,14 @@ function BrandProductTable() {
       addRow={addRow}
       filterData={filterData}
       numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
+      footer={
+        <TableFooter
+          totalData={tableData.length}
+          rowsPerPage={numOfRows}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      }
     />
   );
 }

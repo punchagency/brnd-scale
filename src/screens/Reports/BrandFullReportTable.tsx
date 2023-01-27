@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ProductDetail from "../../components/Popups/ProductDetail";
 import Table from "../../components/Table";
+import TableFooter from "../../components/Table/TableFooter";
 
 const headers = [
   "Product",
@@ -430,6 +431,14 @@ function BrandFullReportTable() {
       setNumOfRows={setNumOfRows}
       currentPage={currentPage}
       setCurrentPage={setCurrentPage}
+      footer={
+        <TableFooter
+          totalData={tableData.length}
+          rowsPerPage={numOfRows}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      }
     />
   );
 }

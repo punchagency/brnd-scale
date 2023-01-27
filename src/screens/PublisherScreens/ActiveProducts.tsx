@@ -13,6 +13,7 @@ import TableFilter from "../../components/Table/TableFilter";
 import Search from "../../components/svgs/Search";
 import CalendarWrapper from "../../components/Calendar";
 import TablePageDropdown from "../../components/Table/TablePageDropdown";
+import TableFooter from "../../components/Table/TableFooter";
 
 const headers = [
   "Images",
@@ -798,7 +799,14 @@ function ActiveProducts() {
             </div>
           }
           numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
-    
+          footer={
+            <TableFooter
+              totalData={tableData.length}
+              rowsPerPage={numOfRows}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          }
         />
       </div>
     </div>

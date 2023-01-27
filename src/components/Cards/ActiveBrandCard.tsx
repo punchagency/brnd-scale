@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import ActiveIcon from "../svgs/ActiveIcon";
 
 function ActiveBrandCard({ image, earning, commission, title }: any) {
@@ -36,12 +36,13 @@ function ActiveBrandCard({ image, earning, commission, title }: any) {
           <div className="col flex-column mt-3">
             <button
               className="btn btn-outline-light border border-dark text-dark d-block w-100"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
+              // data-bs-toggle="modal"
+              // data-bs-target="#exampleModal"
+              onClick={()=>{navigate("/publisher/brand-details")}}
             >
               Dashboard
             </button>
-            <button className="btn btn-outline-light border border-dark text-dark mt-2 d-block w-100">
+            <button onClick={()=>navigate("/publisher/brand-products")} className="btn btn-outline-light border border-dark text-dark mt-2 d-block w-100">
               Promote
             </button>
           </div>

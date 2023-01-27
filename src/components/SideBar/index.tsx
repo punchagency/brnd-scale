@@ -92,7 +92,7 @@ export const renderSideBarList = (userType:string) => {
             </Link>
           </li>
           <li className="mb-3">
-            <Link to="/publisher/offers" className="nav-link">
+            <Link to="/publisher/join-brand" className="nav-link">
               Offers
             </Link>
           </li>

@@ -87,7 +87,7 @@ function App() {
               />
               <Route
                 path="publisher/active-brands"
-                element={<PaymentReport />}
+                element={<ActiveBrands />}
               />
               <Route
                 path="publisher/brand-products"
