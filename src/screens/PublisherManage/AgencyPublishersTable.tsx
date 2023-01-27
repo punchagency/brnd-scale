@@ -5,22 +5,29 @@ import Funnel from "../../components/svgs/Funnel";
 import Search from "../../components/svgs/Search";
 import DeleteIcon from "../../components/svgs/DeleteIcon";
 import CalendarWrapper from "../../components/Calendar";
+import TempTable from "../../components/Table/TempTable";
+import TableFooter from "../../components/Table/TableFooter";
+import Button from "../../components/Table/Button";
+import Dropdown from "../../components/Table/Dropdown";
+import SearchInput from "../../components/Table/SearchInput";
+import TableDropdown from "../../components/Table/TableDropdown";
+import TableToolbar from "../../components/Table/TableToolbar";
 
 const headers = [
-    "Publisher Name",
-    "Product Name",
-    "Brands",
-    "Commissions",
-    "Starting Date",
-    "Status",
-    "Products",
-    "Growth",
-    "Clicks",
-    "Orders",
-    "Revenue",
-    "Sales",
-    "Paid",
-    "Permissions",
+  "Publisher Name",
+  "Product Name",
+  "Brands",
+  "Commissions",
+  "Starting Date",
+  "Status",
+  "Products",
+  "Growth",
+  "Clicks",
+  "Orders",
+  "Revenue",
+  "Sales",
+  "Paid",
+  "Permissions",
 ];
 
 const data = [
@@ -31,7 +38,11 @@ const data = [
     brands: "Xtreme Coutore",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "36%",
     clicks: "12",
@@ -48,7 +59,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -65,7 +80,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon  /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -73,7 +92,11 @@ const data = [
     revenue: "12",
     sales: "23",
     paid: "500$",
-    permissions: <button className="btn btn-success btn-sm" style={{width: '100%'}}>Allowed</button>,
+    permissions: (
+      <button className="btn btn-success btn-sm" style={{ width: "100%" }}>
+        Allowed
+      </button>
+    ),
   },
   {
     id: 4,
@@ -82,7 +105,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2022-12-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -99,7 +126,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon  /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -116,7 +147,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -133,7 +168,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon  /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -150,7 +189,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -167,7 +210,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon  /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -184,7 +231,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -201,7 +252,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -218,7 +273,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -235,7 +294,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -252,7 +315,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -269,7 +336,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon  /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -286,7 +357,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -303,7 +378,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -320,7 +399,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -337,7 +420,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -354,7 +441,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -371,7 +462,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -388,7 +483,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -405,7 +504,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon  /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -422,7 +525,11 @@ const data = [
     brands: "JBL Xtreme",
     commissions: "$255.89",
     startDate: "2023-01-01",
-    status: <div className="d-flex justify-content-center"><ActiveIcon color={'#CB6862'} /></div>,
+    status: (
+      <div className="d-flex justify-content-center">
+        <ActiveIcon color={"#CB6862"} />
+      </div>
+    ),
     product: "10",
     growth: "12%",
     clicks: "12",
@@ -437,63 +544,64 @@ const data = [
 const displayLabels = [
   // "id",
   "publisherName",
-    "productName",
-    "brands",
-   "commissions",
-    "startDate",
-    "status",
-    "product",
-    "growth",
-    "clicks",
-    "orders",
-    "revenue",
-    "sales",
-    "paid",
-    "permissions"
+  "productName",
+  "brands",
+  "commissions",
+  "startDate",
+  "status",
+  "product",
+  "growth",
+  "clicks",
+  "orders",
+  "revenue",
+  "sales",
+  "paid",
+  "permissions",
 ];
 
-
 function AgencyPublishersTable() {
-  const [tableData, setTableData] = useState(data);
-  const filterData = (searchString:any) => {
-    if(!searchString) return tableData
-      return tableData
-        .filter((item:any) => {
-          return (
-            item.publisherName.toLowerCase().includes(searchString.toLowerCase()) ||
-            item.productName
-              .toLowerCase()
-              .includes(searchString.toLowerCase()) ||
-            item.brands.toLowerCase().includes(searchString.toLowerCase()) ||
-            item.commissions.toLowerCase().includes(searchString.toLowerCase()) ||
-            item.startDate.toLowerCase().includes(searchString.toLowerCase()) ||
-            item.product.toLowerCase().includes(searchString.toLowerCase()) ||
-            item.growth.toLowerCase().includes(searchString.toLowerCase()) ||
-            item.clicks.toLowerCase().includes(searchString.toLowerCase()) ||
-            item.orders.toLowerCase().includes(searchString.toLowerCase()) ||
-            item.revenue.toLowerCase().includes(searchString.toLowerCase()) ||
-            item.sales.toLowerCase().includes(searchString.toLowerCase())
-          );
-        })
-        ;
-    };
-    const deleteRow = (id: number) => {
-      setTableData((prev) => {
-        return prev.filter((row) => row.id != id);
-      });
-    };
-  
-    const addRow = (row: any) => {
-      setTableData((prev) => {
-        return [...prev, { id: prev.length, ...row }];
-      });
-    };
-  
-    const editData = (data: any) => {
-      // setTableData(prev=>{return prev.map()})
-    };
+  const [tableData, setTableData] = useState(
+    data.map((row) => {
+      return { ...row, checked: false };
+    })
+  );
 
-    const [numOfRows, setNumOfRows] = useState(10);
+  const handleCheck = (id: any, value: boolean) => {
+    setTableData((prev) =>
+      prev.map((row) => {
+        return row.id === id ? { ...row, checked: value } : { ...row };
+      })
+    );
+  };
+
+  const checkAll = (value: boolean) => {
+    setTableData((prev) =>
+      prev.map((row) => {
+        return { ...row, checked: value };
+      })
+    );
+  };
+
+  const filterData = (searchString: any) => {
+    if (!searchString) return tableData;
+    return tableData.filter((item: any) => {
+      return (
+        item.publisherName.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.productName.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.brands.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.commissions.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.startDate.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.product.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.growth.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.clicks.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.orders.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.revenue.toLowerCase().includes(searchString.toLowerCase()) ||
+        item.sales.toLowerCase().includes(searchString.toLowerCase())
+      );
+    });
+  };
+
+  const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [componentDate, setComponentDate] = useState("");
   const [searchString, setSearchString] = useState("");
@@ -501,84 +609,83 @@ function AgencyPublishersTable() {
   return (
     <Table
       tableData={tableData}
-      displayLabels={displayLabels}
-      headers={headers}
       tableWidth={"130%"}
-      deleteRow={deleteRow}
-      editData={editData}
-      addRow={addRow}
-      filterData={filterData}
-      toolbar={<div className={`col-12 mt-3 d-flex flex-wrap flex-md-nowrap`}>
-      <div className="col-12 col-md-6  d-flex ">
-        <div className="col-6 d-flex align-items-center">
-          <select
-            className="form-select"
-            value={numOfRows}
-            onChange={(e) => {
-              setNumOfRows(Number(e.target.value));
-              setCurrentPage(1);
-            }}
-            style={{ width: "29%" }}
-          >
-            <option value={10}>10</option>
-            <option value={20}>20</option>
-            <option value={30}>30</option>
-          </select>
-          <span className="ms-3">entries in the page</span>
-        </div>
-        <div className="col-5 d-flex align-items-center">
-          <div className="col-12 d-flex align-items-center">
-            <div className="card p-2 px-auto border-0">
-              {/* <CalendarIcon /> */}
-              <CalendarWrapper setComponentDate={setComponentDate} />
-            </div>
-            <div className="ms-2">
-              <DeleteIcon />
-            </div>
-            
-          </div>
-        </div>
-      </div>
-      <div className="col-12 col-md-6 d-flex align-items-center">
-        <div className="col-5">
-          <div className="input-group flex-nowrap my-auto">
-            <input
-              type="text"
-              className="form-control"
-              placeholder=""
-              value={searchString}
-              onChange={(e) => {setSearchString(e.target.value); setCurrentPage(1)}}
-              aria-label=""
-              aria-describedby="addon-wrapping"
+      displayLabels={displayLabels}
+      handleCheck={handleCheck}
+      checkAll={checkAll}
+      headers={headers}
+      numOfRows={numOfRows}
+      numOfPages={numOfPages}
+      currentPage={currentPage}
+      toolbar={
+        <TableToolbar>
+          <div className="col-12 col-md-6  d-flex ">
+            <TableDropdown
+              value={numOfRows}
+              setValue={setNumOfRows}
+              width={"29%"}
+              data={[
+                { title: 10, value: 10 },
+                { title: 20, value: 20 },
+              ]}
             />
-            <span
-              className="input-group-text bg-white border"
-              id="addon-wrapping"
-            >
-              <Search color={"#00000"} />
-            </span>
+            <div className="col-5 d-flex align-items-center">
+              <div className="col-12 d-flex align-items-center">
+                <div className="card p-2 px-auto border-0">
+                  <CalendarWrapper setComponentDate={setComponentDate} />
+                </div>
+                <div className="ms-2">
+                  <Button
+                    bootstrapClass="btn btn-sm"
+                    content={<DeleteIcon />}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="col-3 ms-3">
-          <select className="form-select w-90">
-            <option value="" selected>
-              Export
-            </option>
-            <option value="">20</option>
-            <option value="">30</option>
-          </select>
-        </div>
-        <div className="col-3 ms-3">
-          <button type="button" className="btn btn-white">
-            Filter
-            <span className="ms-1">
-              <Funnel />
-            </span>
-          </button>
-        </div>
-      </div>
-    </div>}
-    numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
+          <div className="col-12 col-md-6 d-flex align-items-center justify-content-end">
+            <div className="col-5">
+              <SearchInput
+                value={searchString}
+                onChangeFunc={(value: string) => {
+                  setSearchString(value);
+                  setCurrentPage(1);
+                }}
+              />
+            </div>
+            <div className="col-3 ms-3">
+              <Dropdown
+                width="90%"
+                data={[
+                  { title: "Export", value: "" },
+                  { title: 10, value: 10 },
+                ]}
+                value=""
+                setValue={() => {}}
+              />
+            </div>
+            <Button
+              bootstrapClass="btn btn-white "
+              content={
+                <>
+                  Filter
+                  <span className="ms-1">
+                    <Funnel />
+                  </span>
+                </>
+              }
+            />
+          </div>
+        </TableToolbar>
+      }
+      footer={
+        <TableFooter
+          totalData={tableData.length}
+          rowsPerPage={numOfRows}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      }
     />
   );
 }

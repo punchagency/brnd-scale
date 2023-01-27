@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Table = ({
+const TempTable = ({
   tableData,
   displayLabels,
   headers,
@@ -93,4 +93,4 @@ const Table = ({
   );
 };
 
-export default Table;
+export default TempTable;
