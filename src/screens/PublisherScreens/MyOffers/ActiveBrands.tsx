@@ -12,6 +12,7 @@ import Modal from "../BrandDetails/Modal";
 
 const data = [
   {
+    id: 1,
     image: (
       <Link to={"/publisher/brand-details"} className="">
         <img src={jbl} alt="" className="img img-fluid" />
@@ -22,6 +23,7 @@ const data = [
     earning: "$30",
   },
   {
+    id: 2,
     image: (
       <Link to={"/publisher/brand-details"} className="">
         <img src={herbalLife} alt="" className="img img-fluid" />
@@ -32,6 +34,7 @@ const data = [
     earning: "$30",
   },
   {
+    id: 3,
     image: (
       <Link to={"/publisher/brand-details"} className="">
         <img src={versace} className="img img-fluid" alt="" />
@@ -42,6 +45,7 @@ const data = [
     earning: "$30",
   },
   {
+    id: 4,
     image: (
       <Link to={"/publisher/brand-details"} className="">
         <img src={handM} className="img img-fluid" alt="" />
@@ -52,6 +56,7 @@ const data = [
     earning: "$30",
   },
   {
+    id: 5,
     image: (
       <Link to={"/publisher/brand-details"} className="">
         <img src={versace} className="img img-fluid" alt="" />
@@ -62,6 +67,7 @@ const data = [
     earning: "$30",
   },
   {
+    id: 6,
     image: (
       <Link to={"/publisher/brand-details"} className="">
         <img src={herbalLife} className="img img-fluid" alt="" />
@@ -72,6 +78,7 @@ const data = [
     earning: "$30",
   },
   {
+    id: 7,
     image: (
       <Link to={"/publisher/brand-details"} className="">
         <img src={handM} className="img img-fluid" alt="" />
@@ -82,6 +89,7 @@ const data = [
     earning: "$30",
   },
   {
+    id: 8,
     image: (
       <Link to={"/publisher/brand-details"} className="">
         <img src={jbl} className="img img-fluid" alt="" />
@@ -107,6 +115,7 @@ function ActiveBrands() {
                 image={brand.image}
                 earning={brand.earning}
                 commission={brand.commission}
+                key={brand.id}
               />
             </div>
           ))}

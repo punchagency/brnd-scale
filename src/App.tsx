@@ -27,6 +27,7 @@ import BrandsManage from "./screens/BrandsManage";
 import JoinBrand from "./screens/PublisherScreens/JoinBrand";
 import JoinOffer from "./screens/PublisherScreens/JoinOffer";
 import ProductReports from "./screens/Reports/ProductReports";
+import PublisherOffers from "./screens/PublisherScreens/Offers/PublisherOffers";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -101,8 +102,8 @@ function App() {
                 path="publisher/brand-details"
                 element={<PaymentReport />}
               />
-              <Route path="publisher/join-brand" element={<JoinBrand />} />
-              <Route path="publisher/join-offer" element={<JoinOffer />} />
+              <Route path="publisher/join-brand" element={<PublisherOffers index={0} />} />
+              <Route path="publisher/join-offer" element={<PublisherOffers index={1} />} />
               <Route path="*" element={<Navigate to="" />} />
             </Route>
           </Routes>

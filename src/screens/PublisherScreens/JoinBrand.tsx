@@ -444,30 +444,6 @@ function JoinBrand() {
   const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
   return (
-    <div className="row pt-3 ps-2 pe-5">
-      <div className="col-12 mt-3">
-        <PageTitle title="Get Associated with Top brands " />
-      </div>
-      <div className="col-12 mt-4 d-flex">
-        <PageMenu
-          links={[
-            { path: "/publisher/join-brand", title: "Join Brand" },
-            { path: "/publisher/join-offer", title: "Available Offers" },
-          ]}
-        />
-      </div>
-      <div className="col-12 mt-4">
-        <div className="card d-flex p-2">
-          <div className="row">
-            <div className="col-6 d-inline d-flex align-items-center ">
-              <ListIcon />{" "}
-              <span className="fs-5 ms-2">
-                List of Brands avaliable to Join
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="col-12">
         <Table
           tableData={tableData}
@@ -553,7 +529,6 @@ function JoinBrand() {
           numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
         />
       </div>
-    </div>
   );
 }
 

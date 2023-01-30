@@ -97,7 +97,7 @@ export const renderSideBarList = (userType:string) => {
             </Link>
           </li>
           <li className="mb-3">
-            <Link to="/publisher/active-brands" className="nav-link">
+            <Link to="/publisher/active-brands" className="nav-link" state={{ index: 1 }}>
               My Offers
             </Link>
           </li>
@@ -121,16 +121,6 @@ function SideBar() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   
-  const sidebarBackground = () => {
-    switch (userType) {
-      case "Agency":
-        return "primary";
-      case "Brand":
-        return "dark";
-      case "Publisher":
-        return "";
-    }
-  };
   return (
     <div
       className={`d-flex flex-column bg-dark pt-5 justify-content-between ps-4`}

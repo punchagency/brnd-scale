@@ -10,7 +10,6 @@ import ActiveBrands from "./ActiveBrands";
 function MyOffers({index}:any) {
   
   const [tabIndex, setTabIndex] = useState<0 | 1 | 2>(index || 0);
-  // const location = useLocation();
 
   const getTitle = ()=>{
     if(tabIndex === 0){
