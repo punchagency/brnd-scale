@@ -24,8 +24,8 @@ import BrandProducts from "./screens/PublisherScreens/BrandProducts";
 import PublisherReporting from "./screens/PublisherScreens/PublisherReporting";
 import PaymentReport from "./screens/Reports/PaymentReport";
 import BrandsManage from "./screens/BrandsManage";
-import JoinBrand from "./screens/PublisherScreens/JoinBrand";
-import JoinOffer from "./screens/PublisherScreens/JoinOffer";
+import JoinBrand from "./screens/PublisherScreens/Offers/JoinBrand";
+import JoinOffer from "./screens/PublisherScreens/Offers/JoinOffer";
 import ProductReports from "./screens/Reports/ProductReports";
 import PublisherOffers from "./screens/PublisherScreens/Offers/PublisherOffers";
 

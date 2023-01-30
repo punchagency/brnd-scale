@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import PageTitle from "../../../components/PageTitle";
 import ListIcon from "../../../components/svgs/ListIcon";
 import TabButton from "../../../components/TabButton/TabButton";
-import JoinBrand from "../JoinBrand";
-import JoinOffer from "../JoinOffer";
+import JoinBrand from "./JoinBrand";
+import JoinOffer from "./JoinOffer";
 
 const PublisherOffers = ({index}:any) => {
   const [tabIndex, setTabIndex] = useState<0 | 1 >(index || 0);

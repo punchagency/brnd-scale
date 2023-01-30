@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import ListIcon from "../../components/svgs/ListIcon";
-import Table from "../../components/Table";
-import PageTitle from "../../components/PageTitle";
-import PageMenu from "../../components/Common/PageMenu";
+import Table from "../../../components/Table";
 
-import jbl from "../../assets/images/jbl.png";
-import versace from "../../assets/images/versace.png";
-import handm from "../../assets/images/HandM.png";
-import herbalLife from "../../assets/images/herbalLife.png";
-import TableFilter from "../../components/Table/TableFilter";
-import Search from "../../components/svgs/Search";
-import CalendarWrapper from "../../components/Calendar";
-import TablePageDropdown from "../../components/Table/TablePageDropdown";
+import jbl from "../../../assets/images/jbl.png";
+import versace from "../../../assets/images/versace.png";
+import handm from "../../../assets/images/HandM.png";
+import herbalLife from "../../../assets/images/herbalLife.png";
+import TableFilter from "../../../components/Table/TableFilter";
+import Search from "../../../components/svgs/Search";
+import CalendarWrapper from "../../../components/Calendar";
+import TablePageDropdown from "../../../components/Table/TablePageDropdown";
+import About from "../BrandDetails/About";
+import ProductDetail from "../../../components/Popups/ProductDetail";
 
 const headers = [
   "Logos",
@@ -38,7 +37,6 @@ const data = [
         <img src={jbl} alt="" />
       </div>
     ),
-
     brandName: "Xtreme Coutore",
     campaignName: "Black Friday Sale",
     agency: "Wetheweb.20",
@@ -46,12 +44,20 @@ const data = [
     activeCoupons: "10 % off",
     commissionOffer: "12 %",
     product: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutProductModal"
+      >
         View Product
       </button>
     ),
     details: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutBrandModal"
+      >
         Click Here
       </button>
     ),
@@ -76,12 +82,20 @@ const data = [
     activeCoupons: "10 % off",
     commissionOffer: "12 %",
     product: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutProductModal"
+      >
         View Product
       </button>
     ),
     details: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutBrandModal"
+      >
         Click Here
       </button>
     ),
@@ -106,12 +120,20 @@ const data = [
     activeCoupons: "10 % off",
     commissionOffer: "12 %",
     product: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutProductModal"
+      >
         View Product
       </button>
     ),
     details: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutBrandModal"
+      >
         Click Here
       </button>
     ),
@@ -136,12 +158,20 @@ const data = [
     activeCoupons: "10 % off",
     commissionOffer: "12 %",
     product: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutProductModal"
+      >
         View Product
       </button>
     ),
     details: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutBrandModal"
+      >
         Click Here
       </button>
     ),
@@ -166,12 +196,20 @@ const data = [
     activeCoupons: "10 % off",
     commissionOffer: "12 %",
     product: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutProductModal"
+      >
         View Product
       </button>
     ),
     details: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutBrandModal"
+      >
         Click Here
       </button>
     ),
@@ -196,12 +234,20 @@ const data = [
     activeCoupons: "10 % off",
     commissionOffer: "12 %",
     product: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutProductModal"
+      >
         View Product
       </button>
     ),
     details: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutBrandModal"
+      >
         Click Here
       </button>
     ),
@@ -226,12 +272,20 @@ const data = [
     activeCoupons: "10 % off",
     commissionOffer: "12 %",
     product: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutProductModal"
+      >
         View Product
       </button>
     ),
     details: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutBrandModal"
+      >
         Click Here
       </button>
     ),
@@ -256,12 +310,20 @@ const data = [
     activeCoupons: "10 % off",
     commissionOffer: "12 %",
     product: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutProductModal"
+      >
         View Product
       </button>
     ),
     details: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutBrandModal"
+      >
         Click Here
       </button>
     ),
@@ -286,12 +348,20 @@ const data = [
     activeCoupons: "10 % off",
     commissionOffer: "12 %",
     product: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutProductModal"
+      >
         View Product
       </button>
     ),
     details: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutBrandModal"
+      >
         Click Here
       </button>
     ),
@@ -316,12 +386,20 @@ const data = [
     activeCoupons: "10 % off",
     commissionOffer: "12 %",
     product: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutProductModal"
+      >
         View Product
       </button>
     ),
     details: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutBrandModal"
+      >
         Click Here
       </button>
     ),
@@ -346,12 +424,20 @@ const data = [
     activeCoupons: "10 % off",
     commissionOffer: "12 %",
     product: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutProductModal"
+      >
         View Product
       </button>
     ),
     details: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutBrandModal"
+      >
         Click Here
       </button>
     ),
@@ -376,12 +462,20 @@ const data = [
     activeCoupons: "10 % off",
     commissionOffer: "12 %",
     product: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutProductModal"
+      >
         View Product
       </button>
     ),
     details: (
-      <button className="btn btn-outline-light btn-sm text-dark border">
+      <button
+        className="btn btn-outline-light btn-sm text-dark border"
+        data-bs-toggle="modal"
+        data-bs-target="#aboutBrandModal"
+      >
         Click Here
       </button>
     ),
@@ -444,6 +538,9 @@ function JoinBrand() {
   const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
   return (
+    <>
+      <About />
+      <ProductDetail id="aboutProductModal" />
       <div className="col-12">
         <Table
           tableData={tableData}
@@ -526,9 +623,15 @@ function JoinBrand() {
               </div>
             </div>
           }
-          numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
+          numOfPages={numOfPages}
+          setNumOfPages={setNumOfPages}
+          numOfRows={numOfRows}
+          setNumOfRows={setNumOfRows}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
         />
       </div>
+    </>
   );
 }
 

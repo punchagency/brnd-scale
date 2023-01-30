@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-import ListIcon from "../../components/svgs/ListIcon";
-import Table from "../../components/Table";
+import Table from "../../../components/Table";
 import { Link } from "react-router-dom";
-import WarningCircle from "../../components/svgs/WarningCircle";
-import PageTitle from "../../components/PageTitle";
-import PageMenu from "../../components/Common/PageMenu";
+import WarningCircle from "../../../components/svgs/WarningCircle";
 
-import product from "../../assets/images/product.png";
-import TablePageDropdown from "../../components/Table/TablePageDropdown";
-import CalendarWrapper from "../../components/Calendar";
-import Search from "../../components/svgs/Search";
-import TableFilter from "../../components/Table/TableFilter";
+import product from "../../../assets/images/product.png";
+import TablePageDropdown from "../../../components/Table/TablePageDropdown";
+import CalendarWrapper from "../../../components/Calendar";
+import Search from "../../../components/svgs/Search";
+import TableFilter from "../../../components/Table/TableFilter";
 
 const headers = [
   "Images",

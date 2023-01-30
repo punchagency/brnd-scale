@@ -14,8 +14,8 @@ import ActiveProducts from "../screens/PublisherScreens/MyOffers/ActiveProducts"
 import ActiveBrands from "../screens/PublisherScreens/MyOffers/ActiveBrands";
 import BrandProducts from "../screens/PublisherScreens/BrandProducts";
 import PublisherReporting from "../screens/PublisherScreens/PublisherReporting";
-import JoinBrand from "../screens/PublisherScreens/JoinBrand";
-import JoinOffer from "../screens/PublisherScreens/JoinOffer";
+import JoinBrand from "../screens/PublisherScreens/Offers/JoinBrand";
+import JoinOffer from "../screens/PublisherScreens/Offers/JoinOffer";
 
 interface RouteType {
   path: string;
