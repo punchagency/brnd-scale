@@ -17,9 +17,9 @@ import Offers from "./screens/Offers/Offers";
 import PublisherReports from "./screens/Reports/PublisherReports";
 import PublisherManage from "./screens/PublisherManage";
 import Reports from "./screens/Reports";
-import MyOffers from "./screens/PublisherScreens/PublisherOffers";
-import ActiveProducts from "./screens/PublisherScreens/ActiveProducts";
-import ActiveBrands from "./screens/PublisherScreens/ActiveBrands";
+import MyOffers from "./screens/PublisherScreens/MyOffers/MyOffers";
+import ActiveProducts from "./screens/PublisherScreens/MyOffers/ActiveProducts";
+import ActiveBrands from "./screens/PublisherScreens/MyOffers/ActiveBrands";
 import BrandProducts from "./screens/PublisherScreens/BrandProducts";
 import PublisherReporting from "./screens/PublisherScreens/PublisherReporting";
 import PaymentReport from "./screens/Reports/PaymentReport";
@@ -80,14 +80,14 @@ function App() {
 
               {/* Publisher links */}
               <Route path="publisher" element={<Dashboard />} />
-              <Route path="publisher/offers" element={<MyOffers />} />
+              <Route path="publisher/offers" element={<MyOffers index={0} />} />
               <Route
                 path="publisher/active-products"
-                element={<ActiveProducts />}
+                element={<MyOffers index={2} />}
               />
               <Route
                 path="publisher/active-brands"
-                element={<ActiveBrands />}
+                element={<MyOffers index={1} />}
               />
               <Route
                 path="publisher/brand-products"

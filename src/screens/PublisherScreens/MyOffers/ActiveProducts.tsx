@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import ListIcon from "../../components/svgs/ListIcon";
-import Table from "../../components/Table";
+import ListIcon from "../../../components/svgs/ListIcon";
+import Table from "../../../components/Table";
 import { Link, useLocation } from "react-router-dom";
-import WarningCircle from "../../components/svgs/WarningCircle";
-import PageTitle from "../../components/PageTitle";
-import PageMenu from "../../components/Common/PageMenu";
+import WarningCircle from "../../../components/svgs/WarningCircle";
+import PageTitle from "../../../components/PageTitle";
+import PageMenu from "../../../components/Common/PageMenu";
 
-import product from "../../assets/images/product.png";
-import ShareIcon from "../../components/svgs/ShareIcon";
-import CopyIcon from "../../components/svgs/CopyIcon";
-import TableFilter from "../../components/Table/TableFilter";
-import Search from "../../components/svgs/Search";
-import CalendarWrapper from "../../components/Calendar";
-import TablePageDropdown from "../../components/Table/TablePageDropdown";
-import TableFooter from "../../components/Table/TableFooter";
+import product from "../../../assets/images/product.png";
+import ShareIcon from "../../../components/svgs/ShareIcon";
+import CopyIcon from "../../../components/svgs/CopyIcon";
+import TableFilter from "../../../components/Table/TableFilter";
+import Search from "../../../components/svgs/Search";
+import CalendarWrapper from "../../../components/Calendar";
+import TablePageDropdown from "../../../components/Table/TablePageDropdown";
+import TableFooter from "../../../components/Table/TableFooter";
 
 const headers = [
   "Images",
@@ -551,34 +551,6 @@ function ActiveProducts() {
   const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
   return (
-    <div className="row pt-3 ps-2 pe-5">
-      <div className="col-12 mt-3">
-        <PageTitle
-          title="Welcome to my offers"
-          subtitle="Track your Current products"
-        />
-      </div>
-      <div className="col-12 mt-4 d-flex">
-        <PageMenu
-          links={[
-            { path: "/publisher/offers", title: "Overview" },
-            { path: "/publisher/active-brands", title: "Active Brands" },
-            { path: "/publisher/active-products", title: "Active Products" },
-          ]}
-        />
-      </div>
-      <div className="col-12 mt-4">
-        <div className="card d-flex p-2">
-          <div className="row">
-            <div className="col-6 d-inline d-flex align-items-center ">
-              <ListIcon />{" "}
-              <span className="fs-5 ms-2">
-                List of All the (active products)
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="col-12">
         {/* Modal  */}
         <div
@@ -809,7 +781,6 @@ function ActiveProducts() {
           }
         />
       </div>
-    </div>
   );
 }
 
