@@ -56,11 +56,11 @@ const TableFooter = ({
       <div className="row d-flex align-content-center">
         <p className="col-6 col-md-3 mt-3">
           Showing {currentPage * rowsPerPage - rowsPerPage + 1} to{" "}
-          {rowsPerPage * currentPage} of {totalData} entries
+          { totalData < (rowsPerPage * currentPage) ? totalData : rowsPerPage * currentPage} of {totalData} entries
         </p>
-        <div className="col-4 col-md-2 ms-auto d-flex align-items-center">
+        <div className="col-4 col-md-2 ms-auto d-flex justify-content-end align-items-center">
           <div
-            className={`me-1 ms-auto ${buttons.length < 4 ? 'd-none' : ''}`}
+            className={`me-1 ms-auto ${totalData / rowsPerPage < 4 ? 'd-none' : ''}`}
             onClick={() => {
               setVisibleBtn((prev) => (prev > 0 ? --prev : 0));
             }}
@@ -71,7 +71,7 @@ const TableFooter = ({
             {showButtons()}
           </div>
           <div
-            className={`ms-1 ${buttons.length < 4 ? 'd-none' : ''}`}
+            className={`ms-1 ${totalData / rowsPerPage < 4 ? 'd-none' : ''}`}
             onClick={() => {
               setVisibleBtn((prev) => (prev + 2 < maxPages ? ++prev : prev));
             }}

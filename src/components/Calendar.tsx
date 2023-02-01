@@ -5,7 +5,8 @@ import CalenderChecker from "../assets/images/CalendarCheck.svg";
 import CalendarIcon from "./svgs/CalendarIcon";
 
 interface CalendarProps {
-  setComponentDate: (value: string) => void;
+  setComponentDate: (value: string | { from: string; to: string }) => void;
+  format?: 1 | 2;
 }
 
 function useOutsideAlerter(ref: any, callbackFunc: () => void) {
@@ -27,7 +28,7 @@ function useOutsideAlerter(ref: any, callbackFunc: () => void) {
   }, [ref]);
 }
 
-const CalendarWrapper = ({ setComponentDate }: CalendarProps) => {
+const CalendarWrapper = ({ setComponentDate, format = 1 }: CalendarProps) => {
   const months = [
     "Jan",
     "Feb",
@@ -53,7 +54,12 @@ const CalendarWrapper = ({ setComponentDate }: CalendarProps) => {
     setShowCalendar(false);
   });
   useEffect(() => {
-    if (selectedDayRange.from !== null && selectedDayRange.to !== null) {
+    console.log(selectedDayRange);
+    if (
+      selectedDayRange.from !== null &&
+      selectedDayRange.to !== null &&
+      format === 1
+    ) {
       const dateText = `From ${selectedDayRange.from?.day} ${
         months[
           selectedDayRange.from?.month ? selectedDayRange.from?.month - 1 : 0
@@ -62,6 +68,16 @@ const CalendarWrapper = ({ setComponentDate }: CalendarProps) => {
         months[selectedDayRange.to?.month ? selectedDayRange.to?.month - 1 : 0]
       }`;
       setComponentDate(dateText);
+    } else {
+      console.log("else");
+      let from = `${selectedDayRange?.from?.year || ""}-${
+        (selectedDayRange?.from?.month || 0) < 10 ? 0+""+selectedDayRange?.from?.month : selectedDayRange?.from?.month
+      }-${(selectedDayRange?.from?.day || "") < 10 ? 0+""+selectedDayRange?.from?.day : selectedDayRange?.from?.day}`;
+      let to = `${selectedDayRange?.to?.year || ""}-${
+        (selectedDayRange?.to?.month || "") < 10 ? 0+""+selectedDayRange?.to?.month : selectedDayRange?.to?.month
+      }-${(selectedDayRange?.to?.day || "") < 10 ? 0+""+selectedDayRange?.to?.day : selectedDayRange?.to?.day}`;
+
+      setComponentDate({ from: from, to: to });
     }
   }, [selectedDayRange]);
   return (

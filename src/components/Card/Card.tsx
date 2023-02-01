@@ -18,7 +18,7 @@ interface CardProps {
 }
 
 const Card = ({ title, value, date, main = false, reduce, extra, onClick }: CardProps) => {
-  const [componentDate, setComponentDate] = useState('')
+  const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({from: '', to: ''});
 
   return (
     <div

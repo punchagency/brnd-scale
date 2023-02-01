@@ -25,7 +25,7 @@ function TestCard({
   extra,
   onClick,
 }: CardProps) {
-  const [componentDate, setComponentDate] = useState("");
+  const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({from: '', to: ''});
   return (
     <div
       className={`card ${main ? "card-active" : ""}`}

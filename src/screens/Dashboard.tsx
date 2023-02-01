@@ -180,44 +180,7 @@ const Dashboard: FC = () => {
   const [brandsTableData, setBrandsTableData] = useState(brandsData);
   const [selectedCard, setSelectedCard] = useState(0);
   const userType = useAppSelector(selectUser);
-  const deleteRow = (id: number) => {
-    setTableData((prev) => {
-      return prev.filter((row) => row.id != id);
-    });
-  };
-
-  const addRow = (row: any) => {
-    setTableData((prev) => {
-      return [...prev, { id: prev.length, ...row }];
-    });
-  };
-
-  const editData = (data: any) => {
-    // setTableData(prev=>{return prev.map()})
-  };
-  const filterData = (searchString: string) => {
-    return tableData.filter((item: any) => {
-      return (
-        item.topPublishers.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.clicks.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.conversions.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.products.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.orders.toLowerCase().includes(searchString.toLowerCase())
-      );
-    });
-  };
-
-  const brandsFilterData = (searchString: string) => {
-    return brandsTableData.filter((item: any) => {
-      return (
-        item.brands.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.clicks.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.conversions.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.productNames.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.orders.toLowerCase().includes(searchString.toLowerCase())
-      );
-    });
-  };
+  
 
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -294,10 +257,6 @@ const Dashboard: FC = () => {
               displayLabels={displayLabels}
               headers={headers}
               tableWidth={"100%"}
-              deleteRow={deleteRow}
-              editData={editData}
-              addRow={addRow}
-              filterData={filterData}
               hideCheckbox={true}
               hideFooter={true}
               hideToolbar={true}
@@ -325,10 +284,6 @@ const Dashboard: FC = () => {
               displayLabels={brandsDisplayLabels}
               headers={brandsHeaders}
               tableWidth={"100%"}
-              deleteRow={deleteRow}
-              editData={editData}
-              addRow={addRow}
-              filterData={brandsFilterData}
               hideCheckbox={true}
               hideFooter={true}
               hideToolbar={true}

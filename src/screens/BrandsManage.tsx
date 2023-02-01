@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CalendarWrapper from "../components/Calendar";
 import DeleteIcon from "../components/svgs/DeleteIcon";
 import Funnel from "../components/svgs/Funnel";
@@ -390,46 +390,49 @@ const data = [
 ];
 
 const displayLabels = [
-  // "id",
-  "brandName",
-  "campaingName",
-  "tag",
+  "brand_name",
+  "campaign_name",
+  "tag_keylink",
   "country",
   "category",
   "store",
   "status",
   "growth",
-  "commissions",
-  "conversions",
-  "totalProducts",
+  "commission_offer",
+  "conversion_rate",
+  "total_product",
   "permissions",
 ];
 
 function BrandsManage() {
   const [tableData, setTableData] = useState(data);
 
-  const filterData = (searchString: string) => {
-    return tableData.filter((item: any) => {
-      return (
-        item.brandName.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.campaingName.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.tag.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.country.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.category.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.store.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.status.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.commissions.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.conversions.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.totalProducts.toLowerCase().includes(searchString.toLowerCase())
-      );
-    });
-  };
-
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [componentDate, setComponentDate] = useState("");
+  const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({from: '', to: ''});
   const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
+
+  useEffect(() => {setCurrentPage(1)},[numOfRows])
+  useEffect(() => {console.log(componentDate)
+    
+    const searchParams = new URLSearchParams()
+    componentDate && searchParams.append('from_date', typeof componentDate == 'object' ? componentDate.from : '')
+    searchString && searchParams.append('search', searchString)
+    var url = new URL("http://localhost:3001/agencies/brands?"+searchParams.toString());
+    
+    // componentDate && url.searchParams.append('search', componentDate);
+    console.log(url)
+    
+    fetch(url, { mode: "cors" }).then(
+      async (response) => {
+        let res = await response.json();
+
+        console.log(Object.getOwnPropertyNames(res[0]), res);
+        setTableData(res.map((row:any)=>{return {...row, 'permissions': <button className="btn btn-danger btn-sm">{'action'}</button>}}))
+      }
+    );
+  },[componentDate, searchString])
   return (
     <div className="row pt-3 ps-2 pe-5">
       <div className="col-12 mt-3 d-flex justify-content-between">
@@ -453,7 +456,7 @@ function BrandsManage() {
           tableData={tableData}
           displayLabels={displayLabels}
           headers={headers}
-          tableWidth={"110%"}
+          tableWidth={"112%"}
           numOfPages={numOfPages}
           setNumOfPages={setNumOfPages}
           numOfRows={numOfRows}
@@ -474,7 +477,7 @@ function BrandsManage() {
                 <div className="col-5 d-flex align-items-center">
                   <div className="col-12 d-flex align-items-center">
                     <div className="card p-2 px-auto border-0">
-                      <CalendarWrapper setComponentDate={setComponentDate} />
+                      <CalendarWrapper setComponentDate={setComponentDate} format={2} />
                     </div>
                     <div className="ms-2">
                       <Button

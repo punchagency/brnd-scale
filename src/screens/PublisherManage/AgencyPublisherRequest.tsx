@@ -96,7 +96,7 @@ function AgencyPublishersRequest() {
 
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [componentDate, setComponentDate] = useState("");
+  const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({from: '', to: ''});
   const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
   return (
