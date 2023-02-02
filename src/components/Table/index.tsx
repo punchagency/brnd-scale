@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { handleCheck, checkAll } from "./TableFunctions";
+// import { handleCheck, checkAll } from "./TableFunctions";
 
 const Table = ({
   tableData,
@@ -13,11 +13,30 @@ const Table = ({
   toolbar,
   numOfRows,
   currentPage,
-  setTableData = ()=>{},
-  footer
+  setTableData = () => {},
+  footer,
 }: any) => {
   const [searchString, setSearchString] = useState("");
 
+  const handleCheck = (
+    id: any,
+    value: boolean,
+    setTableData: (data: any) => void
+  ) => {
+    setTableData((prev: any) =>
+      prev.map((row: any) => {
+        return row.id === id ? { ...row, checked: value } : { ...row };
+      })
+    );
+  };
+
+  const checkAll = (value: boolean, setTableData: (data: any) => void) => {
+    setTableData((prev: any) =>
+      prev.map((row: any) => {
+        return { ...row, checked: value };
+      })
+    );
+  };
   const displayData = () => {
     //determine the rows to display
     let data =
@@ -37,7 +56,9 @@ const Table = ({
           <td className={`${hideCheckbox ? "d-none" : undefined}`}>
             <input
               type="checkbox"
-              onChange={(e)=>handleCheck(row.id, e.target.checked, setTableData)}
+              onChange={(e) =>
+                handleCheck(row.id, e.target.checked, setTableData)
+              }
               value={index}
               id={row.id}
               checked={row.checked}
@@ -53,9 +74,7 @@ const Table = ({
   };
   return (
     <>
-      {
-        toolbar
-      }
+      {toolbar}
       <div
         className={`col-12 mt-3 d-flex flex-nowrap ${
           cards ? undefined : "d-none"
@@ -73,7 +92,7 @@ const Table = ({
               <th className={`py-3 ${hideCheckbox ? "d-none" : undefined}`}>
                 <input
                   type="checkbox"
-                  onChange={(e)=>checkAll(e.target.checked, setTableData)}
+                  onChange={(e) => checkAll(e.target.checked, setTableData)}
                   className="form-check-input"
                 />
               </th>
@@ -87,7 +106,7 @@ const Table = ({
           <tbody>{displayData()}</tbody>
         </table>
       </div>
-      <div className={`col-12 mt-3 ${!footer ? 'd-none' : undefined}`}>
+      <div className={`col-12 mt-3 ${!footer ? "d-none" : undefined}`}>
         {footer}
       </div>
     </>

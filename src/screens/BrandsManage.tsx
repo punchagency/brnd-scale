@@ -11,8 +11,6 @@ import TableDropdown from "../components/Table/TableDropdown";
 import TableFooter from "../components/Table/TableFooter";
 import TableToolbar from "../components/Table/TableToolbar";
 
-import { checkAll, handleCheck } from "../components/Table/TableFunctions";
-
 const headers = [
   "Brand Name",
   "Campaign Name",
@@ -560,8 +558,7 @@ function BrandsManage() {
           numOfRows={numOfRows}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          handleCheck={handleCheck}
-          checkAll={checkAll}
+          setTableData={setTableData}
           toolbar={
             <TableToolbar>
               <div className="col-12 col-md-6  d-flex ">
