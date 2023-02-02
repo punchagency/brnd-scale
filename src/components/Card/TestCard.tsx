@@ -25,7 +25,7 @@ function TestCard({
   extra,
   onClick,
 }: CardProps) {
-  const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({from: '', to: ''});
+  const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>("");
   return (
     <div
       className={`card ${main ? "card-active" : ""}`}
@@ -41,10 +41,7 @@ function TestCard({
             <span className="mt-1 me-3" style={{ fontSize: "11px" }}>
               {componentDate || date}
             </span>
-            {/* <div className="card border p-1 px-auto" style={{ height: "30px" }}> */}
-              <CalendarWrapper setComponentDate={setComponentDate} />
-            {/* </div> */}
-            {/* <CalendarWrapper setComponentDate={setComponentDate} /> */}
+              <CalendarWrapper setComponentDate={setComponentDate} format={1} />
           </div>
         </div>
         <div className="row">

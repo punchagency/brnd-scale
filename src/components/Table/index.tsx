@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { handleCheck, checkAll } from "./TableFunctions";
+
 const Table = ({
   tableData,
   displayLabels,
@@ -11,8 +13,7 @@ const Table = ({
   toolbar,
   numOfRows,
   currentPage,
-  handleCheck,
-  checkAll,
+  setTableData = ()=>{},
   footer
 }: any) => {
   const [searchString, setSearchString] = useState("");
@@ -36,7 +37,7 @@ const Table = ({
           <td className={`${hideCheckbox ? "d-none" : undefined}`}>
             <input
               type="checkbox"
-              onChange={(e)=>handleCheck(row.id, e.target.checked)}
+              onChange={(e)=>handleCheck(row.id, e.target.checked, setTableData)}
               value={index}
               id={row.id}
               checked={row.checked}
@@ -72,7 +73,7 @@ const Table = ({
               <th className={`py-3 ${hideCheckbox ? "d-none" : undefined}`}>
                 <input
                   type="checkbox"
-                  onChange={(e)=>checkAll(e.target.checked)}
+                  onChange={(e)=>checkAll(e.target.checked, setTableData)}
                   className="form-check-input"
                 />
               </th>

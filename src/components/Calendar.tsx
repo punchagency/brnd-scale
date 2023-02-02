@@ -55,11 +55,31 @@ const CalendarWrapper = ({ setComponentDate, format = 1 }: CalendarProps) => {
   });
   useEffect(() => {
     console.log(selectedDayRange);
-    if (
-      selectedDayRange.from !== null &&
+    if(selectedDayRange.from !== null &&
       selectedDayRange.to !== null &&
-      format === 1
-    ) {
+      format === 2){
+      console.log("else");
+      let from = `${selectedDayRange?.from?.year || ""}-${
+        (selectedDayRange?.from?.month || 0) < 10
+          ? 0 + "" + selectedDayRange?.from?.month
+          : selectedDayRange?.from?.month
+      }-${
+        (selectedDayRange?.from?.day || "") < 10
+          ? 0 + "" + selectedDayRange?.from?.day
+          : selectedDayRange?.from?.day
+      }`;
+      let to = `${selectedDayRange?.to?.year || ""}-${
+        (selectedDayRange?.to?.month || "") < 10
+          ? 0 + "" + selectedDayRange?.to?.month
+          : selectedDayRange?.to?.month
+      }-${
+        (selectedDayRange?.to?.day || "") < 10
+          ? 0 + "" + selectedDayRange?.to?.day
+          : selectedDayRange?.to?.day
+      }`;
+
+      setComponentDate({ from: from, to: to });
+    }else {
       const dateText = `From ${selectedDayRange.from?.day} ${
         months[
           selectedDayRange.from?.month ? selectedDayRange.from?.month - 1 : 0
@@ -68,17 +88,7 @@ const CalendarWrapper = ({ setComponentDate, format = 1 }: CalendarProps) => {
         months[selectedDayRange.to?.month ? selectedDayRange.to?.month - 1 : 0]
       }`;
       setComponentDate(dateText);
-    } else {
-      console.log("else");
-      let from = `${selectedDayRange?.from?.year || ""}-${
-        (selectedDayRange?.from?.month || 0) < 10 ? 0+""+selectedDayRange?.from?.month : selectedDayRange?.from?.month
-      }-${(selectedDayRange?.from?.day || "") < 10 ? 0+""+selectedDayRange?.from?.day : selectedDayRange?.from?.day}`;
-      let to = `${selectedDayRange?.to?.year || ""}-${
-        (selectedDayRange?.to?.month || "") < 10 ? 0+""+selectedDayRange?.to?.month : selectedDayRange?.to?.month
-      }-${(selectedDayRange?.to?.day || "") < 10 ? 0+""+selectedDayRange?.to?.day : selectedDayRange?.to?.day}`;
-
-      setComponentDate({ from: from, to: to });
-    }
+    } 
   }, [selectedDayRange]);
   return (
     <div className="position-relative">

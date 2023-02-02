@@ -5,7 +5,6 @@ import Funnel from "../../components/svgs/Funnel";
 import Search from "../../components/svgs/Search";
 import DeleteIcon from "../../components/svgs/DeleteIcon";
 import CalendarWrapper from "../../components/Calendar";
-import TempTable from "../../components/Table/TempTable";
 import TableFooter from "../../components/Table/TableFooter";
 import Button from "../../components/Table/Button";
 import Dropdown from "../../components/Table/Dropdown";

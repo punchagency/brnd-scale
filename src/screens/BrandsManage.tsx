@@ -11,6 +11,8 @@ import TableDropdown from "../components/Table/TableDropdown";
 import TableFooter from "../components/Table/TableFooter";
 import TableToolbar from "../components/Table/TableToolbar";
 
+import { checkAll, handleCheck } from "../components/Table/TableFunctions";
+
 const headers = [
   "Brand Name",
   "Campaign Name",
@@ -404,35 +406,131 @@ const displayLabels = [
   "permissions",
 ];
 
+interface dataShape {
+  brand_name: string;
+  campaign_name: string;
+  tag_keylink: string;
+  country: string;
+  category: string;
+  store: string;
+  status: string;
+  growth: string;
+  commission_offer: string;
+  conversion_rate: string;
+  total_product: string;
+  permissions: string;
+  checked: boolean;
+  id: number;
+}
+
 function BrandsManage() {
-  const [tableData, setTableData] = useState(data);
+  const [tableData, setTableData] = useState<dataShape[]>([
+    {
+      brand_name: "",
+      campaign_name: "",
+      tag_keylink: "",
+      country: "",
+      category: "",
+      store: "",
+      status: "",
+      growth: "",
+      commission_offer: "",
+      conversion_rate: "",
+      total_product: "",
+      permissions: "",
+      checked: false,
+      id: 0,
+    },
+  ]);
 
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({from: '', to: ''});
+  const [componentDate, setComponentDate] = useState<
+    string | { from: string; to: string }
+  >({ from: "", to: "" });
   const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
 
-  useEffect(() => {setCurrentPage(1)},[numOfRows])
-  useEffect(() => {console.log(componentDate)
-    
-    const searchParams = new URLSearchParams()
-    componentDate && searchParams.append('from_date', typeof componentDate == 'object' ? componentDate.from : '')
-    searchString && searchParams.append('search', searchString)
-    var url = new URL("http://localhost:3001/agencies/brands?"+searchParams.toString());
-    
-    // componentDate && url.searchParams.append('search', componentDate);
-    console.log(url)
-    
-    fetch(url, { mode: "cors" }).then(
-      async (response) => {
-        let res = await response.json();
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [numOfRows]);
+  // const handleCheck = (id: any, value: boolean) => {
+  //   setTableData((prev) =>
+  //     prev.map((row) => {
+  //       return row.id === id ? { ...row, checked: value } : { ...row };
+  //     })
+  //   );
+  // };
 
-        console.log(Object.getOwnPropertyNames(res[0]), res);
-        setTableData(res.map((row:any)=>{return {...row, 'permissions': <button className="btn btn-danger btn-sm">{'action'}</button>}}))
+  // const checkAll = (value: boolean) => {
+  //   setTableData((prev) =>
+  //     prev.map((row) => {
+  //       return { ...row, checked: value };
+  //     })
+  //   );
+  // };
+
+  const handleDelete = () => {
+    let ids = tableData.filter((row) => row.checked === true);
+    console.log(ids);
+    var url = new URL(process.env.REACT_APP_BASE_URL+"agencies/brands");
+    fetch(url, {
+      method: "DELETE",
+      mode: "cors",
+      body: JSON.stringify({ ids: ids }),
+    }).then(async (response) => {
+      let res = await response.json();console.log(res)
+
+      if (res.success) {
+        setSearchString(""); //Trigger data refresh
+      } else {
+        //Show error message
       }
+    });
+  };
+
+  useEffect(() => {
+    console.log(componentDate);
+
+    const searchParams = new URLSearchParams();
+    typeof componentDate == "object" &&
+      componentDate.from != "" &&
+      searchParams.append(
+        "date_from",
+        typeof componentDate == "object" ? componentDate.from : ""
+      );
+    typeof componentDate == "object" &&
+      componentDate.to != "" &&
+      searchParams.append(
+        "date_to",
+        typeof componentDate == "object" ? componentDate.to : ""
+      );
+    searchString && searchParams.append("search", searchString);
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL+"agencies/brands?" + searchParams.toString()
     );
-  },[componentDate, searchString])
+
+    // componentDate && url.searchParams.append('search', componentDate);
+    console.log(url);
+
+    fetch(url, { mode: "cors" }).then(async (response) => {
+      let res = await response.json();
+
+      console.log(Object.getOwnPropertyNames(res[0]), res);
+      setTableData(
+        res.map((row: any) => {
+          return {
+            ...row,
+            permissions: (
+              <button className="btn btn-danger btn-sm">{"action"}</button>
+            ),
+            checked: false,
+          };
+        })
+      );
+    });
+  }, [componentDate, searchString]);
+
   return (
     <div className="row pt-3 ps-2 pe-5">
       <div className="col-12 mt-3 d-flex justify-content-between">
@@ -462,6 +560,8 @@ function BrandsManage() {
           numOfRows={numOfRows}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
+          handleCheck={handleCheck}
+          checkAll={checkAll}
           toolbar={
             <TableToolbar>
               <div className="col-12 col-md-6  d-flex ">
@@ -477,12 +577,16 @@ function BrandsManage() {
                 <div className="col-5 d-flex align-items-center">
                   <div className="col-12 d-flex align-items-center">
                     <div className="card p-2 px-auto border-0">
-                      <CalendarWrapper setComponentDate={setComponentDate} format={2} />
+                      <CalendarWrapper
+                        setComponentDate={setComponentDate}
+                        format={2}
+                      />
                     </div>
                     <div className="ms-2">
                       <Button
                         bootstrapClass="btn btn-sm"
                         content={<DeleteIcon />}
+                        clickFunc={handleDelete}
                       />
                     </div>
                   </div>
