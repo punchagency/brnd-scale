@@ -57,7 +57,7 @@ const TableFooter = ({
     <div className="card d-flex px-2 justify-content-between">
       <div className="row d-flex align-content-center">
         {totalData > 0 ? (
-          <p className="col-6 col-md-3 mt-3">
+          <p className="col-6 col-md-4 mt-3">
             Showing {currentPage * rowsPerPage - rowsPerPage + 1} to{" "}
             {totalData < rowsPerPage * currentPage
               ? totalData

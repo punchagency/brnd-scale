@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ActiveIcon from "../../components/svgs/ActiveIcon";
 import Table from "../../components/Table";
 import Funnel from "../../components/svgs/Funnel";
@@ -11,6 +11,7 @@ import Dropdown from "../../components/Table/Dropdown";
 import SearchInput from "../../components/Table/SearchInput";
 import TableDropdown from "../../components/Table/TableDropdown";
 import TableToolbar from "../../components/Table/TableToolbar";
+import { AgenciesPublishers } from "../../types";
 
 const headers = [
   "Publisher Name",
@@ -541,35 +542,119 @@ const data = [
 ];
 
 const displayLabels = [
-  // "id",
-  "publisherName",
-  "productName",
-  "brands",
-  "commissions",
-  "startDate",
+  "publisher_name",
+  "product_name",
+  "brands_name",
+  "commission",
+  "starting_date",
   "status",
-  "product",
-  "growth",
+  "products",
+  "growth_percentage",
   "clicks",
   "orders",
   "revenue",
   "sales",
-  "paid",
-  "permissions",
+  "paid_amount",
+  "permission",
 ];
 
 function AgencyPublishersTable() {
-  const [tableData, setTableData] = useState(
-    data.map((row) => {
-      return { ...row, checked: false };
-    })
-  );
+  const [tableData, setTableData] = useState<AgenciesPublishers[]>([]);
 
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({from: '', to: ''});
+  const [componentDate, setComponentDate] = useState<
+    string | { from: string; to: string }
+  >({ from: "", to: "" });
   const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [numOfRows]);
+
+  
+  const handleDelete = () => {
+    let ids = tableData.filter((row) => row.checked === true);
+    // console.log(ids);
+    var url = new URL(process.env.REACT_APP_BASE_URL+"agencies/publishers");
+    fetch(url, {
+      method: "DELETE",
+      mode: "cors",
+      body: JSON.stringify({ ids: ids }),
+    }).then(async (response) => {
+      let res = await response.json();//console.log(res)
+
+      if (res.success) {
+        setSearchString(""); //Trigger data refresh
+      } else {
+        //Show error message
+      }
+    });
+  };
+
+  const updatePermission = (id:number)=>{alert(id)
+    let updates = tableData.filter((row:any)=>{
+      if(row.id === id){
+        return {...row, permissions: ""}
+      }
+    })
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL+"agencies/publishers?"
+    );
+    fetch(url, { mode: "cors", method: 'PUT' }).then(async (response) => {
+      let res = await response.json();
+      if (res.success) {
+        setSearchString(""); //Trigger data refresh
+      } else {
+        //Show error message
+      }
+    })
+  }
+
+  useEffect(() => {
+    // console.log(componentDate);
+
+    const searchParams = new URLSearchParams();
+    typeof componentDate == "object" &&
+      componentDate.from != "" &&
+      searchParams.append(
+        "date_from",
+        typeof componentDate == "object" ? componentDate.from : ""
+      );
+    typeof componentDate == "object" &&
+      componentDate.to != "" &&
+      searchParams.append(
+        "date_to",
+        typeof componentDate == "object" ? componentDate.to : ""
+      );
+    searchString && searchParams.append("search", searchString);
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL+"agencies/publishers?" + searchParams.toString()
+    );
+
+    // console.log(url);
+
+    fetch(url, { mode: "cors" }).then(async (response) => {//console.log(await response.text())
+      let res = await response.json();
+
+      setTableData(
+        res.map((row: any) => {
+          return {
+            ...row,
+            status: <div className="d-flex justify-content-center">
+            <ActiveIcon color={row.status ? "#65DD2C" : "#CB6862"} />
+          </div>,
+            permission: (//What are the options for permissions
+              <button onClick={()=>updatePermission(row.id)} className={`btn ${'btn-danger'} btn-sm`}>{row.permissions ? "Allowed" : "Not Allowed"}</button>
+            ),
+            checked: false,
+          };
+        })
+      );
+    });
+  }, [componentDate, searchString]);
+
   return (
     <Table
       tableData={tableData}
@@ -595,7 +680,7 @@ function AgencyPublishersTable() {
             <div className="col-5 d-flex align-items-center">
               <div className="col-12 d-flex align-items-center">
                 <div className="card p-2 px-auto border-0">
-                  <CalendarWrapper setComponentDate={setComponentDate} />
+                  <CalendarWrapper setComponentDate={setComponentDate} format={2} />
                 </div>
                 <div className="ms-2">
                   <Button

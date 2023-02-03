@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ActiveIcon from "../../components/svgs/ActiveIcon";
 import Table from "../../components/Table";
 import Funnel from "../../components/svgs/Funnel";
@@ -7,8 +7,10 @@ import PencilIcon from "../../components/svgs/PencilIcon";
 import PlusIcon from "../../components/svgs/PlusIcon";
 import DeleteIcon from "../../components/svgs/DeleteIcon";
 import CalendarWrapper from "../../components/Calendar";
+import TableFooter from "../../components/Table/TableFooter";
+import { AgenciesPublishersRequests } from "../../types";
 
-const headers = ["Product Name", "Brands", "Products"];
+const headers = ["Publisher Name", "Date Sent", "Country", "Platform"];
 
 const data = [
   {
@@ -55,15 +57,10 @@ const data = [
   },
 ];
 
-const displayLabels = [
-  // "id",
-  "productName",
-  "brands",
-  "products",
-];
+const displayLabels = ["publisher_name", "date_sent", "country", "platform"];
 
 function AgencyPublishersRequest() {
-  const [tableData, setTableData] = useState(data);
+  const [tableData, setTableData] = useState<AgenciesPublishersRequests[]>([]);
   const filterData = (searchString: any) => {
     if (!searchString) return tableData;
     return tableData.filter((item: any) => {
@@ -78,36 +75,37 @@ function AgencyPublishersRequest() {
         .some((currentValue: boolean) => currentValue);
     });
   };
-  const deleteRow = (id: number) => {
-    setTableData((prev) => {
-      return prev.filter((row) => row.id !== id);
-    });
-  };
-
-  const addRow = (row: any) => {
-    setTableData((prev) => {
-      return [...prev, { id: prev.length, ...row }];
-    });
-  };
-
-  const editData = (data: any) => {
-    // setTableData(prev=>{return prev.map()})
-  };
 
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({from: '', to: ''});
+  
   const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
+
+  useEffect(() => {
+
+    const searchParams = new URLSearchParams();
+    
+    searchString && searchParams.append("search", searchString);
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL +
+        "/agencies/publishers-requests" +
+        searchParams.toString()
+    );
+
+    fetch(url, { mode: "cors" }).then(async (response) => {
+      let res = await response.json();
+
+      setTableData(res);
+    });
+  }, [searchString]);
+
   return (
     <Table
       tableData={tableData}
       displayLabels={displayLabels}
       headers={headers}
       tableWidth={"100%"}
-      deleteRow={deleteRow}
-      editData={editData}
-      addRow={addRow}
       filterData={filterData}
       hideCheckbox={true}
       toolbar={
@@ -129,20 +127,8 @@ function AgencyPublishersRequest() {
               </select>
               <span className="ms-3">entries in the page</span>
             </div>
-            <div className="col-5 d-flex align-items-center">
-              <div className="col-12 d-flex align-items-center">
-                <div className="card p-2 px-auto border-0">
-                  {/* <CalendarIcon /> */}
-                  <CalendarWrapper setComponentDate={setComponentDate} />
-                </div>
-                <div className="ms-2">
-                  <DeleteIcon />
-                </div>
-              </div>
-            </div>
           </div>
           <div className="col-6 d-flex align-items-center">
-            
             <div className="col-5">
               <div className="input-group flex-nowrap my-auto">
                 <input
@@ -167,7 +153,7 @@ function AgencyPublishersRequest() {
             </div>
             <div className="col-3 ms-3">
               <select className="form-select w-90">
-                <option value="" selected>
+                <option value="">
                   Export
                 </option>
                 <option value="">20</option>
@@ -191,6 +177,14 @@ function AgencyPublishersRequest() {
       setNumOfRows={setNumOfRows}
       currentPage={currentPage}
       setCurrentPage={setCurrentPage}
+      footer={
+        <TableFooter
+          totalData={tableData.length}
+          rowsPerPage={numOfRows}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      }
     />
   );
 }
