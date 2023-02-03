@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CalendarWrapper from "../components/Calendar";
+import ActiveIcon from "../components/svgs/ActiveIcon";
 import DeleteIcon from "../components/svgs/DeleteIcon";
 import Funnel from "../components/svgs/Funnel";
 import ListIcon from "../components/svgs/ListIcon";
@@ -10,6 +11,8 @@ import SearchInput from "../components/Table/SearchInput";
 import TableDropdown from "../components/Table/TableDropdown";
 import TableFooter from "../components/Table/TableFooter";
 import TableToolbar from "../components/Table/TableToolbar";
+
+import { agenciesBrand } from "../types";
 
 const headers = [
   "Brand Name",
@@ -24,369 +27,6 @@ const headers = [
   "Conversions Rate",
   "Total Products",
   "Permissions",
-];
-
-const data = [
-  {
-    id: 1,
-    brandName: "John Doe",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "0%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 2,
-    brandName: "Donna Slider",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 3,
-    brandName: "Donna Slider",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 4,
-    brandName: "Donna Slider",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 5,
-    brandName: "John Doe",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "0%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 6,
-    brandName: "Donna Slider",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 7,
-    brandName: "Donna Slider",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 8,
-    brandName: "Donna Slider",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 9,
-    brandName: "John Doe",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "0%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 10,
-    brandName: "Donna Slider",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 11,
-    brandName: "Donna Slider",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 12,
-    brandName: "Donna Slider",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 13,
-    brandName: "John Doe",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "0%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 14,
-    brandName: "Donna Slider",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 15,
-    brandName: "Donna Slider",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Game and video",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 16,
-    brandName: "Donna Slider",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 17,
-    brandName: "John Doe",
-    campaingName: "Donna Slider",
-    tag: "ADE99HP4D5Z",
-    country: "$255.89",
-    category: "Entertainment",
-    store: "Amazon",
-    status: "",
-    growth: "0%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 18,
-    brandName: "Anthony Smith",
-    campaingName: "Donna Slider",
-    tag: "ADD99HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 19,
-    brandName: "Donna Slider",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 20,
-    brandName: "John Jones",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 21,
-    brandName: "John Doe",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "0%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 22,
-    brandName: "Donna Slider",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 23,
-    brandName: "Jack Smith",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
-  {
-    id: 24,
-    brandName: "Samuel Peter",
-    campaingName: "Donna Slider",
-    tag: "B099HP4D5Z",
-    country: "$255.89",
-    category: "Health & care",
-    store: "Amazon",
-    status: "",
-    growth: "12%",
-    commissions: "5%",
-    conversions: "12",
-    totalProducts: "12",
-    permissions: <button className="btn btn-danger btn-sm">action</button>,
-  },
 ];
 
 const displayLabels = [
@@ -404,42 +44,8 @@ const displayLabels = [
   "permissions",
 ];
 
-interface dataShape {
-  brand_name: string;
-  campaign_name: string;
-  tag_keylink: string;
-  country: string;
-  category: string;
-  store: string;
-  status: string;
-  growth: string;
-  commission_offer: string;
-  conversion_rate: string;
-  total_product: string;
-  permissions: string;
-  checked: boolean;
-  id: number;
-}
-
 function BrandsManage() {
-  const [tableData, setTableData] = useState<dataShape[]>([
-    {
-      brand_name: "",
-      campaign_name: "",
-      tag_keylink: "",
-      country: "",
-      category: "",
-      store: "",
-      status: "",
-      growth: "",
-      commission_offer: "",
-      conversion_rate: "",
-      total_product: "",
-      permissions: "",
-      checked: false,
-      id: 0,
-    },
-  ]);
+  const [tableData, setTableData] = useState<agenciesBrand[]>([]);
 
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -452,32 +58,17 @@ function BrandsManage() {
   useEffect(() => {
     setCurrentPage(1);
   }, [numOfRows]);
-  // const handleCheck = (id: any, value: boolean) => {
-  //   setTableData((prev) =>
-  //     prev.map((row) => {
-  //       return row.id === id ? { ...row, checked: value } : { ...row };
-  //     })
-  //   );
-  // };
-
-  // const checkAll = (value: boolean) => {
-  //   setTableData((prev) =>
-  //     prev.map((row) => {
-  //       return { ...row, checked: value };
-  //     })
-  //   );
-  // };
 
   const handleDelete = () => {
     let ids = tableData.filter((row) => row.checked === true);
-    console.log(ids);
+    // console.log(ids);
     var url = new URL(process.env.REACT_APP_BASE_URL+"agencies/brands");
     fetch(url, {
       method: "DELETE",
       mode: "cors",
       body: JSON.stringify({ ids: ids }),
     }).then(async (response) => {
-      let res = await response.json();console.log(res)
+      let res = await response.json();//console.log(res)
 
       if (res.success) {
         setSearchString(""); //Trigger data refresh
@@ -487,8 +78,27 @@ function BrandsManage() {
     });
   };
 
+  const updatePermission = (id:number)=>{alert(id)
+    let updates = tableData.filter((row:any)=>{
+      if(row.id === id){
+        return {...row, permissions: ""}
+      }
+    })
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL+"agencies/brands?"
+    );
+    fetch(url, { mode: "cors", method: 'PUT' }).then(async (response) => {
+      let res = await response.json();
+      if (res.success) {
+        setSearchString(""); //Trigger data refresh
+      } else {
+        //Show error message
+      }
+    })
+  }
+
   useEffect(() => {
-    console.log(componentDate);
+    // console.log(componentDate);
 
     const searchParams = new URLSearchParams();
     typeof componentDate == "object" &&
@@ -508,19 +118,20 @@ function BrandsManage() {
       process.env.REACT_APP_BASE_URL+"agencies/brands?" + searchParams.toString()
     );
 
-    // componentDate && url.searchParams.append('search', componentDate);
-    console.log(url);
+    // console.log(url);
 
     fetch(url, { mode: "cors" }).then(async (response) => {
       let res = await response.json();
 
-      console.log(Object.getOwnPropertyNames(res[0]), res);
       setTableData(
         res.map((row: any) => {
           return {
             ...row,
-            permissions: (
-              <button className="btn btn-danger btn-sm">{"action"}</button>
+            status: <div className="d-flex justify-content-center">
+            <ActiveIcon color={row.status ? "#65DD2C" : "#CB6862"} />
+          </div>,
+            permissions: (//What are the options for permissions
+              <button onClick={()=>updatePermission(row.id)} className="btn btn-danger btn-sm">{"action"}</button>
             ),
             checked: false,
           };

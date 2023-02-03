@@ -13,7 +13,7 @@ const TableDropdown = ({value, setValue, data, width }:any) => {
         style={{ width: `${width}` }}
       >
         {data.map((d:any, i:any) =>{
-            return <option value={d.value}>{d.title}</option>
+            return <option key={d.value} value={d.value}>{d.title}</option>
         })}
       </select>
       <span className="ms-3">entries in the page</span>

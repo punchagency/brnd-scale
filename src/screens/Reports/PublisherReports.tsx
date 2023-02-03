@@ -396,22 +396,6 @@ function PublisherReports() {
       );
     });
   };
-  
-  const handleCheck = (id: any, value: boolean) => {
-    setTableData((prev) =>
-      prev.map((row) => {
-        return row.id === id ? { ...row, checked: value } : { ...row };
-      })
-    );
-  };
-
-  const checkAll = (value: boolean) => {
-    setTableData((prev) =>
-      prev.map((row) => {
-        return { ...row, checked: value };
-      })
-    );
-  };
 
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -455,8 +439,7 @@ function PublisherReports() {
             tableData={tableData}
             tableWidth={"120%"}
             displayLabels={displayLabels}
-            handleCheck={handleCheck}
-            checkAll={checkAll}
+            setTableData={setTableData}
             headers={headers}
             numOfRows={numOfRows}
             numOfPages={numOfPages}

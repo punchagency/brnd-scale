@@ -12,8 +12,7 @@ const TableFooter = ({
   const [visibleBtn, setVisibleBtn] = useState(
     currentPage > 1 ? currentPage - 1 : 0
   );
-  let maxPages =
-    totalData / rowsPerPage ;
+  let maxPages = totalData / rowsPerPage;
 
   const showButtons = () => {
     let tempBtns = [];
@@ -34,7 +33,8 @@ const TableFooter = ({
         (visibleBtn > 0 && index < visibleBtn - 1) ||
         (visibleBtn < maxPages &&
           index > (visibleBtn == 0 ? visibleBtn + 2 : visibleBtn + 1))
-      ) {//TODO: bug fix-need to double click when page is one and trying to scroll forward
+      ) {
+        //TODO: bug fix-need to double click when page is one and trying to scroll forward
         classValue += " d-none";
       }
       tempBtns.push(
@@ -44,6 +44,7 @@ const TableFooter = ({
             setCurrentPage(index + 1);
           }}
           className={classValue}
+          key={index + 1}
         >
           {index + 1}
         </button>
@@ -51,16 +52,30 @@ const TableFooter = ({
     }
     return tempBtns;
   };
+
   return (
     <div className="card d-flex px-2 justify-content-between">
       <div className="row d-flex align-content-center">
-        <p className="col-6 col-md-3 mt-3">
-          Showing {currentPage * rowsPerPage - rowsPerPage + 1} to{" "}
-          { totalData < (rowsPerPage * currentPage) ? totalData : rowsPerPage * currentPage} of {totalData} entries
-        </p>
-        <div className="col-4 col-md-2 ms-auto d-flex justify-content-end align-items-center">
+        {totalData > 0 ? (
+          <p className="col-6 col-md-3 mt-3">
+            Showing {currentPage * rowsPerPage - rowsPerPage + 1} to{" "}
+            {totalData < rowsPerPage * currentPage
+              ? totalData
+              : rowsPerPage * currentPage}{" "}
+            of {totalData} entries
+          </p>
+        ) : (
+          <p className="mt-3">No data to display</p>
+        )}
+        <div
+          className={`col-4 col-md-2 ms-auto d-flex justify-content-end align-items-center ${
+            totalData < 1 ? "d-none" : ""
+          }`}
+        >
           <div
-            className={`me-1 ms-auto ${totalData / rowsPerPage < 4 ? 'd-none' : ''}`}
+            className={`me-1 ms-auto ${
+              totalData / rowsPerPage < 4 ? "d-none" : ""
+            }`}
             onClick={() => {
               setVisibleBtn((prev) => (prev > 0 ? --prev : 0));
             }}
@@ -71,7 +86,7 @@ const TableFooter = ({
             {showButtons()}
           </div>
           <div
-            className={`ms-1 ${totalData / rowsPerPage < 4 ? 'd-none' : ''}`}
+            className={`ms-1 ${totalData / rowsPerPage < 4 ? "d-none" : ""}`}
             onClick={() => {
               setVisibleBtn((prev) => (prev + 2 < maxPages ? ++prev : prev));
             }}

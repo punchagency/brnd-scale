@@ -12,7 +12,7 @@ const Dropdown = ({ value, setValue, data, width, bootstrapClass }: any) => {
       style={{ width: `${width}` }}
     >
       {data.map((d:any, i:any) => {
-        return <option value={d.value}>{d.title}</option>;
+        return <option key={d.value} value={d.value}>{d.title}</option>;
       })}
     </select>
   );

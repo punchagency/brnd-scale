@@ -52,8 +52,8 @@ const Table = ({
     // setNumOfPages(data.length);
     return data.map((row: any, index: number) => {
       return (
-        <tr>
-          <td className={`${hideCheckbox ? "d-none" : undefined}`}>
+        <tr key={index}>
+          <td key={row.id} className={`${hideCheckbox ? "d-none" : undefined}`}>
             <input
               type="checkbox"
               onChange={(e) =>
@@ -65,8 +65,8 @@ const Table = ({
               className="form-check-input"
             />
           </td>
-          {displayLabels.map((label: string) => {
-            return <td>{row[label]}</td>;
+          {displayLabels.map((label: string, indx: number) => {
+            return <td key={indx}>{row[label]}</td>;
           })}
         </tr>
       );
@@ -89,7 +89,7 @@ const Table = ({
         >
           <thead className="bg-dark text-white">
             <tr>
-              <th className={`py-3 ${hideCheckbox ? "d-none" : undefined}`}>
+              <th key={-1} className={`py-3 ${hideCheckbox ? "d-none" : undefined}`}>
                 <input
                   type="checkbox"
                   onChange={(e) => checkAll(e.target.checked, setTableData)}
