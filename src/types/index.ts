@@ -110,3 +110,22 @@ export interface AgenciesReportingSummaries {
   created_at: string;
   updated_at: string;
 }
+
+export interface AgenciesReportingPublishers {
+  id: number;
+  user_id: number;
+  product_name: string;
+  publishers: string;
+  starting_date: string;
+  last_active: string;
+  status: string;
+  conversions: number;
+  commission: number;
+  total_orders: number;
+  total_paid: number;
+  quantity: number;
+  prefer_url: string;
+  created_at: string;
+  updated_at: string;
+  checked: boolean;
+}
