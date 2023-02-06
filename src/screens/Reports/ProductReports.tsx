@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ListIcon from "../../components/svgs/ListIcon";
 import Table from "../../components/Table";
 import { Link } from "react-router-dom";
@@ -6,6 +6,8 @@ import CalendarIcon from "../../components/svgs/CalendarIcon";
 import ProductReportCard from "../../components/Reports/ProductReportCard";
 import PageMenu from "../../components/Common/PageMenu";
 import TableFooter from "../../components/Table/TableFooter";
+import { AgenciesReportingProducts, AgenciesReportingSummaries } from "../../types";
+import CalendarWrapper from "../../components/Calendar";
 
 const headers = [
   "Product Name",
@@ -261,148 +263,221 @@ const data = [
 ];
 
 const displayLabels = [
-  // "id",
-  "productName",
+  "product_name",
   "brands",
   "publisher",
-  "lastRecorded",
-  "prices",
+  "last_recorded",
+  "price",
   "impressions",
   "profits",
   "clicks",
-  "unlClicks",
-  "invClicks",
-  "commissions",
+  "uni_clicks",
+  "invalid_click",
+  "conversion_percentage",
   "orders",
-  "totalCVR",
+  "total_cvr",
 ];
 
 function ProductReports() {
-  const [tableData, setTableData] = useState(data);
+  const [tableData, setTableData] = useState<AgenciesReportingProducts[]>([]);
+  const [summaries, setSummaries] = useState<AgenciesReportingSummaries>()
 
-  const filterData = (searchString: any) => {
-    if (!searchString) return tableData;
-    return tableData.filter((item: any) => {
-      return (
-        item.publisherName.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.productName.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.brands.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.commissions.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.startDate.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.product.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.growth.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.clicks.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.orders.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.revenue.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.sales.toLowerCase().includes(searchString.toLowerCase())
-      );
-    });
-  };
-  const deleteRow = (id: number) => {
-    setTableData((prev) => {
-      return prev.filter((row) => row.id !== id);
-    });
-  };
-
-  const addRow = (row: any) => {
-    setTableData((prev) => {
-      return [...prev, { id: prev.length, ...row }];
-    });
-  };
-
-  const editData = (data: any) => {
-    // setTableData(prev=>{return prev.map()})
-  };
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
+  const [componentDate, setComponentDate] = useState<
+    string | { from: string; to: string }
+  >({ from: "", to: "" });
+
+  const [reportType, setReportType] = useState("");
+
+  useEffect(() => {
+    let searchParams = new URLSearchParams();
+    
+    typeof componentDate == "object" &&
+      componentDate.from != "" &&
+      searchParams.append(
+        "date_from",
+        typeof componentDate == "object" ? componentDate.from : ""
+      );
+    typeof componentDate == "object" &&
+      componentDate.to != "" &&
+      searchParams.append(
+        "date_to",
+        typeof componentDate == "object" ? componentDate.to : ""
+      );
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL+"agencies/reports/products?" + searchParams.toString()
+    );
+
+    // searchParams = new URLSearchParams()
+    reportType != "" &&
+      searchParams.append(
+        "report_type",
+        reportType
+      );
+    var summaryUrl = new URL(
+      process.env.REACT_APP_BASE_URL+"agencies/reports/summaries?" + searchParams.toString()
+    );
+
+    fetch(url, { mode: "cors" }).then(async (response) => {
+      // console.log(await response.json())
+      let res = await response.json();
+
+      setTableData(
+        res.map((row: any) => {
+          return {
+            ...row,
+            product_name: <Link to="/">Winter worlds mens wear (2022) this is samp</Link>,//URL from api
+            impressions: <span className="text-success">Enabled</span>,//value from api
+          };
+        })
+      );
+    });
+    fetch(summaryUrl, { mode: "cors" }).then(async (response) => {
+      // console.log(await response.json())
+      let res = await response.json();
+      setSummaries(res);
+    });
+  }, [componentDate]);
+
   return (
-      <div className="row pt-3 ps-2 pe-5">
-        <div className="col-12 mt-3 d-flex justify-content-between">
-          <h4>Reports</h4>
-          <button className="btn btn-primary btn-sm">Connect</button>
-        </div>
-        <div className="col-12 mt-4 d-flex">
-          <PageMenu links={[{path: '/product-reports', title: 'Product Report'}, {path: '/publisher-reports', title: 'Publisher Report'}, {path: '/payment-reports', title: 'Payments'}]} />
-        </div>
-        <div className="col-12 mt-4">
-          <div className="card d-flex p-2">
-            <div className="row">
-              <div className="col-6 d-inline d-flex align-items-center ">
-                <ListIcon /> <span className="fs-5 ms-2">See the reports</span>
-                <div className="card p-2 ms-4 px-auto">
-                  <CalendarIcon />
-                </div>
-              </div>
-              <div className="col-2 offset-4 d-inline d-flex align-items-center ">
-                <select className="form-select">
-                  <option>Reports Type</option>
-                </select>
+    <div className="row pt-3 ps-2 pe-5">
+      <div className="col-12 mt-3 d-flex justify-content-between">
+        <h4>Reports</h4>
+        <button className="btn btn-primary btn-sm">Connect</button>
+      </div>
+      <div className="col-12 mt-4 d-flex">
+        <PageMenu
+          links={[
+            { path: "/product-reports", title: "Product Report" },
+            { path: "/publisher-reports", title: "Publisher Report" },
+            { path: "/payment-reports", title: "Payments" },
+          ]}
+        />
+      </div>
+      <div className="col-12 mt-4">
+        <div className="card d-flex p-2">
+          <div className="row">
+            <div className="col-6 d-inline d-flex align-items-center ">
+              <ListIcon /> <span className="fs-5 ms-2">See the reports</span>
+              <div className="card ms-4 px-auto border-0">
+                <CalendarWrapper
+                  setComponentDate={setComponentDate}
+                  format={2}
+                />
               </div>
             </div>
-          </div>
-          <div className="row mt-3">
-            <div className="col-12">
-              <div className="card">
-                <div className="row d-flex">
-                  <div className="col-2 w-5 ms-2 mt-2" style={{width: "11%"}}>
-                    <h5 className="d-inline">Summary</h5>
-                  </div>
-                  <div className="col-10 d-flex" style={{width: "88%"}}>
-                    <div className="productCardWrapper" >
-                      <ProductReportCard topLabel={"Impressions"} topValue={0} bottomLabel={"Clicks"} bottomValue={0} />
-                    </div>
-                    <div className="ms-2 productCardWrapper">
-                      <ProductReportCard topLabel={"RDA"} topValue={0} bottomLabel={"Gross Clicks"} bottomValue={0} />
-                    </div>
-                    <div className="ms-2 productCardWrapper">
-                      <ProductReportCard topLabel={"Revenue"} topValue={0} bottomLabel={"Pay Cut"} bottomValue={0} />
-                    </div>
-                    <div className="ms-2 productCardWrapper">
-                      <ProductReportCard topLabel={"Total CV"} topValue={0} bottomLabel={"Profit"} bottomValue={0} />
-                    </div>
-                    <div className="ms-2 productCardWrapper">
-                      <ProductReportCard topLabel={"VTCV"} topValue={0} bottomLabel={"Margin"} bottomValue={0} />
-                    </div>
-                    <div className="ms-2 productCardWrapper">
-                      <ProductReportCard topLabel={"CTR"} topValue={0} bottomLabel={"Avg. Sale Value"} bottomValue={0} />
-                    </div>
-                    <div className="ms-2 productCardWrapper">
-                      <ProductReportCard topLabel={"Gross Sales"} topValue={0} bottomLabel={"CVR"} bottomValue={0} />
-                    </div>
-                    <div className="ms-2 productCardWrapper">
-                      <ProductReportCard topLabel={"CPC"} topValue={0} bottomLabel={"CPM"} bottomValue={0} />
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="col-2 offset-4 d-inline d-flex align-items-center ">
+              <select className="form-select">
+                <option>Reports Type</option>
+              </select>
             </div>
           </div>
         </div>
-        <div className="col-12">
-          <Table
-            tableData={tableData}
-            displayLabels={displayLabels}
-            headers={headers}
-            hideToolbar={true}
-            hideCheckbox={true}
-            tableWidth={"100%"}
-            deleteRow={deleteRow}
-            editData={editData}
-            addRow={addRow}
-            filterData={filterData}
-            numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
-            footer={
-              <TableFooter
-                totalData={tableData.length}
-                rowsPerPage={numOfRows}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-              />
-            }
-          />
+        <div className="row mt-3">
+          <div className="col-12">
+            <div className="card">
+              <div className="row d-flex">
+                <div className="col-2 w-5 ms-2 mt-2" style={{ width: "11%" }}>
+                  <h5 className="d-inline">Summary</h5>
+                </div>
+                <div className="col-10 d-flex" style={{ width: "88%" }}>
+                  <div className="productCardWrapper">
+                    <ProductReportCard
+                      topLabel={"Impressions"}
+                      topValue={summaries?.impressions}
+                      bottomLabel={"Clicks"}
+                      bottomValue={summaries?.clicks}
+                    />
+                  </div>
+                  <div className="ms-2 productCardWrapper">
+                    <ProductReportCard
+                      topLabel={"RDA"}
+                      topValue={summaries?.rda}
+                      bottomLabel={"Gross Clicks"}
+                      bottomValue={summaries?.gross_clicks}
+                    />
+                  </div>
+                  <div className="ms-2 productCardWrapper">
+                    <ProductReportCard
+                      topLabel={"Revenue"}
+                      topValue={summaries?.revenue}
+                      bottomLabel={"Pay Cut"}
+                      bottomValue={summaries?.paycut}
+                    />
+                  </div>
+                  <div className="ms-2 productCardWrapper">
+                    <ProductReportCard
+                      topLabel={"Total CV"}
+                      topValue={summaries?.total_cv}
+                      bottomLabel={"Profit"}
+                      bottomValue={summaries?.profit}
+                    />
+                  </div>
+                  <div className="ms-2 productCardWrapper">
+                    <ProductReportCard
+                      topLabel={"VTCV"}
+                      topValue={summaries?.vtcv}
+                      bottomLabel={"Margin"}
+                      bottomValue={summaries?.margin}
+                    />
+                  </div>
+                  <div className="ms-2 productCardWrapper">
+                    <ProductReportCard
+                      topLabel={"CTR"}
+                      topValue={summaries?.ctr}
+                      bottomLabel={"Avg. Sale Value"}
+                      bottomValue={summaries?.average_sale_value}
+                    />
+                  </div>
+                  <div className="ms-2 productCardWrapper">
+                    <ProductReportCard
+                      topLabel={"Gross Sales"}
+                      topValue={summaries?.gross_sales}
+                      bottomLabel={"CVR"}
+                      bottomValue={summaries?.cvr}
+                    />
+                  </div>
+                  <div className="ms-2 productCardWrapper">
+                    <ProductReportCard
+                      topLabel={"CPC"}
+                      topValue={summaries?.cpc}
+                      bottomLabel={"CPM"}
+                      bottomValue={summaries?.cpm}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <div className="col-12">
+        <Table
+          tableData={tableData}
+          displayLabels={displayLabels}
+          headers={headers}
+          hideToolbar={true}
+          hideCheckbox={true}
+          tableWidth={"100%"}
+          numOfPages={numOfPages}
+          setNumOfPages={setNumOfPages}
+          numOfRows={numOfRows}
+          setNumOfRows={setNumOfRows}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          footer={
+            <TableFooter
+              totalData={tableData.length}
+              rowsPerPage={numOfRows}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          }
+        />
+      </div>
+    </div>
   );
 }
 

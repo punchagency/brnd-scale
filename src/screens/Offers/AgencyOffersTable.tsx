@@ -410,6 +410,19 @@ const displayLabels = [
   "salesManager",
   "deviceType",
   "status",
+
+// "image",
+// "promotion",
+// "offer_name",
+// "agency",
+// "prices",
+// "status",
+// "commission_offer",
+// "tag_link",
+// "publishers",
+// "asin_id",
+// "offer_status",
+// "date",
 ];
 
 function AgencyOffersTable() {

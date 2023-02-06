@@ -43,3 +43,70 @@ export interface AgenciesPublishersRequests {
   country: string;
   platform: string;
 }
+
+export interface Offers {
+  id: number;
+  user_id: number;
+  image: string;
+  promotion: string;
+  offer_name: string;
+  agency: string;
+  prices: string;
+  status: string;
+  commission_offer: string;
+  tag_link: string;
+  publishers: string;
+  asin_id: string;
+  offer_status: string;
+  date: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface AgenciesReportingProducts {
+  id: number;
+  user_id: number;
+  product_id: number;
+  product_name: string;
+  brands: string;
+  publisher: string;
+  last_recorded: string;
+  price: number;
+  impressions: number;
+  profits: number;
+  clicks: number;
+  uni_clicks: number;
+  invalid_click: number;
+  conversion_percentage: number;
+  orders: number;
+  total_cvr: number;
+  date: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface AgenciesReportingSummaries {
+  id: number;
+  user_id: number;
+  report_type: string;
+  date_from: string;
+  date_to: string;
+  impressions: number;
+  clicks: number;
+  rda: number;
+  gross_clicks: number;
+  revenue: number;
+  paycut: number;
+  total_cv: number;
+  profit: number;
+  vtcv: number;
+  margin: number;
+  ctr: number;
+  average_sale_value: number;
+  gross_sales: number;
+  cvr: number;
+  cpc: number;
+  cpm: number;
+  created_at: string;
+  updated_at: string;
+}
