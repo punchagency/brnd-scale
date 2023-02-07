@@ -129,3 +129,23 @@ export interface AgenciesReportingPublishers {
   updated_at: string;
   checked: boolean;
 }
+
+export interface AgenciesReportingPayments {
+  "id": number,
+"user_id": number,
+"product_id": number,
+"agency_id": number,
+"product_name": string,
+"brands": string,
+"campaign_name": string,
+"starting_date": string,
+"ending_date": string,
+"tags": string,
+"due": number,
+"commision_type": string,
+"total_sales": number,
+"total_clicks": number,
+"status": string,
+"created_at": string,
+"updated_at": string
+}
