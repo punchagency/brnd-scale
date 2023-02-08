@@ -419,6 +419,7 @@ function AgencyOffersTable() {
 
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
+  
   const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({
     from: "",
     to: "",
@@ -456,7 +457,7 @@ function AgencyOffersTable() {
       process.env.REACT_APP_BASE_URL+"agencies/offers?" + searchParams.toString()
     );
 
-     
+     console.log(url.toString())
 
     fetch(url, { mode: "cors" }).then(async (response) => {//console.log(await response.text())
       let res = await response.json();
