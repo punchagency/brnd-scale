@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ActiveIcon from "../../components/svgs/ActiveIcon";
 import jbl from "../../assets/images/jbl.png";
 import versace from "../../assets/images/versace.png";
@@ -15,6 +15,9 @@ import DeleteIcon from "../../components/svgs/DeleteIcon";
 import CalendarWrapper from "../../components/Calendar";
 import TableDropdown from "../../components/Table/TableDropdown";
 import TableToolbar from "../../components/Table/TableToolbar";
+import { AgencyOffers } from "../../types";
+
+const images = [handm, herbalLife, jbl, versace];
 
 const headers = [
   "Image",
@@ -396,140 +399,176 @@ const data = [
 ];
 
 const displayLabels = [
-  // "id",
   "image",
-  "campaignName",
-  "brandName",
-  "setCommission",
+  "campaign_name",
+  "brand_name",
+  "commission",
   "category",
-  "countries",
-  "endingDate",
+  "country",
+  "ending_date",
   "visibility",
   "platform",
-  "accountsManager",
-  "salesManager",
-  "deviceType",
+  "account_manager",
+  "sales_manager",
+  "device_type",
   "status",
-
-// "image",
-// "promotion",
-// "offer_name",
-// "agency",
-// "prices",
-// "status",
-// "commission_offer",
-// "tag_link",
-// "publishers",
-// "asin_id",
-// "offer_status",
-// "date",
 ];
 
 function AgencyOffersTable() {
-  const [tableData, setTableData] = useState(data);
-  const filterData = (searchString: any) => {
-    if (!searchString) return tableData;
-    return tableData.filter((item: any) => {
-      return (
-        item.publisherName.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.productName.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.brands.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.commissions.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.startDate.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.product.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.growth.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.clicks.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.orders.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.revenue.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.sales.toLowerCase().includes(searchString.toLowerCase())
-      );
-    });
-  };
-  
+  const [tableData, setTableData] = useState<AgencyOffers[]>([]);
+
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({from: '', to: ''});
+  const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({
+    from: "",
+    to: "",
+  });
   const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
+
+  const getImage = (img:String)=>{
+    switch(img){
+      case "jbl": return jbl; break;
+      case "handm": return handm; break;
+      case "versace": return versace; break;
+      case "herbalLife": return herbalLife; break;
+    }
+  }
+  
+  useEffect(() => {
+    // console.log(componentDate);
+
+    const searchParams = new URLSearchParams();
+    typeof componentDate == "object" &&
+      componentDate.from != "" &&
+      searchParams.append(
+        "date_from",
+        typeof componentDate == "object" ? componentDate.from : ""
+      );
+    typeof componentDate == "object" &&
+      componentDate.to != "" &&
+      searchParams.append(
+        "date_to",
+        typeof componentDate == "object" ? componentDate.to : ""
+      );
+    searchString && searchParams.append("search", searchString);
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL+"agencies/offers?" + searchParams.toString()
+    );
+
+     
+
+    fetch(url, { mode: "cors" }).then(async (response) => {//console.log(await response.text())
+      let res = await response.json();
+
+      setTableData(
+        res.map((row: any) => {
+          return {
+            ...row,
+            image: (
+              <div
+                className="d-flex justify-content-center"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                <img src={getImage(row.image)} alt="" />
+              </div>
+            ),
+            commission: (
+              <button className="btn btn-outline-primary btn-sm">Set Commission</button>
+            ),
+            status: (
+              <div className="d-flex justify-content-center">
+                <ActiveIcon color={"#CB6862"} />
+              </div>
+            ),
+            checked: false,
+          };
+        })
+      );
+    });
+  }, [componentDate, searchString]);
+
+
   return (
     <Table
-    tableData={tableData}
-    tableWidth={"130%"}
-    displayLabels={displayLabels}
-    setTableData={setTableData}
-    headers={headers}
-    numOfRows={numOfRows}
-    numOfPages={numOfPages}
-    currentPage={currentPage}
-    toolbar={
-      <TableToolbar>
-        <div className="col-12 col-md-6  d-flex ">
-          <TableDropdown
-            value={numOfRows}
-            setValue={setNumOfRows}
-            width={"29%"}
-            data={[
-              { title: 10, value: 10 },
-              { title: 20, value: 20 },
-            ]}
-          />
-          <div className="col-5 d-flex align-items-center">
-            <div className="col-12 d-flex align-items-center">
-              <div className="card p-2 px-auto border-0">
-                <CalendarWrapper setComponentDate={setComponentDate} />
-              </div>
-              <div className="ms-2">
-                <Button
-                  bootstrapClass="btn btn-sm"
-                  content={<DeleteIcon />}
-                />
+      tableData={tableData}
+      tableWidth={"130%"}
+      displayLabels={displayLabels}
+      setTableData={setTableData}
+      headers={headers}
+      numOfRows={numOfRows}
+      numOfPages={numOfPages}
+      currentPage={currentPage}
+      toolbar={
+        <TableToolbar>
+          <div className="col-12 col-md-6  d-flex ">
+            <TableDropdown
+              value={numOfRows}
+              setValue={setNumOfRows}
+              width={"29%"}
+              data={[
+                { title: 10, value: 10 },
+                { title: 20, value: 20 },
+              ]}
+            />
+            <div className="col-5 d-flex align-items-center">
+              <div className="col-12 d-flex align-items-center">
+                <div className="card p-2 px-auto border-0">
+                  <CalendarWrapper setComponentDate={setComponentDate} format={2} />
+                </div>
+                <div className="ms-2">
+                  <Button
+                    bootstrapClass="btn btn-sm"
+                    content={<DeleteIcon />}
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="col-12 col-md-6 d-flex align-items-center justify-content-end">
-          <div className="col-5">
-            <SearchInput
-              value={searchString}
-              onChangeFunc={(value: string) => {
-                setSearchString(value);
-                setCurrentPage(1);
-              }}
+          <div className="col-12 col-md-6 d-flex align-items-center justify-content-end">
+            <div className="col-5">
+              <SearchInput
+                value={searchString}
+                onChangeFunc={(value:string) => {
+                  setSearchString(value);
+                  setCurrentPage(1);
+                }}
+              />
+            </div>
+            <div className="col-3 ms-3">
+              <Dropdown
+                width="90%"
+                data={[
+                  { title: "Export", value: "" },
+                  { title: 10, value: 10 },
+                ]}
+                value=""
+                setValue={() => {}}
+              />
+            </div>
+            <Button
+              bootstrapClass="btn btn-white "
+              content={
+                <>
+                  Filter
+                  <span className="ms-1">
+                    <Funnel />
+                  </span>
+                </>
+              }
             />
           </div>
-          <div className="col-3 ms-3">
-            <Dropdown
-              width="90%"
-              data={[
-                { title: "Export", value: "" },
-                { title: 10, value: 10 },
-              ]}
-              value=""
-              setValue={() => {}}
-            />
-          </div>
-          <Button
-            bootstrapClass="btn btn-white "
-            content={
-              <>
-                Filter
-                <span className="ms-1">
-                  <Funnel />
-                </span>
-              </>
-            }
-          />
-        </div>
-      </TableToolbar>
-    }
-    footer={
-      <TableFooter
-        totalData={tableData.length}
-        rowsPerPage={numOfRows}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
-    }
+        </TableToolbar>
+      }
+      footer={
+        <TableFooter
+          totalData={tableData.length}
+          rowsPerPage={numOfRows}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      }
     />
   );
 }

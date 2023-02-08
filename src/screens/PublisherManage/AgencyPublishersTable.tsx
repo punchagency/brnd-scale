@@ -593,7 +593,7 @@ function AgencyPublishersTable() {
     });
   };
 
-  const updatePermission = (id:number)=>{alert(id)
+  const updatePermission = (id:number)=>{
     let updates = tableData.filter((row:any)=>{
       if(row.id === id){
         return {...row, permissions: ""}
