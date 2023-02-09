@@ -386,6 +386,8 @@ function PublisherReports() {
   const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
 
+  const [total, setTotal] = useState(0)
+
   const handleDelete = () => {
     let ids = tableData.filter((row) => row.checked === true);
     // console.log(ids);
@@ -455,7 +457,7 @@ function PublisherReports() {
       let res = await response.json();
 
       setTableData(
-        res.map((row: any) => {
+        res.data.data.map((row: any) => {
           return {
             ...row,
             edit: (
@@ -483,6 +485,7 @@ function PublisherReports() {
           };
         })
       );
+      setTotal(res.data.total)
     });
   }, [componentDate, searchString]);
 
@@ -596,7 +599,7 @@ function PublisherReports() {
           }
           footer={
             <TableFooter
-              totalData={tableData.length}
+              totalData={total}
               rowsPerPage={numOfRows}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}

@@ -82,6 +82,8 @@ function AgencyPublishersRequest() {
   const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
 
+  const [total, setTotal] = useState(0)
+
   useEffect(() => {
 
     const searchParams = new URLSearchParams();
@@ -96,7 +98,8 @@ function AgencyPublishersRequest() {
     fetch(url, { mode: "cors" }).then(async (response) => {
       let res = await response.json();
 
-      setTableData(res);
+      setTableData(res.data.data);
+      setTotal(res.data.total)
     });
   }, [searchString]);
 
@@ -179,7 +182,7 @@ function AgencyPublishersRequest() {
       setCurrentPage={setCurrentPage}
       footer={
         <TableFooter
-          totalData={tableData.length}
+          totalData={total}
           rowsPerPage={numOfRows}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}

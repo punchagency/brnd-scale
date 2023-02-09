@@ -28,6 +28,28 @@ function useOutsideAlerter(ref: any, callbackFunc: () => void) {
   }, [ref]);
 }
 
+const getDefaultRange = ()=>{
+  
+  let date = new Date()
+
+  const defaultTo = {
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+    day: date.getDate(),
+  };
+  // date.setDate(1)
+  const defaultFrom = {
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+    day: 1,
+  };
+
+  return {
+    from: defaultFrom,
+    to: defaultTo,
+  };
+}
+
 const CalendarWrapper = ({ setComponentDate, format = 1 }: CalendarProps) => {
   const months = [
     "Jan",
@@ -43,11 +65,9 @@ const CalendarWrapper = ({ setComponentDate, format = 1 }: CalendarProps) => {
     "Nov",
     "Dec",
   ];
+
   const [showCalendar, setShowCalendar] = useState<Boolean>(false);
-  const [selectedDayRange, setSelectedDayRange] = useState<DayRange>({
-    from: null,
-    to: null,
-  });
+  const [selectedDayRange, setSelectedDayRange] = useState<DayRange>(getDefaultRange());
   const [clickedAmount, setClickedAmount] = useState(0);
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef, () => {

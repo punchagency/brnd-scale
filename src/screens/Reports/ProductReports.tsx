@@ -290,6 +290,7 @@ function ProductReports() {
   >({ from: "", to: "" });
 
   const [reportType, setReportType] = useState("");
+  const [total, setTotal] = useState(0)
 
   useEffect(() => {
     let searchParams = new URLSearchParams();
@@ -325,7 +326,7 @@ function ProductReports() {
       let res = await response.json();
 
       setTableData(
-        res.map((row: any) => {
+        res.data.data.map((row: any) => {
           return {
             ...row,
             product_name: <Link to="/">Winter worlds mens wear (2022) this is samp</Link>,//URL from api
@@ -333,6 +334,7 @@ function ProductReports() {
           };
         })
       );
+      setTotal(res.data.total);
     });
     fetch(summaryUrl, { mode: "cors" }).then(async (response) => {
       // console.log(await response.json())
@@ -469,7 +471,7 @@ function ProductReports() {
           setCurrentPage={setCurrentPage}
           footer={
             <TableFooter
-              totalData={tableData.length}
+              totalData={total}
               rowsPerPage={numOfRows}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
