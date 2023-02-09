@@ -426,6 +426,7 @@ function AgencyOffersTable() {
   });
   const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
+  const [total, setTotal] = useState(0)
 
   const getImage = (img:String)=>{
     switch(img){
@@ -437,8 +438,6 @@ function AgencyOffersTable() {
   }
   
   useEffect(() => {
-    // console.log(componentDate);
-
     const searchParams = new URLSearchParams();
     typeof componentDate == "object" &&
       componentDate.from != "" &&
@@ -457,13 +456,15 @@ function AgencyOffersTable() {
       process.env.REACT_APP_BASE_URL+"agencies/offers?" + searchParams.toString()
     );
 
+    searchParams.append('per_page', numOfRows+"")
+    searchParams.append('page', currentPage+"")
      console.log(url.toString())
 
     fetch(url, { mode: "cors" }).then(async (response) => {//console.log(await response.text())
-      let res = await response.json();
+      let res = await response.json();console.log(res)
 
       setTableData(
-        res.map((row: any) => {
+        res.data.data.map((row: any) => {
           return {
             ...row,
             image: (
@@ -487,8 +488,9 @@ function AgencyOffersTable() {
           };
         })
       );
+      setTotal(res.data.total)
     });
-  }, [componentDate, searchString]);
+  }, [componentDate, searchString, currentPage]);
 
 
   return (
@@ -564,7 +566,7 @@ function AgencyOffersTable() {
       }
       footer={
         <TableFooter
-          totalData={tableData.length}
+          totalData={total}
           rowsPerPage={numOfRows}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}

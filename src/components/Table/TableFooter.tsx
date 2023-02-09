@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CaretLeft from "../svgs/CaretLeft";
 import CaretRight from "../svgs/CaretRight";
 
@@ -8,14 +8,17 @@ const TableFooter = ({
   currentPage,
   setCurrentPage,
 }: any) => {
-  const [buttons, setButtons] = useState([]);
   const [visibleBtn, setVisibleBtn] = useState(
     currentPage > 1 ? currentPage - 1 : 0
   );
   let maxPages = totalData / rowsPerPage;
 
+  useEffect(()=>{
+    setVisibleBtn(currentPage-1)
+  }, [rowsPerPage])
   const showButtons = () => {
     let tempBtns = [];
+    
     for (let index = 0; index < maxPages; index++) {
       let classValue =
         index + 1 === currentPage
