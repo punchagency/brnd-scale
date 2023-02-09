@@ -568,6 +568,7 @@ function AgencyPublishersTable() {
   >({ from: "", to: "" });
   const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
+  const [total, setTotal] = useState(0)
 
   useEffect(() => {
     setCurrentPage(1);
@@ -639,7 +640,7 @@ function AgencyPublishersTable() {
       let res = await response.json();
 
       setTableData(
-        res.map((row: any) => {
+        res.data.data.map((row: any) => {
           return {
             ...row,
             status: <div className="d-flex justify-content-center">
@@ -652,6 +653,7 @@ function AgencyPublishersTable() {
           };
         })
       );
+      setTotal(res.data.total)
     });
   }, [componentDate, searchString]);
 
@@ -728,7 +730,7 @@ function AgencyPublishersTable() {
       }
       footer={
         <TableFooter
-          totalData={tableData.length}
+          totalData={total}
           rowsPerPage={numOfRows}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}

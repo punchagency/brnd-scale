@@ -268,6 +268,7 @@ function PaymentReport() {
   const [currentPage, setCurrentPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
   const [reportType, setReportType] = useState("");
+  const [total, setTotal] = useState(0)
 
   useEffect(() => {
     const searchParams = new URLSearchParams();
@@ -287,7 +288,7 @@ function PaymentReport() {
       let res = await response.json();console.log(res);
 
       setTableData(
-        res.map((row: any) => {console.log("in set")
+        res.data.data.map((row: any) => {console.log("in set")
           return {
             ...row,
             commission_type: (
@@ -299,6 +300,7 @@ function PaymentReport() {
           };
         })
       );
+      setTotal(res.data.total)
     });
   }, [reportType]);
 
