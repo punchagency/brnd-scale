@@ -430,19 +430,15 @@ function AgencyOffersTable() {
   const filterData = (searchString: any) => {
     if (!searchString) return tableData;
     return tableData.filter((item: any) => {
-      return (
-        item.publisherName.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.productName.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.brands.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.commissions.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.startDate.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.product.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.growth.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.clicks.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.orders.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.revenue.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.sales.toLowerCase().includes(searchString.toLowerCase())
-      );
+      const itemProperties: Array<string> = Object.keys(item);
+      return itemProperties
+        .map((key: string) => {
+          if (typeof item[key] === "string") {
+            return item[key].includes(searchString);
+          }
+          return false;
+        })
+        .some((currentValue: boolean) => currentValue);
     });
   };
   
