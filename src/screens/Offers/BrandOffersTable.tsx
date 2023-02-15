@@ -689,6 +689,7 @@ const displayLabels = [
 function BrandOffersTable() {
   const [tableData, setTableData] = useState(data);
   const [searchString, setSearchString] = useState("");
+  const [total, setTotal] = useState(0)
   const filterData = (searchString: any) => {
     if (!searchString) return tableData;
     return tableData.filter((item: any) => {
@@ -728,14 +729,64 @@ function BrandOffersTable() {
     );
 
     fetch(url, {
-      headers: {
-        'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Methods': 'GET'
-      },
+      mode: 'cors'
     }).then(async (response) => {
       let res = await response.json();
-
-      setTableData(res);
+      setTableData(
+        res.data.data.map((row: any) => {
+          return {
+            ...row,
+            image: (
+              <div
+                className="d-flex justify-content-center"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                <img src={row.image} alt="" />
+              </div>
+            ),
+            promotion: (
+              <div
+                className="d-flex justify-content-center"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                <img src={MarketBtn} alt="" />
+              </div>
+            ),
+            offer_name: (
+              <div>
+                <span className="pe-2">Xetrusion bar</span>
+                <img src={LinkSimpleBreak} alt="" />
+              </div>
+            ),
+            status: <span className="text-success">Enabled</span>,
+            commission_offer: (
+              <div>
+                <span>12%</span>
+                <span
+                  className="bg-info rounded p-1 ms-2 ps-2 pe-2"
+                  style={{ fontSize: "8px", height: "12px" }}
+                >
+                  Pay per click
+                </span>
+              </div>
+            ),
+            tag_link: (
+              <div>
+                <img src={LinkIcon} alt="" />
+                <span>B099HP4D5Z</span>
+              </div>
+            ),
+            offer_status: (
+              <span className="border rounded ps-2 pe-2 text-align-center">
+                Accepted
+              </span>
+            ),
+          };
+        })
+      );
+      setTotal(res.data.total)
     });
   }, [searchString]);
 
@@ -763,7 +814,7 @@ function BrandOffersTable() {
       setCurrentPage={setCurrentPage}
       footer={
         <TableFooter
-          totalData={tableData.length}
+          totalData={total}
           rowsPerPage={numOfRows}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}

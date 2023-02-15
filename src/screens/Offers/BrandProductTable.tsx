@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LinkSimpleBreak from "../../assets/images/LinkSimpleBreak.svg";
 import Table from "../../components/Table";
 import TableFooter from "../../components/Table/TableFooter";
@@ -528,7 +528,56 @@ function BrandProductTable() {
   const [currentPage, setCurrentPage] = useState(1);
   const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({from: '', to: ''});
   const [searchString, setSearchString] = useState("");
+  const [total, setTotal] = useState(0)
   const [numOfPages, setNumOfPages] = useState(1);
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams();
+
+    searchString && searchParams.append("search", searchString);
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL + "brands/manage-products" + searchParams.toString()
+    );
+
+    fetch(url, {
+      mode: 'cors'
+    }).then(async (response) => {
+      let res = await response.json();
+      setTableData(
+        res.data.data.map((row: any) => {
+          return {
+            ...row,
+            productName: (
+              <div
+                className="d-flex justify-content-center"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                <a href="#" className="me-3" style={{maxWidth: "232px"}}>
+                  {row.productName}
+                </a>
+                <img src={LinkSimpleBreak} alt="" />
+              </div>
+            ),
+            status: <span className="border rounded p-1 ps-2 pe-2 text-center">Permoted</span>,
+            commission: (
+              <div>
+                <span>12%</span>
+                <span
+                  className="bg-info rounded p-1 ms-2 ps-2 pe-2"
+                  style={{ fontSize: "8px", height: "12px" }}
+                >
+                  Pay per click
+                </span>
+              </div>
+            ),
+          };
+        })
+      );
+      setTotal(res.data.total)
+    });
+  }, [searchString]);
+
   return (
     <Table
       tableData={tableData}
@@ -542,7 +591,7 @@ function BrandProductTable() {
       numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
       footer={
         <TableFooter
-          totalData={tableData.length}
+          totalData={total}
           rowsPerPage={numOfRows}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductDetail from "../../components/Popups/ProductDetail";
 import Table from "../../components/Table";
 import TableFooter from "../../components/Table/TableFooter";
@@ -368,20 +368,25 @@ const data = [
 
 const displayLabels = [
   // "id",
-  "productName",
-  "publisherName",
-  "lastRecorded",
+  "product_name",
+  "publisher_name",
+  "last_recorded",
   "prices",
   "impressions",
   "profits",
   "clicks",
-  "unClicks",
-  "invalidClick",
+  "uni_clicks",
+  "invalid_clicks",
   "conversions",
   "orders",
-  "totalCVR",
+  "total_cvr",
 ];
-function BrandFullReportTable() {
+
+interface BrandFullReportTableProps {
+  componentDate?: string | { from: string; to: string }
+}
+
+function BrandFullReportTable({componentDate}: BrandFullReportTableProps) {
   const [tableData, setTableData] = useState(data);
   const filterData = (searchString: any) => {
     if (!searchString) return tableData;
@@ -415,6 +420,58 @@ function BrandFullReportTable() {
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
+  const [searchString, setSearchString] = useState("");
+  const [total, setTotal] = useState(0);
+  useEffect(() => {
+    const searchParams = new URLSearchParams();
+    console.log("cococo", componentDate)
+    typeof componentDate === "object" &&
+      componentDate.from !== "" &&
+      searchParams.append(
+        "date_from",
+        typeof componentDate === "object" ? componentDate.from : ""
+      );
+    typeof componentDate === "object" &&
+      componentDate.to !== "" &&
+      searchParams.append(
+        "date_to",
+        typeof componentDate === "object" ? componentDate.to : ""
+      );
+    searchString && searchParams.append("search", searchString);
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL +
+        "brands/reports/products" +
+        searchParams.toString()
+    );
+
+    fetch(url, {
+      mode: "cors",
+    }).then(async (response) => {
+      let res = await response.json();
+      setTableData(
+        res.data.data.map((row: any) => {
+          return {
+            ...row,
+            product_name: (
+              <div>
+                <button
+                  data-bs-toggle="modal"
+                  data-bs-target={`#productDetails`}
+                  className="btn text-decoration-underline text-primary"
+                  style={{ fontSize: "12px" }}
+                >
+                  {row.product_name}
+                </button>
+                <ProductDetail id="productDetails" />
+              </div>
+            ),
+            impressions: <span className="text-success">{row.impressions}</span>,
+          };
+        })
+      );
+      setTotal(res.data.total);
+    });
+  }, [searchString, componentDate, currentPage]);
   return (
     <Table
       tableData={tableData}
@@ -433,7 +490,7 @@ function BrandFullReportTable() {
       setCurrentPage={setCurrentPage}
       footer={
         <TableFooter
-          totalData={tableData.length}
+          totalData={total}
           rowsPerPage={numOfRows}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LinkIcon from "../../assets/images/Link.svg";
 import Table from "../../components/Table";
+import TableFooter from "../../components/Table/TableFooter";
 
 const headers = [
   "Product Name",
@@ -47,7 +48,10 @@ const data = [
     ),
     totalSales: "1200",
     status: (
-      <span className="text-success rounded w-75 text-center p-1 border border-success" style={{fontSize: "10px", lineHeight: "13px"}}>
+      <span
+        className="text-success rounded w-75 text-center p-1 border border-success"
+        style={{ fontSize: "10px", lineHeight: "13px" }}
+      >
         Paid
       </span>
     ),
@@ -81,7 +85,10 @@ const data = [
     ),
     totalSales: "1200",
     status: (
-      <span className="text-success rounded w-75 text-center p-1 border border-success" style={{fontSize: "10px", lineHeight: "13px"}}>
+      <span
+        className="text-success rounded w-75 text-center p-1 border border-success"
+        style={{ fontSize: "10px", lineHeight: "13px" }}
+      >
         Paid
       </span>
     ),
@@ -115,7 +122,10 @@ const data = [
     ),
     totalSales: "1200",
     status: (
-      <span className="text-success rounded w-75 text-center p-1 border border-success" style={{fontSize: "10px", lineHeight: "13px"}}>
+      <span
+        className="text-success rounded w-75 text-center p-1 border border-success"
+        style={{ fontSize: "10px", lineHeight: "13px" }}
+      >
         Paid
       </span>
     ),
@@ -149,26 +159,29 @@ const data = [
     ),
     totalSales: "1200",
     status: (
-      <span className="text-success rounded w-70 text-center p-1 border border-success" style={{fontSize: "10px", lineHeight: "13px"}}>
+      <span
+        className="text-success rounded w-70 text-center p-1 border border-success"
+        style={{ fontSize: "10px", lineHeight: "13px" }}
+      >
         Paid
       </span>
     ),
-  }
+  },
 ];
 
 const displayLabels = [
   // "id",
-  "productName",
+  "product_name",
   "agency",
-  "campaignName",
+  "campaign_name",
   "publisher",
-  "issueDate",
-  "dueDate",
+  "issue_date",
+  "due_date",
   "tags",
   "due",
-  "commissionMade",
-  "commissionType",
-  "totalSales",
+  "commission_made",
+  "commission_type",
+  "total_sales",
   "status",
 ];
 
@@ -203,10 +216,77 @@ function BrandPaymentsTable() {
   const editData = (data: any) => {
     // setTableData(prev=>{return prev.map()})
   };
-  
+
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
+  const [componentDate, setComponentDate] = useState<
+    string | { from: string; to: string }
+  >({ from: "", to: "" });
+  const [searchString, setSearchString] = useState("");
+  const [total, setTotal] = useState(0);
+  useEffect(() => {
+    const searchParams = new URLSearchParams();
+    typeof componentDate === "object" &&
+      componentDate.from !== "" &&
+      searchParams.append(
+        "date_from",
+        typeof componentDate === "object" ? componentDate.from : ""
+      );
+    typeof componentDate === "object" &&
+      componentDate.to !== "" &&
+      searchParams.append(
+        "date_to",
+        typeof componentDate === "object" ? componentDate.to : ""
+      );
+    searchString && searchParams.append("search", searchString);
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL +
+        "brands/reports/payments" +
+        searchParams.toString()
+    );
+
+    fetch(url, {
+      mode: "cors",
+    }).then(async (response) => {
+      let res = await response.json();
+      console.log("res", res)
+      setTableData(
+        res.data?.data?.map((row: any) => {
+          return {
+            ...row,
+
+            tags: (
+              <div>
+                <img src={LinkIcon} alt="" />
+                <span>{row.tags}</span>
+              </div>
+            ),
+            commission_type: (
+              <div>
+                <span>{row.commission_type}</span>
+                <span
+                  className="bg-info rounded p-1 ms-2 ps-2 pe-2"
+                  style={{ fontSize: "8px", height: "12px" }}
+                >
+                  Pay per click
+                </span>
+              </div>
+            ),
+            status: (
+              <span
+                className="text-success rounded w-70 text-center p-1 border border-success"
+                style={{ fontSize: "10px", lineHeight: "13px" }}
+              >
+                {row.status}
+              </span>
+            ),
+          };
+        })
+      );
+      setTotal(res.data?.total);
+    });
+  }, [searchString, componentDate, currentPage]);
   return (
     <Table
       tableData={tableData}
@@ -217,7 +297,20 @@ function BrandPaymentsTable() {
       editData={editData}
       addRow={addRow}
       filterData={filterData}
-      numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
+      numOfPages={numOfPages}
+      setNumOfPages={setNumOfPages}
+      numOfRows={numOfRows}
+      setNumOfRows={setNumOfRows}
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
+      footer={
+        <TableFooter
+          totalData={total}
+          rowsPerPage={numOfRows}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      }
     />
   );
 }

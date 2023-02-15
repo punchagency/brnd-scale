@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAppSelector } from "../../app/hooks";
 import PaymentCard from "../../components/Reports/PaymentCard";
 import ProductReportCard from "../../components/Reports/ProductReportCard";
@@ -6,19 +6,20 @@ import { selectUser } from "../../features/user/userSlice";
 
 interface ReportSummaryProps {
   tabIndex: number;
+  componentDate: any;
 }
 
-function ReportSummary({ tabIndex }: ReportSummaryProps) {
+function ReportSummary({ tabIndex, componentDate }: ReportSummaryProps) {
   const userType = useAppSelector(selectUser);
   if (userType === "Brand") {
     if (tabIndex === 0) {
-      return <FullReportSummary userType={userType} />;
+      return <FullReportSummary userType={userType} componentDate={componentDate} />;
     } else if (tabIndex === 1) {
       return <PaymentSummary userType={userType} />;
     }
   } else if (userType === "Agency") {
     if (tabIndex === 0) {
-      return <FullReportSummary userType={userType} />;
+      return <FullReportSummary userType={userType} componentDate={componentDate} />;
     }
   }
   return <div>ReportSummary</div>;
@@ -28,6 +29,7 @@ export default ReportSummary;
 
 interface SummaryProps {
   userType: string;
+  componentDate?: any;
 }
 
 const PaymentSummary = ({ userType }: SummaryProps) => {
@@ -58,7 +60,38 @@ const PaymentSummary = ({ userType }: SummaryProps) => {
   );
 };
 
-const FullReportSummary = ({ userType }: SummaryProps) => {
+const FullReportSummary = ({ userType, componentDate }: SummaryProps) => {
+  const [productReportCardData, setProductReportCardData] = useState<any>({})
+  useEffect(() => {
+    const searchParams = new URLSearchParams();
+    typeof componentDate === "object" &&
+      componentDate.from !== "" &&
+      searchParams.append(
+        "date_from",
+        typeof componentDate === "object" ? componentDate.from : ""
+      );
+    typeof componentDate === "object" &&
+      componentDate.to !== "" &&
+      searchParams.append(
+        "date_to",
+        typeof componentDate === "object" ? componentDate.to : ""
+      );
+    // searchString && searchParams.append("search", searchString);
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL +
+        "brands/reports/summaries" +
+        searchParams.toString()
+    );
+
+    fetch(url, {
+      mode: "cors",
+    }).then(async (response) => {
+      let res = await response.json();
+      console.log("res", res)
+      
+
+    });
+  }, [componentDate]);
   return (
     <>
       <div className="col-2 w-5 ms-2 mt-2" style={{ width: "11%" }}>
@@ -68,65 +101,65 @@ const FullReportSummary = ({ userType }: SummaryProps) => {
         <div className="productCardWrapper">
           <ProductReportCard
             topLabel={"Impressions"}
-            topValue={0}
+            topValue={productReportCardData?.impressions || 0}
             bottomLabel={"Clicks"}
-            bottomValue={0}
+            bottomValue={productReportCardData?.clicks || 0}
           />
         </div>
         <div className="ms-2 productCardWrapper">
           <ProductReportCard
             topLabel={"RDA"}
-            topValue={0}
+            topValue={productReportCardData?.rda || 0}
             bottomLabel={"Gross Clicks"}
-            bottomValue={0}
+            bottomValue={productReportCardData?.gross_clicks || 0}
           />
         </div>
         <div className="ms-2 productCardWrapper">
           <ProductReportCard
             topLabel={"Revenue"}
-            topValue={0}
+            topValue={productReportCardData?.revenue || 0}
             bottomLabel={"Pay Cut"}
-            bottomValue={0}
+            bottomValue={productReportCardData?.paycut || 0}
           />
         </div>
         <div className="ms-2 productCardWrapper">
           <ProductReportCard
             topLabel={"Total CV"}
-            topValue={0}
+            topValue={productReportCardData?.total_cv || 0}
             bottomLabel={"Profit"}
-            bottomValue={0}
+            bottomValue={productReportCardData?.profit || 0}
           />
         </div>
         <div className="ms-2 productCardWrapper">
           <ProductReportCard
             topLabel={"VTCV"}
-            topValue={0}
+            topValue={productReportCardData?.vtcv || 0}
             bottomLabel={"Margin"}
-            bottomValue={0}
+            bottomValue={productReportCardData?.margin || 0}
           />
         </div>
         <div className="ms-2 productCardWrapper">
           <ProductReportCard
             topLabel={"CTR"}
-            topValue={0}
+            topValue={productReportCardData?.ctr || 0}
             bottomLabel={"Avg. Sale Value"}
-            bottomValue={0}
+            bottomValue={productReportCardData?.average_sale_value || 0}
           />
         </div>
         <div className="ms-2 productCardWrapper">
           <ProductReportCard
             topLabel={"Gross Sales"}
-            topValue={0}
+            topValue={productReportCardData?.gross_sales || 0}
             bottomLabel={"CVR"}
-            bottomValue={0}
+            bottomValue={productReportCardData?.cvr || 0}
           />
         </div>
         <div className="ms-2 productCardWrapper">
           <ProductReportCard
             topLabel={"CPC"}
-            topValue={0}
+            topValue={productReportCardData?.cpc || 0}
             bottomLabel={"CPM"}
-            bottomValue={0}
+            bottomValue={productReportCardData?.cpm || 0}
           />
         </div>
       </div>

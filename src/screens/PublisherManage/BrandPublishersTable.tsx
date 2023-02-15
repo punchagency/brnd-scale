@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "../../components/Table";
 import LinkIcon from "../../assets/images/Link.svg";
 import ReferLink from "../../components/Popups/ReferLink";
@@ -416,17 +416,17 @@ const data = [
 
 const displayLabels = [
   // "id",
-  "productName",
-  "publisherName",
-  "startingDate",
-  "lastActive",
-  "tag",
+  "product_name",
+  "publisher_name",
+  "starting_date",
+  "last_active",
+  "tag_links",
   "conversions",
   "commission",
-  "totalOrders",
+  "total_orders",
   "payouts",
   "sales",
-  "referUrl",
+  "refer_url",
 ];
 function BrandPublishersTable() {
   const [tableData, setTableData] = useState(data);
@@ -465,9 +465,65 @@ function BrandPublishersTable() {
   };
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({from: '', to: ''});
+  const [componentDate, setComponentDate] = useState<
+    string | { from: string; to: string }
+  >({ from: "", to: "" });
   const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
+  const [total, setTotal] = useState(0);
+  useEffect(() => {
+    const searchParams = new URLSearchParams();
+    typeof componentDate === "object" &&
+      componentDate.from !== "" &&
+      searchParams.append(
+        "date_from",
+        typeof componentDate === "object" ? componentDate.from : ""
+      );
+    typeof componentDate === "object" &&
+      componentDate.to !== "" &&
+      searchParams.append(
+        "date_to",
+        typeof componentDate === "object" ? componentDate.to : ""
+      );
+    searchString && searchParams.append("search", searchString);
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL +
+        "brands/publishers" +
+        searchParams.toString()
+    );
+
+    fetch(url, {
+      mode: "cors",
+    }).then(async (response) => {
+      let res = await response.json();
+      setTableData(
+        res.data.data.map((row: any) => {
+          return {
+            ...row,
+            tags_links: (
+              <div>
+                <img src={LinkIcon} alt="" />
+                <span>{row.tag}</span>
+              </div>
+            ),
+            commission: (
+              <div>
+                <span>{row.commission}</span>
+                <span
+                  className="bg-info rounded p-1 ms-2 ps-2 pe-2"
+                  style={{ fontSize: "8px", height: "12px" }}
+                >
+                  Pay per click
+                </span>
+              </div>
+            ),
+            refer_url: <ViewButton />,
+          };
+        })
+      );
+      setTotal(res.data.total);
+    });
+  }, [searchString, componentDate, currentPage]);
   return (
     <Table
       tableData={tableData}
@@ -547,7 +603,7 @@ function BrandPublishersTable() {
       }
       footer={
         <TableFooter
-          totalData={tableData.length}
+          totalData={total}
           rowsPerPage={numOfRows}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}

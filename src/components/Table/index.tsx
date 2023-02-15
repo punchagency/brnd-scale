@@ -50,7 +50,7 @@ const Table = ({
       //       currentPage * numOfRows
       //     );
     // setNumOfPages(data.length);
-    return data.map((row: any, index: number) => {
+    return data?.map((row: any, index: number) => {
       return (
         <tr key={index}>
           <td key={row.id} className={`${hideCheckbox ? "d-none" : undefined}`}>
