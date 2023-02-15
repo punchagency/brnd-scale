@@ -9,7 +9,7 @@ import { selectUser } from "../features/user/userSlice";
 import {  useAppSelector } from "../app/hooks";
 import TestCard from "../components/Card/TestCard";
 import ProductDetail from "../components/Popups/ProductDetail";
-import AgencyCards from "../components/Common/AgencyCards";
+import AgencyCards from "../components/dashboard/AgencyCards";
 
 const headers = [
   "Top Publishers",
@@ -303,6 +303,8 @@ const Dashboard: FC = () => {
   const getCards = () =>{
     if(userType === 'Agency'){
       return <AgencyCards userType={userType} />
+    }else if(userType === 'Publisher'){
+
     }else{
       return <>
            <div className="col-12 col-md-6 col-lg-4 col-xxl-3 mt-2">

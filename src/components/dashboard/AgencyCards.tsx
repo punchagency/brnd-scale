@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import TestCard from "../Card/TestCard";
 
+interface dateFormat {
+  from: string;
+  to: string;
+  text?: string;
+}
+
+let initialDate = {
+   from: "", to: "", text: "" 
+}
+
 const AgencyCards = ({ userType }: any) => {
   const [selectedCard, setSelectedCard] = useState(0);
   const [sales, setSales] = useState({
@@ -40,16 +50,26 @@ const AgencyCards = ({ userType }: any) => {
     yesterdays_conversion_rate: 0,
   });
 
-  const [salesDate, setSalesDate] = useState<string | {from: string, to: string}>("");
-  const [revenueDate, setRevenueDate] = useState<string | {from: string, to: string}>("");
-  const [conversionsDate, setConversionsDate] = useState<string | {from: string, to: string}>("");
-  const [orderDate, setOrderDate] = useState<string | {from: string, to: string}>("");
+  const [salesDate, setSalesDate] = useState<
+    string | dateFormat
+  >("");
+  const [revenueDate, setRevenueDate] = useState<
+    string | dateFormat
+  >("");
+  const [conversionsDate, setConversionsDate] = useState<
+    string | dateFormat
+  >("");
+  const [orderDate, setOrderDate] = useState<
+    string | dateFormat
+  >("");
 
   useEffect(() => {
-    console.log(userType);
+    console.log(userType, salesDate);
 
     let url = new URL(
-      process.env.REACT_APP_BASE_URL + "agencies/cards/total-sales?date=2022-02"
+      process.env.REACT_APP_BASE_URL +
+        "agencies/cards/total-sales?date=" +
+        salesDate
     );
     let promises = [];
 
@@ -112,7 +132,7 @@ const AgencyCards = ({ userType }: any) => {
           currentMonth={sales.current_month_sales + "K"}
           lastMonth={sales.last_month_sales + "K"}
           main={selectedCard === 0}
-          date={salesDate}//"From 10 - 20 Nov"
+          date={salesDate} //"From 10 - 20 Nov"
           onClick={() => setSelectedCard(0)}
           setComponentDate={setSalesDate}
         />
@@ -150,7 +170,9 @@ const AgencyCards = ({ userType }: any) => {
       <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
         <TestCard
           title="Conversion rate"
-          extra={conversions.conversion_rate_comparison_with_previous_month + "K"}
+          extra={
+            conversions.conversion_rate_comparison_with_previous_month + "K"
+          }
           reduce={true}
           value="53.2%"
           yesterday={conversions.yesterdays_conversion_rate + "K"}
