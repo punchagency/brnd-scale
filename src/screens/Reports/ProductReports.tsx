@@ -6,7 +6,10 @@ import CalendarIcon from "../../components/svgs/CalendarIcon";
 import ProductReportCard from "../../components/Reports/ProductReportCard";
 import PageMenu from "../../components/Common/PageMenu";
 import TableFooter from "../../components/Table/TableFooter";
-import { AgenciesReportingProducts, AgenciesReportingSummaries } from "../../types";
+import {
+  AgenciesReportingProducts,
+  AgenciesReportingSummaries,
+} from "../../types";
 import CalendarWrapper from "../../components/Calendar";
 
 const headers = [
@@ -280,7 +283,7 @@ const displayLabels = [
 
 function ProductReports() {
   const [tableData, setTableData] = useState<AgenciesReportingProducts[]>([]);
-  const [summaries, setSummaries] = useState<AgenciesReportingSummaries>()
+  const [summaries, setSummaries] = useState<AgenciesReportingSummaries>();
 
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -290,35 +293,25 @@ function ProductReports() {
   >({ from: "", to: "" });
 
   const [reportType, setReportType] = useState("");
-  const [total, setTotal] = useState(0)
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     let searchParams = new URLSearchParams();
-    
-    typeof componentDate == "object" &&
-      componentDate.from != "" &&
-      searchParams.append(
-        "date_from",
-        typeof componentDate == "object" ? componentDate.from : ""
-      );
-    typeof componentDate == "object" &&
-      componentDate.to != "" &&
-      searchParams.append(
-        "date_to",
-        typeof componentDate == "object" ? componentDate.to : ""
-      );
+
+    currentPage && searchParams.append("page", currentPage + "");
     var url = new URL(
-      process.env.REACT_APP_BASE_URL+"agencies/reports/products?" + searchParams.toString()
+      process.env.REACT_APP_BASE_URL +
+        "agencies/reports/products?" +
+        searchParams.toString()
     );
+    console.log(url);
 
     // searchParams = new URLSearchParams()
-    reportType != "" &&
-      searchParams.append(
-        "report_type",
-        reportType
-      );
+    reportType != "" && searchParams.append("report_type", reportType);
     var summaryUrl = new URL(
-      process.env.REACT_APP_BASE_URL+"agencies/reports/summaries?" + searchParams.toString()
+      process.env.REACT_APP_BASE_URL +
+        "agencies/reports/summaries?" +
+        searchParams.toString()
     );
 
     fetch(url, { mode: "cors" }).then(async (response) => {
@@ -329,8 +322,10 @@ function ProductReports() {
         res.data.data.map((row: any) => {
           return {
             ...row,
-            product_name: <Link to="/">Winter worlds mens wear (2022) this is samp</Link>,//URL from api
-            impressions: <span className="text-success">Enabled</span>,//value from api
+            product_name: (
+              <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
+            ), //URL from api
+            impressions: <span className="text-success">Enabled</span>, //value from api
           };
         })
       );
@@ -338,10 +333,10 @@ function ProductReports() {
     });
     fetch(summaryUrl, { mode: "cors" }).then(async (response) => {
       // console.log(await response.json())
-      let res = await response.json();
-      setSummaries(res);
+      let res = await response.json(); //console.log(res)
+      setSummaries(res.data);
     });
-  }, [componentDate]);
+  }, [componentDate, currentPage]);
 
   return (
     <div className="row pt-3 ps-2 pe-5">
@@ -388,65 +383,67 @@ function ProductReports() {
                   <div className="productCardWrapper">
                     <ProductReportCard
                       topLabel={"Impressions"}
-                      topValue={summaries?.impressions}
+                      topValue={Math.round(summaries?.impressions || 0)}
                       bottomLabel={"Clicks"}
-                      bottomValue={summaries?.clicks}
+                      bottomValue={Math.round(summaries?.clicks || 0)}
                     />
                   </div>
                   <div className="ms-2 productCardWrapper">
                     <ProductReportCard
                       topLabel={"RDA"}
-                      topValue={summaries?.rda}
+                      topValue={Math.round(summaries?.rda || 0)}
                       bottomLabel={"Gross Clicks"}
-                      bottomValue={summaries?.gross_clicks}
+                      bottomValue={Math.round(summaries?.gross_clicks || 0)}
                     />
                   </div>
                   <div className="ms-2 productCardWrapper">
                     <ProductReportCard
                       topLabel={"Revenue"}
-                      topValue={summaries?.revenue}
+                      topValue={Math.round(summaries?.revenue || 0)}
                       bottomLabel={"Pay Cut"}
-                      bottomValue={summaries?.paycut}
+                      bottomValue={Math.round(summaries?.paycut || 0)}
                     />
                   </div>
                   <div className="ms-2 productCardWrapper">
                     <ProductReportCard
                       topLabel={"Total CV"}
-                      topValue={summaries?.total_cv}
+                      topValue={Math.round(summaries?.total_cv || 0)}
                       bottomLabel={"Profit"}
-                      bottomValue={summaries?.profit}
+                      bottomValue={Math.round(summaries?.profit || 0)}
                     />
                   </div>
                   <div className="ms-2 productCardWrapper">
                     <ProductReportCard
                       topLabel={"VTCV"}
-                      topValue={summaries?.vtcv}
+                      topValue={Math.round(summaries?.vtcv || 0)}
                       bottomLabel={"Margin"}
-                      bottomValue={summaries?.margin}
+                      bottomValue={Math.round(summaries?.margin || 0)}
                     />
                   </div>
                   <div className="ms-2 productCardWrapper">
                     <ProductReportCard
                       topLabel={"CTR"}
-                      topValue={summaries?.ctr}
+                      topValue={Math.round(summaries?.ctr || 0)}
                       bottomLabel={"Avg. Sale Value"}
-                      bottomValue={summaries?.average_sale_value}
+                      bottomValue={Math.round(
+                        summaries?.average_sale_value || 0
+                      )}
                     />
                   </div>
                   <div className="ms-2 productCardWrapper">
                     <ProductReportCard
                       topLabel={"Gross Sales"}
-                      topValue={summaries?.gross_sales}
+                      topValue={Math.round(summaries?.gross_sales || 0)}
                       bottomLabel={"CVR"}
-                      bottomValue={summaries?.cvr}
+                      bottomValue={Math.round(summaries?.cvr || 0)}
                     />
                   </div>
                   <div className="ms-2 productCardWrapper">
                     <ProductReportCard
                       topLabel={"CPC"}
-                      topValue={summaries?.cpc}
+                      topValue={Math.round(summaries?.cpc || 0)}
                       bottomLabel={"CPM"}
-                      bottomValue={summaries?.cpm}
+                      bottomValue={Math.round(summaries?.cpm || 0)}
                     />
                   </div>
                 </div>

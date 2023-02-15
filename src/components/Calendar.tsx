@@ -78,8 +78,7 @@ const CalendarWrapper = ({ setComponentDate, format = 1 }: CalendarProps) => {
     if(selectedDayRange.from !== null &&
       selectedDayRange.to !== null &&
       format === 2){
-      console.log("else");
-      let from = `${selectedDayRange?.from?.year || ""}-${
+      let from = `${/*selectedDayRange?.from?.year*/ 2020 || ""}-${
         (selectedDayRange?.from?.month || 0) < 10
           ? 0 + "" + selectedDayRange?.from?.month
           : selectedDayRange?.from?.month
@@ -104,7 +103,7 @@ const CalendarWrapper = ({ setComponentDate, format = 1 }: CalendarProps) => {
         months[
           selectedDayRange.from?.month ? selectedDayRange.from?.month - 1 : 0
         ]
-      } - ${selectedDayRange.to?.day} ${
+      } - ${selectedDayRange.to?.day ? selectedDayRange.to?.day : ""} ${
         months[selectedDayRange.to?.month ? selectedDayRange.to?.month - 1 : 0]
       }`;
       setComponentDate(dateText);

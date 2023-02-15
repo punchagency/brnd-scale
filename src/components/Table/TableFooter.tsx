@@ -11,7 +11,7 @@ const TableFooter = ({
   const [visibleBtn, setVisibleBtn] = useState(
     currentPage > 1 ? currentPage - 1 : 0
   );
-  let maxPages = totalData / rowsPerPage;
+  let maxPages = totalData > 0 ? totalData / rowsPerPage : 0;
 
   useEffect(()=>{
     setVisibleBtn(currentPage-1)

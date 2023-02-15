@@ -115,6 +115,7 @@ function BrandsManage() {
         typeof componentDate == "object" ? componentDate.to : ""
       );
     searchString && searchParams.append("search", searchString);
+    currentPage && searchParams.append("page", currentPage+"");
     var url = new URL(
       process.env.REACT_APP_BASE_URL+"agencies/brands?" + searchParams.toString()
     );
@@ -122,7 +123,7 @@ function BrandsManage() {
     // console.log(url);
 
     fetch(url, { mode: "cors" }).then(async (response) => {
-      let res = await response.json();
+      let res = await response.json(); console.log(res);
 
       setTableData(
         res.data.data.map((row: any) => {
@@ -140,7 +141,7 @@ function BrandsManage() {
       );
       setTotal(res.data.total)
     });
-  }, [componentDate, searchString]);
+  }, [componentDate, searchString, currentPage]);
 
   return (
     <div className="row pt-3 ps-2 pe-5">
