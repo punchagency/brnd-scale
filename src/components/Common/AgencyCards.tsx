@@ -105,12 +105,12 @@ const AgencyCards = ({ apiPrefix }: any) => {
       <div className="col-12 col-md-6 col-lg-4 col-xxl-3 mt-2">
         <TestCard
           title="Total Sales"
-          extra={sales.sales_comparison_with_previous_month + "K"}
+          extra={sales?.sales_comparison_with_previous_month + "K"}
           reduce={true}
-          value={sales.total_sales_number + ""}
-          yesterday={sales.yesterdays_sales + "K"}
-          currentMonth={sales.current_month_sales + "K"}
-          lastMonth={sales.last_month_sales + "K"}
+          value={sales?.total_sales_number + ""}
+          yesterday={sales?.yesterdays_sales + "K"}
+          currentMonth={sales?.current_month_sales + "K"}
+          lastMonth={sales?.last_month_sales + "K"}
           main={selectedCard === 0}
           date={salesDate}//"From 10 - 20 Nov"
           onClick={() => setSelectedCard(0)}
@@ -120,12 +120,12 @@ const AgencyCards = ({ apiPrefix }: any) => {
       <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
         <TestCard
           title="Total Orders"
-          extra={orders.orders_comparison_with_previous_month + "K"}
+          extra={orders?.orders_comparison_with_previous_month + "K"}
           reduce={true}
-          value={orders.total_orders + ""}
-          yesterday={orders.yesterdays_orders + "K"}
-          currentMonth={orders.current_month_orders + "K"}
-          lastMonth={orders.last_month_orders + "K"}
+          value={orders?.total_orders + ""}
+          yesterday={orders?.yesterdays_orders + "K"}
+          currentMonth={orders?.current_month_orders + "K"}
+          lastMonth={orders?.last_month_orders + "K"}
           main={selectedCard === 1}
           date={orderDate}
           onClick={() => setSelectedCard(1)}
@@ -138,7 +138,7 @@ const AgencyCards = ({ apiPrefix }: any) => {
           extra={revenues?.revenue_comparison_with_previous_month + "K"}
           reduce={true}
           value={"$" + revenues?.total_revenue}
-          yesterday={revenues?.yesterdays_revenue + "K"}
+          yesterday={revenues?.yesterdays_revenue  + "K"}
           currentMonth={revenues?.current_month_revenue + "K"}
           lastMonth={revenues?.last_month_revenue + "K"}
           main={selectedCard === 2}
