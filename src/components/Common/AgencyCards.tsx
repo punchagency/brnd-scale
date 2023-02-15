@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TestCard from "../Card/TestCard";
 
-const AgencyCards = ({ userType }: any) => {
+const AgencyCards = ({ apiPrefix }: any) => {
   const [selectedCard, setSelectedCard] = useState(0);
   const [sales, setSales] = useState({
     current_month_sales: 0,
@@ -46,24 +46,24 @@ const AgencyCards = ({ userType }: any) => {
   const [orderDate, setOrderDate] = useState<string | {from: string, to: string}>("");
 
   useEffect(() => {
-    console.log(userType);
+    
 
     let url = new URL(
-      process.env.REACT_APP_BASE_URL + "agencies/cards/total-sales?date=2022-02"
+      process.env.REACT_APP_BASE_URL + `${apiPrefix}/cards/total-sales?date=2022-02`
     );
     let promises = [];
 
     promises.push(
       fetch(url, { mode: "cors" }).then(async (response) => {
         let res = await response.json();
-        console.log(res);
+        console.log("res",res);
         setSales(res.data);
       })
     );
 
     url = new URL(
       process.env.REACT_APP_BASE_URL +
-        "agencies/cards/total-orders?date=2022-02"
+      `${apiPrefix}/cards/total-orders?date=2022-02`
     );
 
     promises.push(
@@ -75,7 +75,7 @@ const AgencyCards = ({ userType }: any) => {
     );
     url = new URL(
       process.env.REACT_APP_BASE_URL +
-        "agencies/cards/total-revenues?date=2022-02"
+      `${apiPrefix}/cards/total-revenues?date=2022-02`
     );
 
     promises.push(
@@ -88,7 +88,7 @@ const AgencyCards = ({ userType }: any) => {
 
     url = new URL(
       process.env.REACT_APP_BASE_URL +
-        "agencies/cards/conversion-rates?date=2022-02"
+      `${apiPrefix}/cards/conversion-rates?date=2022-02`
     );
 
     promises.push(
@@ -98,7 +98,7 @@ const AgencyCards = ({ userType }: any) => {
         setConversions(res.data);
       })
     );
-  }, [salesDate, revenueDate, orderDate, conversionsDate]);
+  }, [salesDate, revenueDate, orderDate, conversionsDate, apiPrefix]);
 
   return (
     <>
@@ -135,12 +135,12 @@ const AgencyCards = ({ userType }: any) => {
       <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
         <TestCard
           title="Total Revenue"
-          extra={revenues.revenue_comparison_with_previous_month + "K"}
+          extra={revenues?.revenue_comparison_with_previous_month + "K"}
           reduce={true}
-          value={"$" + revenues.total_revenue}
-          yesterday={revenues.yesterdays_revenue + "K"}
-          currentMonth={revenues.current_month_revenue + "K"}
-          lastMonth={revenues.last_month_revenue + "K"}
+          value={"$" + revenues?.total_revenue}
+          yesterday={revenues?.yesterdays_revenue + "K"}
+          currentMonth={revenues?.current_month_revenue + "K"}
+          lastMonth={revenues?.last_month_revenue + "K"}
           main={selectedCard === 2}
           date={revenueDate}
           onClick={() => setSelectedCard(2)}
@@ -150,12 +150,12 @@ const AgencyCards = ({ userType }: any) => {
       <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
         <TestCard
           title="Conversion rate"
-          extra={conversions.conversion_rate_comparison_with_previous_month + "K"}
+          extra={conversions?.conversion_rate_comparison_with_previous_month + "K"}
           reduce={true}
           value="53.2%"
-          yesterday={conversions.yesterdays_conversion_rate + "K"}
-          currentMonth={conversions.current_month_conversion_rate + "K"}
-          lastMonth={conversions.last_month_conversion_rate + "K"}
+          yesterday={conversions?.yesterdays_conversion_rate + "K"}
+          currentMonth={conversions?.current_month_conversion_rate + "K"}
+          lastMonth={conversions?.last_month_conversion_rate + "K"}
           main={selectedCard === 3}
           date={conversionsDate}
           onClick={() => setSelectedCard(3)}
