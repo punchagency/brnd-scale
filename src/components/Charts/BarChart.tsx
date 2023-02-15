@@ -49,7 +49,17 @@ export const data = {
 
 
 
-function BarChart() {
+function BarChart({labels, data}:any) {
+  data = {
+    labels,
+    datasets: [
+      {
+        label: 'Dataset 1',
+        data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+        backgroundColor: '#0064F6',
+      },
+    ],
+  };
     return <Bar options={options} data={data} />;
 }
 

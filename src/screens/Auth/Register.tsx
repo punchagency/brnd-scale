@@ -1,10 +1,11 @@
 import React, { FC, useState } from "react";
-import { useAppSelector } from "../app/hooks";
-import { selectUser } from "../features/user/userSlice";
-import MyIcon from "../components/svgs/MyIcon";
+import { useAppSelector } from "../../app/hooks";
+import { selectUser } from "../../features/user/userSlice";
+import MyIcon from "../../components/svgs/MyIcon";
 import { Link } from "react-router-dom";
-import PlusIcon from "../assets/images/Plus.svg";
-import InputCode from "../components/VerifyInput";
+import PlusIcon from "../../assets/images/Plus.svg";
+import InputCode from "../../components/VerifyInput";
+import AgencyRegister from "./AgencyRegister";
 
 // interface Props {}
 
@@ -28,95 +29,8 @@ const AuthPage: FC = () => {
   const formContent = () => {
     switch (userType) {
       case "Agency":
-        if (tabIndex === 0) {
-          return (
-            <>
-              <div className="mb-3">
-                <label htmlFor="fName" className="form-label">
-                  First Name
-                </label>
-                <input type="text" className="form-control" id="fName" />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="lName" className="form-label">
-                  Last Name
-                </label>
-                <input type="text" className="form-control" id="lName" />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="phone" className="form-label">
-                  Phone
-                </label>
-                <input type="email" className="form-control" id="phone" />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="email" className="form-label">
-                  Email
-                </label>
-                <input type="email" className="form-control" id="email" />
-              </div>
-
-              <div className="w-100 mt-1 d-flex justify-content-center">
-                <button
-                  type="submit"
-                  className="border-0 bg-white ms-auto me-auto"
-                  onClick={changeTabIndex}
-                >
-                  <MyIcon />
-                </button>
-              </div>
-            </>
-          );
-        }
-        return (
-          <>
-            <div className="mb-3">
-              <label htmlFor="Name" className="form-label">
-                Company Name
-              </label>
-              <input type="text" className="form-control" id="Name" />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="url" className="form-label">
-                Website URL
-              </label>
-              <input type="text" className="form-control" id="url" />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="message" className="form-label">
-                Message
-              </label>
-              <textarea className="form-control" id="message" />
-            </div>
-            <div className="mb-3 form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="remember"
-              />
-              <label className="form-check-label fs-6" htmlFor="remember">
-                <small>
-                  By creating the form you agree to the terms and conditions
-                </small>
-              </label>
-            </div>
-            <div className="w-100 d-flex justify-content-center">
-              <button
-                className="btn btn-dark bg-dark ms-auto me-auto"
-                onClick={changeTabIndex}
-                type="button"
-              >
-                Go back
-              </button>
-              <button
-                type="submit"
-                className="btn btn-dark bg-dark ms-auto me-auto"
-              >
-                Register
-              </button>
-            </div>
-          </>
-        );
+        return <AgencyRegister tabIndex={tabIndex} changeTabIndex={changeTabIndex} />;
+        
       case "Publisher":
         if (tabIndex === 1) {
           return (

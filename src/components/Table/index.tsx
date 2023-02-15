@@ -39,16 +39,16 @@ const Table = ({
   };
   const displayData = () => {
     //determine the rows to display
-    let data =
-      searchString !== ""
-        ? filterData(searchString)?.slice(
-            (currentPage - 1) * numOfRows,
-            currentPage * numOfRows
-          )
-        : tableData?.slice(
-            (currentPage - 1) * numOfRows,
-            currentPage * numOfRows
-          );
+    let data = tableData
+      // searchString !== ""
+      //   ? filterData(searchString).slice(
+      //       (currentPage - 1) * numOfRows,
+      //       currentPage * numOfRows
+      //     )
+      //   : tableData.slice(
+      //       (currentPage - 1) * numOfRows,
+      //       currentPage * numOfRows
+      //     );
     // setNumOfPages(data.length);
     return data?.map((row: any, index: number) => {
       return (

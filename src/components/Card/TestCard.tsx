@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CalendarWrapper from "../Calendar";
 import ActiveIcon from "../svgs/ActiveIcon";
 import ArrowDown from "../svgs/ArrowDown";
@@ -9,11 +9,15 @@ import './Card.css'
 interface CardProps {
   title: string;
   value: string;
-  date: string;
+  date: string | { from: string; to: string }
   main: boolean;
   reduce: boolean;
   extra: string;
+  yesterday: string;
+  currentMonth: string;
+  lastMonth: string;
   onClick: () => void;
+  setComponentDate: (value: string | { from: string; to: string }) => void;
 }
 
 function TestCard({
@@ -23,9 +27,14 @@ function TestCard({
   main = false,
   reduce,
   extra,
+  currentMonth,
+  lastMonth,
+  yesterday,
+  setComponentDate,
   onClick,
 }: CardProps) {
-  const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>("");
+  // const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>("");
+  
   return (
     <div
       className={`card ${main ? "card-active" : ""}`}
@@ -39,7 +48,7 @@ function TestCard({
           </div>
           <div className="col-6 d-flex justify-content-end ps-0 ">
             <span className="mt-1 me-3" style={{ fontSize: "11px" }}>
-              {componentDate || date}
+              {date}
             </span>
               <CalendarWrapper setComponentDate={setComponentDate} format={1} />
           </div>
@@ -69,7 +78,7 @@ function TestCard({
               }}
             >
               <span>Yesterday</span>
-              <span>1.3k</span>
+              <span>{yesterday}</span>
             </div>
             <div
               className="d-flex rounded bg-light px-2 py-1 w-100 justify-content-between"
@@ -80,7 +89,7 @@ function TestCard({
               }}
             >
               <span>Current Month</span>
-              <span>1.3k</span>
+              <span>{currentMonth}</span>
             </div>
             <div
               className="d-flex rounded bg-light px-2 py-1 w-100 justify-content-between"
@@ -91,7 +100,7 @@ function TestCard({
               }}
             >
               <span>Last Month</span>
-              <span>21.3k</span>
+              <span>{lastMonth}</span>
             </div>
             <div
               className="d-flex rounded bg-light px-2 py-1 w-100 justify-content-between"

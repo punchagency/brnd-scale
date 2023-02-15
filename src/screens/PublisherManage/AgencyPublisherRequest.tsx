@@ -89,9 +89,10 @@ function AgencyPublishersRequest() {
     const searchParams = new URLSearchParams();
     
     searchString && searchParams.append("search", searchString);
+    currentPage && searchParams.append("page", currentPage+"");
     var url = new URL(
       process.env.REACT_APP_BASE_URL +
-        "/agencies/publishers-requests" +
+        "agencies/publishers-requests?" +
         searchParams.toString()
     );
 
@@ -101,7 +102,7 @@ function AgencyPublishersRequest() {
       setTableData(res.data.data);
       setTotal(res.data.total)
     });
-  }, [searchString]);
+  }, [searchString, currentPage]);
 
   return (
     <Table

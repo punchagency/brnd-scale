@@ -9,7 +9,7 @@ import Layout from "./containers/Layouts/Layout";
 import Navbar from "./components/Navbar/Navbar";
 import AuthLayout from "./containers/Layouts/AuthLayout";
 import Login from "./screens/Login";
-import Register from "./screens/Register";
+import Register from "./screens/Auth/Register";
 import RegisterStart from "./screens/RegisterStart";
 import VerifyAccount from "./screens/VerifyAccount";
 import Dashboard from "./screens/Dashboard";

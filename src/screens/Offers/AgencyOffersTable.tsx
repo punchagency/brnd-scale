@@ -472,12 +472,13 @@ function AgencyOffersTable() {
                 className="d-flex justify-content-center"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
+                style={{width: '80px', height: '50px'}}
               >
-                <img src={getImage(row.image)} alt="" />
+                <img src={row.image} alt="" />
               </div>
             ),
             commission: (
-              <button className="btn btn-outline-primary btn-sm">Set Commission</button>
+              <button className="btn btn-outline-primary btn-sm" style={{whiteSpace: 'nowrap'}}>Set Commission</button>
             ),
             status: (
               <div className="d-flex justify-content-center">
