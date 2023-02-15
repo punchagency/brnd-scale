@@ -288,7 +288,7 @@ function PaymentReport() {
       let res = await response.json();console.log(res);
 
       setTableData(
-        res.data.data.map((row: any) => {console.log("in set")
+        res.data.map((row: any) => {console.log("in set")
           return {
             ...row,
             commission_type: (

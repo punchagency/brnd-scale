@@ -316,14 +316,14 @@ function ProductReports() {
 
     fetch(url, { mode: "cors" }).then(async (response) => {
       // console.log(await response.json())
-      let res = await response.json();
+      let res = await response.json();console.log(res)
 
       setTableData(
         res.data.data.map((row: any) => {
           return {
             ...row,
             product_name: (
-              <Link to="/">Winter worlds mens wear (2022) this is samp</Link>
+              <a href={row.url}>Winter worlds mens wear (2022) this is samp</a>
             ), //URL from api
             impressions: <span className="text-success">Enabled</span>, //value from api
           };
@@ -342,7 +342,7 @@ function ProductReports() {
     <div className="row pt-3 ps-2 pe-5">
       <div className="col-12 mt-3 d-flex justify-content-between">
         <h4>Reports</h4>
-        <button className="btn btn-primary btn-sm">Connect</button>
+        {/* <button className="btn btn-primary btn-sm">Connect</button> */}
       </div>
       <div className="col-12 mt-4 d-flex">
         <PageMenu

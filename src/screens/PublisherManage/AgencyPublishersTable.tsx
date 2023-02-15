@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import ActiveIcon from "../../components/svgs/ActiveIcon";
 import Table from "../../components/Table";
 import Funnel from "../../components/svgs/Funnel";
-import Search from "../../components/svgs/Search";
 import DeleteIcon from "../../components/svgs/DeleteIcon";
 import CalendarWrapper from "../../components/Calendar";
 import TableFooter from "../../components/Table/TableFooter";
@@ -577,7 +576,7 @@ function AgencyPublishersTable() {
   
   const handleDelete = () => {
     let ids = tableData.filter((row) => row.checked === true);
-    // console.log(ids);
+    console.log(ids);
     var url = new URL(process.env.REACT_APP_BASE_URL+"agencies/publishers");
     fetch(url, {
       method: "DELETE",
@@ -587,9 +586,11 @@ function AgencyPublishersTable() {
       let res = await response.json();//console.log(res)
 
       if (res.success) {
+        alert("Items were successfully deleted")
         setSearchString(""); //Trigger data refresh
       } else {
         //Show error message
+        alert("Items could not be deleted")
       }
     });
   };
@@ -608,7 +609,7 @@ function AgencyPublishersTable() {
       if (res.success) {
         setSearchString(""); //Trigger data refresh
       } else {
-        //Show error message
+        // show error message
       }
     })
   }
@@ -689,6 +690,7 @@ function AgencyPublishersTable() {
                   <Button
                     bootstrapClass="btn btn-sm"
                     content={<DeleteIcon />}
+                    clickFunc={handleDelete}
                   />
                 </div>
               </div>

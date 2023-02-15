@@ -5,10 +5,9 @@ import ListContainer from "../components/ListContainer";
 import DashboardNotification from "../components/Notification/DashboardNotification";
 import Table from "../components/Table";
 import BrandsImage from "../assets/images/images.svg";
-import { selectUser, login, selectLoggedIn } from "../features/user/userSlice";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { selectUser } from "../features/user/userSlice";
+import {  useAppSelector } from "../app/hooks";
 import TestCard from "../components/Card/TestCard";
-import ReferLink from "../components/Popups/ReferLink";
 import ProductDetail from "../components/Popups/ProductDetail";
 import AgencyCards from "../components/Common/AgencyCards";
 
@@ -192,8 +191,6 @@ const months = [
 ];
 
 const Dashboard: FC = () => {
-  const [tableData, setTableData] = useState(data);
-  const [brandsTableData, setBrandsTableData] = useState(brandsData);
   const userType = useAppSelector(selectUser);
 
   const [salesChartData, setSalesChartData] = useState<any>({

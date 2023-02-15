@@ -8,7 +8,8 @@ function PageTitle({ title, subtitle }: any) {
         <h4>{title}</h4>
       </div>
       <div>
-      <button className="btn btn-primary btn-sm">Connect</button></div>
+        {/* <button className="btn btn-primary btn-sm">Connect</button> */}
+      </div>
     </div>
   );
 }
