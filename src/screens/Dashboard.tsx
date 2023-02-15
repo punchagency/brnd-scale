@@ -203,6 +203,18 @@ const Dashboard: FC = () => {
   });
   const [topBrands, setTopBrands] = useState<any>([]);
   const [topPublishers, setTopPublishers] = useState<any>([]);
+  const getApiPrefix = () => {
+    switch(userType) {
+      case 'Agency':
+        return 'agencies'
+      case 'Brand':
+        return 'brands'
+      case 'Publisher':
+        return 'publishers'
+      default:
+        return ''
+    }
+  }
 
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -219,7 +231,7 @@ const Dashboard: FC = () => {
     currentPage && searchParams.append("page", currentPage + "");
     var url = new URL(
       process.env.REACT_APP_BASE_URL +
-        "agencies/charts?" +
+        `${getApiPrefix()}/charts?` +
         searchParams.toString()
     );
 
@@ -301,74 +313,72 @@ const Dashboard: FC = () => {
     });
   }, []);
   const getCards = () =>{
-    if(userType === 'Agency'){
-      return <AgencyCards userType={userType} />
-    }else if(userType === 'Publisher'){
-
-    }else{
-      return <>
-           <div className="col-12 col-md-6 col-lg-4 col-xxl-3 mt-2">
-             <TestCard
-               title="Total Sales"
-               extra="27K"
-               reduce={true}
-               value="576"
-               yesterday={"1.3K"}
-               currentMonth={"1.3K"}
-               lastMonth={"21.3K"}
-               main={selectedCard === 0}
-               date="From 10 - 20 Nov"
-               onClick={() => setSelectedCard(0)}
-               setComponentDate={setComponentDate}
-             />
-           </div>
-           <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
-             <TestCard
-               title="Total Orders"
-               extra="27K"
-               reduce={true}
-               value="576"
-               yesterday={"1.3K"}
-               currentMonth={"1.3K"}
-               lastMonth={"21.3K"}
-               main={selectedCard === 1}
-               date="From 10 - 20 Nov"
-               onClick={() => setSelectedCard(1)}
-               setComponentDate={setComponentDate}
-             />
-           </div>
-           <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
-             <TestCard
-               title="Total Revenue"
-               extra="27K"
-               reduce={true}
-               value="$259.99"
-               yesterday={"1.3K"}
-               currentMonth={"1.3K"}
-               lastMonth={"21.3K"}
-               main={selectedCard === 2}
-               date="From 10 - 20 Nov"
-               onClick={() => setSelectedCard(2)}
-               setComponentDate={setComponentDate}
-             />
-           </div>
-           <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
-             <TestCard
-               title="Conversion rate"
-               extra="27K"
-               reduce={true}
-               value="53.2%"
-               yesterday={"1.3K"}
-               currentMonth={"1.3K"}
-               lastMonth={"21.3K"}
-               main={selectedCard === 3}
-               date="From 10 - 20 Nov"
-               onClick={() => setSelectedCard(3)}
-               setComponentDate={setComponentDate}
-             />
-           </div>
-         </>
-    }
+    // if(userType === 'Agency'){
+      return <AgencyCards apiPrefix={getApiPrefix()} />
+    // }else{
+    //   return <>
+    //        <div className="col-12 col-md-6 col-lg-4 col-xxl-3 mt-2">
+    //          <TestCard
+    //            title="Total Sales"
+    //            extra="27K"
+    //            reduce={true}
+    //            value="576"
+    //            yesterday={"1.3K"}
+    //            currentMonth={"1.3K"}
+    //            lastMonth={"21.3K"}
+    //            main={selectedCard === 0}
+    //            date="From 10 - 20 Nov"
+    //            onClick={() => setSelectedCard(0)}
+    //            setComponentDate={setComponentDate}
+    //          />
+    //        </div>
+    //        <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
+    //          <TestCard
+    //            title="Total Orders"
+    //            extra="27K"
+    //            reduce={true}
+    //            value="576"
+    //            yesterday={"1.3K"}
+    //            currentMonth={"1.3K"}
+    //            lastMonth={"21.3K"}
+    //            main={selectedCard === 1}
+    //            date="From 10 - 20 Nov"
+    //            onClick={() => setSelectedCard(1)}
+    //            setComponentDate={setComponentDate}
+    //          />
+    //        </div>
+    //        <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
+    //          <TestCard
+    //            title="Total Revenue"
+    //            extra="27K"
+    //            reduce={true}
+    //            value="$259.99"
+    //            yesterday={"1.3K"}
+    //            currentMonth={"1.3K"}
+    //            lastMonth={"21.3K"}
+    //            main={selectedCard === 2}
+    //            date="From 10 - 20 Nov"
+    //            onClick={() => setSelectedCard(2)}
+    //            setComponentDate={setComponentDate}
+    //          />
+    //        </div>
+    //        <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
+    //          <TestCard
+    //            title="Conversion rate"
+    //            extra="27K"
+    //            reduce={true}
+    //            value="53.2%"
+    //            yesterday={"1.3K"}
+    //            currentMonth={"1.3K"}
+    //            lastMonth={"21.3K"}
+    //            main={selectedCard === 3}
+    //            date="From 10 - 20 Nov"
+    //            onClick={() => setSelectedCard(3)}
+    //            setComponentDate={setComponentDate}
+    //          />
+    //        </div>
+    //      </>
+    // }
   }
   return (
     <>
