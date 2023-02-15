@@ -72,9 +72,11 @@ function BrandsManage() {
       let res = await response.json();//console.log(res)
 
       if (res.success) {
+        alert("Item deleted successfully")
         setSearchString(""); //Trigger data refresh
       } else {
         //Show error message
+        alert("Items could not be deleted")
       }
     });
   };
