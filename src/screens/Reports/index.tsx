@@ -15,6 +15,7 @@ import Gift from "../../assets/images/gift.svg";
 
 function Reports() {
   const [tabIndex, setTabIndex] = useState<0 | 1 | 2>(0);
+  const [componentDate, setComponentDate] = useState<string | { from: string; to: string }>()
   const userType = useAppSelector(selectUser);
 
   const getTabList = () => {
@@ -94,7 +95,7 @@ function Reports() {
             <div className="col-6 d-inline d-flex align-items-center ">
               <ListIcon /> <span className="fs-5 ms-2">See the reports</span>
               <div className="p-2 ms-4 px-auto">
-                <CalendarWrapper setComponentDate={() => {}} />
+                <CalendarWrapper setComponentDate={setComponentDate} />
               </div>
               <div className="btn border rounded ms-2">
                 Run report <img src={ArrowsClockwise} alt="" className="ms-3" />
@@ -127,7 +128,7 @@ function Reports() {
     switch (userType) {
       case "Brand":
         if (tabIndex === 0) {
-          return <BrandFullReportTable />;
+          return <BrandFullReportTable componentDate={componentDate} />;
         } else if (tabIndex === 1) {
           return <BrandPaymentsTable />;
         }
@@ -172,7 +173,7 @@ function Reports() {
           <div className="col-12">
             <div className="card">
               <div className="row d-flex justify-content-center">
-                <ReportSummary tabIndex={tabIndex} />
+                <ReportSummary tabIndex={tabIndex} componentDate={componentDate} />
               </div>
             </div>
           </div>

@@ -41,16 +41,16 @@ const Table = ({
     //determine the rows to display
     let data =
       searchString !== ""
-        ? filterData(searchString).slice(
+        ? filterData(searchString)?.slice(
             (currentPage - 1) * numOfRows,
             currentPage * numOfRows
           )
-        : tableData.slice(
+        : tableData?.slice(
             (currentPage - 1) * numOfRows,
             currentPage * numOfRows
           );
     // setNumOfPages(data.length);
-    return data.map((row: any, index: number) => {
+    return data?.map((row: any, index: number) => {
       return (
         <tr key={index}>
           <td key={row.id} className={`${hideCheckbox ? "d-none" : undefined}`}>
