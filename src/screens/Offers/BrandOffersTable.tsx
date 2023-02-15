@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BrandsImage from "../../assets/images/images.svg";
-import MarketBtn from "../../assets/images/market-btn.svg"
-import LinkSimpleBreak from "../../assets/images/LinkSimpleBreak.svg"
-import LinkIcon from "../../assets/images/Link.svg"
+import MarketBtn from "../../assets/images/market-btn.svg";
+import LinkSimpleBreak from "../../assets/images/LinkSimpleBreak.svg";
+import LinkIcon from "../../assets/images/Link.svg";
 import Table from "../../components/Table";
 import TableFooter from "../../components/Table/TableFooter";
 
@@ -33,33 +33,47 @@ const data = [
       </div>
     ),
     promotion: (
-        <div
-          className="d-flex justify-content-center"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          <img src={MarketBtn} alt="" />
-        </div>
-      ),
-    offerName: (<div>
+      <div
+        className="d-flex justify-content-center"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <img src={MarketBtn} alt="" />
+      </div>
+    ),
+    offer_name: (
+      <div>
         <span className="pe-2">Xetrusion bar</span>
         <img src={LinkSimpleBreak} alt="" />
-    </div>),
-    agency: 'Wetheweb.20',
+      </div>
+    ),
+    agency: "Wetheweb.20",
     prices: "$255.89",
     status: <span className="text-success">Enabled</span>,
-    commissionOffer: <div>
+    commission_offer: (
+      <div>
         <span>12%</span>
-        <span className="bg-info rounded p-1 ms-2 ps-2 pe-2" style={{fontSize: '8px', height: '12px'}}>Pay per click</span>
-    </div>,
-    tag: <div>
+        <span
+          className="bg-info rounded p-1 ms-2 ps-2 pe-2"
+          style={{ fontSize: "8px", height: "12px" }}
+        >
+          Pay per click
+        </span>
+      </div>
+    ),
+    tag_link: (
+      <div>
         <img src={LinkIcon} alt="" />
         <span>B099HP4D5Z</span>
-    </div>,
+      </div>
+    ),
     publishers: "Donna Slider",
-    asinId: "B099HP4D5Z",
-    offerStatus: <span className="border rounded ps-2 pe-2 text-align-center">Accepted</span>,
-    
+    asin_id: "B099HP4D5Z",
+    offer_status: (
+      <span className="border rounded ps-2 pe-2 text-align-center">
+        Accepted
+      </span>
+    ),
   },
   {
     id: 2,
@@ -73,33 +87,47 @@ const data = [
       </div>
     ),
     promotion: (
-        <div
-          className="d-flex justify-content-center"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          <img src={MarketBtn} />
-        </div>
-      ),
-    offerName: (<div>
+      <div
+        className="d-flex justify-content-center"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <img src={MarketBtn} />
+      </div>
+    ),
+    offer_name: (
+      <div>
         <span className="pe-2">Xetrusion bar</span>
         <img src={LinkSimpleBreak} alt="" />
-    </div>),
-    agency: 'Wetheweb.20',
+      </div>
+    ),
+    agency: "Wetheweb.20",
     prices: "$255.89",
     status: <span className="text-success">Enabled</span>,
-    commissionOffer: <div>
+    commission_offer: (
+      <div>
         <span>12%</span>
-        <span className="bg-info rounded p-1 ms-2 ps-2 pe-2" style={{fontSize: '8px', height: '12px'}}>Pay per click</span>
-    </div>,
-    tag: <div>
+        <span
+          className="bg-info rounded p-1 ms-2 ps-2 pe-2"
+          style={{ fontSize: "8px", height: "12px" }}
+        >
+          Pay per click
+        </span>
+      </div>
+    ),
+    tag_link: (
+      <div>
         <img src={LinkIcon} alt="" />
         <span>B099HP4D5Z</span>
-    </div>,
+      </div>
+    ),
     publishers: "Donna Slider",
-    asinId: "B099HP4D5Z",
-    offerStatus: <span className="border rounded ps-2 pe-2 text-align-center">Accepted</span>,
-    
+    asin_id: "B099HP4D5Z",
+    offer_status: (
+      <span className="border rounded ps-2 pe-2 text-align-center">
+        Accepted
+      </span>
+    ),
   },
   {
     id: 3,
@@ -113,33 +141,47 @@ const data = [
       </div>
     ),
     promotion: (
-        <div
-          className="d-flex justify-content-center"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          <img src={MarketBtn} />
-        </div>
-      ),
-    offerName: (<div>
+      <div
+        className="d-flex justify-content-center"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <img src={MarketBtn} />
+      </div>
+    ),
+    offer_name: (
+      <div>
         <span className="pe-2">Xetrusion bar</span>
         <img src={LinkSimpleBreak} alt="" />
-    </div>),
-    agency: 'Wetheweb.20',
+      </div>
+    ),
+    agency: "Wetheweb.20",
     prices: "$255.89",
     status: <span className="text-success">Enabled</span>,
-    commissionOffer: <div>
+    commission_offer: (
+      <div>
         <span>12%</span>
-        <span className="bg-info rounded p-1 ms-2 ps-2 pe-2" style={{fontSize: '8px', height: '12px'}}>Pay per click</span>
-    </div>,
-    tag: <div>
+        <span
+          className="bg-info rounded p-1 ms-2 ps-2 pe-2"
+          style={{ fontSize: "8px", height: "12px" }}
+        >
+          Pay per click
+        </span>
+      </div>
+    ),
+    tag_link: (
+      <div>
         <img src={LinkIcon} alt="" />
         <span>B099HP4D5Z</span>
-    </div>,
+      </div>
+    ),
     publishers: "Donna Slider",
-    asinId: "B099HP4D5Z",
-    offerStatus: <span className="border rounded ps-2 pe-2 text-align-center">Accepted</span>,
-    
+    asin_id: "B099HP4D5Z",
+    offer_status: (
+      <span className="border rounded ps-2 pe-2 text-align-center">
+        Accepted
+      </span>
+    ),
   },
   {
     id: 4,
@@ -153,33 +195,47 @@ const data = [
       </div>
     ),
     promotion: (
-        <div
-          className="d-flex justify-content-center"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          <img src={MarketBtn} alt="" />
-        </div>
-      ),
-    offerName: (<div>
+      <div
+        className="d-flex justify-content-center"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <img src={MarketBtn} alt="" />
+      </div>
+    ),
+    offer_name: (
+      <div>
         <span className="pe-2">Xetrusion bar</span>
         <img src={LinkSimpleBreak} alt="" />
-    </div>),
-    agency: 'Wetheweb.20',
+      </div>
+    ),
+    agency: "Wetheweb.20",
     prices: "$255.89",
     status: <span className="text-success">Enabled</span>,
-    commissionOffer: <div>
+    commission_offer: (
+      <div>
         <span>12%</span>
-        <span className="bg-info rounded p-1 ms-2 ps-2 pe-2" style={{fontSize: '8px', height: '12px'}}>Pay per click</span>
-    </div>,
-    tag: <div>
+        <span
+          className="bg-info rounded p-1 ms-2 ps-2 pe-2"
+          style={{ fontSize: "8px", height: "12px" }}
+        >
+          Pay per click
+        </span>
+      </div>
+    ),
+    tag_link: (
+      <div>
         <img src={LinkIcon} alt="" />
         <span>B099HP4D5Z</span>
-    </div>,
+      </div>
+    ),
     publishers: "Donna Slider",
-    asinId: "B099HP4D5Z",
-    offerStatus: <span className="border rounded ps-2 pe-2 text-align-center">Accepted</span>,
-    
+    asin_id: "B099HP4D5Z",
+    offer_status: (
+      <span className="border rounded ps-2 pe-2 text-align-center">
+        Accepted
+      </span>
+    ),
   },
   {
     id: 5,
@@ -193,33 +249,47 @@ const data = [
       </div>
     ),
     promotion: (
-        <div
-          className="d-flex justify-content-center"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          <img src={MarketBtn} alt="" />
-        </div>
-      ),
-    offerName: (<div>
+      <div
+        className="d-flex justify-content-center"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <img src={MarketBtn} alt="" />
+      </div>
+    ),
+    offer_name: (
+      <div>
         <span className="pe-2">Xetrusion bar</span>
         <img src={LinkSimpleBreak} alt="" />
-    </div>),
-    agency: 'Wetheweb.20',
+      </div>
+    ),
+    agency: "Wetheweb.20",
     prices: "$255.89",
     status: <span className="text-success">Enabled</span>,
-    commissionOffer: <div>
+    commission_offer: (
+      <div>
         <span>12%</span>
-        <span className="bg-info rounded p-1 ms-2 ps-2 pe-2" style={{fontSize: '8px', height: '12px'}}>Pay per click</span>
-    </div>,
-    tag: <div>
+        <span
+          className="bg-info rounded p-1 ms-2 ps-2 pe-2"
+          style={{ fontSize: "8px", height: "12px" }}
+        >
+          Pay per click
+        </span>
+      </div>
+    ),
+    tag_link: (
+      <div>
         <img src={LinkIcon} alt="" />
         <span>B099HP4D5Z</span>
-    </div>,
+      </div>
+    ),
     publishers: "Donna Slider",
-    asinId: "B099HP4D5Z",
-    offerStatus: <span className="border rounded ps-2 pe-2 text-align-center">Accepted</span>,
-    
+    asin_id: "B099HP4D5Z",
+    offer_status: (
+      <span className="border rounded ps-2 pe-2 text-align-center">
+        Accepted
+      </span>
+    ),
   },
   {
     id: 6,
@@ -233,33 +303,47 @@ const data = [
       </div>
     ),
     promotion: (
-        <div
-          className="d-flex justify-content-center"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          <img src={MarketBtn} alt="" />
-        </div>
-      ),
-    offerName: (<div>
+      <div
+        className="d-flex justify-content-center"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <img src={MarketBtn} alt="" />
+      </div>
+    ),
+    offer_name: (
+      <div>
         <span className="pe-2">Xetrusion bar</span>
         <img src={LinkSimpleBreak} alt="" />
-    </div>),
-    agency: 'Wetheweb.20',
+      </div>
+    ),
+    agency: "Wetheweb.20",
     prices: "$255.89",
     status: <span className="text-success">Enabled</span>,
-    commissionOffer: <div>
+    commission_offer: (
+      <div>
         <span>12%</span>
-        <span className="bg-info rounded p-1 ms-2 ps-2 pe-2" style={{fontSize: '8px', height: '12px'}}>Pay per click</span>
-    </div>,
-    tag: <div>
+        <span
+          className="bg-info rounded p-1 ms-2 ps-2 pe-2"
+          style={{ fontSize: "8px", height: "12px" }}
+        >
+          Pay per click
+        </span>
+      </div>
+    ),
+    tag_link: (
+      <div>
         <img src={LinkIcon} alt="" />
         <span>B099HP4D5Z</span>
-    </div>,
+      </div>
+    ),
     publishers: "Donna Slider",
-    asinId: "B099HP4D5Z",
-    offerStatus: <span className="border rounded ps-2 pe-2 text-align-center">Accepted</span>,
-    
+    asin_id: "B099HP4D5Z",
+    offer_status: (
+      <span className="border rounded ps-2 pe-2 text-align-center">
+        Accepted
+      </span>
+    ),
   },
   {
     id: 7,
@@ -273,33 +357,47 @@ const data = [
       </div>
     ),
     promotion: (
-        <div
-          className="d-flex justify-content-center"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          <img src={MarketBtn} alt="" />
-        </div>
-      ),
-    offerName: (<div>
+      <div
+        className="d-flex justify-content-center"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <img src={MarketBtn} alt="" />
+      </div>
+    ),
+    offer_name: (
+      <div>
         <span className="pe-2">Xetrusion bar</span>
         <img src={LinkSimpleBreak} alt="" />
-    </div>),
-    agency: 'Wetheweb.20',
+      </div>
+    ),
+    agency: "Wetheweb.20",
     prices: "$255.89",
     status: <span className="text-success">Enabled</span>,
-    commissionOffer: <div>
+    commission_offer: (
+      <div>
         <span>12%</span>
-        <span className="bg-info rounded p-1 ms-2 ps-2 pe-2" style={{fontSize: '8px', height: '12px'}}>Pay per click</span>
-    </div>,
-    tag: <div>
+        <span
+          className="bg-info rounded p-1 ms-2 ps-2 pe-2"
+          style={{ fontSize: "8px", height: "12px" }}
+        >
+          Pay per click
+        </span>
+      </div>
+    ),
+    tag_link: (
+      <div>
         <img src={LinkIcon} alt="" />
         <span>B099HP4D5Z</span>
-    </div>,
+      </div>
+    ),
     publishers: "Donna Slider",
-    asinId: "B099HP4D5Z",
-    offerStatus: <span className="border rounded ps-2 pe-2 text-align-center">Accepted</span>,
-    
+    asin_id: "B099HP4D5Z",
+    offer_status: (
+      <span className="border rounded ps-2 pe-2 text-align-center">
+        Accepted
+      </span>
+    ),
   },
   {
     id: 8,
@@ -313,33 +411,48 @@ const data = [
       </div>
     ),
     promotion: (
-        <div
-          className="d-flex justify-content-center"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          <img src={MarketBtn} alt="" />
-        </div>
-      ),
-    offerName: (<div>
+      <div
+        className="d-flex justify-content-center"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <img src={MarketBtn} alt="" />
+      </div>
+    ),
+    offer_name: (
+      <div>
         <span className="pe-2">Xetrusion bar</span>
         <img src={LinkSimpleBreak} alt="" />
-    </div>),
-    agency: 'Wetheweb.20',
+      </div>
+    ),
+    agency: "Wetheweb.20",
     prices: "$255.89",
     status: <span className="text-success">Enabled</span>,
-    commissionOffer: <div>
+    commission_offer: (
+      <div>
         <span>12%</span>
-        <span className="bg-info rounded p-1 ms-2 ps-2 pe-2" style={{fontSize: '8px', height: '12px'}}>Pay per click</span>
-    </div>,
-    tag: <div>
+        <span
+          className="bg-info rounded p-1 ms-2 ps-2 pe-2"
+          style={{ fontSize: "8px", height: "12px" }}
+        >
+          Pay per click
+        </span>
+      </div>
+    ),
+    tag_link: (
+      <div>
         <img src={LinkIcon} alt="" />
         <span>B099HP4D5Z</span>
-    </div>,
+      </div>
+    ),
     publishers: "Donna Slider",
-    asinId: "B099HP4D5Z",
-    offerStatus: <span className="border rounded ps-2 pe-2 text-align-center">Accepted</span>,
-      },
+    asin_id: "B099HP4D5Z",
+    offer_status: (
+      <span className="border rounded ps-2 pe-2 text-align-center">
+        Accepted
+      </span>
+    ),
+  },
   {
     id: 9,
     image: (
@@ -352,33 +465,47 @@ const data = [
       </div>
     ),
     promotion: (
-        <div
-          className="d-flex justify-content-center"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          <img src={MarketBtn} alt="" />
-        </div>
-      ),
-    offerName: (<div>
+      <div
+        className="d-flex justify-content-center"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <img src={MarketBtn} alt="" />
+      </div>
+    ),
+    offer_name: (
+      <div>
         <span className="pe-2">Xetrusion bar</span>
         <img src={LinkSimpleBreak} alt="" />
-    </div>),
-    agency: 'Wetheweb.20',
+      </div>
+    ),
+    agency: "Wetheweb.20",
     prices: "$255.89",
     status: <span className="text-success">Enabled</span>,
-    commissionOffer: <div>
+    commission_offer: (
+      <div>
         <span>12%</span>
-        <span className="bg-info rounded p-1 ms-2 ps-2 pe-2" style={{fontSize: '8px', height: '12px'}}>Pay per click</span>
-    </div>,
-    tag: <div>
+        <span
+          className="bg-info rounded p-1 ms-2 ps-2 pe-2"
+          style={{ fontSize: "8px", height: "12px" }}
+        >
+          Pay per click
+        </span>
+      </div>
+    ),
+    tag_link: (
+      <div>
         <img src={LinkIcon} alt="" />
         <span>B099HP4D5Z</span>
-    </div>,
+      </div>
+    ),
     publishers: "Donna Slider",
-    asinId: "B099HP4D5Z",
-    offerStatus: <span className="border rounded ps-2 pe-2 text-align-center">Accepted</span>,
-    
+    asin_id: "B099HP4D5Z",
+    offer_status: (
+      <span className="border rounded ps-2 pe-2 text-align-center">
+        Accepted
+      </span>
+    ),
   },
   {
     id: 10,
@@ -392,33 +519,47 @@ const data = [
       </div>
     ),
     promotion: (
-        <div
-          className="d-flex justify-content-center"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          <img src={MarketBtn} alt="" />
-        </div>
-      ),
-    offerName: (<div>
+      <div
+        className="d-flex justify-content-center"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <img src={MarketBtn} alt="" />
+      </div>
+    ),
+    offer_name: (
+      <div>
         <span className="pe-2">Xetrusion bar</span>
         <img src={LinkSimpleBreak} alt="" />
-    </div>),
-    agency: 'Wetheweb.20',
+      </div>
+    ),
+    agency: "Wetheweb.20",
     prices: "$255.89",
     status: <span className="text-success">Enabled</span>,
-    commissionOffer: <div>
+    commission_offer: (
+      <div>
         <span>12%</span>
-        <span className="bg-info rounded p-1 ms-2 ps-2 pe-2" style={{fontSize: '8px', height: '12px'}}>Pay per click</span>
-    </div>,
-    tag: <div>
+        <span
+          className="bg-info rounded p-1 ms-2 ps-2 pe-2"
+          style={{ fontSize: "8px", height: "12px" }}
+        >
+          Pay per click
+        </span>
+      </div>
+    ),
+    tag_link: (
+      <div>
         <img src={LinkIcon} alt="" />
         <span>B099HP4D5Z</span>
-    </div>,
+      </div>
+    ),
     publishers: "Donna Slider",
-    asinId: "B099HP4D5Z",
-    offerStatus: <span className="border rounded ps-2 pe-2 text-align-center">Accepted</span>,
-    
+    asin_id: "B099HP4D5Z",
+    offer_status: (
+      <span className="border rounded ps-2 pe-2 text-align-center">
+        Accepted
+      </span>
+    ),
   },
   {
     id: 11,
@@ -432,33 +573,47 @@ const data = [
       </div>
     ),
     promotion: (
-        <div
-          className="d-flex justify-content-center"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          <img src={MarketBtn} alt="" />
-        </div>
-      ),
-    offerName: (<div>
+      <div
+        className="d-flex justify-content-center"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <img src={MarketBtn} alt="" />
+      </div>
+    ),
+    offer_name: (
+      <div>
         <span className="pe-2">Xetrusion bar</span>
         <img src={LinkSimpleBreak} alt="" />
-    </div>),
-    agency: 'Wetheweb.20',
+      </div>
+    ),
+    agency: "Wetheweb.20",
     prices: "$255.89",
     status: <span className="text-success">Enabled</span>,
-    commissionOffer: <div>
+    commission_offer: (
+      <div>
         <span>12%</span>
-        <span className="bg-info rounded p-1 ms-2 ps-2 pe-2" style={{fontSize: '8px', height: '12px'}}>Pay per click</span>
-    </div>,
-    tag: <div>
+        <span
+          className="bg-info rounded p-1 ms-2 ps-2 pe-2"
+          style={{ fontSize: "8px", height: "12px" }}
+        >
+          Pay per click
+        </span>
+      </div>
+    ),
+    tag_link: (
+      <div>
         <img src={LinkIcon} alt="" />
         <span>B099HP4D5Z</span>
-    </div>,
+      </div>
+    ),
     publishers: "Donna Slider",
-    asinId: "B099HP4D5Z",
-    offerStatus: <span className="border rounded ps-2 pe-2 text-align-center">Accepted</span>,
-    
+    asin_id: "B099HP4D5Z",
+    offer_status: (
+      <span className="border rounded ps-2 pe-2 text-align-center">
+        Accepted
+      </span>
+    ),
   },
   {
     id: 12,
@@ -472,33 +627,47 @@ const data = [
       </div>
     ),
     promotion: (
-        <div
-          className="d-flex justify-content-center"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          <img src={MarketBtn} alt="" />
-        </div>
-      ),
-    offerName: (<div>
+      <div
+        className="d-flex justify-content-center"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <img src={MarketBtn} alt="" />
+      </div>
+    ),
+    offer_name: (
+      <div>
         <span className="pe-2">Xetrusion bar</span>
         <img src={LinkSimpleBreak} alt="" />
-    </div>),
-    agency: 'Wetheweb.20',
+      </div>
+    ),
+    agency: "Wetheweb.20",
     prices: "$255.89",
     status: <span className="text-success">Enabled</span>,
-    commissionOffer: <div>
+    commission_offer: (
+      <div>
         <span>12%</span>
-        <span className="bg-info rounded p-1 ms-2 ps-2 pe-2" style={{fontSize: '8px', height: '12px'}}>Pay per click</span>
-    </div>,
-    tag: <div>
+        <span
+          className="bg-info rounded p-1 ms-2 ps-2 pe-2"
+          style={{ fontSize: "8px", height: "12px" }}
+        >
+          Pay per click
+        </span>
+      </div>
+    ),
+    tag_link: (
+      <div>
         <img src={LinkIcon} alt="" />
         <span>B099HP4D5Z</span>
-    </div>,
+      </div>
+    ),
     publishers: "Donna Slider",
-    asinId: "B099HP4D5Z",
-    offerStatus: <span className="border rounded ps-2 pe-2 text-align-center">Accepted</span>,
-    
+    asin_id: "B099HP4D5Z",
+    offer_status: (
+      <span className="border rounded ps-2 pe-2 text-align-center">
+        Accepted
+      </span>
+    ),
   },
 ];
 
@@ -506,38 +675,37 @@ const displayLabels = [
   // "id",
   "image",
   "promotion",
-  "offerName",
+  "offer_name",
   "agency",
   "prices",
   "status",
-  "commissionOffer",
-  "tag",
+  "commission_offer",
+  "tag_link",
   "publishers",
-  "asinId",
-  "offerStatus",
+  "asin_id",
+  "offer_status",
 ];
 
 function BrandOffersTable() {
   const [tableData, setTableData] = useState(data);
+  const [searchString, setSearchString] = useState("");
   const filterData = (searchString: any) => {
     if (!searchString) return tableData;
     return tableData.filter((item: any) => {
-      return (
-        item.offerStatus.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.offerName.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.agency.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.prices.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.status.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.commissionOffer.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.tag.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.publishers.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.asinId.toLowerCase().includes(searchString.toLowerCase())
-      );
+      const itemProperties: Array<string> = Object.keys(item);
+      return itemProperties
+        .map((key: string) => {
+          if (typeof item[key] === "string") {
+            return item[key].includes(searchString);
+          }
+          return false;
+        })
+        .some((currentValue: boolean) => currentValue);
     });
   };
   const deleteRow = (id: number) => {
     setTableData((prev) => {
-      return prev.filter((row) => row.id != id);
+      return prev.filter((row) => row.id !== id);
     });
   };
 
@@ -550,11 +718,32 @@ function BrandOffersTable() {
   const editData = (data: any) => {
     // setTableData(prev=>{return prev.map()})
   };
-  
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams();
+
+    searchString && searchParams.append("search", searchString);
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL + "brands/offers" + searchParams.toString()
+    );
+
+    fetch(url, {
+      headers: {
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Methods': 'GET'
+      },
+    }).then(async (response) => {
+      let res = await response.json();
+
+      setTableData(res);
+    });
+  }, [searchString]);
+
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({from: '', to: ''});
-  const [searchString, setSearchString] = useState("");
+  const [componentDate, setComponentDate] = useState<
+    string | { from: string; to: string }
+  >({ from: "", to: "" });
   const [numOfPages, setNumOfPages] = useState(1);
   return (
     <Table
@@ -566,7 +755,12 @@ function BrandOffersTable() {
       editData={editData}
       addRow={addRow}
       filterData={filterData}
-      numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
+      numOfPages={numOfPages}
+      setNumOfPages={setNumOfPages}
+      numOfRows={numOfRows}
+      setNumOfRows={setNumOfRows}
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
       footer={
         <TableFooter
           totalData={tableData.length}
