@@ -5,7 +5,7 @@ import CalenderChecker from "../assets/images/CalendarCheck.svg";
 import CalendarIcon from "./svgs/CalendarIcon";
 
 interface CalendarProps {
-  setComponentDate: (value: string | { from: string; to: string; text?: string }) => void;
+  setComponentDate: (value: string | { from: string; to: string; dateText?: string }) => void;
   format?: 1 | 2;
 }
 
@@ -99,15 +99,14 @@ const CalendarWrapper = ({ setComponentDate, format = 1 }: CalendarProps) => {
           ? 0 + "" + selectedDayRange?.to?.day
           : selectedDayRange?.to?.day
       }`;
-      let text = `From ${selectedDayRange.from?.day} ${
+      const dateText = `From ${selectedDayRange.from?.day} ${
         months[
           selectedDayRange.from?.month ? selectedDayRange.from?.month - 1 : 0
         ]
       } - ${selectedDayRange.to?.day ? selectedDayRange.to?.day : ""} ${
         months[selectedDayRange.to?.month ? selectedDayRange.to?.month - 1 : 0]
       }`;
-
-      setComponentDate({ from: from, to: to, text: text });
+      setComponentDate({ from: from, to: to, dateText: dateText });
     }else {
       const dateText = `From ${selectedDayRange.from?.day} ${
         months[
