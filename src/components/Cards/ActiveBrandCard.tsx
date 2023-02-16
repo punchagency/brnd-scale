@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Navigate, useNavigate } from "react-router-dom";
 import ActiveIcon from "../svgs/ActiveIcon";
 
@@ -13,14 +14,15 @@ function ActiveBrandCard({ image, earning, commission, title }: any) {
       <div className="card-body">
         <div className="row flex-column">
           <div className="col">
-            <p style={{ fontSize: "14px", color: "#605454" }}>{title}</p>
+            <p style={{ fontSize: "14px", color: "#605454", height: "20px" }}>{title.substring(0, 30)}</p>
           </div>
           <div
             className="col border"
             style={{ maxHeight: "115px", overflow: "hidden" }}
             onClick={changePage}
           >
-            {image}
+            <Link to={"/publisher/brand-details"} className="">
+            <img src={image} className="img img-fluid" style={{height: '100%'}}  /></Link>
           </div>
           <div
             className="col d-flex justify-content-between mt-3"

@@ -151,3 +151,37 @@ export interface AgenciesReportingPayments {
   created_at: string;
   updated_at: string;
 }
+
+export interface ActiveBrandInterface {
+  cards: string;
+  commission_amount: string;
+  created_at: string;
+  dashboard_button: boolean;
+  earned_amount: number;
+  id: number;
+  logo: string;
+  product_name: string;
+  promote_button: boolean;
+  updated_at: string;
+  user_id: number;
+}
+
+export interface ActiveProductInterface {
+  id: number;
+  user_id: number;
+  image: string;
+  tags: string;
+  brands: string;
+  category: string;
+  asin_id: string;
+  total_clicks: number;
+  total_sales: number;
+  commission_earned: number;
+  conversion: number;
+  total_orders: number;
+  coupon: string;
+  promote: boolean;
+  date: string;
+  created_at: string;
+  updated_at: string;
+}

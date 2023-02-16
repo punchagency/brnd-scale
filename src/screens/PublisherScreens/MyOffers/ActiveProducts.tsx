@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ListIcon from "../../../components/svgs/ListIcon";
 import Table from "../../../components/Table";
 import { Link, useLocation } from "react-router-dom";
@@ -14,6 +14,7 @@ import Search from "../../../components/svgs/Search";
 import CalendarWrapper from "../../../components/Calendar";
 import TablePageDropdown from "../../../components/Table/TablePageDropdown";
 import TableFooter from "../../../components/Table/TableFooter";
+import { ActiveProductInterface } from "../../../types";
 
 const headers = [
   "Images",
@@ -41,12 +42,12 @@ const data = [
     tag: "B099HP4D5Z",
     brands: "JBL Xtreme",
     category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    asin_id: "B099HP4D5Z",
+    total_clicks: "$255.89",
+    total_sale: "$255.89",
+    commission_earned: "$255.89",
     conversions: 12,
-    totalOrders: 2566,
+    total_orders: 2566,
     coupon: (
       <button
         type="button"
@@ -77,12 +78,12 @@ const data = [
     tag: "B099HP4D5Z",
     brands: "JBL Xtreme",
     category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    asin_id: "B099HP4D5Z",
+    total_clicks: "$255.89",
+    total_sale: "$255.89",
+    commission_earned: "$255.89",
     conversions: 12,
-    totalOrders: 2566,
+    total_orders: 2566,
     coupon: (
       <button
         type="button"
@@ -113,12 +114,12 @@ const data = [
     tag: "B099HP4D5Z",
     brands: "JBL Xtreme",
     category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    asin_id: "B099HP4D5Z",
+    total_clicks: "$255.89",
+    total_sale: "$255.89",
+    commission_earned: "$255.89",
     conversions: 12,
-    totalOrders: 2566,
+    total_orders: 2566,
     coupon: (
       <button
         type="button"
@@ -149,12 +150,12 @@ const data = [
     tag: "B099HP4D5Z",
     brands: "JBL Xtreme",
     category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    asin_id: "B099HP4D5Z",
+    total_clicks: "$255.89",
+    total_sale: "$255.89",
+    commission_earned: "$255.89",
     conversions: 12,
-    totalOrders: 2566,
+    total_orders: 2566,
     coupon: (
       <button
         type="button"
@@ -185,12 +186,12 @@ const data = [
     tag: "B099HP4D5Z",
     brands: "JBL Xtreme",
     category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    asin_id: "B099HP4D5Z",
+    total_clicks: "$255.89",
+    total_sale: "$255.89",
+    commission_earned: "$255.89",
     conversions: 12,
-    totalOrders: 2566,
+    total_orders: 2566,
     coupon: (
       <button
         type="button"
@@ -221,12 +222,12 @@ const data = [
     tag: "B099HP4D5Z",
     brands: "JBL Xtreme",
     category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    asin_id: "B099HP4D5Z",
+    total_clicks: "$255.89",
+    total_sale: "$255.89",
+    commission_earned: "$255.89",
     conversions: 12,
-    totalOrders: 2566,
+    total_orders: 2566,
     coupon: (
       <button
         type="button"
@@ -237,7 +238,15 @@ const data = [
         Click to View
       </button>
     ),
-    status: <button className="btn btn-primary btn-sm">Copy/Create URL</button>,
+    status: (
+      <button
+        className="btn btn-primary btn-sm"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Copy/Create URL
+      </button>
+    ),
   },
   {
     id: 7,
@@ -249,12 +258,12 @@ const data = [
     tag: "B099HP4D5Z",
     brands: "JBL Xtreme",
     category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    asin_id: "B099HP4D5Z",
+    total_clicks: "$255.89",
+    total_sale: "$255.89",
+    commission_earned: "$255.89",
     conversions: 12,
-    totalOrders: 2566,
+    total_orders: 2566,
     coupon: (
       <button
         type="button"
@@ -285,12 +294,12 @@ const data = [
     tag: "B099HP4D5Z",
     brands: "JBL Xtreme",
     category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    asin_id: "B099HP4D5Z",
+    total_clicks: "$255.89",
+    total_sale: "$255.89",
+    commission_earned: "$255.89",
     conversions: 12,
-    totalOrders: 2566,
+    total_orders: 2566,
     coupon: (
       <button
         type="button"
@@ -321,12 +330,12 @@ const data = [
     tag: "B099HP4D5Z",
     brands: "JBL Xtreme",
     category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    asin_id: "B099HP4D5Z",
+    total_clicks: "$255.89",
+    total_sale: "$255.89",
+    commission_earned: "$255.89",
     conversions: 12,
-    totalOrders: 2566,
+    total_orders: 2566,
     coupon: (
       <button
         type="button"
@@ -357,12 +366,12 @@ const data = [
     tag: "B099HP4D5Z",
     brands: "JBL Xtreme",
     category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    asin_id: "B099HP4D5Z",
+    total_clicks: "$255.89",
+    total_sale: "$255.89",
+    commission_earned: "$255.89",
     conversions: 12,
-    totalOrders: 2566,
+    total_orders: 2566,
     coupon: (
       <button
         type="button"
@@ -393,12 +402,12 @@ const data = [
     tag: "B099HP4D5Z",
     brands: "JBL Xtreme",
     category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    asin_id: "B099HP4D5Z",
+    total_clicks: "$255.89",
+    total_sale: "$255.89",
+    commission_earned: "$255.89",
     conversions: 12,
-    totalOrders: 2566,
+    total_orders: 2566,
     coupon: (
       <button
         type="button"
@@ -429,12 +438,12 @@ const data = [
     tag: "B099HP4D5Z",
     brands: "JBL Xtreme",
     category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    asin_id: "B099HP4D5Z",
+    total_clicks: "$255.89",
+    total_sale: "$255.89",
+    commission_earned: "$255.89",
     conversions: 12,
-    totalOrders: 2566,
+    total_orders: 2566,
     coupon: (
       <button
         type="button"
@@ -459,18 +468,18 @@ const data = [
     id: 13,
     image: (
       <div className="d-flex justify-content-center">
-        <img src={product} alt="product image" />
+        <img src={product} alt="" />
       </div>
     ),
     tag: "B099HP4D5Z",
     brands: "JBL Xtreme",
     category: "JBL Xtreme",
-    asinId: "B099HP4D5Z",
-    totalClicks: "$255.89",
-    totalSale: "$255.89",
-    commissionEarned: "$255.89",
+    asin_id: "B099HP4D5Z",
+    total_clicks: "$255.89",
+    total_sale: "$255.89",
+    commission_earned: "$255.89",
     conversions: 12,
-    totalOrders: 2566,
+    total_orders: 2566,
     coupon: (
       <button
         type="button"
@@ -494,62 +503,95 @@ const data = [
 ];
 
 const displayLabels = [
-  // "id",
   "image",
-  "tag",
+  "tags",
   "brands",
   "category",
-  "asinId",
-  "totalClicks",
-  "totalSale",
-  "commissionEarned",
+  "asin_id",
+  "total_clicks",
+  "total_sale",
+  "commission_earned",
   "conversions",
-  "totalOrders",
+  "total_orders",
   "coupon",
   "status",
+  // "promote",
 ];
 
 function ActiveProducts() {
-  const [tableData, setTableData] = useState(data);
+  const [tableData, setTableData] = useState(data) //useState<ActiveProductInterface[] >();
   const location = useLocation();
-
-  const filterData = (searchString: any) => {
-    if (!searchString) return tableData;
-    return tableData.filter((item: any) => {
-      return (
-        item.productName.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.brand.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.startingDate.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.endingDate.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.tags.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.commissionMade
-          .toLowerCase()
-          .includes(searchString.toLowerCase()) ||
-        item.totalSale.toLowerCase().includes(searchString.toLowerCase())
-      );
-    });
-  };
-  const deleteRow = (id: number) => {
-    setTableData((prev: any) => {
-      return prev.filter((row: any) => row.id != id);
-    });
-  };
-
-  const addRow = (row: any) => {
-    setTableData((prev: any) => {
-      return [...prev, { id: prev.length, ...row }];
-    });
-  };
-
-  const editData = (data: any) => {
-    // setTableData(prev=>{return prev.map()})
-  };
 
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({from: '', to: ''});
   const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
+  const [total, setTotal] = useState(13)
+
+  useEffect(() => {
+    // console.log(componentDate);
+
+    const searchParams = new URLSearchParams();
+    typeof componentDate == "object" &&
+      componentDate.from != "" &&
+      searchParams.append(
+        "date_from",
+        typeof componentDate == "object" ? componentDate.from : ""
+      );
+    typeof componentDate == "object" &&
+      componentDate.to != "" &&
+      searchParams.append(
+        "date_to",
+        typeof componentDate == "object" ? componentDate.to : ""
+      );
+    searchString && searchParams.append("search", searchString);
+    currentPage && searchParams.append("page", currentPage+"");
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL+"publishers/active-products?" + searchParams.toString()
+    );
+
+    console.log(url);
+
+    fetch(url, { mode: "cors" }).then(async (response) => {//console.log(await response.text())
+      let res = await response.json();console.log(res)
+
+      // setTableData(
+      //   res.data.map((row: any) => {//console.log(row)
+      //     return {
+      //       ...row,
+      //       image: (
+      //         <div className="d-flex justify-content-center">
+      //           <img src={row.logo} alt="" />
+      //         </div>
+      //       ),
+      //       coupon: (
+      //         <button
+      //           type="button"
+      //           className="btn btn-light btn-sm"
+      //           data-bs-toggle="modal"
+      //           data-bs-target="#couponModal"
+      //         >
+      //           Click to View
+      //         </button>
+      //       ),
+      //       status: (
+      //         <button
+      //           className="btn btn-primary btn-sm"
+      //           data-bs-toggle="modal"
+      //           data-bs-target="#exampleModal"
+      //         >
+      //           Copy/Create URL
+      //         </button>
+      //       ),
+      //       checked: false,
+      //     };
+      //   })
+      // );
+      // setTotal(res.data.total)
+    });
+  }, [componentDate, searchString, currentPage]);
+
   return (
       <div className="col-12">
         {/* Modal  */}
@@ -705,13 +747,8 @@ function ActiveProducts() {
           displayLabels={displayLabels}
           headers={headers}
           tableWidth={"115%"}
-          deleteRow={deleteRow}
-          editData={editData}
-          addRow={addRow}
-          filterData={filterData}
           toolbar={
-            <div
-              className={`col-12 mt-3 d-flex flex-nowrap+`}
+            <div className={`col-12 mt-3 d-flex flex-nowrap`}
             >
               <div className="col-6 d-flex ">
                 <div className="col-6 d-flex align-items-center">
@@ -720,15 +757,8 @@ function ActiveProducts() {
                 <div className="col-6 d-flex align-items-center">
                   <div className="col-12 d-flex align-items-center">
                     <div className="card border-0">
-                      {/* <CalendarIcon /> */}
                       <CalendarWrapper setComponentDate={setComponentDate} />
                     </div>
-                    <select className="ms-1 rounded px-2 py-1" style={{borderColor: "#ced4da"}}>
-                      <option value="">Month</option>
-                    </select>
-                    <select className="ms-1 rounded px-2 py-1" style={{borderColor: "#ced4da"}}>
-                      <option value="">Category</option>
-                    </select>
                   </div>
                 </div>
               </div>
@@ -773,7 +803,7 @@ function ActiveProducts() {
           numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
           footer={
             <TableFooter
-              totalData={tableData.length}
+              totalData={total}
               rowsPerPage={numOfRows}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}

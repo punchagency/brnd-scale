@@ -8,7 +8,7 @@ interface TabButtonProps {
 
 function TabButton({text, onClick, selected = false}: TabButtonProps) {
   return (
-    <button className={`btn btn-${selected ? 'primary' : "dark"} btn-lg w-25 me-2`} onClick={onClick}>{text}</button>
+    <button className={`btn btn-${selected ? 'primary' : "dark"} btn-lg w-sm-50 w-md-25 me-2`} onClick={onClick}>{text}</button>
   )
 }
 

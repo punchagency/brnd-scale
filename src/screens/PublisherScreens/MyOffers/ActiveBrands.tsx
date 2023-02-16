@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import PageTitle from "../../../components/PageTitle";
 import PageMenu from "../../../components/Common/PageMenu";
@@ -9,6 +9,7 @@ import handM from "../../../assets/images/HandM-big.png";
 import versace from "../../../assets/images/versace-big.png";
 import ActiveBrandCard from "../../../components/Cards/ActiveBrandCard";
 import Modal from "../BrandDetails/Modal";
+import { ActiveBrandInterface } from "../../../types";
 
 const data = [
   {
@@ -103,18 +104,32 @@ const data = [
 
 function ActiveBrands() {
   const location = useLocation();
+  const [brandList, setBrandList] = useState<ActiveBrandInterface[]>([]);
+
+  var url = new URL(
+    process.env.REACT_APP_BASE_URL+"publishers/active-brands?"
+  );
+  useEffect(()=>{
+    fetch(url, { mode: "cors", method: 'GET' }).then(async (response) => {
+      let res = await response.json();
+      console.log(res)
+      if(res.success){
+        setBrandList(res.data); console.log(brandList)
+      }
+    })
+  }, [])
 
   return (
     <>
       <div className="col-12">
-        <div className="row mt-5">
-          {data.map((brand) => (
-            <div className="col-md-3 mt-4">
+        <div className="row mt-3">
+          {brandList.map((brand) => (
+            <div className="col-sm-6 col-md-3 mt-4">
               <ActiveBrandCard
-                title={brand.title}
-                image={brand.image}
-                earning={brand.earning}
-                commission={brand.commission}
+                title={brand.product_name}
+                image={brand.logo}
+                earning={brand.earned_amount}
+                commission={brand.commission_amount}
                 key={brand.id}
               />
             </div>
