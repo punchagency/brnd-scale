@@ -75,6 +75,9 @@ const CalendarWrapper = ({ setComponentDate, format = 1 }: CalendarProps) => {
   });
   useEffect(() => {
     console.log(selectedDayRange);
+    // if(setRangeObject !== undefined) {
+    //   setRangeObject()
+    // }
     if(selectedDayRange.from !== null &&
       selectedDayRange.to !== null &&
       format === 2){

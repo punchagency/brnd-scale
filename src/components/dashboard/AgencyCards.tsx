@@ -219,5 +219,4 @@ const AgencyCards = ({ apiPrefix }: any) => {
     </>
   );
 };
-
 export default AgencyCards;

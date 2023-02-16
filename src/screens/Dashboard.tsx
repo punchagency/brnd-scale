@@ -9,7 +9,7 @@ import { selectUser } from "../features/user/userSlice";
 import {  useAppSelector } from "../app/hooks";
 import TestCard from "../components/Card/TestCard";
 import ProductDetail from "../components/Popups/ProductDetail";
-import AgencyCards from "../components/Common/AgencyCards";
+import AgencyCards from "../components/dashboard/AgencyCards";
 
 const headers = [
   "Top Publishers",
