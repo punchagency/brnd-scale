@@ -48,9 +48,9 @@ function TestCard({
           </div>
           <div className="col-6 d-flex justify-content-end ps-0 ">
             <span className="mt-1 me-3" style={{ fontSize: "11px" }}>
-              {date}
+              {typeof date === "string" && date}
             </span>
-              <CalendarWrapper setComponentDate={setComponentDate} format={1} />
+              <CalendarWrapper setComponentDate={setComponentDate} format={2} />
           </div>
         </div>
         <div className="row">

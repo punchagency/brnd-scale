@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from "react";
 import TestCard from "../Card/TestCard";
 
+interface DateInterface {
+  date_from: string,
+  date_to: string
+}
+
 const AgencyCards = ({ apiPrefix }: any) => {
   const [selectedCard, setSelectedCard] = useState(0);
+  const [totalSalesDate, setTotalSalesDate] = useState<DateInterface>()
+  const [totalOrdersDate, setTotalOrdersDate] = useState<DateInterface>()
+  const [conversionRateDate, setConversionRate] = useState<DateInterface>()
+  const [totalRevenueDate, setTotalRevenueDate] = useState<DateInterface>()
+
   const [sales, setSales] = useState({
     current_month_sales: 0,
     date: "",
@@ -40,65 +50,109 @@ const AgencyCards = ({ apiPrefix }: any) => {
     yesterdays_conversion_rate: 0,
   });
 
-  const [salesDate, setSalesDate] = useState<string | {from: string, to: string}>("");
-  const [revenueDate, setRevenueDate] = useState<string | {from: string, to: string}>("");
-  const [conversionsDate, setConversionsDate] = useState<string | {from: string, to: string}>("");
-  const [orderDate, setOrderDate] = useState<string | {from: string, to: string}>("");
+  const [salesDate, setSalesDate] = useState<string | {from: string, to: string, dateText?: string}>("");
+  const [revenueDate, setRevenueDate] = useState<string | {from: string, to: string, dateText?: string}>("");
+  const [conversionsDate, setConversionsDate] = useState<string | {from: string, to: string, dateText?: string}>("");
+  const [orderDate, setOrderDate] = useState<string | {from: string, to: string, dateText?: string}>("");
 
-  useEffect(() => {
+  // useEffect(() => {
     
 
+  //   let url = new URL(
+  //     process.env.REACT_APP_BASE_URL + `${apiPrefix}/cards/total-sales?date=2022-02`
+  //   );
+  //   let promises = [];
+
+  //   promises.push(
+  //     fetch(url, { mode: "cors" }).then(async (response) => {
+  //       let res = await response.json();
+  //       console.log("res",res);
+  //       setSales(res.data);
+  //     })
+  //   );
+
+  //   url = new URL(
+  //     process.env.REACT_APP_BASE_URL +
+  //     `${apiPrefix}/cards/total-orders?date=2022-02`
+  //   );
+
+  //   promises.push(
+  //     fetch(url, { mode: "cors" }).then(async (response) => {
+  //       let res = await response.json();
+  //       console.log(res);
+  //       setOrders(res.data);
+  //     })
+  //   );
+  //   url = new URL(
+  //     process.env.REACT_APP_BASE_URL +
+  //     `${apiPrefix}/cards/total-revenues?date=2022-02`
+  //   );
+
+  //   promises.push(
+  //     fetch(url, { mode: "cors" }).then(async (response) => {
+  //       let res = await response.json();
+  //       console.log(res);
+  //       setRevenues(res.data);
+  //     })
+  //   );
+
+  //   url = new URL(
+  //     process.env.REACT_APP_BASE_URL +
+  //     `${apiPrefix}/cards/conversion-rates?date=2022-02`
+  //   );
+
+  //   promises.push(
+  //     fetch(url, { mode: "cors" }).then(async (response) => {
+  //       let res = await response.json();
+  //       console.log(res);
+  //       setConversions(res.data);
+  //     })
+  //   );
+  // }, [salesDate, revenueDate, orderDate, conversionsDate, apiPrefix]);
+
+  useEffect(() => {
     let url = new URL(
-      process.env.REACT_APP_BASE_URL + `${apiPrefix}/cards/total-sales?date=2022-02`
+      process.env.REACT_APP_BASE_URL + `${apiPrefix}/cards/total-sales?date_from=${typeof salesDate === "object" && salesDate.from}&date_to=${typeof salesDate === "object" && salesDate.to}`
     );
-    let promises = [];
+    fetch(url, { mode: "cors" }).then(async (response) => {
+      let res = await response.json();
+      console.log("res",res);
+      setSales(res.data);
+    })
+  }, [salesDate, apiPrefix])
 
-    promises.push(
-      fetch(url, { mode: "cors" }).then(async (response) => {
-        let res = await response.json();
-        console.log("res",res);
-        setSales(res.data);
-      })
+  useEffect(() => {
+    let url = new URL(
+      process.env.REACT_APP_BASE_URL + `${apiPrefix}/cards/total-orders?date_from=${typeof orderDate === "object" && orderDate.from}&date_to=${typeof orderDate === "object" && orderDate.to}`
     );
+    fetch(url, { mode: "cors" }).then(async (response) => {
+      let res = await response.json();
+      console.log("res",res);
+      setOrders(res.data);
+    })
+  }, [orderDate, apiPrefix])
 
-    url = new URL(
-      process.env.REACT_APP_BASE_URL +
-      `${apiPrefix}/cards/total-orders?date=2022-02`
+  useEffect(() => {
+    let url = new URL(
+      process.env.REACT_APP_BASE_URL + `${apiPrefix}/cards/total-revenues?date_from=${typeof revenueDate === "object" && revenueDate.from}&date_to=${typeof revenueDate === "object" && revenueDate.to}`
     );
-
-    promises.push(
-      fetch(url, { mode: "cors" }).then(async (response) => {
-        let res = await response.json();
-        console.log(res);
-        setOrders(res.data);
-      })
-    );
-    url = new URL(
-      process.env.REACT_APP_BASE_URL +
-      `${apiPrefix}/cards/total-revenues?date=2022-02`
-    );
-
-    promises.push(
       fetch(url, { mode: "cors" }).then(async (response) => {
         let res = await response.json();
         console.log(res);
         setRevenues(res.data);
       })
-    );
+  }, [revenueDate, apiPrefix])
 
-    url = new URL(
-      process.env.REACT_APP_BASE_URL +
-      `${apiPrefix}/cards/conversion-rates?date=2022-02`
+  useEffect(() => {
+    let url = new URL(
+      process.env.REACT_APP_BASE_URL + `${apiPrefix}/cards/conversion-rates?date_from=${typeof conversionsDate === "object" && conversionsDate.from}&date_to=${typeof conversionsDate === "object" && conversionsDate.to}`
     );
-
-    promises.push(
       fetch(url, { mode: "cors" }).then(async (response) => {
         let res = await response.json();
         console.log(res);
         setConversions(res.data);
       })
-    );
-  }, [salesDate, revenueDate, orderDate, conversionsDate, apiPrefix]);
+  }, [conversionsDate, apiPrefix])
 
   return (
     <>
@@ -112,7 +166,7 @@ const AgencyCards = ({ apiPrefix }: any) => {
           currentMonth={sales?.current_month_sales + "K"}
           lastMonth={sales?.last_month_sales + "K"}
           main={selectedCard === 0}
-          date={salesDate}//"From 10 - 20 Nov"
+          date={(typeof salesDate === "object" && salesDate.dateText) || salesDate}//"From 10 - 20 Nov"
           onClick={() => setSelectedCard(0)}
           setComponentDate={setSalesDate}
         />
@@ -127,7 +181,7 @@ const AgencyCards = ({ apiPrefix }: any) => {
           currentMonth={orders?.current_month_orders + "K"}
           lastMonth={orders?.last_month_orders + "K"}
           main={selectedCard === 1}
-          date={orderDate}
+          date={(typeof orderDate === "object" && orderDate.dateText) || orderDate}
           onClick={() => setSelectedCard(1)}
           setComponentDate={setOrderDate}
         />
@@ -142,7 +196,7 @@ const AgencyCards = ({ apiPrefix }: any) => {
           currentMonth={revenues?.current_month_revenue + "K"}
           lastMonth={revenues?.last_month_revenue + "K"}
           main={selectedCard === 2}
-          date={revenueDate}
+          date={(typeof revenueDate === "object" && revenueDate.dateText) || revenueDate}
           onClick={() => setSelectedCard(2)}
           setComponentDate={setRevenueDate}
         />
@@ -157,7 +211,7 @@ const AgencyCards = ({ apiPrefix }: any) => {
           currentMonth={conversions?.current_month_conversion_rate + "K"}
           lastMonth={conversions?.last_month_conversion_rate + "K"}
           main={selectedCard === 3}
-          date={conversionsDate}
+          date={(typeof conversionsDate === "object" && conversionsDate.dateText) || conversionsDate}
           onClick={() => setSelectedCard(3)}
           setComponentDate={setConversionsDate}
         />
