@@ -428,8 +428,6 @@ function PublisherReports() {
   };
 
   useEffect(() => {
-    // console.log(componentDate);
-
     const searchParams = new URLSearchParams();
     typeof componentDate == "object" &&
       componentDate.from != "" &&
@@ -446,7 +444,7 @@ function PublisherReports() {
     searchString && searchParams.append("search", searchString);
     var url = new URL(
       process.env.REACT_APP_BASE_URL +
-        "/agencies/reports/publishers?" +
+        "agencies/reports/publishers?" +
         searchParams.toString()
     );
 
@@ -454,7 +452,7 @@ function PublisherReports() {
 
     fetch(url, { mode: "cors" }).then(async (response) => {
       //console.log(await response.text())
-      let res = await response.json();
+      let res = await response.json();console.log(res)
 
       setTableData(
         res.data.data.map((row: any) => {

@@ -39,17 +39,7 @@ const Table = ({
   };
   const displayData = () => {
     //determine the rows to display
-    let data = tableData
-      // searchString !== ""
-      //   ? filterData(searchString).slice(
-      //       (currentPage - 1) * numOfRows,
-      //       currentPage * numOfRows
-      //     )
-      //   : tableData.slice(
-      //       (currentPage - 1) * numOfRows,
-      //       currentPage * numOfRows
-      //     );
-    // setNumOfPages(data.length);
+    let data = tableData ?? []
     return data?.map((row: any, index: number) => {
       return (
         <tr key={index}>

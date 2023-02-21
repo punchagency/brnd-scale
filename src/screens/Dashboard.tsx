@@ -264,9 +264,14 @@ const Dashboard: FC = () => {
       setCommissionsChartData({ labels: labels, data: commData });
       setSalesChartData({ labels: labels, data: data });
     });
+
+    const date = new Date()
+    date.setFullYear(2022)
+    let defaultDate = date.getFullYear()+"-"+(Number(date.getMonth()+1) < 10 ? "0"+(date.getMonth() + 1) : date.getMonth())
+    
     url = new URL(
       process.env.REACT_APP_BASE_URL +
-        "agencies/tables/list-top-publishers?date=2022-02"
+        "agencies/tables/list-top-publishers?date="+defaultDate
     );
 
     fetch(url, { mode: "cors" }).then(async (response) => {
@@ -277,7 +282,7 @@ const Dashboard: FC = () => {
 
     url = new URL(
       process.env.REACT_APP_BASE_URL +
-        "agencies/tables/list-top-brands?date=2022-02"
+        "agencies/tables/list-top-brands?date="+defaultDate
     );
 
     fetch(url, { mode: "cors" }).then(async (response) => {

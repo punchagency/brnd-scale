@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Table from "../../../components/Table";
 
 import jbl from "../../../assets/images/jbl.png";
@@ -486,12 +486,12 @@ const data = [
 const displayLabels = [
   // "id",
   "image",
-  "brandName",
-  "campaignName",
+  "brands",
+  "campaigns_name",
   "agency",
   "category",
-  "activeCoupons",
-  "commissionOffer",
+  "active_coupons",
+  "commission_offer",
   "product",
   "details",
   "applyHere",
@@ -500,43 +500,88 @@ const displayLabels = [
 function JoinBrand() {
   const [tableData, setTableData] = useState(data);
 
-  const filterData = (searchString: any) => {
-    if (!searchString) return tableData;
-    return tableData.filter((item: any) => {
-      return (
-        item.productName.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.brand.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.startingDate.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.endingDate.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.tags.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.commissionMade
-          .toLowerCase()
-          .includes(searchString.toLowerCase()) ||
-        item.totalSale.toLowerCase().includes(searchString.toLowerCase())
-      );
-    });
-  };
-  const deleteRow = (id: number) => {
-    setTableData((prev: any) => {
-      return prev.filter((row: any) => row.id !== id);
-    });
-  };
-
-  const addRow = (row: any) => {
-    setTableData((prev: any) => {
-      return [...prev, { id: prev.length, ...row }];
-    });
-  };
-
-  const editData = (data: any) => {
-    // setTableData(prev=>{return prev.map()})
-  };
-
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({from: '', to: ''});
+  const [componentDate, setComponentDate] = useState<
+    string | { from: string; to: string }
+  >({ from: "", to: "" });
   const [searchString, setSearchString] = useState("");
   const [numOfPages, setNumOfPages] = useState(1);
+  const [total, setTotal] = useState(0)
+
+  useEffect(() => {
+    // console.log(componentDate);
+
+    const searchParams = new URLSearchParams();
+    typeof componentDate == "object" &&
+      componentDate.from != "" &&
+      searchParams.append(
+        "date_from",
+        typeof componentDate == "object" ? componentDate.from : ""
+      );
+    typeof componentDate == "object" &&
+      componentDate.to != "" &&
+      searchParams.append(
+        "date_to",
+        typeof componentDate == "object" ? componentDate.to : ""
+      );
+    searchString && searchParams.append("search", searchString);
+    currentPage && searchParams.append("page", currentPage + "");
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL +
+        "publishers/join-brands?" +
+        searchParams.toString()
+    );
+
+    console.log(url);
+
+    fetch(url, { mode: "cors" }).then(async (response) => {
+      //console.log(await response.text())
+      let res = await response.json();
+      console.log(res);
+
+      setTableData(
+        res.data.data.map((row: any) => {
+          return {
+            ...row,
+            image: (
+              <div
+                className="d-flex justify-content-center"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                <img src={row.logo} alt="" className="img img-fluid" style={{width: '90px'}} />
+              </div>
+            ),
+            active_coupons: row.active_coupons+" %",
+            product: (
+              <button
+                className="btn btn-outline-light btn-sm text-dark border"
+                data-bs-toggle="modal"
+                data-bs-target="#aboutProductModal"
+              >
+                View Product
+              </button>
+            ),
+            details: (
+              <button
+                className="btn btn-outline-light btn-sm text-dark border"
+                data-bs-toggle="modal"
+                data-bs-target="#aboutBrandModal"
+              >
+                Click Here
+              </button>
+            ),
+            applyHere: (
+              <button className="btn btn-primary btn-sm">Apply</button>
+            ),
+          };
+        })
+      );
+      setTotal(res.data.total);
+    });
+  }, [componentDate, searchString, currentPage]);
+
   return (
     <>
       <About />
@@ -547,10 +592,6 @@ function JoinBrand() {
           displayLabels={displayLabels}
           headers={headers}
           tableWidth={"115%"}
-          deleteRow={deleteRow}
-          editData={editData}
-          addRow={addRow}
-          filterData={filterData}
           toolbar={
             <div className={`col-12 mt-3 d-flex flex-nowrap+`}>
               <div className="col-6 d-flex ">
@@ -564,28 +605,12 @@ function JoinBrand() {
                 <div className="col-6 d-flex align-items-center">
                   <div className="col-12 d-flex align-items-center">
                     <div className="card border-0">
-                      {/* <CalendarIcon /> */}
                       <CalendarWrapper setComponentDate={setComponentDate} />
                     </div>
-                    <select
-                      className="ms-1 rounded px-2 py-1"
-                      style={{ borderColor: "#ced4da" }}
-                    >
-                      <option value="">Month</option>
-                    </select>
-                    <select
-                      className="ms-1 rounded px-2 py-1"
-                      style={{ borderColor: "#ced4da" }}
-                    >
-                      <option value="">Category</option>
-                    </select>
                   </div>
                 </div>
               </div>
               <div className="col-6 d-flex align-items-center justify-content-end">
-                <div className="col-2 p-0">
-                  <button className="btn btn-primary btn-sm">Apply All</button>
-                </div>
                 <div className="col-4 d-flex">
                   <div className="input-group flex-nowrap my-auto">
                     <input

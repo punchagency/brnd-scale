@@ -603,37 +603,6 @@ const displayLabels = [
 function JoinOffer() {
   const [tableData, setTableData] = useState(data);
 
-  const filterData = (searchString: any) => {
-    if (!searchString) return tableData;
-    return tableData.filter((item: any) => {
-      return (
-        item.productName.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.brand.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.startingDate.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.endingDate.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.tags.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.commissionMade
-          .toLowerCase()
-          .includes(searchString.toLowerCase()) ||
-        item.totalSale.toLowerCase().includes(searchString.toLowerCase())
-      );
-    });
-  };
-  const deleteRow = (id: number) => {
-    setTableData((prev: any) => {
-      return prev.filter((row: any) => row.id !== id);
-    });
-  };
-
-  const addRow = (row: any) => {
-    setTableData((prev: any) => {
-      return [...prev, { id: prev.length, ...row }];
-    });
-  };
-
-  const editData = (data: any) => {
-    // setTableData(prev=>{return prev.map()})
-  };
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>({from: '', to: ''});
@@ -714,10 +683,6 @@ function JoinOffer() {
           displayLabels={displayLabels}
           headers={headers}
           tableWidth={"135%"}
-          deleteRow={deleteRow}
-          editData={editData}
-          addRow={addRow}
-          filterData={filterData}
           toolbar={
             <div className={`col-12 mt-3 d-flex flex-nowrap+`}>
               <div className="col-6 d-flex ">

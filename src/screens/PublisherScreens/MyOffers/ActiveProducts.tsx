@@ -539,6 +539,11 @@ function ActiveProducts() {
         "date_from",
         typeof componentDate == "object" ? componentDate.from : ""
       );
+      
+      searchParams.append(
+        "date",
+        typeof componentDate == "object" ? componentDate.from : "2020-01"
+      );
     typeof componentDate == "object" &&
       componentDate.to != "" &&
       searchParams.append(
