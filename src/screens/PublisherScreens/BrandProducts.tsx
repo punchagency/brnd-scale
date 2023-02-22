@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ListIcon from "../../components/svgs/ListIcon";
 import Table from "../../components/Table";
 import { Link, useLocation } from "react-router-dom";
@@ -364,57 +364,71 @@ const data = [
 
 const displayLabels = [
   // "id",
-  "productName",
-  "productId",
-  "lastSale",
+  "product_name",
+  "product_id",
+  "last_sale",
   "price",
   "status",
   "earned",
-  "commissions",
-  "activeCoupons",
-  "conversions",
-  "totalOrders",
-  "totalPaid",
+  "commission",
+  "active_coupons",
+  "conversion",
+  "total_orders",
+  "total_paid",
   "quantity",
 ];
 
 function BrandProducts() {
-  const [tableData, setTableData] = useState(data);
+  const [tableData, setTableData] = useState([]);
 
-  const filterData = (searchString: any) => {
-    if (!searchString) return tableData;
-    return tableData.filter((item: any) => {
-      return (
-        item.productName.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.brand.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.startingDate.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.endingDate.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.tags.toLowerCase().includes(searchString.toLowerCase()) ||
-        item.commissionMade
-          .toLowerCase()
-          .includes(searchString.toLowerCase()) ||
-        item.totalSale.toLowerCase().includes(searchString.toLowerCase())
-      );
-    });
-  };
-  const deleteRow = (id: number) => {
-    setTableData((prev: any) => {
-      return prev.filter((row: any) => row.id !== id);
-    });
-  };
-
-  const addRow = (row: any) => {
-    setTableData((prev: any) => {
-      return [...prev, { id: prev.length, ...row }];
-    });
-  };
-
-  const editData = (data: any) => {
-    // setTableData(prev=>{return prev.map()})
-  };
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
+  
+  useEffect(() => {
+    // console.log(componentDate);
+
+    const searchParams = new URLSearchParams();
+    
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL +
+        "publishers/product-details/brand-products?" //+
+        // searchParams.toString()
+    );
+
+    console.log(url);
+
+    fetch(url, { mode: "cors" }).then(async (response) => {
+      //console.log(await response.text())
+      let res = await response.json();
+      console.log(res);
+
+      setTableData(
+        res.data.data.map((row: any) => {
+          return {
+            ...row,
+            productName: (
+              <Link
+                to={""}
+                
+              >
+                Amazon Fire 7 Kids tablet, 7" display, ages 3-7, with ad-free content kids love
+              </Link>
+            ),
+            price: "$"+row.price,
+            status: <button className="btn btn-outline-primary btn-sm">Promoted</button>,
+            commissions: (
+              <div className="d-block">
+                12% <Badge />
+              </div>
+            ),
+          };
+        })
+      );
+      // setTotal(res.data.total);
+    });
+  }, [ currentPage]);
+
   return (
       <div className="row pt-3 ps-2 pe-5">
         <div className="col-12 mt-3">
@@ -446,10 +460,6 @@ function BrandProducts() {
             displayLabels={displayLabels}
             headers={headers}
             tableWidth={"150%"}
-            deleteRow={deleteRow}
-            editData={editData}
-            addRow={addRow}
-            filterData={filterData}
             numOfPages={numOfPages} setNumOfPages={setNumOfPages} numOfRows={numOfRows} setNumOfRows={setNumOfRows} currentPage={currentPage} setCurrentPage={setCurrentPage}
           />
         </div>
