@@ -10,6 +10,7 @@ import versace from "../../../assets/images/versace-big.png";
 import ActiveBrandCard from "../../../components/Cards/ActiveBrandCard";
 import Modal from "../BrandDetails/Modal";
 import { ActiveBrandInterface } from "../../../types";
+import TableFooter from "../../../components/Table/TableFooter";
 
 const data = [
   {
@@ -105,26 +106,38 @@ const data = [
 function ActiveBrands() {
   const location = useLocation();
   const [brandList, setBrandList] = useState<ActiveBrandInterface[]>([]);
+  const [visibleItems, setVisibleItems] = useState<ActiveBrandInterface[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   var url = new URL(
-    process.env.REACT_APP_BASE_URL+"publishers/active-brands?"
+    process.env.REACT_APP_BASE_URL + "publishers/active-brands?"
   );
-  useEffect(()=>{
-    fetch(url, { mode: "cors", method: 'GET' }).then(async (response) => {
+  useEffect(() => {
+    fetch(url, { mode: "cors", method: "GET" }).then(async (response) => {
       let res = await response.json();
-      console.log(res)
-      if(res.success){
-        setBrandList(res.data); console.log(brandList)
+      console.log(res);
+      if (res.success) {
+        setBrandList(res.data);
+        changePage(1);
       }
-    })
-  }, [])
+    });
+  }, []);
+
+  const changePage = (page: number) => {
+    setCurrentPage(page);
+    --page;
+    setVisibleItems(
+      brandList.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+    );
+  };
 
   return (
     <>
       <div className="col-12">
         <div className="row mt-3">
-          {brandList.map((brand) => (
-            <div className="col-sm-6 col-md-3 mt-4">
+          {visibleItems.map((brand) => (
+            <div className="col-sm-6 col-md-4 col-lg-3 mt-4">
               <ActiveBrandCard
                 title={brand.product_name}
                 image={brand.logo}
@@ -134,6 +147,14 @@ function ActiveBrands() {
               />
             </div>
           ))}
+        </div>
+        <div className="mt-4">
+          <TableFooter
+            totalData={brandList.length}
+            rowsPerPage={rowsPerPage}
+            currentPage={currentPage}
+            setCurrentPage={changePage}
+          />
         </div>
       </div>
       <div className="col-12">

@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useRef} from "react";
 import { Link } from "react-router-dom";
 import { Navigate, useNavigate } from "react-router-dom";
 import ActiveIcon from "../svgs/ActiveIcon";
 
 function ActiveBrandCard({ image, earning, commission, title }: any) {
   const navigate = useNavigate();
+  const windowSize = useRef([window.innerWidth, window.innerHeight]);
 
   const changePage = () => {
     navigate("/publisher/brand-details");
@@ -14,7 +15,7 @@ function ActiveBrandCard({ image, earning, commission, title }: any) {
       <div className="card-body">
         <div className="row flex-column">
           <div className="col">
-            <p style={{ fontSize: "14px", color: "#605454", height: "20px" }}>{title.substring(0, 30)}</p>
+            <p style={{ fontSize: "14px", color: "#605454", height: "20px" }}>{windowSize.current[0] < 992 ? title.substring(0, 25) : title.substring(0, 29)}</p>
           </div>
           <div
             className="col border"
@@ -38,8 +39,7 @@ function ActiveBrandCard({ image, earning, commission, title }: any) {
           <div className="col flex-column mt-3">
             <button
               className="btn btn-outline-light border border-dark text-dark d-block w-100"
-              // data-bs-toggle="modal"
-              // data-bs-target="#exampleModal"
+              
               onClick={()=>{navigate("/publisher/brand-details")}}
             >
               Dashboard
