@@ -1,9 +1,9 @@
 import React, {useRef} from "react";
 import { Link } from "react-router-dom";
 import { Navigate, useNavigate } from "react-router-dom";
-import ActiveIcon from "../svgs/ActiveIcon";
+import ActiveIcon from "../../components/svgs/ActiveIcon";
 
-function ActiveBrandCard({ image, earning, commission, title }: any) {
+function ExploreCard({ image, about, date, title, btnText }: any) {
   const navigate = useNavigate();
   const windowSize = useRef([window.innerWidth, window.innerHeight]);
 
@@ -22,18 +22,19 @@ function ActiveBrandCard({ image, earning, commission, title }: any) {
             style={{ maxHeight: "115px", overflow: "hidden" }}
             onClick={changePage}
           >
-            <Link to={"/publisher/brand-details"} className="">
-            <img src={image} className="img img-fluid" style={{height: '100%'}}  /></Link>
+            {/* <Link to={"/publisher/brand-details"} className="">
+            <img src={image} className="img img-fluid" style={{height: '100%'}}  /></Link> */}
+            {image}
           </div>
           <div
             className="col d-flex justify-content-between mt-3"
             style={{ fontSize: "10px", color: "#6C6262" }}
           >
             <span className="">
-              Earned : {earning} <ActiveIcon />
+              {about}
             </span>
             <span className="">
-              Commission : {commission} <ActiveIcon />
+              {date}
             </span>
           </div>
           <div className="col flex-column mt-3">
@@ -42,10 +43,7 @@ function ActiveBrandCard({ image, earning, commission, title }: any) {
               
               onClick={()=>{navigate("/publisher/brand-details")}}
             >
-              Dashboard
-            </button>
-            <button onClick={()=>navigate("/publisher/brand-products")} className="btn btn-outline-light border border-dark text-dark mt-2 d-block w-100">
-              Promote
+              {btnText}
             </button>
           </div>
         </div>
@@ -54,4 +52,4 @@ function ActiveBrandCard({ image, earning, commission, title }: any) {
   );
 }
 
-export default ActiveBrandCard;
+export default ExploreCard;

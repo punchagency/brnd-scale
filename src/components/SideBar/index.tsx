@@ -49,6 +49,11 @@ export const renderSideBarList = (userType:string) => {
               </li>
             </ul>
           </li>
+          <li className="mb-3">
+            <Link to="/market-place" className="nav-link">
+              Market Place
+            </Link>
+          </li>
         </ul>
       );
 
@@ -70,7 +75,7 @@ export const renderSideBarList = (userType:string) => {
               Publishers
             </Link>
           </li>
-          <li>
+          <li className="mb-3">
             Analyze
             <ul className="mt-3" style={{ borderLeft: "1px solid #C2BDBD" }}>
               <li>
@@ -79,6 +84,11 @@ export const renderSideBarList = (userType:string) => {
                 </Link>
               </li>
             </ul>
+          </li>
+          <li className="mb-3">
+            <Link to="/market-place" className="nav-link">
+              Market Place
+            </Link>
           </li>
         </ul>
       );
@@ -101,7 +111,7 @@ export const renderSideBarList = (userType:string) => {
               My Offers
             </Link>
           </li>
-          <li>
+          <li className="mb-3">
             Analyze
             <ul className="mt-3" style={{ borderLeft: "1px solid #C2BDBD" }}>
               <li>
@@ -110,6 +120,11 @@ export const renderSideBarList = (userType:string) => {
                 </Link>
               </li>
             </ul>
+          </li>
+          <li className="mb-3">
+            <Link to="/market-place" className="nav-link">
+              Market Place
+            </Link>
           </li>
         </ul>
       );

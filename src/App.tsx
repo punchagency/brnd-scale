@@ -24,6 +24,7 @@ import PaymentReport from "./screens/Reports/PaymentReport";
 import BrandsManage from "./screens/BrandsManage";
 import ProductReports from "./screens/Reports/ProductReports";
 import PublisherOffers from "./screens/PublisherScreens/Offers/PublisherOffers";
+import MarketPlace from "./screens/MarketPlace/MarketPlace";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -74,6 +75,7 @@ function App() {
               <Route path="publisher-reports" element={<PublisherReports />} />
               <Route path="payment-reports" element={<PaymentReport />} />
               <Route path="reports" element={<Reports />} />
+              <Route path="/market-place" element={<MarketPlace />} />
 
               {/* Publisher links */}
               <Route path="publisher" element={<Dashboard />} />

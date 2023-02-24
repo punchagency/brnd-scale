@@ -519,7 +519,7 @@ const displayLabels = [
 ];
 
 function ActiveProducts() {
-  const [tableData, setTableData] = useState(data) //useState<ActiveProductInterface[] >();
+  const [tableData, setTableData] = useState([]) //useState<ActiveProductInterface[] >();
   const location = useLocation();
 
   const [numOfRows, setNumOfRows] = useState(10);
@@ -530,8 +530,6 @@ function ActiveProducts() {
   const [total, setTotal] = useState(13)
 
   useEffect(() => {
-    // console.log(componentDate);
-
     const searchParams = new URLSearchParams();
     typeof componentDate == "object" &&
       componentDate.from != "" &&
@@ -561,39 +559,39 @@ function ActiveProducts() {
     fetch(url, { mode: "cors" }).then(async (response) => {//console.log(await response.text())
       let res = await response.json();console.log(res)
 
-      // setTableData(
-      //   res.data.map((row: any) => {//console.log(row)
-      //     return {
-      //       ...row,
-      //       image: (
-      //         <div className="d-flex justify-content-center">
-      //           <img src={row.logo} alt="" />
-      //         </div>
-      //       ),
-      //       coupon: (
-      //         <button
-      //           type="button"
-      //           className="btn btn-light btn-sm"
-      //           data-bs-toggle="modal"
-      //           data-bs-target="#couponModal"
-      //         >
-      //           Click to View
-      //         </button>
-      //       ),
-      //       status: (
-      //         <button
-      //           className="btn btn-primary btn-sm"
-      //           data-bs-toggle="modal"
-      //           data-bs-target="#exampleModal"
-      //         >
-      //           Copy/Create URL
-      //         </button>
-      //       ),
-      //       checked: false,
-      //     };
-      //   })
-      // );
-      // setTotal(res.data.total)
+      setTableData(
+        res.data.data.map((row: any) => {//console.log(row)
+          return {
+            ...row,
+            image: (
+              <div className="d-flex justify-content-center">
+                <img src={row.image} alt="" />
+              </div>
+            ),
+            coupon: (
+              <button
+                type="button"
+                className="btn btn-light btn-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#couponModal"
+              >
+                Click to View
+              </button>
+            ),
+            status: (
+              <button
+                className="btn btn-primary btn-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                Copy/Create URL
+              </button>
+            ),
+            checked: false,
+          };
+        })
+      );
+      setTotal(res.data.total)
     });
   }, [componentDate, searchString, currentPage]);
 

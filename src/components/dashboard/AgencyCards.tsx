@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import TestCard from "../Card/TestCard";
 
 interface DateInterface {
-  date_from: string,
-  date_to: string
+  date_from: string;
+  date_to: string;
 }
 
 const AgencyCards = ({ apiPrefix }: any) => {
   const [selectedCard, setSelectedCard] = useState(0);
-  const [totalSalesDate, setTotalSalesDate] = useState<DateInterface>()
-  const [totalOrdersDate, setTotalOrdersDate] = useState<DateInterface>()
-  const [conversionRateDate, setConversionRate] = useState<DateInterface>()
-  const [totalRevenueDate, setTotalRevenueDate] = useState<DateInterface>()
+  const [totalSalesDate, setTotalSalesDate] = useState<DateInterface>();
+  const [totalOrdersDate, setTotalOrdersDate] = useState<DateInterface>();
+  const [conversionRateDate, setConversionRate] = useState<DateInterface>();
+  const [totalRevenueDate, setTotalRevenueDate] = useState<DateInterface>();
 
   const [sales, setSales] = useState({
     current_month_sales: 0,
@@ -50,13 +50,20 @@ const AgencyCards = ({ apiPrefix }: any) => {
     yesterdays_conversion_rate: 0,
   });
 
-  const [salesDate, setSalesDate] = useState<string | {from: string, to: string, dateText?: string}>("");
-  const [revenueDate, setRevenueDate] = useState<string | {from: string, to: string, dateText?: string}>("");
-  const [conversionsDate, setConversionsDate] = useState<string | {from: string, to: string, dateText?: string}>("");
-  const [orderDate, setOrderDate] = useState<string | {from: string, to: string, dateText?: string}>("");
+  const [salesDate, setSalesDate] = useState<
+    string | { from: string; to: string; dateText?: string }
+  >("");
+  const [revenueDate, setRevenueDate] = useState<
+    string | { from: string; to: string; dateText?: string }
+  >("");
+  const [conversionsDate, setConversionsDate] = useState<
+    string | { from: string; to: string; dateText?: string }
+  >("");
+  const [orderDate, setOrderDate] = useState<
+    string | { from: string; to: string; dateText?: string }
+  >("");
 
   // useEffect(() => {
-    
 
   //   let url = new URL(
   //     process.env.REACT_APP_BASE_URL + `${apiPrefix}/cards/total-sales?date=2022-02`
@@ -112,47 +119,67 @@ const AgencyCards = ({ apiPrefix }: any) => {
 
   useEffect(() => {
     let url = new URL(
-      process.env.REACT_APP_BASE_URL + `${apiPrefix}/cards/total-sales?date_from=${typeof salesDate === "object" && salesDate.from}&date_to=${typeof salesDate === "object" && salesDate.to}`
+      process.env.REACT_APP_BASE_URL +
+        `${apiPrefix}/cards/total-sales?date_from=${
+          typeof salesDate === "object" && salesDate.from
+        }&date_to=${typeof salesDate === "object" && salesDate.to}`
     );
     fetch(url, { mode: "cors" }).then(async (response) => {
       let res = await response.json();
-      console.log("res",res);
-      setSales(res.data);
-    })
-  }, [salesDate, apiPrefix])
+      console.log("res", res);
+      if (res.data) {
+        setSales(res.data);
+      }
+    });
+  }, [salesDate, apiPrefix]);
 
   useEffect(() => {
     let url = new URL(
-      process.env.REACT_APP_BASE_URL + `${apiPrefix}/cards/total-orders?date_from=${typeof orderDate === "object" && orderDate.from}&date_to=${typeof orderDate === "object" && orderDate.to}`
+      process.env.REACT_APP_BASE_URL +
+        `${apiPrefix}/cards/total-orders?date_from=${
+          typeof orderDate === "object" && orderDate.from
+        }&date_to=${typeof orderDate === "object" && orderDate.to}`
     );
     fetch(url, { mode: "cors" }).then(async (response) => {
       let res = await response.json();
-      console.log("res",res);
-      setOrders(res.data);
-    })
-  }, [orderDate, apiPrefix])
+      console.log("res", res);
+      if (res.data) {
+        setOrders(res.data);
+      }
+    });
+  }, [orderDate, apiPrefix]);
 
   useEffect(() => {
     let url = new URL(
-      process.env.REACT_APP_BASE_URL + `${apiPrefix}/cards/total-revenues?date_from=${typeof revenueDate === "object" && revenueDate.from}&date_to=${typeof revenueDate === "object" && revenueDate.to}`
+      process.env.REACT_APP_BASE_URL +
+        `${apiPrefix}/cards/total-revenues?date_from=${
+          typeof revenueDate === "object" && revenueDate.from
+        }&date_to=${typeof revenueDate === "object" && revenueDate.to}`
     );
-      fetch(url, { mode: "cors" }).then(async (response) => {
-        let res = await response.json();
-        console.log(res);
+    fetch(url, { mode: "cors" }).then(async (response) => {
+      let res = await response.json();
+      console.log(res);
+      if (res.data) {
         setRevenues(res.data);
-      })
-  }, [revenueDate, apiPrefix])
+      }
+    });
+  }, [revenueDate, apiPrefix]);
 
   useEffect(() => {
     let url = new URL(
-      process.env.REACT_APP_BASE_URL + `${apiPrefix}/cards/conversion-rates?date_from=${typeof conversionsDate === "object" && conversionsDate.from}&date_to=${typeof conversionsDate === "object" && conversionsDate.to}`
+      process.env.REACT_APP_BASE_URL +
+        `${apiPrefix}/cards/conversion-rates?date_from=${
+          typeof conversionsDate === "object" && conversionsDate.from
+        }&date_to=${typeof conversionsDate === "object" && conversionsDate.to}`
     );
-      fetch(url, { mode: "cors" }).then(async (response) => {
-        let res = await response.json();
-        console.log(res);
+    fetch(url, { mode: "cors" }).then(async (response) => {
+      let res = await response.json();
+      console.log(res);
+      if (res.data) {
         setConversions(res.data);
-      })
-  }, [conversionsDate, apiPrefix])
+      }
+    });
+  }, [conversionsDate, apiPrefix]);
 
   return (
     <>
@@ -166,7 +193,9 @@ const AgencyCards = ({ apiPrefix }: any) => {
           currentMonth={sales?.current_month_sales + "K"}
           lastMonth={sales?.last_month_sales + "K"}
           main={selectedCard === 0}
-          date={(typeof salesDate === "object" && salesDate.dateText) || salesDate}//"From 10 - 20 Nov"
+          date={
+            (typeof salesDate === "object" && salesDate.dateText) || salesDate
+          } //"From 10 - 20 Nov"
           onClick={() => setSelectedCard(0)}
           setComponentDate={setSalesDate}
         />
@@ -181,7 +210,9 @@ const AgencyCards = ({ apiPrefix }: any) => {
           currentMonth={orders?.current_month_orders + "K"}
           lastMonth={orders?.last_month_orders + "K"}
           main={selectedCard === 1}
-          date={(typeof orderDate === "object" && orderDate.dateText) || orderDate}
+          date={
+            (typeof orderDate === "object" && orderDate.dateText) || orderDate
+          }
           onClick={() => setSelectedCard(1)}
           setComponentDate={setOrderDate}
         />
@@ -192,11 +223,14 @@ const AgencyCards = ({ apiPrefix }: any) => {
           extra={revenues?.revenue_comparison_with_previous_month + "K"}
           reduce={true}
           value={"$" + revenues?.total_revenue}
-          yesterday={revenues?.yesterdays_revenue  + "K"}
+          yesterday={revenues?.yesterdays_revenue + "K"}
           currentMonth={revenues?.current_month_revenue + "K"}
           lastMonth={revenues?.last_month_revenue + "K"}
           main={selectedCard === 2}
-          date={(typeof revenueDate === "object" && revenueDate.dateText) || revenueDate}
+          date={
+            (typeof revenueDate === "object" && revenueDate.dateText) ||
+            revenueDate
+          }
           onClick={() => setSelectedCard(2)}
           setComponentDate={setRevenueDate}
         />
@@ -204,14 +238,19 @@ const AgencyCards = ({ apiPrefix }: any) => {
       <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
         <TestCard
           title="Conversion rate"
-          extra={conversions?.conversion_rate_comparison_with_previous_month + "K"}
+          extra={
+            conversions?.conversion_rate_comparison_with_previous_month + "K"
+          }
           reduce={true}
           value="53.2%"
           yesterday={conversions?.yesterdays_conversion_rate + "K"}
           currentMonth={conversions?.current_month_conversion_rate + "K"}
           lastMonth={conversions?.last_month_conversion_rate + "K"}
           main={selectedCard === 3}
-          date={(typeof conversionsDate === "object" && conversionsDate.dateText) || conversionsDate}
+          date={
+            (typeof conversionsDate === "object" && conversionsDate.dateText) ||
+            conversionsDate
+          }
           onClick={() => setSelectedCard(3)}
           setComponentDate={setConversionsDate}
         />
