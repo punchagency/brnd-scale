@@ -68,7 +68,7 @@ const Login: FC = ({}: Props) => {
             <label htmlFor="username" className="form-label">
               Username
             </label>
-            <input type="email" className="form-control" id="username" value={formInputs.email} onChange={} />
+            <input type="email" className="form-control" id="username" value={formInputs.email} onChange={() => {}} />
           </div>
           <div className="mb-3">
             <label htmlFor="exampleInputPassword1" className="form-label">
