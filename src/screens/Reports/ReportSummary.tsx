@@ -88,7 +88,7 @@ const FullReportSummary = ({ userType, componentDate }: SummaryProps) => {
     }).then(async (response) => {
       let res = await response.json();
       console.log("res", res)
-      
+      setProductReportCardData(res.data)
 
     });
   }, [componentDate]);

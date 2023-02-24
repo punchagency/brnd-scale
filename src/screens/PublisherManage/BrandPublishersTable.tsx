@@ -420,7 +420,7 @@ const displayLabels = [
   "publisher_name",
   "starting_date",
   "last_active",
-  "tag_links",
+  "tags_links",
   "conversions",
   "commission",
   "total_orders",
@@ -501,10 +501,10 @@ function BrandPublishersTable() {
           return {
             ...row,
             tags_links: (
-              <div>
+              <a href={row.tags_links}>
                 <img src={LinkIcon} alt="" />
-                <span>{row.tag}</span>
-              </div>
+                <span>{row.tags_links}</span>
+              </a>
             ),
             commission: (
               <div>
@@ -513,7 +513,7 @@ function BrandPublishersTable() {
                   className="bg-info rounded p-1 ms-2 ps-2 pe-2"
                   style={{ fontSize: "8px", height: "12px" }}
                 >
-                  Pay per click
+                  Pay&nbsp;per&nbsp;click
                 </span>
               </div>
             ),

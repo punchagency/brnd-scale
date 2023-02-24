@@ -29,7 +29,7 @@ const data = [
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        <img src={BrandsImage} alt="" />
+        <img style={{width: '50px'}} src={BrandsImage} alt="" />
       </div>
     ),
     promotion: (
@@ -742,7 +742,7 @@ function BrandOffersTable() {
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
               >
-                <img src={row.image} alt="" />
+                <img style={{width: '100px'}} src={row.image} alt="" />
               </div>
             ),
             promotion: (
@@ -768,7 +768,7 @@ function BrandOffersTable() {
                   className="bg-info rounded p-1 ms-2 ps-2 pe-2"
                   style={{ fontSize: "8px", height: "12px" }}
                 >
-                  Pay per click
+                  Pay&nbsp;per&nbsp;click
                 </span>
               </div>
             ),

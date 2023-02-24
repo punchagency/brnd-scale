@@ -12,6 +12,10 @@ const Login: FC = ({}: Props) => {
   const userType = useAppSelector(selectUser);
   const loggedIn = useAppSelector(selectLoggedIn)
   const dispatch = useAppDispatch();
+  const [formInputs, setFormInputs] = useState({
+    email: "",
+    password: ""
+  })
 
   const onSubmit = () => {
     dispatch(login())
@@ -21,6 +25,33 @@ const Login: FC = ({}: Props) => {
 
     }
   })
+
+  const handleChange = (e: any) => {
+    setFormInputs((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+
+  const handleSubmit = () => {
+    const postInput = {
+      ...formInputs,
+    };
+    var url = new URL(process.env.REACT_APP_BASE_URL + "auth/login");
+    fetch(url, {
+      mode: "cors",
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(postInput),
+    }).then(async (response) => {
+      let res = await response.json();
+      console.log(res, postInput);
+      if (res.success) {
+        dispatch(login())
+      } else {
+      }
+    });
+  };
+
   // getting and setting URL params
   // const [searchParams, setSearchParams] = useSearchParams();
 
@@ -37,7 +68,7 @@ const Login: FC = ({}: Props) => {
             <label htmlFor="username" className="form-label">
               Username
             </label>
-            <input type="email" className="form-control" id="username" />
+            <input type="email" className="form-control" id="username" value={formInputs.email} onChange={} />
           </div>
           <div className="mb-3">
             <label htmlFor="exampleInputPassword1" className="form-label">

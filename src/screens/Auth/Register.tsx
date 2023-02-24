@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import { useAppSelector } from "../../app/hooks";
 import { selectUser } from "../../features/user/userSlice";
 import MyIcon from "../../components/svgs/MyIcon";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PlusIcon from "../../assets/images/Plus.svg";
 import InputCode from "../../components/VerifyInput";
 import AgencyRegister from "./AgencyRegister";
@@ -13,6 +13,46 @@ const AuthPage: FC = () => {
   const [loading, setLoading] = useState(false);
   const userType = useAppSelector(selectUser);
   const [tabIndex, setTabIndex] = useState(0);
+  const [registerData, setRegisterData] = useState({
+    "name": "",
+    "email": "",
+    "username": "",
+    "type_id": 1,
+    "password": "",
+    "password_confirmation": "",
+    "is_active": 1,
+    "address": "",
+    "phone": "",
+    "country": "",
+    "city": "",
+    "company_name": "",
+    "instagram": "",
+    "dob": "",
+    "website": "",
+    "amazon_link": ""
+  })
+
+  const navigate = useNavigate();
+  const handleSubmit = () => {
+
+    var url = new URL(
+      process.env.REACT_APP_BASE_URL +
+        "users"
+    );
+    fetch(url, { mode: "cors", method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(registerData) }).then(async (response) => {
+      let res = await response.json();console.log(res, registerData)
+      if(res.success){
+        navigate("/auth/login");
+      }else{
+
+      }
+    })
+  }
+
+  const changeRegisterData = (inputName: string, inputValue: any) => {
+    setRegisterData({...registerData, [inputName]: inputValue})
+  }
+
   const changeTabIndex = (e: React.MouseEvent, op = "add") => {
     e.preventDefault();
 
@@ -39,25 +79,26 @@ const AuthPage: FC = () => {
                 <label htmlFor="country" className="form-label">
                   Country
                 </label>
-                <input type="text" className="form-control" id="Country" />
+                <input type="text" className="form-control" id="Country" value={registerData.country} onChange={(e) => changeRegisterData('country', e.target.value)} />
               </div>
               <div className="mb-3">
                 <label htmlFor="city" className="form-label">
                   City
                 </label>
-                <input type="text" className="form-control" id="city" />
+                <input type="text" className="form-control" id="city" value={registerData.city} onChange={(e) => 
+                  changeRegisterData('city', e.target.value)}/>
               </div>
               <div className="mb-3">
                 <label htmlFor="date" className="form-label">
                   Date of birth
                 </label>
-                <input type="date" className="form-control" id="date" />
+                <input type="date" className="form-control" id="date" value={registerData.dob} onChange={(e) => changeRegisterData('dob', e.target.value)}/>
               </div>
               <div className="mb-3">
                 <label htmlFor="insta" className="form-label">
                   Instagram link
                 </label>
-                <input type="text" className="form-control" id="insta" />
+                <input type="text" className="form-control" id="insta" value={registerData.instagram} onChange={(e) => changeRegisterData('instagram', e.target.value)}/>
               </div>
               <div className="mb-3 form-check">
                 <input
@@ -90,7 +131,7 @@ const AuthPage: FC = () => {
               </div>
             </>
           );
-        } else if (tabIndex == 2) {
+        } else if (tabIndex === 2) {
           return (
             <div className="border rounded p-5 text-center">
               <p className="h5 mb-5 mt-5 fw-500">Verify your Account</p>
@@ -106,6 +147,7 @@ const AuthPage: FC = () => {
                     onComplete={(code) => {
                       setLoading(true);
                       setTimeout(() => setLoading(false), 10000);
+                      
                     }}
                   />
                 </div>
@@ -142,25 +184,25 @@ const AuthPage: FC = () => {
               <label htmlFor="Name" className="form-label">
                 Name
               </label>
-              <input type="text" className="form-control" id="Name" />
+              <input type="text" className="form-control" id="Name" value={registerData.name} onChange={(e) => changeRegisterData('name', e.target.value)} />
             </div>
             <div className="mb-3">
               <label htmlFor="Address" className="form-label">
                 Address
               </label>
-              <input type="text" className="form-control" id="address" />
+              <input type="text" className="form-control" id="address" value={registerData.address} onChange={(e) => changeRegisterData('address', e.target.value)} />
             </div>
             <div className="mb-3">
-              <label htmlFor="country" className="form-label">
+              <label htmlFor="phone" className="form-label">
                 Phone
               </label>
-              <input type="text" className="form-control" id="country" />
+              <input type="text" className="form-control" id="phone" value={registerData.phone} onChange={(e) => changeRegisterData('phone', e.target.value)} />
             </div>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
                 Email
               </label>
-              <input type="email" className="form-control" id="email" />
+              <input type="email" className="form-control" id="email" value={registerData.email} onChange={(e) => changeRegisterData('email', e.target.value)} />
             </div>
 
             <div className="w-100 mt-1 d-flex justify-content-center">
@@ -182,19 +224,19 @@ const AuthPage: FC = () => {
                 <label htmlFor="country" className="form-label">
                   Country
                 </label>
-                <input type="text" className="form-control" id="Country" />
+                <input type="text" className="form-control" id="Country" value={registerData.country} onChange={(e) => changeRegisterData('country', e.target.value)}/>
               </div>
               <div className="mb-3">
                 <label htmlFor="city" className="form-label">
                   City
                 </label>
-                <input type="text" className="form-control" id="city" />
+                <input type="text" className="form-control" id="city" value={registerData.city} onChange={(e) => changeRegisterData('city', e.target.value)} />
               </div>
               <div className="mb-3">
                 <label htmlFor="website" className="form-label">
                   Website link
                 </label>
-                <input type="text" className="form-control" id="website" />
+                <input type="text" className="form-control" id="website" value={registerData.website} onChange={(e) => changeRegisterData('website', e.target.value)}/>
               </div>
               <div className="mb-3">
                 <label htmlFor="amazon" className="form-label">
@@ -205,6 +247,8 @@ const AuthPage: FC = () => {
                     type="text"
                     className="form-control w-75"
                     id="amazon"
+                    value={registerData.amazon_link}
+                    onChange={(e) => changeRegisterData('amazon_link', e.target.value)}
                   />
                   <button className="btn btn-dark flex-grow-1">
                     <img src={PlusIcon} alt="" />
@@ -242,7 +286,7 @@ const AuthPage: FC = () => {
               </div>
             </>
           );
-        } else if (tabIndex == 2) {
+        } else if (tabIndex === 2) {
           return (
             <div className="border rounded p-5 text-center">
               <p className="h5 mb-5 mt-5 fw-500">Verify your Account</p>
@@ -293,25 +337,25 @@ const AuthPage: FC = () => {
               <label htmlFor="Name" className="form-label">
                 Name
               </label>
-              <input type="text" className="form-control" id="Name" />
+              <input type="text" className="form-control" id="Name" value={registerData.name} onChange={(e) => changeRegisterData('name', e.target.value)} />
             </div>
             <div className="mb-3">
               <label htmlFor="Address" className="form-label">
                 Address
               </label>
-              <input type="text" className="form-control" id="address" />
+              <input type="text" className="form-control" id="address" value={registerData.address} onChange={(e) => changeRegisterData('address', e.target.value)} />
             </div>
             <div className="mb-3">
               <label htmlFor="country" className="form-label">
                 Country
               </label>
-              <input type="text" className="form-control" id="country" />
+              <input type="text" className="form-control" id="country" value={registerData.country} onChange={(e) => changeRegisterData('country', e.target.value)}/>
             </div>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
                 Email
               </label>
-              <input type="email" className="form-control" id="email" />
+              <input type="email" className="form-control" id="email" value={registerData.email} onChange={(e) => changeRegisterData('email', e.target.value)}/>
             </div>
 
             <div className="w-100 mt-1 d-flex justify-content-center">
