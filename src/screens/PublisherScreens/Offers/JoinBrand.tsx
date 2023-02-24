@@ -135,15 +135,15 @@ function JoinBrand() {
           tableWidth={"115%"}
           toolbar={
             <div className={`col-12 mt-3 d-flex flex-nowrap+`}>
-              <div className="col-6 d-flex ">
-                <div className="col-6 d-flex align-items-center">
+              <div className="col-6 d-flex">
+                <div className="col-7 col-md-6 d-flex align-items-center">
                   <TablePageDropdown
                     numOfRows={numOfRows}
                     setNumOfRows={setNumOfRows}
                     setCurrentPage={setCurrentPage}
                   />
                 </div>
-                <div className="col-6 d-flex align-items-center">
+                <div className="col-5 col-md-6 d-flex align-items-center">
                   <div className="col-12 d-flex align-items-center">
                     <div className="card border-0">
                       <CalendarWrapper setComponentDate={setComponentDate} />
@@ -183,7 +183,7 @@ function JoinBrand() {
                     <option value="">30</option>
                   </select>
                 </div>
-                <div className="col-2 ms-1 ">
+                <div className="col-3 col-md-2 ms-1 ">
                   <TableFilter />
                 </div>
               </div>

@@ -4,10 +4,8 @@ import LineChart from "../components/Charts/LineChart";
 import ListContainer from "../components/ListContainer";
 import DashboardNotification from "../components/Notification/DashboardNotification";
 import Table from "../components/Table";
-import BrandsImage from "../assets/images/images.svg";
 import { selectUser } from "../features/user/userSlice";
-import {  useAppSelector } from "../app/hooks";
-import TestCard from "../components/Card/TestCard";
+import { useAppSelector } from "../app/hooks";
 import ProductDetail from "../components/Popups/ProductDetail";
 import AgencyCards from "../components/dashboard/AgencyCards";
 
@@ -27,132 +25,6 @@ const brandsHeaders = [
   "Conversions",
   "Clicks",
   "Orders",
-];
-
-const data = [
-  {
-    id: 1,
-    topPublishers: "Donna Slider",
-    clicks: "12",
-    conversions: "12",
-    products: "12",
-    orders: "12",
-  },
-  {
-    id: 2,
-    topPublishers: "Donna Slider",
-    clicks: "12",
-    conversions: "12",
-    products: "12",
-    orders: "19",
-  },
-  {
-    id: 3,
-    topPublishers: "Donna Slider",
-    clicks: "12",
-    conversions: "12",
-    products: "12",
-    orders: "12",
-  },
-  {
-    id: 4,
-    topPublishers: "Donna Slider",
-    clicks: "12",
-    conversions: "12",
-    products: "12",
-    orders: "12",
-  },
-];
-
-const brandsData = [
-  {
-    id: 1,
-    images: <img src={BrandsImage} alt="" />,
-    brands: "Donna Slider",
-    productNames: "Donna Slider",
-    seeDetails: (
-      <div>
-        <button
-          data-bs-toggle="modal"
-          data-bs-target={`#productDetails`}
-          className="btn btn-outline-dark"
-          style={{ fontSize: "12px" }}
-        >
-          View product
-        </button>
-        <ProductDetail id="productDetails" />
-      </div>
-    ),
-    conversions: "12",
-    clicks: "12",
-    orders: "12",
-  },
-  {
-    id: 2,
-    images: <img src={BrandsImage} alt="" />,
-    brands: "Donna Slider",
-    productNames: "Donna Slider",
-    seeDetails: (
-      <div>
-        <button
-          data-bs-toggle="modal"
-          data-bs-target={`#productDetails`}
-          className="btn btn-outline-dark"
-          style={{ fontSize: "12px" }}
-        >
-          View product
-        </button>
-        <ProductDetail id="productDetails" />
-      </div>
-    ),
-    conversions: "12",
-    clicks: "12",
-    orders: "12",
-  },
-  {
-    id: 3,
-    images: <img src={BrandsImage} alt="" />,
-    brands: "Donna Slider",
-    productNames: "Donna Slider",
-    seeDetails: (
-      <div>
-        <button
-          data-bs-toggle="modal"
-          data-bs-target={`#productDetails`}
-          className="btn btn-outline-dark"
-          style={{ fontSize: "12px" }}
-        >
-          View product
-        </button>
-        <ProductDetail id="productDetails" />
-      </div>
-    ),
-    conversions: "12",
-    clicks: "12",
-    orders: "12",
-  },
-  {
-    id: 4,
-    images: <img src={BrandsImage} alt="" />,
-    brands: "Donna Slider",
-    productNames: "Donna Slider",
-    seeDetails: (
-      <div>
-        <button
-          data-bs-toggle="modal"
-          data-bs-target={`#productDetails`}
-          className="btn btn-outline-dark"
-          style={{ fontSize: "12px" }}
-        >
-          View product
-        </button>
-        <ProductDetail id="productDetails" />
-      </div>
-    ),
-    conversions: "12",
-    clicks: "12",
-    orders: "12",
-  },
 ];
 
 const displayLabels = [
@@ -204,28 +76,23 @@ const Dashboard: FC = () => {
   const [topBrands, setTopBrands] = useState<any>([]);
   const [topPublishers, setTopPublishers] = useState<any>([]);
   const getApiPrefix = () => {
-    switch(userType) {
-      case 'Agency':
-        return 'agencies'
-      case 'Brand':
-        return 'brands'
-      case 'Publisher':
-        return 'publishers'
+    switch (userType) {
+      case "Agency":
+        return "agencies";
+      case "Brand":
+        return "brands";
+      case "Publisher":
+        return "publishers";
       default:
-        return ''
+        return "";
     }
-  }
+  };
 
   const [numOfRows, setNumOfRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
-  
-  const [selectedCard, setSelectedCard] = useState(0);
-  const [componentDate, setComponentDate] = useState<string | {from: string, to: string}>("");
 
   useEffect(() => {
-    // console.log(componentDate);
-
     const searchParams = new URLSearchParams();
 
     currentPage && searchParams.append("page", currentPage + "");
@@ -265,13 +132,19 @@ const Dashboard: FC = () => {
       setSalesChartData({ labels: labels, data: data });
     });
 
-    const date = new Date()
-    date.setFullYear(2022)
-    let defaultDate = date.getFullYear()+"-"+(Number(date.getMonth()+1) < 10 ? "0"+(date.getMonth() + 1) : date.getMonth())
-    
+    const date = new Date();
+    date.setFullYear(2022);
+    let defaultDate =
+      date.getFullYear() +
+      "-" +
+      (Number(date.getMonth() + 1) < 10
+        ? "0" + (date.getMonth() + 1)
+        : date.getMonth());
+
     url = new URL(
       process.env.REACT_APP_BASE_URL +
-        "agencies/tables/list-top-publishers?date="+defaultDate
+        "agencies/tables/list-top-publishers?date=" +
+        defaultDate
     );
 
     fetch(url, { mode: "cors" }).then(async (response) => {
@@ -282,7 +155,8 @@ const Dashboard: FC = () => {
 
     url = new URL(
       process.env.REACT_APP_BASE_URL +
-        "agencies/tables/list-top-brands?date="+defaultDate
+        "agencies/tables/list-top-brands?date=" +
+        defaultDate
     );
 
     fetch(url, { mode: "cors" }).then(async (response) => {
@@ -317,9 +191,9 @@ const Dashboard: FC = () => {
       );
     });
   }, []);
-  const getCards = () =>{
+  const getCards = () => {
     // if(userType === 'Agency'){
-      return <AgencyCards apiPrefix={getApiPrefix()} />
+    return <AgencyCards apiPrefix={getApiPrefix()} />;
     // }else{
     //   return <>
     //        <div className="col-12 col-md-6 col-lg-4 col-xxl-3 mt-2">
@@ -384,7 +258,7 @@ const Dashboard: FC = () => {
     //        </div>
     //      </>
     // }
-  }
+  };
   return (
     <>
       <div className="position-relative">

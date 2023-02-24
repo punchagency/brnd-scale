@@ -113,13 +113,14 @@ function ActiveBrands() {
   var url = new URL(
     process.env.REACT_APP_BASE_URL + "publishers/active-brands?"
   );
-  useEffect(() => {
+  useEffect(() => {//alert("here")
     fetch(url, { mode: "cors", method: "GET" }).then(async (response) => {
       let res = await response.json();
       console.log(res);
       if (res.success) {
         setBrandList(res.data);
-        changePage(1);
+        // changePage(1);
+        setVisibleItems(res.data.slice(1, 10))
       }
     });
   }, []);
@@ -128,7 +129,7 @@ function ActiveBrands() {
     setCurrentPage(page);
     --page;
     setVisibleItems(
-      brandList.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+      brandList.slice(page * rowsPerPage, (page * rowsPerPage) + rowsPerPage)
     );
   };
 
