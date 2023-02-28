@@ -26,12 +26,11 @@ const SignupSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").label("Email").required(),
 });
 const SecondSignupSchema = Yup.object().shape({
-  website: Yup.string().url("Invalid URL").label("Website URL").required(),
-  company_name: Yup.string()
-    .min(2, "Too short!")
-    .label("Company Name")
-    .required(),
-  message: Yup.string().min(5, "Too short!").label("Message").required(),
+  phone: Yup.string().required().label("Phone"),
+ city: Yup.string().required().label("City"),
+ country: Yup.string().required().label("Country"),
+ address: Yup.string().required().label("Address"),
+ instagram: Yup.string().required().label("Address"),
 });
 interface FormikFieldInterface {
   touched: boolean | undefined;
@@ -89,7 +88,7 @@ const FormikField = ({
   );
 };
 
-const AgencyRegister = ({ tabIndex, changeTabIndex }: any) => {
+const PublisherRegister = ({ tabIndex, changeTabIndex }: any) => {
   const [formError, setFormError] = useState(false);
   const [formErrorData, setFormErrorData] = useState();
   const [formInputs, setFormInput] = useState({
@@ -97,15 +96,15 @@ const AgencyRegister = ({ tabIndex, changeTabIndex }: any) => {
     lastName: "",
     email: "",
     username: "",
-    type_id: 3,
+    type_id: 1,
     password: "",
     is_active: 0,
     address: "",
     phone: "",
     country: "",
     city: "",
-    message: "",
-    website: "",
+    message: "-",
+    website: "-",
     name: "",
     check: false,
   });
@@ -145,9 +144,9 @@ const AgencyRegister = ({ tabIndex, changeTabIndex }: any) => {
           initialValues={{
             name: "",
             username: "",
+            email: "",
             password: "",
             password_confirmation: "",
-            email: "",
           }}
           validationSchema={SignupSchema}
           onSubmit={(values, { setSubmitting }) => {
@@ -213,10 +212,11 @@ const AgencyRegister = ({ tabIndex, changeTabIndex }: any) => {
     return (
       <Formik
         initialValues={{
-          website: "",
           phone: "",
-          message: "",
-          company_name: "",
+          address: "",
+          country: "",
+          city: "",
+          instagram: "",
         }}
         validationSchema={SecondSignupSchema}
         onSubmit={(values, { setSubmitting }) => {
@@ -257,28 +257,35 @@ const AgencyRegister = ({ tabIndex, changeTabIndex }: any) => {
                 label={"Phone"}
                 type="tel"
               />
+              <FormikField
+                name="address"
+                touched={touched.address}
+                error={errors.address}
+                label={"Address"}
+              />
 
               <FormikField
-                name="company_name"
-                touched={touched.company_name}
-                error={errors.company_name}
-                label={"Company Name"}
+                name="country"
+                touched={touched.country}
+                error={errors.country}
+                label={"Country"}
                 type="text"
               />
 
               <FormikField
-                name="website"
-                touched={touched.website}
-                error={errors.website}
-                label={"Website URL"}
+                name="city"
+                touched={touched.city}
+                error={errors.city}
+                label={"City"}
                 type="text"
               />
+
               <FormikField
-                name="message"
-                touched={touched.message}
-                error={errors.message}
-                label={"Message"}
-                type="textarea"
+                name="instagram"
+                touched={touched.instagram}
+                error={errors.instagram}
+                label={"Instagram Link"}
+                type="text"
               />
               {/* <div className="mb-3">
           <label htmlFor="message" className="form-label">
@@ -331,7 +338,7 @@ const AgencyRegister = ({ tabIndex, changeTabIndex }: any) => {
   return getFormContent();
 };
 
-export default AgencyRegister;
+export default PublisherRegister;
 
 interface ErrorMessageInterface {
   errorMessage: string;

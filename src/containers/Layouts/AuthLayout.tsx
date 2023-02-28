@@ -28,7 +28,7 @@ const AuthLayout = ({ children, message }: AuthLayoutProps) => {
           vulputate libero et velit interdum, ac aliquet odio mattis.
         </p>
         {userType === "Agency" ? (
-          <div className="d-flex align-items-center">
+          <div style={{gap: "20px"}} className="d-flex align-items-center flex-wrap">
             <div className="d-flex justify-content-between">
               <span
                 className="rounded me-3"
@@ -46,7 +46,7 @@ const AuthLayout = ({ children, message }: AuthLayoutProps) => {
             <button
               type="button"
               onClick={() => onClick("Publisher")}
-              className={`btn btn-dark me-3 p-2 ps-3 pe-3 ms-5`}
+              className={`btn btn-dark me-3 p-2 ps-3 pe-3 ms-1`}
             >
               Brand & publishers
             </button>
