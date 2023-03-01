@@ -1,7 +1,7 @@
 import BrandsManage from "../screens/BrandsManage";
 import Dashboard from "../screens/Dashboard";
 import Home from "../screens/Home";
-import Login from "../screens/Login";
+import Login from "../screens/Auth/Login";
 import Offers from "../screens/Offers/Offers";
 import MyOffers from "../screens/PublisherScreens/MyOffers/MyOffers";
 import PublisherManage from "../screens/PublisherManage";
@@ -9,7 +9,7 @@ import RegisterStart from "../screens/RegisterStart";
 import PaymentReport from "../screens/Reports/PaymentReport";
 import Reports from "../screens/Reports/ProductReports";
 import PublisherReports from "../screens/Reports/PublisherReports";
-import VerifyAccount from "../screens/VerifyAccount";
+import VerifyAccount from "../screens/Auth/VerifyAccount";
 import ActiveProducts from "../screens/PublisherScreens/MyOffers/ActiveProducts";
 import ActiveBrands from "../screens/PublisherScreens/MyOffers/ActiveBrands";
 import BrandProducts from "../screens/PublisherScreens/BrandProducts";
