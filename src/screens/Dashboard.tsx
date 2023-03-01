@@ -192,75 +192,15 @@ const Dashboard: FC = () => {
     });
   }, []);
   const getCards = () => {
-    // if(userType === 'Agency'){
     return <AgencyCards apiPrefix={getApiPrefix()} />;
-    // }else{
-    //   return <>
-    //        <div className="col-12 col-md-6 col-lg-4 col-xxl-3 mt-2">
-    //          <TestCard
-    //            title="Total Sales"
-    //            extra="27K"
-    //            reduce={true}
-    //            value="576"
-    //            yesterday={"1.3K"}
-    //            currentMonth={"1.3K"}
-    //            lastMonth={"21.3K"}
-    //            main={selectedCard === 0}
-    //            date="From 10 - 20 Nov"
-    //            onClick={() => setSelectedCard(0)}
-    //            setComponentDate={setComponentDate}
-    //          />
-    //        </div>
-    //        <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
-    //          <TestCard
-    //            title="Total Orders"
-    //            extra="27K"
-    //            reduce={true}
-    //            value="576"
-    //            yesterday={"1.3K"}
-    //            currentMonth={"1.3K"}
-    //            lastMonth={"21.3K"}
-    //            main={selectedCard === 1}
-    //            date="From 10 - 20 Nov"
-    //            onClick={() => setSelectedCard(1)}
-    //            setComponentDate={setComponentDate}
-    //          />
-    //        </div>
-    //        <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
-    //          <TestCard
-    //            title="Total Revenue"
-    //            extra="27K"
-    //            reduce={true}
-    //            value="$259.99"
-    //            yesterday={"1.3K"}
-    //            currentMonth={"1.3K"}
-    //            lastMonth={"21.3K"}
-    //            main={selectedCard === 2}
-    //            date="From 10 - 20 Nov"
-    //            onClick={() => setSelectedCard(2)}
-    //            setComponentDate={setComponentDate}
-    //          />
-    //        </div>
-    //        <div className="col-12 col-md-6 col-lg-4 col-xxl-3 ps-2 mt-2">
-    //          <TestCard
-    //            title="Conversion rate"
-    //            extra="27K"
-    //            reduce={true}
-    //            value="53.2%"
-    //            yesterday={"1.3K"}
-    //            currentMonth={"1.3K"}
-    //            lastMonth={"21.3K"}
-    //            main={selectedCard === 3}
-    //            date="From 10 - 20 Nov"
-    //            onClick={() => setSelectedCard(3)}
-    //            setComponentDate={setComponentDate}
-    //          />
-    //        </div>
-    //      </>
-    // }
+    
   };
+  
+
+  
   return (
     <>
+      
       <div className="position-relative">
         <div className="pt-4">
           <p className="fw-light mb-0">Today stats</p>
