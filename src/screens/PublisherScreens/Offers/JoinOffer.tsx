@@ -190,7 +190,7 @@ function JoinOffer() {
           <div className="modal-content">
             <div className="modal-header bg-dark text-white">
               <h1 className="modal-title fs-5 ms-3" id="exampleModalLabel">
-                BRNDScale
+                BRNDCommerce
               </h1>
             </div>
             <div className="modal-body">

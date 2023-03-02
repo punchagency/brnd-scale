@@ -8,6 +8,7 @@ import {
   selectLoggedIn,
 } from "../../features/user/userSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { removeAuthToken } from "../../config/auth";
 
 export const renderSideBarList = (userType:string) => {
   switch (userType) {
@@ -148,6 +149,7 @@ function SideBar() {
           href="#"
           className="nav-link"
           onClick={() => {
+            removeAuthToken()
             dispatch(logout());
             navigate("/auth/login");
           }}

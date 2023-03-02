@@ -22,7 +22,7 @@ const AuthLayout = ({ children, message }: AuthLayoutProps) => {
     <div className="container-lg d-flex flex-row align-items-center justify-content-between mt-5">
       <div className="d-none d-md-block col-6 col-lg-7 pe-2">
         <p className="fw-light mb-4">Welcome , Get Affliated with</p>
-        <p className="h1 mb-4">BRNDScale</p>
+        <p className="h1 mb-4">BRNDCommerce</p>
         <p className="mb-5">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
           vulputate libero et velit interdum, ac aliquet odio mattis.

@@ -27,7 +27,7 @@ function PopupsContainer({ modalName, children, id }: PopupsContainerProps) {
                 className="modal-title fs-5"
                 id="exampleModalLabel"
               >
-                BRNDScale
+                BRNDCommerce
               </h1>
               <span>{modalName}</span>
             </div>

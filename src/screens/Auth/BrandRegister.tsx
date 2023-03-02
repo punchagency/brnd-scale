@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MyIcon from "../../components/svgs/MyIcon";
 import * as Yup from "yup";
+import FormikField from "../../components/auth/FormikField";
+import FormErrorMessage from "../../components/auth/FormErrorMessage";
+import { toast } from "react-toastify";
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -29,61 +32,6 @@ const SecondSignupSchema = Yup.object().shape({
   phone: Yup.string().required().label("Phone"),
   website: Yup.string().url("Invalid URL").label("Website URL").required(),
 });
-interface FormikFieldInterface {
-  touched: boolean | undefined;
-  error: string | undefined;
-  name: string;
-  label: string;
-  type?: string;
-}
-
-interface FormErrorMessageProps {
-  data: any;
-}
-
-const FormErrorMessage = ({ data }: FormErrorMessageProps) => {
-  const itemProperties: Array<string> =
-    typeof data === "object" ? Object.keys(data) : [];
-
-  return (
-    <div className="alert alert-danger">
-      <p>Something went wrong, please try again.</p>
-      <ul>
-        {itemProperties.map((key: string) => {
-          return <li style={{ fontSize: "10px" }}>{data?.[key]}</li>;
-        })}
-      </ul>
-    </div>
-  );
-};
-
-const FormikField = ({
-  touched,
-  error,
-  name,
-  label,
-  type = "text",
-}: FormikFieldInterface) => {
-  return (
-    <div className="mb-3">
-      <label htmlFor={name} className="form-label">
-        {label}
-      </label>
-
-      <Field
-        name={name}
-        type={type}
-        className="form-control"
-        as={type === "textarea" ? "textarea" : null}
-      />
-      {error && touched ? (
-        <div style={{ fontSize: "10px" }} className="text-danger">
-          {error}
-        </div>
-      ) : null}
-    </div>
-  );
-};
 
 const BrandRegister = ({ tabIndex, changeTabIndex }: any) => {
   const [formError, setFormError] = useState(false);
@@ -233,6 +181,16 @@ const BrandRegister = ({ tabIndex, changeTabIndex }: any) => {
           }).then(async (response) => {
             let res = await response.json();
             if (res.success) {
+              toast('Account created! please verify email with code sent to your email', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
               navigate("/auth/verify-account");
             } else {
               setFormError(true);
