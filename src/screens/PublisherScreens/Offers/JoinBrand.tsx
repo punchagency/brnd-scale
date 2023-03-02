@@ -11,6 +11,7 @@ import CalendarWrapper from "../../../components/Calendar";
 import TablePageDropdown from "../../../components/Table/TablePageDropdown";
 import About from "../BrandDetails/About";
 import ProductDetail from "../../../components/Popups/ProductDetail";
+import TableFooter from "../../../components/Table/TableFooter";
 
 const headers = [
   "Logos",
@@ -188,6 +189,14 @@ function JoinBrand() {
                 </div>
               </div>
             </div>
+          }
+          footer={
+            <TableFooter
+              totalData={total}
+              rowsPerPage={numOfRows}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
           }
           numOfPages={numOfPages}
           setNumOfPages={setNumOfPages}

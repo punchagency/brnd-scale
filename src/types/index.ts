@@ -185,3 +185,22 @@ export interface ActiveProductInterface {
   created_at: string;
   updated_at: string;
 }
+
+export interface PublisherReportSummary {
+  impressions: number;
+  clicks: number;
+  rda: number;
+  grossClicks: number;
+  revenue: number;
+  payCut: number;
+  totalCV: number;
+  profit: number;
+  vtcv: number;
+  margin: number;
+  ctr: number;
+  avgSaleValue: number;
+  grossSales: number;
+  cvr: number;
+  cpc: number;
+  cpm: number;
+}

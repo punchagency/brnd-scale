@@ -107,7 +107,7 @@ const Dashboard: FC = () => {
     fetch(url, { mode: "cors" }).then(async (response) => {
       //console.log(await response.text())
       let res = await response.json();
-      // console.log(res);
+      console.log(res);
 
       let labels: any = [];
       let data: any = [];
@@ -126,7 +126,7 @@ const Dashboard: FC = () => {
         data.push(item.comparison_of_total_sales_over_the_month);
         commData.push(item.total_commission_over_the_month);
       });
-      console.log(labels);
+      console.log(labels, data, commData);
 
       setCommissionsChartData({ labels: labels, data: commData });
       setSalesChartData({ labels: labels, data: data });

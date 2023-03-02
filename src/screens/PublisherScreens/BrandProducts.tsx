@@ -407,19 +407,19 @@ function BrandProducts() {
         res.data.data.map((row: any) => {
           return {
             ...row,
-            productName: (
+            product_name: (
               <Link
-                to={""}
+                to={row.product_url}
                 
               >
-                Amazon Fire 7 Kids tablet, 7" display, ages 3-7, with ad-free content kids love
+                {row.product_name}
               </Link>
             ),
             price: "$"+row.price,
-            status: <button className="btn btn-outline-primary btn-sm">Promoted</button>,
-            commissions: (
+            status: <button className={`btn ${row.status == 'sold' ? 'btn-outline-danger' : 'btn-outline-primary'} btn-sm  `}>{row.status == 'sold' ? 'Paused' : 'Promoted'}</button>,
+            commission: (
               <div className="d-block">
-                12% <Badge />
+                {row.commission}% <Badge />
               </div>
             ),
           };

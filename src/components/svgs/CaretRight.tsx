@@ -4,8 +4,8 @@ function CaretRight() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="13"
-      height="13"
+      width="23"
+      height="23"
       fill="none"
       viewBox="0 0 13 13"
     >

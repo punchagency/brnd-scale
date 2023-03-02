@@ -132,7 +132,7 @@ function BrandsManage() {
           return {
             ...row,
             status: <div className="d-flex justify-content-center">
-            <ActiveIcon color={row.status ? "#65DD2C" : "#CB6862"} />
+            <ActiveIcon color={row.status !== 'Active`' ? "#65DD2C" : "#CB6862"} />
           </div>,
             permissions: (//What are the options for permissions
               <button onClick={()=>updatePermission(row.id)} className="btn btn-danger btn-sm">{"action"}</button>

@@ -136,11 +136,11 @@ function JoinOffer() {
               </div>
             ),
             product_name: (
-              <Link to="">
+              <a href={row.product_url}>
                 <div style={{ maxWidth: "250px", wordBreak: "break-all" }}>
                   <span className="">{row.product_name}</span>
                 </div>
-              </Link>
+              </a>
             ),
             commission_offer: (
               <div>

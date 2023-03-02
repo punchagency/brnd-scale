@@ -7,6 +7,7 @@ import ProductReportCard from "../../components/Reports/ProductReportCard";
 import PageMenu from "../../components/Common/PageMenu";
 import TableFooter from "../../components/Table/TableFooter";
 import CalendarWrapper from "../../components/Calendar";
+import { PublisherReportSummary } from "../../types";
 
 const headers = [
   "Product Name",
@@ -288,6 +289,7 @@ function PublisherReporting() {
     string | { from: string; to: string }
   >({ from: "2020-01-01", to: "" });
   const [total, setTotal] = useState(0);
+  const [summaries, setSummaries] = useState<PublisherReportSummary >()
 
   useEffect(() => {
     const searchParams = new URLSearchParams();
@@ -317,21 +319,24 @@ function PublisherReporting() {
       let res = await response.json();
       console.log(res);
 
-      // setTableData(
-      //   res.data.data.map((row: any) => {
-      //     return {
-      //       ...row,
-      //       status: <div className="d-flex justify-content-center">
-      //       <ActiveIcon color={row.status === 'active' ? "#65DD2C" : "#CB6862"} />
-      //     </div>,
-      //       permission: (//What are the options for permissions
-      //         <button onClick={()=>updatePermission(row.id)} className={`btn ${row.permission !== 'admin' ? 'btn-danger' : 'btn-success'} btn-sm`}>{row.permission === 'admin' ? "Allowed" : "Not Allowed"}</button>
-      //       ),
-      //       checked: false,
-      //     };
-      //   })
-      // );
-      // setTotal(res.data.total)
+      setSummaries({
+        impressions: res.data.impressions,
+        clicks: res.data.clicks,
+        rda: res.data.rda,
+        grossClicks: res.data.grossClicks,
+        revenue: res.data.revenue,
+        payCut: res.data.payCut,
+        totalCV: res.data.totalCV,
+        profit: res.data.profit,
+        vtcv: res.data.vtcv,
+        margin: res.data.margin,
+        ctr: res.data.ctr,
+        avgSaleValue: res.data.avgSaleValue,
+        grossSales: res.data.grossSales,
+        cvr: res.data.cvr,
+        cpc: res.data.cpc,
+        cpm: res.data.cpm
+      })
     });
 
     url = new URL(
@@ -393,72 +398,72 @@ function PublisherReporting() {
           <div className="col-12">
             <div className="card">
               <div className="row d-flex">
-                <div className="col-2 w-5 ms-2 mt-2" style={{ width: "11%" }}>
+                <div className="col-2 w-5 ms-2 mt-2 summaryWrapper" >
                   <h5 className="d-inline">Summary</h5>
                 </div>
-                <div className="col-10 d-flex" style={{ width: "88%" }}>
-                  <div className="productCardWrapper">
+                <div className="col-10 d-flex flex-wrap productCardSection">
+                  <div className="ps-2 productCardWrapper">
                     <ProductReportCard
                       topLabel={"Impressions"}
-                      topValue={0}
+                      topValue={summaries?.impressions || 0}
                       bottomLabel={"Clicks"}
-                      bottomValue={0}
+                      bottomValue={summaries?.clicks || 0}
                     />
                   </div>
-                  <div className="ms-2 productCardWrapper">
+                  <div className="ps-2 productCardWrapper">
                     <ProductReportCard
                       topLabel={"RDA"}
-                      topValue={0}
+                      topValue={summaries?.rda || 0}
                       bottomLabel={"Gross Clicks"}
-                      bottomValue={0}
+                      bottomValue={summaries?.grossClicks || 0}
                     />
                   </div>
-                  <div className="ms-2 productCardWrapper">
+                  <div className="ps-2 productCardWrapper">
                     <ProductReportCard
                       topLabel={"Revenue"}
-                      topValue={0}
+                      topValue={summaries?.revenue || 0}
                       bottomLabel={"Pay Cut"}
-                      bottomValue={0}
+                      bottomValue={summaries?.payCut || 0}
                     />
                   </div>
-                  <div className="ms-2 productCardWrapper">
+                  <div className="ps-2 productCardWrapper">
                     <ProductReportCard
                       topLabel={"Total CV"}
-                      topValue={0}
+                      topValue={summaries?.totalCV}
                       bottomLabel={"Profit"}
-                      bottomValue={0}
+                      bottomValue={summaries?.profit|| 0}
                     />
                   </div>
-                  <div className="ms-2 productCardWrapper">
+                  <div className="ps-2 productCardWrapper">
                     <ProductReportCard
                       topLabel={"VTCV"}
-                      topValue={0}
+                      topValue={summaries?.vtcv || 0}
                       bottomLabel={"Margin"}
-                      bottomValue={0}
+                      bottomValue={summaries?.margin || 0}
                     />
                   </div>
-                  <div className="ms-2 productCardWrapper">
+                  <div className="ps-2 productCardWrapper">
                     <ProductReportCard
                       topLabel={"CTR"}
-                      topValue={0}
+                      topValue={summaries?.ctr || 0}
                       bottomLabel={"Avg. Sale Value"}
-                      bottomValue={0}
+                      bottomValue={summaries?.avgSaleValue || 0}
                     />
                   </div>
-                  <div className="ms-2 productCardWrapper">
+                  <div className="ps-2 productCardWrapper">
                     <ProductReportCard
                       topLabel={"Gross Sales"}
-                      topValue={0}
+                      topValue={summaries?.grossSales || 0}
                       bottomLabel={"CVR"}
-                      bottomValue={0}
+                      bottomValue={summaries?.cvr || 0}
                     />
                   </div>
-                  <div className="ms-2 productCardWrapper">
+                  <div className="ps-2 productCardWrapper">
                     <ProductReportCard
                       topLabel={"CPC"}
-                      topValue={0}
+                      topValue={summaries?.cpc || 0}
                       bottomLabel={"CPM"}
-                      bottomValue={0}
+                      bottomValue={summaries?.cpm || 0}
                     />
                   </div>
                 </div>

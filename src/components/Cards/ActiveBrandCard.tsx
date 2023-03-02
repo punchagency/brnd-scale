@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { Navigate, useNavigate } from "react-router-dom";
 import ActiveIcon from "../svgs/ActiveIcon";
@@ -15,15 +15,24 @@ function ActiveBrandCard({ image, earning, commission, title }: any) {
       <div className="card-body">
         <div className="row flex-column">
           <div className="col">
-            <p style={{ fontSize: "14px", color: "#605454", height: "20px" }}>{windowSize.current[0] < 992 ? title.substring(0, 25) : title.substring(0, 29)}</p>
+            <p style={{ fontSize: "14px", color: "#605454", height: "20px" }}>
+              {windowSize.current[0] < 992
+                ? title.substring(0, 25)
+                : title.substring(0, 29)}
+            </p>
           </div>
           <div
             className="col border"
             style={{ maxHeight: "115px", overflow: "hidden" }}
-            onClick={changePage}
+            // onClick={changePage}
           >
-            <Link to={"/publisher/brand-details"} className="">
-            <img src={image} className="img img-fluid" style={{height: '100%'}}  /></Link>
+            {/* <Link to={"/publisher/brand-details"} className=""> */}
+              <img
+                src={image}
+                className="img img-fluid"
+                style={{ height: "100%" }}
+              />
+            {/* </Link> */}
           </div>
           <div
             className="col d-flex justify-content-between mt-3"
@@ -39,12 +48,16 @@ function ActiveBrandCard({ image, earning, commission, title }: any) {
           <div className="col flex-column mt-3">
             <button
               className="btn btn-outline-light border border-dark text-dark d-block w-100"
-              
-              onClick={()=>{navigate("/publisher/brand-details")}}
+              onClick={() => {
+                navigate("/publisher/brand-details");
+              }}
             >
               Dashboard
             </button>
-            <button onClick={()=>navigate("/publisher/brand-products")} className="btn btn-outline-light border border-dark text-dark mt-2 d-block w-100">
+            <button
+              onClick={() => navigate("/publisher/brand-products")}
+              className="btn btn-outline-light border border-dark text-dark mt-2 d-block w-100"
+            >
               Promote
             </button>
           </div>

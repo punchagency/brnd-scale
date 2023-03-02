@@ -24,9 +24,17 @@ td button{
   width: 100%;
 }
 
+.summaryWrapper{
+  width: 18%;
+}
+
+.productCardSection{
+  width: 80%;
+}
+
 .productCardWrapper{
-  width: 11.6%;
-  min-width: 11.6%;
+  width: 50%;
+    min-width: 50%;
 }
 
 #navbarSearch{
@@ -37,6 +45,13 @@ td button{
   margin-left: "-5%" !important;
 }
 
+@media screen and (min-width: 576px) {
+  .productCardWrapper{
+    width: 25%;
+    min-width: 25%;
+  }
+}
+
 @media screen and (min-width: 992px) {
   #navbarSearch{
     width: 100%;
@@ -44,4 +59,15 @@ td button{
   #navbarSearchIcon{
     margin-left: "-14%" !important;
   }
+
+  .summaryWrapper{
+    width: 11%;
+  }
+  .productCardWrapper{
+    width: 11.6%;
+    min-width: 11.6%;
+  }
+   .productCardSection{
+    width: 88%;
+   }
 }

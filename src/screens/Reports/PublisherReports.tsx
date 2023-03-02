@@ -471,7 +471,7 @@ function PublisherReports() {
             status: <span className="">Pending</span>,
             commission: (
               <div>
-                12% <Badge />
+                {row.commission}% <Badge />
               </div>
             ),
             prefer_url: (

@@ -272,7 +272,7 @@ function PaymentReport() {
 
   useEffect(() => {
     const searchParams = new URLSearchParams();
-    reportType != "" &&
+    reportType !== "" &&
       searchParams.append(
         "report_type",
         reportType
@@ -288,7 +288,7 @@ function PaymentReport() {
       let res = await response.json();console.log(res);
 
       setTableData(
-        res.data.map((row: any) => {console.log("in set")
+        res.data.map((row: any) => {
           return {
             ...row,
             commission_type: (
