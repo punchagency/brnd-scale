@@ -690,35 +690,6 @@ function BrandOffersTable() {
   const [tableData, setTableData] = useState(data);
   const [searchString, setSearchString] = useState("");
   const [total, setTotal] = useState(0)
-  const filterData = (searchString: any) => {
-    if (!searchString) return tableData;
-    return tableData.filter((item: any) => {
-      const itemProperties: Array<string> = Object.keys(item);
-      return itemProperties
-        .map((key: string) => {
-          if (typeof item[key] === "string") {
-            return item[key].includes(searchString);
-          }
-          return false;
-        })
-        .some((currentValue: boolean) => currentValue);
-    });
-  };
-  const deleteRow = (id: number) => {
-    setTableData((prev) => {
-      return prev.filter((row) => row.id !== id);
-    });
-  };
-
-  const addRow = (row: any) => {
-    setTableData((prev) => {
-      return [...prev, { id: prev.length, ...row }];
-    });
-  };
-
-  const editData = (data: any) => {
-    // setTableData(prev=>{return prev.map()})
-  };
 
   useEffect(() => {
     const searchParams = new URLSearchParams();
@@ -802,10 +773,6 @@ function BrandOffersTable() {
       displayLabels={displayLabels}
       headers={headers}
       tableWidth={"130%"}
-      deleteRow={deleteRow}
-      editData={editData}
-      addRow={addRow}
-      filterData={filterData}
       numOfPages={numOfPages}
       setNumOfPages={setNumOfPages}
       numOfRows={numOfRows}

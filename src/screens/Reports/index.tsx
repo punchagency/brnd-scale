@@ -12,11 +12,13 @@ import WarningCircle from "../../components/svgs/WarningCircle";
 import CalendarWrapper from "../../components/Calendar";
 import ArrowsClockwise from "../../assets/images/ArrowsClockwise.svg";
 import Gift from "../../assets/images/gift.svg";
+import Cookies from "js-cookie";
 
 function Reports() {
   const [tabIndex, setTabIndex] = useState<0 | 1 | 2>(0);
   const [componentDate, setComponentDate] = useState<string | { from: string; to: string }>()
-  const userType = useAppSelector(selectUser);
+  let tempUser = useAppSelector(selectUser);
+  const userType = Cookies.get('userType') || tempUser;
 
   const getTabList = () => {
     switch (userType) {

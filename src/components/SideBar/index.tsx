@@ -9,6 +9,7 @@ import {
 } from "../../features/user/userSlice";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { removeAuthToken } from "../../config/auth";
+import Cookies from "js-cookie";
 
 export const renderSideBarList = (userType:string) => {
   switch (userType) {
@@ -133,7 +134,8 @@ export const renderSideBarList = (userType:string) => {
 };
 
 function SideBar() {
-  const userType = useAppSelector(selectUser);
+  let tempUser = useAppSelector(selectUser);
+  const userType = Cookies.get('userType') || tempUser;
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   

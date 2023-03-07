@@ -12,9 +12,11 @@ import TabButton from "../../components/TabButton/TabButton";
 import AgencyOffersTable from "./AgencyOffersTable";
 import BrandOffersTable from "./BrandOffersTable";
 import BrandProductTable from "./BrandProductTable";
+import Cookies from "js-cookie";
 
 function Offers() {
-  const userType = useAppSelector(selectUser);
+  let tempUser = useAppSelector(selectUser);
+  const userType = Cookies.get('userType') || tempUser;
   const [tabIndex, setTabIndex] = useState<0 | 1>(0);
   const getTitle = () => {
     switch (userType) {

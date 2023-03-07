@@ -5,9 +5,11 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { logout, selectUser, setUserType } from "../../features/user/userSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { userType } from "../../types";
+import Cookies from "js-cookie";
 
 const Navbar = ({ loggedIn }: any) => {
-  const userType = useAppSelector(selectUser);
+  let tempUser = useAppSelector(selectUser);
+  const userType = Cookies.get('userType') || tempUser;
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();

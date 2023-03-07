@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import { useAppSelector } from "../../app/hooks";
 import PaymentCard from "../../components/Reports/PaymentCard";
@@ -10,7 +11,8 @@ interface ReportSummaryProps {
 }
 
 function ReportSummary({ tabIndex, componentDate }: ReportSummaryProps) {
-  const userType = useAppSelector(selectUser);
+  let tempUser = useAppSelector(selectUser);
+  const userType = Cookies.get('userType') || tempUser;
   if (userType === "Brand") {
     if (tabIndex === 0) {
       return <FullReportSummary userType={userType} componentDate={componentDate} />;

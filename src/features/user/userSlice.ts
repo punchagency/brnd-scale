@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import Cookies from 'js-cookie';
 import { RootState, AppThunk } from '../../app/store';
 import { userType } from '../../types';
 
@@ -27,6 +28,7 @@ export const userSlice = createSlice({
       logout: (state) => {
         state.loggedIn = false;
         state.userType = 'Agency';
+        Cookies.remove('userType')
       }
     },
     // The `extraReducers` field lets the slice handle actions defined elsewhere,

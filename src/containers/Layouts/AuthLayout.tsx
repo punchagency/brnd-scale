@@ -52,7 +52,7 @@ const AuthLayout = ({ children, message }: AuthLayoutProps) => {
             </button>
           </div>
         ) : location?.pathname?.includes("auth/verify-account") ? (
-          <p className="fw-light">Verify your Accout to start your program</p>
+          <p className="fw-light">Verify your Account to start your program</p>
         ) : (
           <div className="d-flex w-100 justify-content-between">
             <p className="fw-light mt-auto mb-auto">Choose your role</p>

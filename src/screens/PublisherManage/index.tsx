@@ -6,10 +6,12 @@ import TabButton from "../../components/TabButton/TabButton";
 import AgencyPublishersTable from "./AgencyPublishersTable";
 import BrandPublishersTable from "./BrandPublishersTable";
 import AgencyPublishersRequest from "./AgencyPublisherRequest";
+import Cookies from "js-cookie";
 
 function PublisherManage() {
   const [tabIndex, setTabIndex] = useState<0 | 1>(0);
-  const userType = useAppSelector(selectUser);
+  let tempUser = useAppSelector(selectUser);
+  const userType = Cookies.get('userType') || tempUser;
 
   const getTitle = () => {
     switch (userType) {

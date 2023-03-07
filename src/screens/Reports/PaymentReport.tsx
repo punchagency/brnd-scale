@@ -9,6 +9,7 @@ import PaymentCard from "../../components/Reports/PaymentCard";
 import { useAppSelector } from "../../app/hooks";
 import { selectUser } from "../../features/user/userSlice";
 import { AgenciesReportingPayments } from "../../types";
+import Cookies from "js-cookie";
 
 const headers = [
   "Product Name",
@@ -253,7 +254,8 @@ const displayLabels = [
 
 function PaymentReport() {
   const [tableData, setTableData] = useState<AgenciesReportingPayments[]>([]);
-  const userType = useAppSelector(selectUser);
+  let tempUser = useAppSelector(selectUser);
+  const userType = Cookies.get('userType') || tempUser;
 
   
 

@@ -169,7 +169,7 @@ const AgencyRegister = ({ tabIndex, changeTabIndex }: any) => {
         validationSchema={SecondSignupSchema}
         onSubmit={(values, { setSubmitting }) => {
           // same shape as initial values
-          console.log("i fffdjf");
+          // console.log("i fffdjf", formInputs, values)
 
           var url = new URL(process.env.REACT_APP_BASE_URL + "users");
           fetch(url, {
@@ -196,7 +196,7 @@ const AgencyRegister = ({ tabIndex, changeTabIndex }: any) => {
               navigate("/auth/verify-account");
             } else {
               setFormError(true);
-              console.log("I dey here");
+              console.log(res.data);
               setFormErrorData(res.data);
             }
           });

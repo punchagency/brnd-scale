@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { Link, Navigate, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import AuthLayout from "../../containers/Layouts/AuthLayout";
 import { userType } from "../../types";
@@ -16,6 +16,7 @@ import FormikField from "../../components/auth/FormikField";
 import { setAuthToken } from "../../config/auth";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from "react-toastify";
+import Cookies from "js-cookie";
 
 interface Props {}
 const SecondSignupSchema = Yup.object().shape({
@@ -63,7 +64,7 @@ const Login: FC = ({}: Props) => {
     }).then(async (response) => {
       let res = await response.json();
       console.log(res, postInput);
-      if (res.success) {
+      if (res.success) {console.log(res)
         dispatch(login());
       } else {
         toast('Something went wrong, please try again', {
@@ -119,6 +120,7 @@ const Login: FC = ({}: Props) => {
             if (res.success) {
               const token = res.data.access_token;
               setAuthToken(token);
+              Cookies.set('userType', userType, { expires: 7 })
               navigate("/");
             } else {
               toast('Something went wrong, please try again', {

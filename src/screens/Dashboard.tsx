@@ -8,6 +8,7 @@ import { selectUser } from "../features/user/userSlice";
 import { useAppSelector } from "../app/hooks";
 import ProductDetail from "../components/Popups/ProductDetail";
 import AgencyCards from "../components/dashboard/AgencyCards";
+import Cookies from "js-cookie";
 
 const headers = [
   "Top Publishers",
@@ -63,7 +64,8 @@ const months = [
 ];
 
 const Dashboard: FC = () => {
-  const userType = useAppSelector(selectUser);
+  let tempUser = useAppSelector(selectUser);
+  const userType = Cookies.get('userType') || tempUser;
 
   const [salesChartData, setSalesChartData] = useState<any>({
     labels: [],
